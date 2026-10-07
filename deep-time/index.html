@@ -1,0 +1,1192 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get a Grip on the Geologic Time Scale</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a cliff of 12 strata (youngest on top) with thin red extinction bands between them on the left, every one tappable; the period or extinction panel on the right; the field notebook across the bottom. Lexiglass system: Cormorant Garamond body, DM Sans labels, paper/cream/ink/rule palette, gold eyebrows, pill buttons. */
+:root{
+  --bg:#F4F2EE;--paper:#FFFFFF;--cream:#FAF6EE;--ink:#16170B;--ink-soft:#5E5A4E;--rule:#C8B89A;
+  --green:#56683E;--green-deep:#3E4C2C;--blue:#4B568E;--gold:#B8922A;--copper:#B8651E;--yellow:#D3C657;
+  --soil-1:#D9CBB4;--soil-3:#BFAA8B;--soil-5:#9C866B;--hollow:#8E7A62;--ext:#8E3B2E;--ext-ink:#FFF8EE;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C1B17;--paper:#25241F;--cream:#2C2A24;--ink:#F1EDE3;--ink-soft:#B3AC9C;--rule:#5C5443;--green:#8FA36E;--green-deep:#C4D3A8;--blue:#8B95C9;--gold:#CBA94B;--copper:#D98A4A;--soil-1:#4A4136;--soil-3:#3C342B;--soil-5:#2E2821;--hollow:#26211B;--ext:#C25A48;--ext-ink:#1C1B17;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1C1B17;--paper:#25241F;--cream:#2C2A24;--ink:#F1EDE3;--ink-soft:#B3AC9C;--rule:#5C5443;--green:#8FA36E;--green-deep:#C4D3A8;--blue:#8B95C9;--gold:#CBA94B;--copper:#D98A4A;--soil-1:#4A4136;--soil-3:#3C342B;--soil-5:#2E2821;--hollow:#26211B;--ext:#C25A48;--ext-ink:#1C1B17;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.4;padding-inline:18px;padding-block:28px 60px;max-width:1040px;margin:0 auto}
+@media (max-width:520px){body{font-size:17px}}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.brand{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+h1{font-family:var(--serif);font-size:3rem;font-weight:600;line-height:1;margin:0;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--green);font-weight:500}
+@media (max-width:520px){h1{font-size:2.3rem}}
+.say-h1,.sayb{display:block;font-family:var(--sans);font-size:13px;letter-spacing:.06em;color:var(--copper);font-weight:500;margin-top:6px}
+.lede{font-style:italic;color:var(--ink-soft);margin:.6rem 0 0;max-width:62ch;font-size:1.15rem}
+.why{margin-top:22px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:22px 26px 24px}
+.why h2{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:600;line-height:1.05;margin:4px 0 14px;text-wrap:balance}
+.why h2 em{font-style:italic;color:var(--green);font-weight:500}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.why-card{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}
+.why-card img{width:100%;height:auto;max-width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:10px;margin-bottom:6px}
+.why-card b{font-family:var(--serif);font-weight:600;font-size:1.25rem;line-height:1.1}
+.why-card span{font-size:1rem;line-height:1.35;color:var(--ink-soft)}
+@media (prefers-reduced-motion:no-preference){.why-card img{transition:transform .35s}.why-card:hover img{transform:scale(1.03)}}
+@media (max-width:520px){.why{padding:16px 16px 18px}}
+.keywords{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
+.kw{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:12px 16px}
+.kw b{font-family:var(--serif);font-size:1.5rem;font-weight:600;display:block;line-height:1.1}
+.kw i{display:block;font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:.06em;color:var(--copper);font-weight:500;margin:4px 0 6px}
+.kw span{display:block;font-size:1rem;line-height:1.35}
+.iconbtn,.btn.ghost,.pebble{font-family:var(--sans);font-size:13px;padding:8px 16px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--ink)}
+.iconbtn:hover,.btn.ghost:hover{border-color:var(--ink)}
+.btn{font-family:var(--sans);font-size:14px;font-weight:500;padding:12px 22px;border-radius:999px;background:var(--green);color:#fff;align-self:flex-start}
+.btn:hover{background:var(--green-deep)}
+.btn.ghost{color:var(--ink);background:transparent}
+.btn:disabled{opacity:.35;cursor:default}
+
+.game{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:18px;margin-top:26px;align-items:start}
+@media (max-width:760px){.game{grid-template-columns:1fr}}
+
+/* cliff */
+.cliff{user-select:none;-webkit-user-select:none;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px)}
+@media (max-width:760px){.cliff{position:static}}
+.cliff-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:9px 14px;border-bottom:1px solid var(--rule)}
+.layers{display:flex;flex-direction:column}
+.layer{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:0 12px 0 0;height:50px;position:relative;text-align:left;color:#16170B;transition:filter .15s;border-radius:0}
+.layer:hover{filter:brightness(1.06)}
+.layer:focus-visible{outline-offset:-3px}
+.layer.current{box-shadow:inset 0 0 0 2px var(--ink)}
+.layer .depth{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:500;font-size:12px;background:rgba(22,23,11,.12)}
+.layer .lab{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--serif);font-weight:600;font-size:1.25rem;line-height:1}
+.layer .lab small{display:block;font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.06em;opacity:.8;line-height:1;margin-top:3px}
+.layer .lab small em{font-style:normal;color:#5A2E10;opacity:1}
+.layer .finds{display:flex;gap:3px}
+.layer .finds i{width:7px;height:7px;border-radius:50%;background:rgba(22,23,11,.15);border:1px solid rgba(22,23,11,.3)}
+.layer .finds i.on{background:#16170B}
+.ext{display:flex;align-items:center;justify-content:space-between;gap:8px;height:20px;padding:0 12px;width:100%;background:repeating-linear-gradient(90deg,var(--ext) 0 6px,color-mix(in srgb,var(--ext) 75%,#000) 6px 9px);color:var(--ext-ink);font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border-radius:0}
+.ext:hover{filter:brightness(1.15)}
+.ext:focus-visible{outline-offset:-3px}
+.ext.current{box-shadow:inset 0 0 0 2px var(--ext-ink)}
+.ground{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:8px 12px;text-align:center}
+
+/* panel */
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:26px 28px 30px;min-width:0;display:flex;flex-direction:column;gap:18px}
+@media (max-width:520px){.panel{padding:18px 16px 22px}}
+.eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.panel h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,2.8rem);font-weight:600;line-height:1;margin:0;text-wrap:balance}
+.panel h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin:0 0 6px;line-height:1.1}
+.panel p{margin:0}
+.bound{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start}
+.bound .tag{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;color:#16170B;white-space:nowrap;margin-top:4px}
+.bound .tag.ma{display:block;margin-top:6px;background:none;color:var(--ink-soft);padding:0 2px;letter-spacing:.06em;text-transform:none;font-size:12px}
+.bound.ext-link .tag{background:var(--ext);color:var(--ext-ink)}
+.linkbtn{padding:0;color:var(--copper);font-style:italic;text-decoration:underline;text-underline-offset:3px}
+
+.site{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+@media (max-width:420px){.site{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.spot{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--soil-5);display:block;padding:0;border:1px solid var(--rule)}
+.spot:hover{filter:brightness(1.06)}
+.spot .cover{position:absolute;inset:0;background:repeating-linear-gradient(170deg,var(--soil-3) 0 10px,var(--soil-5) 10px 18px)}
+.spot .cover::after{content:"?";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-style:italic;font-size:3rem;color:rgba(255,248,238,.55)}
+.spot img,.spot .slab{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.spot .name{position:absolute;left:0;right:0;bottom:0;background:rgba(22,23,11,.72);color:#FFF8EE;font-family:var(--serif);font-weight:600;font-size:1rem;padding:5px 8px;line-height:1.1}
+.slab{background:radial-gradient(ellipse at 40% 35%,var(--soil-3),var(--soil-5) 70%);color:#FFF8EE;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10%;font-family:var(--serif);font-weight:600;gap:4px}
+.slab b{font-size:clamp(1rem,4vw,1.6rem);line-height:1.05;text-wrap:balance}
+.slab small{font-family:var(--sans);font-weight:400;font-size:10px;opacity:.7;letter-spacing:.1em;text-transform:uppercase}
+
+.stage{position:relative;width:100%;max-width:520px;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--soil-5);touch-action:none;user-select:none;-webkit-user-select:none;margin:0 auto;border:1px solid var(--rule)}
+.stage img,.stage .slab{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) sepia(.7) contrast(1.25) brightness(.75);transition:filter .9s ease}
+.stage.alive img,.stage.alive .slab,.stage.alive video{filter:none}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fx{position:absolute;inset:-10%;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.stage.alive .fx,.spot .fx{opacity:1}
+.fx-sea{background:radial-gradient(ellipse 60% 40% at 30% 20%,rgba(255,255,255,.22),transparent 60%),radial-gradient(ellipse 50% 35% at 70% 60%,rgba(255,255,255,.16),transparent 60%),radial-gradient(ellipse 40% 30% at 50% 90%,rgba(255,255,255,.14),transparent 60%);mix-blend-mode:soft-light}
+.fx-forest{background:radial-gradient(circle 2px at 20% 80%,rgba(255,245,200,.9),transparent 3px),radial-gradient(circle 1.5px at 55% 60%,rgba(255,245,200,.8),transparent 3px),radial-gradient(circle 2px at 80% 75%,rgba(255,245,200,.85),transparent 3px),radial-gradient(circle 1.5px at 35% 40%,rgba(255,245,200,.7),transparent 3px),radial-gradient(circle 1px at 70% 30%,rgba(255,245,200,.7),transparent 2px),linear-gradient(180deg,rgba(255,230,150,.10),transparent 50%);background-size:100% 100%,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%}
+.fx-dry{background:repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 14px,rgba(255,255,255,.07) 14px 16px);mix-blend-mode:overlay}
+.fx-ice{background:radial-gradient(circle 1.5px at 15% 20%,#fff,transparent 2.5px),radial-gradient(circle 1px at 45% 35%,#fff,transparent 2px),radial-gradient(circle 1.5px at 75% 15%,#fff,transparent 2.5px),radial-gradient(circle 1px at 30% 70%,#fff,transparent 2px),radial-gradient(circle 1.5px at 85% 65%,#fff,transparent 2.5px),linear-gradient(180deg,rgba(220,235,255,.12),transparent 60%);opacity:0}
+.fx-sky{background:radial-gradient(ellipse 50% 18% at 20% 20%,rgba(255,255,255,.35),transparent 70%),radial-gradient(ellipse 45% 15% at 75% 35%,rgba(255,255,255,.28),transparent 70%)}
+@media (prefers-reduced-motion:no-preference){
+  .stage.alive .motion{animation:kb var(--kbd,22s) ease-in-out infinite alternate}
+  .spot .motion{animation:kb 34s ease-in-out infinite alternate}
+  .motion.d0{--kx:-2.5%;--ky:-1.5%}.motion.d1{--kx:2.5%;--ky:-2%}.motion.d2{--kx:-2%;--ky:2.5%}.motion.d3{--kx:2%;--ky:1.5%}
+  @keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.14) translate(var(--kx),var(--ky))}}
+  .stage.alive .fx-sea{animation:sea 9s ease-in-out infinite alternate}
+  @keyframes sea{from{transform:translate(-2%,-1%) scale(1)}to{transform:translate(2%,2%) scale(1.08)}}
+  .stage.alive .fx-forest{animation:motes 14s linear infinite}
+  @keyframes motes{from{background-position:0 0,0 0,0 0,0 0,0 0,0 0}to{background-position:3% -60%,-2% -45%,2% -70%,-3% -50%,1% -40%,0 0}}
+  .stage.alive .fx-dry{animation:haze 3.5s ease-in-out infinite alternate}
+  @keyframes haze{from{transform:translateY(0) skewX(0deg);opacity:.9}to{transform:translateY(-1.5%) skewX(.6deg);opacity:.5}}
+  .stage.alive .fx-ice{opacity:1;animation:snow 12s linear infinite}
+  @keyframes snow{from{background-position:0 -20%,0 -30%,0 -15%,0 -25%,0 -10%,0 0}to{background-position:3% 100%,-2% 100%,2% 100%,-3% 100%,1% 100%,0 0}}
+  .stage.alive .fx-sky{animation:cloud 18s linear infinite alternate}
+  @keyframes cloud{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage canvas.rock{cursor:crosshair}
+.stage canvas.fx{pointer-events:none}
+.stage.cleared canvas.rock{pointer-events:none;opacity:0;transition:opacity .5s}
+.meter{height:6px;background:var(--soil-1);border-radius:3px;overflow:hidden;max-width:520px;margin:0 auto;width:100%}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--gold));transition:width .15s}
+.msg{font-size:1.15rem;min-height:1.5em;font-style:italic;color:var(--ink-soft)}
+.msg.good{color:var(--green);font-weight:600;font-style:normal}
+
+.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:start}
+@media (max-width:560px){.card{grid-template-columns:1fr}}
+.card .stage{max-width:none}
+.stagebtn{padding:0;display:block;cursor:pointer;width:100%}
+.stagebtn::after{content:"tap to listen";position:absolute;right:10px;bottom:10px;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(22,23,11,.6);color:#FFF8EE;padding:3px 8px;border-radius:999px}
+.card .name{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1.02}
+.facts{margin:10px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;font-size:1.05rem;line-height:1.35}
+.lex{white-space:nowrap}
+.lex i{font-style:normal;font-family:var(--sans);font-weight:500;font-size:.62em;letter-spacing:.04em;color:var(--copper);margin-left:.35em;vertical-align:1px}
+.dur{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:-2px 0 14px;display:grid;gap:5px}
+.dur .r{display:flex;align-items:center;gap:10px}.dur i{display:block;height:6px;background:var(--ink);border-radius:3px;flex:0 0 auto}.dur .ref i{width:160px;background:var(--rule)}.dur .ref span{opacity:.8}
+.nb-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px}.nb-actions .btn{font-size:1.05rem}.nb-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}.reset{margin-left:auto;border:1px solid var(--rule)}.reset.arm{color:#fff;background:var(--copper);border-color:var(--copper);font-weight:600}
+.chal{background:var(--cream);border:1px solid var(--gold);border-radius:14px;padding:14px 16px;margin-top:4px}.chal b{font-family:var(--serif);font-size:1.4rem;font-weight:600;display:block;line-height:1.1;margin:4px 0 2px}.chal p{margin:4px 0 10px}.chal .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.chal .skip{font-size:.85rem;opacity:.7}
+.start{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 2px}.start-btn{font-size:1.15rem;padding:12px 22px}.start-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.hero{display:grid;grid-template-columns:1fr 200px;gap:14px;margin:18px 0 0;align-items:stretch}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.key{display:none}}
+.key{border:1px solid var(--rule);border-radius:16px;background:var(--paper);display:flex;flex-direction:column;overflow:hidden}
+.key-head{padding:10px 12px 6px}.key-foot{padding:6px 12px 8px;font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.key-body{flex:1;display:grid;grid-template-columns:34px 22px 1fr;padding:0 10px 0 12px;position:relative;min-height:0}
+.key-bars{position:relative;display:flex;flex-direction:column;padding:4px 0}
+.key-bar{position:relative;width:16px;border:1px solid rgba(22,23,11,.18);border-top:0;cursor:pointer;background:none;padding:0}
+.key-bar:first-child{border-top:1px solid rgba(22,23,11,.18);border-radius:4px 4px 0 0}.key-bar:last-child{border-radius:0 0 4px 4px}
+.key-bar.on{box-shadow:0 0 0 2px var(--gold);z-index:1}
+.key-bar .trowel{position:absolute;left:19px;top:50%;width:24px;height:24px;transform:translateY(-50%) rotate(-20deg);opacity:0;transition:opacity .3s;pointer-events:none}
+.key-bar.on .trowel{opacity:1}
+@media (prefers-reduced-motion:no-preference){.key-bar.on .trowel{animation:dig 1.1s ease-in-out infinite alternate}@keyframes dig{from{transform:translateY(-55%) rotate(-24deg)}to{transform:translateY(-42%) rotate(-12deg)}}}
+.key-lead{width:100%;height:100%;overflow:visible}
+.key-labels{display:flex;flex-direction:column;padding:4px 0}
+.key-era{display:flex;flex-direction:column;flex:1}
+.key-era>b{font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:1px 0}
+.key-row{display:flex;align-items:center;flex:1;min-height:0;cursor:pointer;border:0;background:none;padding:0 0 0 4px;text-align:left;width:100%}
+.key-row span{font-family:var(--serif);font-size:.88rem;line-height:1;color:var(--ink);opacity:.72;white-space:nowrap}
+.key-row.on span{opacity:1;font-weight:600}
+.drift{position:relative;margin:0;border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:#1d2b3a;aspect-ratio:2/1;max-height:420px;cursor:pointer;min-height:0}
+.drift-stack{position:absolute;inset:0}.drift-stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}.drift-stack img.on{opacity:1}
+.drift figcaption{position:absolute;left:14px;right:14px;bottom:12px;display:flex;align-items:baseline;gap:12px;color:#FFF8EE;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.drift-name{font-family:var(--serif);font-size:clamp(1.3rem,3.2vw,2rem);font-weight:600}.drift-ma{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.drift-btn{margin-left:auto;background:rgba(22,23,11,.55);color:#FFF8EE;border:1px solid rgba(255,248,238,.4);border-radius:999px;width:34px;height:34px;font-size:11px;cursor:pointer}
+.drift-bar{position:absolute;left:0;right:0;bottom:0;height:4px;display:flex}.drift-bar i{flex:1;background:rgba(255,248,238,.25);margin-right:1px;transition:background .4s}.drift-bar i.on{background:var(--gold)}
+@media (prefers-reduced-motion:reduce){.drift-stack img{transition:none}}
+.listen{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--cream);border:1px solid var(--rule);border-radius:16px;padding:14px 18px;margin:18px 0 6px}
+.listen>div{flex:1 1 260px}.listen b{font-family:var(--serif);font-size:1.25rem;font-weight:600;display:block;line-height:1.15;margin:4px 0 2px}.listen span{color:var(--ink-soft);font-size:.95rem}
+.listen audio{flex:1 1 280px;max-width:420px;height:40px}
+.read{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);background:transparent;border-radius:999px;padding:5px 11px;cursor:pointer;vertical-align:middle;margin:6px 0 0;transition:background .15s,color .15s}
+.read::before{content:"▶";font-size:9px}.read:hover{background:var(--gold);color:#fff}
+.read.playing{background:var(--green);border-color:var(--green);color:#fff}.read.playing::before{content:"■"}
+.read.loading{opacity:.6}.bound .read{margin-top:8px}.card .read{margin:2px 0 4px}
+.word{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:12px 16px}
+.word b{font-family:var(--serif);font-size:1.5rem;font-weight:600;display:block;line-height:1.1;margin-top:4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+
+/* world map */
+.mapwrap{position:relative}
+.pin{position:absolute;transform:translate(-50%,-50%);padding:0;border:0;background:none;cursor:pointer}
+.pin::before{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid #16170B;margin:0 auto;box-shadow:0 0 0 3px rgba(255,248,238,.6)}
+.pin span{position:absolute;left:50%;top:14px;transform:translateX(-50%);white-space:nowrap;font-family:var(--serif);font-weight:600;font-size:.95rem;color:#16170B;background:rgba(255,248,238,.9);padding:1px 8px;border-radius:999px;border:1px solid var(--rule);line-height:1.3}
+.pin:hover span,.pin.on span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pin:focus-visible{outline:none}.pin:focus-visible::before{box-shadow:0 0 0 3px var(--gold)}
+@media (max-width:560px){.pin span{font-size:.75rem}}
+.geoinfo{padding:10px 14px;background:var(--cream);border-top:1px solid var(--rule);font-size:1rem;line-height:1.35}
+.geoinfo b{font-family:var(--serif);font-size:1.25rem;font-weight:600;display:block;line-height:1.1}
+.worldmap{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--rule);background:var(--soil-1)}
+.worldmap img{display:block;width:100%;height:auto;max-width:100%;aspect-ratio:2/1;object-fit:cover}
+.worldmap figcaption{font-family:var(--sans);font-size:11px;letter-spacing:.08em;color:var(--ink-soft);padding:6px 12px;background:var(--cream)}
+/* epochs */
+.epnote{font-style:italic;color:var(--ink-soft);font-size:1rem;margin-bottom:8px !important}
+.epbar{display:flex;gap:3px;border-radius:999px;overflow:hidden}
+.ep{flex:1;min-width:0;padding:7px 6px;font-family:var(--serif);font-weight:600;font-size:1rem;color:#16170B;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ep:hover{filter:brightness(1.06)}
+.ep.on{box-shadow:inset 0 0 0 2px var(--ink)}
+.epinfo{margin-top:10px;background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:10px 14px}
+.epinfo b{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.1}
+.epinfo small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.06em;color:var(--ink-soft);margin:2px 0 6px}
+.epinfo p{font-size:1rem;line-height:1.35}
+/* size-o-meter */
+.sizer{display:flex;flex-direction:column;gap:8px}
+.sizer .r{display:grid;grid-template-columns:minmax(90px,140px) 1fr auto;gap:10px;align-items:center;font-size:1rem}
+.sizer .r .n{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.sizer .r .b{height:12px;border-radius:6px;background:var(--soil-1);position:relative;overflow:hidden}
+.sizer .r .b i{position:absolute;left:0;top:0;bottom:0;background:var(--green);border-radius:6px;transition:width .6s ease}
+.sizer .r.you .b i{background:var(--gold)}
+.sizer .r.hid .b i{background:transparent;border:1px dashed var(--soil-5)}
+.sizer .r .v{font-family:var(--sans);font-size:12px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap}
+
+/* extinction panel */
+.panel.ext-panel{border-color:var(--ext)}
+.toll{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.toll div{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:10px 14px}
+.toll b{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.1}
+.toll span{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.surv{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.surv li{background:var(--cream);border:1px solid var(--rule);border-left:4px solid var(--green);border-radius:0 14px 14px 0;padding:10px 14px;font-size:1.02rem;line-height:1.35}
+.surv b{font-family:var(--serif);font-size:1.25rem;font-weight:600;display:block;line-height:1.1;margin-bottom:2px}
+
+/* living fossils */
+.living{margin-top:24px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:22px 26px 26px}
+.living h2{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600;line-height:1.05;margin:4px 0 0;text-wrap:balance}
+.living h2 em{font-style:italic;color:var(--green);font-weight:500}
+.lifelines{margin-top:18px;position:relative;--left:0px;--right:72px}
+.ll-scale{position:relative;height:30px;margin-right:var(--right);display:flex;border-radius:6px 6px 0 0;overflow:hidden;border:1px solid var(--rule);border-bottom:0}
+.ll-scale span{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:.85rem;color:#16170B;white-space:nowrap;overflow:hidden;min-width:0}
+.ll-scale span.tiny{font-size:0}
+.ll-body{position:relative;border:1px solid var(--rule);border-radius:0 0 6px 6px;background:var(--paper);margin-right:var(--right);padding:10px 0 14px;margin-bottom:14px}
+.ll-ext{position:absolute;top:0;bottom:0;width:2px;background:var(--ext);opacity:.55}
+.ll-ext::after{content:attr(data-when);position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:9px;letter-spacing:.06em;color:var(--ext);background:var(--paper);padding:0 3px;border-radius:3px}
+.ll-row{position:relative;height:44px;display:flex;align-items:center;cursor:pointer;border-radius:4px}
+.ll-row:hover,.ll-row.on{background:color-mix(in srgb,var(--green) 7%,transparent)}
+.ll-row:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.ll-line{position:absolute;top:50%;height:4px;margin-top:-2px;right:-6px;background:var(--green);border-radius:2px;transform-origin:right center}
+.ll-line::before{content:"";position:absolute;left:-5px;top:-3px;width:10px;height:10px;border-radius:50%;background:var(--green)}
+.ll-row.on .ll-line{background:var(--gold)}.ll-row.on .ll-line::before{background:var(--gold)}
+.ll-name{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--serif);font-weight:600;font-size:1.05rem;background:var(--paper);padding:0 8px 0 6px;border-radius:4px;white-space:nowrap;margin-left:12px}
+.ll-name small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.06em;color:var(--copper);font-weight:500;line-height:1}
+.ll-pic{position:absolute;right:calc(-1 * var(--right) + 6px);top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid var(--rule);background:var(--soil-5)}
+.ll-row.on .ll-pic{border-color:var(--gold)}
+.ll-pic img,.ll-pic .slab{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ll-pic .slab b{font-size:.55rem}.ll-pic .slab small{display:none}
+.ll-axis{display:flex;justify-content:space-between;margin-right:var(--right);font-family:var(--sans);font-size:11px;letter-spacing:.06em;color:var(--ink-soft);margin-top:6px}
+.ll-today{position:absolute;right:calc(-1 * var(--right) + 6px);top:-24px;width:56px;text-align:center;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+@media (prefers-reduced-motion:no-preference){.ll-line{animation:grow 1.2s cubic-bezier(.2,1,.3,1) both}@keyframes grow{from{transform:scaleX(0)}}}
+.lv-detail{margin-top:16px;background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:18px 20px 20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:18px;align-items:start}
+@media (max-width:640px){.lv-detail{grid-template-columns:1fr}}
+.lv-detail .pic{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--soil-5)}
+.lv-detail .pic img,.lv-detail .pic .slab{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lv-detail .body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.lv-detail b.n{font-family:var(--serif);font-size:1.9rem;font-weight:600;line-height:1}
+.lv-detail .what{font-style:italic;color:var(--ink-soft)}
+.lv-detail .since{align-self:flex-start;font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;color:#16170B;font-weight:500;border:0;cursor:pointer}
+.lv-detail p{margin:0;font-size:1rem;line-height:1.38}
+.lv-detail .why{padding:8px 12px;background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--green);border-radius:0 10px 10px 0;font-size:.98rem}
+.lv-detail .why b{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:2px;font-weight:500}
+.lv-sub{font-size:.98rem;margin-top:10px}
+.lv-sub b{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2px;font-weight:500}
+.lv-facts{font-size:.98rem;margin-top:10px}
+.lv details .word{margin-top:12px}
+.lv details summary{cursor:pointer;font-style:italic;color:var(--copper);font-size:.95rem;list-style:none}
+.lv details summary::-webkit-details-marker{display:none}
+.lv details[open] summary{display:none}
+.stillhere{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.stillhere .chip{font-family:var(--sans);font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid var(--green);color:var(--green);background:transparent}
+.stillhere .chip:hover{background:var(--green);color:#fff}
+/* notebook */
+.notebook{margin-top:24px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:18px 20px 22px}
+.nb-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.nb-head h3{font-family:var(--serif);font-weight:600;font-size:1.7rem;margin:0}
+.rank{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.rank b{color:var(--gold);font-weight:500}
+.nb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:14px}
+.nb{border:1px dashed var(--rule);border-radius:14px;min-height:74px;padding:8px 10px;display:flex;gap:10px;align-items:center;font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:var(--ink-soft)}
+.nb.filled{border-style:solid;background:var(--cream);color:var(--ink);font-family:var(--serif);font-size:1rem;letter-spacing:0;cursor:pointer}
+.nb.filled:hover{border-color:var(--ink)}
+.nb .th{width:48px;height:48px;border-radius:8px;flex:none;object-fit:cover;overflow:hidden}
+.nb .th.slab b{font-size:.5rem}
+.nb .th.slab small{display:none}
+.nb b{display:block;font-family:var(--serif);font-weight:600;line-height:1.05;font-size:1.1rem}
+.nb i{display:block;font-style:normal;font-family:var(--sans);font-size:11px;letter-spacing:.04em;color:var(--copper);margin-top:2px}
+.nb small{display:block;color:var(--ink-soft);font-size:.85rem;font-style:italic}
+.nb-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stamps{color:var(--gold);letter-spacing:.1em;font-size:.9rem}
+.pebble:disabled{opacity:.45;cursor:default}
+.opts{display:flex;flex-direction:column;gap:8px;max-width:520px}
+.opt{text-align:left;font-family:var(--serif);font-size:1.15rem;font-weight:600;padding:12px 18px;border:1px solid var(--rule);border-radius:14px;background:var(--cream)}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt:disabled{opacity:.6;cursor:default}
+.defn{font-size:1.3rem;font-style:italic}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pairbtn{padding:0;overflow:hidden;position:relative;aspect-ratio:1;border-radius:14px;border:1px solid var(--rule);background:var(--soil-5)}
+.pairbtn img,.pairbtn .slab{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pairbtn b,.pairbtn i{position:absolute;left:0;right:0;background:rgba(22,23,11,.72);color:#FFF8EE;padding:4px 8px;font-style:normal}
+.pairbtn b{bottom:18px;font-family:var(--serif);font-size:1.1rem;line-height:1.1;padding-bottom:0}
+.pairbtn i{bottom:0;font-family:var(--sans);font-size:11px;letter-spacing:.06em;color:var(--yellow);padding-top:0}
+.foot{margin-top:28px;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--yellow);pointer-events:none;animation:fly .9s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+@media (prefers-reduced-motion:reduce){.spark{display:none}.stage img,.stage .slab{transition:none}.sizer .r .b i{transition:none}}
+</style>
+
+<div class="brand">Lexiglass &nbsp;·&nbsp; Deep Time</div>
+<div class="top">
+  <div>
+    <h1>Get a Grip on the <em>Geologic</em> Time Scale</h1>
+    <span class="say-h1">jee-uh-LOJ-ik</span>
+  </div>
+  <button class="iconbtn" id="sound" type="button" aria-pressed="true">Sound on</button>
+</div>
+<p class="lede">This cliff is 539 million years deep and it is full of bones. You are the one with the brush. Tap any layer to go there: how it started, who lived in it (dig them up, four to thirteen a layer), and how it all went wrong. The thin red stripes are the five times nearly everything died. Deeper is older. Mind the Permian.</p>
+<div class="start"><button class="btn start-btn" id="startdig" type="button">Start digging →</button><span class="start-note" id="startnote"></span></div>
+<div class="hero"><figure class="drift" id="drift" aria-label="The continents drifting from the Cambrian to today">
+  <div class="drift-stack" id="drift-stack"></div>
+  <figcaption><span class="drift-name" id="drift-name"></span><span class="drift-ma" id="drift-ma"></span><button class="drift-btn" id="drift-btn" type="button" aria-label="Pause">❚❚</button></figcaption>
+  <div class="drift-bar" id="drift-bar"></div>
+</figure>
+<div class="key" id="key" aria-label="The eras and periods, youngest on top">
+  <div class="key-head"><div class="eyebrow">Where the trowel is</div></div>
+  <div class="key-body" id="key-body"><div class="key-bars" id="key-bars"></div><svg class="key-lead" id="key-lead" aria-hidden="true"></svg><div class="key-labels" id="key-labels"></div></div>
+  <div class="key-foot">drawn to scale · deeper is older</div>
+</div></div>
+<div class="listen" id="listen"><div><div class="eyebrow">Or have it read to you</div><b>The whole chapter, out loud. 57 minutes.</b><span>Every layer, every extinction, every living fossil. Press play and dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div>
+<section class="why" aria-label="Why study the geologic time scale">
+  <div class="eyebrow">Why learn this?</div>
+  <h2>The Earth kept a diary. Nobody was supposed to read it.</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <img src="img/why-1.jpg" alt="" width="800" height="800" loading="lazy">
+      <b>Rocks are the pages.</b><span>Mud falls on mud for a million years and hardens. Every layer is a page. The bottom page is the oldest, and it is very far down.</span>
+    </div>
+    <div class="why-card">
+      <img src="img/why-2.jpg" alt="" width="800" height="800" loading="lazy">
+      <b>Fossils are the words.</b><span>Trilobites only ever turn up in the low pages, mammoths only in the top ones. Learn the order and a single bone tells you when its owner was alive, and what was trying to eat it.</span>
+    </div>
+    <div class="why-card">
+      <img src="img/why-3.jpg" alt="" width="800" height="800" loading="lazy">
+      <b>It shows what happened last time.</b><span>Ice ages, hothouse ages, oceans that ran out of air, a rock from space. Five times nearly everything died. Every time, life came back wearing something different.</span>
+    </div>
+    <div class="why-card">
+      <img src="img/why-4.jpg" alt="" width="800" height="800" loading="lazy">
+      <b>It shows how new you are.</b><span>All of written history, every king and every war and every book, is the thin gold line at the very top. Thinner than this page.</span>
+    </div>
+  </div>
+</section>
+<div class="keywords">
+  <div class="kw"><b>paleontology</b><i>pay-lee-on-TOL-uh-jee</i><span>the study of fossils. Everybody thinks it means dinosaurs. It means everything that ever died and left a mark: shells, leaves, footprints, pollen, a worm the size of your fingernail. Dinosaurs are the loud bit.</span></div>
+  <div class="kw"><b>strata</b><i>STRAH-tuh</i><span>layers of rock, stacked up like a very slow lasagne. New layers land on old ones, so the deeper you dig, the older it gets. One layer is a stratum. Two are strata. Nobody knows why.</span></div>
+  <div class="kw"><b>trowel</b><i>TROW-ul</i><span>a small flat blade with a handle, for scraping dirt away a little at a time. Archaeologists love theirs and will not lend it to you. Paleontologists add a rock hammer, a dental pick and a paintbrush. On this cliff, your finger is the trowel.</span></div>
+  <div class="kw"><b>mass extinction</b><i>MASS ek-STINK-shun</i><span>when most of the living things on the whole planet die out at once. It has happened five times since the Cambrian. Life came back every time, but never the same life.</span></div>
+</div>
+
+<div class="game">
+  <section class="cliff" aria-label="Cliff of strata">
+    <div class="cliff-head"><span>Cliff face</span><span>top is newest, bottom is bedrock</span></div>
+    <div class="layers" id="layers"></div>
+    <div class="ground">bedrock · 539 million years down · almost nothing with a shell or a bone below this, and four billion more years of Earth under that</div>
+  </section>
+  <section class="panel" id="panel" aria-live="polite"></section>
+</div>
+
+<section class="living" aria-label="Living fossils">
+  <div class="eyebrow">Still here</div>
+  <h2>Living fossils. <em>They were here first, and they are still here.</em></h2>
+  <p class="lede" style="margin-top:4px">Charles Darwin made up the name in 1859 for living things that look almost exactly like their own fossils from deep in the cliff. They have sat through ice ages, hothouse ages, a sea with no air in it and a rock from space, and they look much as they did when they started. Two different puzzles hide in that sentence. Why did the family survive? Each one has its own answer, and it is usually about where it lived, not how tough it was. Why does it still look the same? Because the shape kept working, while the animal underneath went on quietly evolving. Tap a line to meet one.</p>
+  <div class="lifelines" id="lifelines" role="group" aria-label="How far back each living fossil reaches"></div>
+  <div class="lv-detail" id="lv-detail" hidden></div>
+</section>
+
+<section class="notebook" aria-label="Field notebook">
+  <div class="nb-head"><h3>Your field notebook</h3><div class="nb-right"><span class="rank" id="rank"></span><span class="stamps" id="stamps" aria-label="Field exams passed"></span></div></div>
+  <div class="nb-actions"><button class="btn" id="exambtn" type="button">Prove it →</button><span class="nb-note" id="examnote"></span><button class="btn ghost reset" id="resetbtn" type="button">Start again</button></div>
+  <div class="nb-grid" id="nb-grid"></div>
+</section>
+<div class="foot"><span>See more in every layer</span></div>
+
+<script>
+// size: {v: number, kind: "long" | "tall" | "wingspan" | "shell"} in metres
+const PERIODS = [
+ {k:"cambrian", pins:["gondwana", "laurentia", "baltica", "siberia", "panthalassa", "iapetus"], pos:{"gondwana": [47, 72], "laurentia": [15, 20], "baltica": [46, 17], "siberia": [77, 10], "iapetus": [30, 42], "panthalassa": [86, 50]}, world:"one enormous continent in the south, three small ones huddled round the equator, and sea everywhere else", say:"KAM-bree-un", name:"Cambrian", era:"Paleozoic", start:539, end:485, color:"#9EAD7C",
+  began:"Life suddenly gets interesting. For three billion years the sea was full of slime and soft blobs. Then, in a geological eye-blink, everything turns up at once: shells, eyes, legs, mouths, guts, and the first animal that eats another animal on purpose. Once something is trying to eat you, you want armour. Once everyone has armour, you want bigger jaws. It is an arms race, and it never stops.",
+  ended:"Not with a bang. A run of smaller disasters knocked out most of the trilobite families and the reef-building sponges, probably because the sea kept running low on oxygen. The survivors swam on into the Ordovician and got on with it.",
+  word:["explosion","ek-SPLOH-zhun","here, a sudden burst of many new kinds of living things"],
+  animals:[
+   {name:"Trilobite", sfx:["deep", "bubbles", "scuttle"], say:"TRY-loh-byte", latin:"Olenoides", img:"cambrian", size:{v:0.1,kind:"long"},
+    facts:["A cousin of crabs and insects, in armour, with eyes made of rock. Real rock: the lenses were crystals of calcite, so even the eyes turned into fossils.", "Trilobites lasted 270 million years. Humans have managed 300 thousand. Don't get cocky."]},
+   {name:"Anomalocaris", sfx:["deep", "whoosh", "bubbles"], img:"cambrian-anomalocaris", say:"uh-nom-uh-loh-KAR-is", latin:"\"strange shrimp\"", size:{v:0.6,kind:"long"},
+    facts:["The biggest thing in the Cambrian sea, and it was 60 centimetres long. That was enough. Two spiky arms to grab you, and a mouth like a pineapple ring with teeth.", "For years people thought the arms were shrimps, the mouth was a jellyfish and the body was a sponge. Three animals. It was one."]},
+   {name:"Hallucigenia", sfx:["deep", "bubbles"], img:"cambrian-hallucigenia", say:"huh-loo-sih-JEE-nee-uh", latin:"\"wandering of the mind\"", size:{v:0.03,kind:"long"},
+    facts:["A worm the size of your fingernail, with seven pairs of spikes on its back and seven pairs of legs like stilts.", "Scientists drew it upside down for ten years, walking on its spikes. Then they found the head. It was at the other end."]}
+,
+   {"name": "Opabinia", "say": "oh-puh-BIN-ee-uh", "latin": "the five-eyed one", "img": "cambrian-opabinia", "size": {"v": 0.07, "kind": "long"}, "sfx": ["deep", "bubbles", "scuttle"], "facts": ["Five eyes. On stalks. And a long bendy hose on the front of its face with a claw on the end, for grabbing worms out of the mud and posting them into its mouth.", "When a scientist first showed a picture of it to a room full of experts, they laughed. Then they checked. It was real."]}
+  ,
+   {"name": "Pikaia", "say": "pih-KY-uh", "latin": "named after Pika Peak, in Canada", "img": "cambrian-pikaia", "size": {"v": 0.05, "kind": "long"}, "sfx": ["shallow", "bubbles", "current"], "facts": ["A flat wiggly ribbon the length of your thumb, with a stiff rod down its back and muscles in zigzags. That rod is the first draft of a backbone.", "Found in the Burgess Shale, a Cambrian seabed now halfway up a mountain in the Canadian Rockies. Of every animal in that mud, this scrap is the one on your side of the family. Say thank you."]}]},
+ {k:"ordovician", pins:["gondwana", "laurentia", "baltica", "siberia", "iapetus", "panthalassa"], pos:{"gondwana": [62, 72], "laurentia": [25, 22], "baltica": [12, 14], "siberia": [78, 16], "iapetus": [42, 42], "panthalassa": [90, 55]}, world:"Gondwana slides over the South Pole and starts to freeze. This will not end well", say:"or-doh-VISH-un", name:"Ordovician", era:"Paleozoic", start:485, end:444, color:"#8BAD97",
+  began:"The sea goes wild. The number of different animals roughly triples. Reefs grow, the water fills with plankton, and the seabed is a forest of sea lilies with shelled things crawling between them. The very first fish appear, with no jaws, sucking mud.",
+  ended:"The first of the Big Five. The giant southern continent drifted over the South Pole and froze solid. The ice locked up so much water that the sea level dropped and the shallow seas, where almost everything lived, simply drained away. Eighty-five out of every hundred species died. Then the ice melted and the water came roaring back.",
+  word:["extinction","ek-STINK-shun","when a kind of living thing dies out completely"],
+  animals:[
+   {name:"Orthoceras", sfx:["deep", "jet", "bubbles"], say:"or-THOSS-er-us", latin:"a straight-shelled nautiloid", img:"ordovician", size:{v:2,kind:"long"},
+    facts:["A squid living in an ice-cream cone two metres long. The cone was full of little rooms filled with gas, so it floated like a balloon.", "To move, it squirted water out backwards. Jet-powered, 470 million years before jets."]},
+   {name:"Sea lily", sfx:["deep", "current"], img:"ordovician-sea-lily", say:"SEE LIL-ee", latin:"crinoid", size:{v:0.5,kind:"tall"},
+    facts:["Not a lily. Not a plant. An animal on a stalk with feathery arms, a cousin of the starfish, standing on the seabed catching food with its fingers.", "Whole seafloors were meadows of them, swaying. A few still live in the deep sea today. They have not changed their minds about anything."]},
+   {name:"Astraspis", sfx:["deep", "bubbles", "scuttle"], img:"ordovician-astraspis", say:"as-TRASS-pis", latin:"\"star shield\"", size:{v:0.2,kind:"long"},
+    facts:["One of the first fish ever. No jaws, so it could not bite you; it sucked. No fins to steer with, so it mostly bumped into things.", "Its body was covered in bony plates with little stars on them. Hence the name: star shield."]}
+,
+   {"name": "Isotelus", "say": "eye-soh-TEE-lus", "latin": "the giant trilobite", "img": "ordovician-isotelus", "size": {"v": 0.7, "kind": "long"}, "sfx": ["deep", "scuttle", "bubbles"], "facts": ["The biggest trilobite ever found. Seventy centimetres. That is the length of your arm, lying in the mud, waiting for worms.", "It is the official state fossil of Ohio. Ohio chose a giant mud-bug. Good for Ohio."]}
+  ]},
+ {k:"silurian", pins:["euramerica", "gondwana", "siberia", "rheic", "panthalassa"], pos:{"euramerica": [40, 25], "gondwana": [45, 75], "siberia": [82, 20], "rheic": [55, 50], "panthalassa": [90, 45]}, world:"two northern continents crash together. The crumple zone is now Scotland and Norway", say:"sih-LOOR-ee-un", name:"Silurian", era:"Paleozoic", start:444, end:419, color:"#8DA6B2",
+  began:"The ice melts and the seas return. Reefs grow back, fish grow jaws for the first time, and on land something new: the first plants, no taller than your finger, with no leaves and no roots, standing in the mud by the shore.",
+  ended:"Quietly. A few bad patches for sea creatures, no catastrophe. Life simply rolled on into the Devonian.",
+  word:["predator","PRED-uh-ter","an animal that hunts other animals for food"],
+  animals:[
+   {name:"Sea scorpion", sfx:["shallow", "whoosh", "scuttle"], say:"SEE SKOR-pee-un", latin:"Pterygotus", img:"silurian", size:{v:1.75,kind:"long"},
+    facts:["Not a scorpion, but a cousin. Longer than your bed, and it swam, with paddles for back legs and two spiked claws out front for grabbing fish.", "Its Devonian cousin Jaekelopterus grew to two and a half metres, the biggest creepy-crawly that ever lived. Nothing with that many legs has been that big since. Be grateful."]},
+   {name:"Brontoscorpio", sfx:["shore", "scuttle"], img:"silurian-brontoscorpio", say:"bron-toh-SKOR-pee-oh", latin:"\"thunder scorpion\"", size:{v:1,kind:"long"},
+    facts:["A real scorpion, a metre long, with a sting the size of a lightbulb.", "It lived in the shallows and may have crawled out onto the beach. Nobody was there to scream."]},
+   {name:"Birkenia", sfx:["stream", "splash"], img:"silurian-birkenia", say:"bur-KEE-nee-uh", latin:"a jawless fish", size:{v:0.1,kind:"long"},
+    facts:["A fish the length of your finger with a row of spikes down its back and no jaws at all.", "One of the first fish to leave the sea and move into rivers. The first fish to swim upstream."]}
+,
+   {"name": "Climatius", "say": "kly-MAY-shus", "latin": "a spiny shark", "img": "silurian-climatius", "size": {"v": 0.08, "kind": "long"}, "sfx": ["shallow", "whoosh"], "facts": ["One of the very first fish with jaws. Eight centimetres long, and every single fin had a sharp spike in front of it. Fifteen spikes.", "Try eating a pincushion. That was the plan, and it worked."]}
+  ]},
+ {k:"devonian", pins:["euramerica", "gondwana", "siberia", "rheic", "panthalassa"], pos:{"euramerica": [32, 30], "gondwana": [65, 72], "siberia": [85, 15], "rheic": [55, 52], "panthalassa": [14, 62]}, world:"a big red desert continent in the north, Gondwana in the south, and the ocean between them closing like a door", say:"dih-VOH-nee-un", name:"Devonian", era:"Paleozoic", start:419, end:359, color:"#A89CB6",
+  began:"The Age of Fishes. Armoured fish, sharks, fish with lungs, fish with fins like legs. On land the plants figure out wood, and the first forests go up. Under them, the first insects and spiders scurry about.",
+  ended:"The second of the Big Five, and one suspect is trees. The new forests pushed roots into rock, which washed food into the sea, which fed gigantic blooms of algae, which rotted and used up the oxygen. The sea suffocated, probably. Three in four species died, including every single armoured fish. Reefs did not fully recover for 100 million years.",
+  word:["armour","AR-mer","a hard covering that protects the body"],
+  animals:[
+   {name:"Dunkleosteus", sfx:["deep", "whoosh", "jawsnap"], say:"dun-kul-OSS-tee-us", latin:"an armoured fish", img:"devonian", size:{v:4,kind:"long"},
+    facts:["A fish as long as a car with a head made of armour plates. No teeth. Instead, the edges of its jaws were bone, sharpened like garden shears.", "Could it bite through you? Yes. A shark? Yes. A car door? Probably. It snapped its mouth open in a fiftieth of a second and sucked you in."]},
+   {name:"Tiktaalik", sfx:["shallow", "splash", "breath"], img:"devonian-tiktaalik", say:"tik-TAH-lik", latin:"\"large freshwater fish\" in Inuktitut", size:{v:1.5,kind:"long"},
+    facts:["A fish with a neck. A fish with wrists inside its fins. A fish that could do a push-up in the shallows and look around.", "Not quite a fish, not quite a land animal, and a close cousin of the fish that crawled out and became every frog, lizard, bird and you. The family resemblance is the point."]},
+   {name:"Cladoselache", sfx:["deep", "whoosh"], img:"devonian-cladoselache", say:"klad-oh-SEL-uh-kee", latin:"an early shark", size:{v:1.8,kind:"long"},
+    facts:["One of the first sharks, and already very good at it. Fast, with a tail like a tuna.", "A fossil was found with whole fish in its stomach, swallowed tail first. It ate in a hurry and did not chew."]}
+,
+   {"name": "Coelacanth", "say": "SEE-luh-kanth", "latin": "\"hollow spine\"", "img": "devonian-coelacanth", "size": {"v": 1.5, "kind": "long"}, "sfx": ["deep", "whoosh", "bubbles"], "living": true, "facts": ["A fish with arms. Its fins have bones in them like a leg and it moves them in turn, left-right, like walking.", "Everyone agreed it died out 66 million years ago. In 1938 a museum lady in South Africa found one on a fishing boat. Everyone had to say sorry to the fish."]}
+  ]},
+ {k:"carboniferous", pins:["pangaea", "southice", "coalswamp", "tethys", "panthalassa"], pos:{"pangaea": [44, 30], "southice": [46, 80], "coalswamp": [46, 50], "tethys": [72, 45], "panthalassa": [86, 70]}, world:"everything crunches together. Ice on the bottom, swamps round the middle", say:"kar-buh-NIF-er-us", name:"Carboniferous", era:"Paleozoic", start:359, end:299, color:"#839B82",
+  began:"Swamp world. Steaming forests of giant ferns and tree-sized horsetails cover the land. The air has so much oxygen that insects grow as big as birds and millipedes as long as cars. When the trees fall, they do not rot properly; they pile up and become the coal we dig today. Every lump of coal is a Carboniferous tree.",
+  ended:"The rainforests collapsed. The climate turned dry and cold, the swamps broke up into islands, and the amphibians who had to lay their eggs in water were in trouble. The reptiles were not. Their eggs had shells. Small change, big winners.",
+  word:["wingspan","WING-span","the distance from one wing tip to the other"],
+  animals:[
+   {name:"Meganeura", sfx:["marsh", "buzz"], say:"meg-uh-NOOR-uh", latin:"a giant griffinfly", img:"carboniferous", size:{v:0.7,kind:"wingspan"},
+    facts:["A dragonfly with wings as wide as a school desk. Seventy centimetres. It could have carried off your lunchbox.", "It got that big because the air was full of oxygen, over 30 percent. Breathing it would make you dizzy. Insects loved it."]},
+   {name:"Arthropleura", sfx:["forest", "creak", "scuttle"], img:"carboniferous-arthropleura", say:"ar-throh-PLOOR-uh", latin:"\"jointed ribs\"", size:{v:2.5,kind:"long"},
+    facts:["A millipede as long as a car. The biggest land creepy-crawly that ever lived.", "Relax: it ate rotting leaves, not you. Its fossil footprints look like tyre tracks."]},
+   {name:"Hylonomus", sfx:["forest", "twig", "scuttle"], img:"carboniferous-hylonomus", say:"hy-LON-oh-mus", latin:"\"forest dweller\"", size:{v:0.2,kind:"long"},
+    facts:["The oldest reptile anybody has found, about as long as a pencil.", "We know about it because it kept falling into hollow tree stumps and could not get out. Dozens of them. Not the brightest, but it did invent the egg with a shell."]}
+,
+   {"name": "Pulmonoscorpius", "say": "pul-mon-oh-SKOR-pee-us", "latin": "\"breathing scorpion\"", "img": "carboniferous-pulmonoscorpius", "size": {"v": 0.7, "kind": "long"}, "sfx": ["forest", "scuttle", "twig"], "facts": ["A scorpion as long as your arm, walking around the forest floor breathing air.", "It ate small amphibians and the very first reptiles. If you were a pencil-sized lizard, this was your nightmare."]}
+  ]},
+ {k:"permian", pins:["pangaea", "tethys", "panthalassa"], pos:{"pangaea": [45, 42], "tethys": [74, 48], "panthalassa": [14, 52]}, world:"Pangaea. One continent, pole to pole, shaped like a C. Every bit of land on Earth, touching", say:"PER-mee-un", name:"Permian", era:"Paleozoic", start:299, end:252, color:"#CB8272",
+  began:"All the land in the world locks together into one supercontinent, Pangaea. The middle of it is a desert bigger than any desert today, so far from the sea that rain never reaches it. Reptiles and the mammal-line animals take over the land.",
+  ended:"The Great Dying. The worst day in the history of life. Volcanoes in Siberia erupted for hundreds of thousands of years and burned through coal underground. The sky filled with carbon, the world got about ten degrees hotter, and the sea turned sour and ran out of air. Nine in ten sea species died. Seven in ten on land. It took ten million years for life to get back on its feet.",
+  word:["synapsid","sih-NAP-sid","the group of animals that includes mammals and their ancestors"],
+  animals:[
+   {name:"Dimetrodon", sfx:["dry", "breath"], say:"dy-MET-roh-don", latin:"a sail-backed synapsid", img:"permian", size:{v:3,kind:"long"},
+    facts:["Everyone thinks it is a dinosaur. It is not. It lived 40 million years before the first dinosaur, and it is more closely related to you than to any dinosaur.", "The sail on its back may have worked like a solar panel: stand sideways to the morning sun, warm up fast, go and eat someone who is still cold."]},
+   {name:"Scutosaurus", sfx:["dry", "steps", "snort"], img:"permian-scutosaurus", say:"skoo-toh-SOR-us", latin:"\"shield lizard\"", size:{v:3,kind:"long"},
+    facts:["A plant-eater the size of a cow, covered in bony lumps like a walking cobblestone street.", "It probably walked in herds across the Permian desert, which was most of the planet at the time."]},
+   {name:"Lystrosaurus", sfx:["dry", "dig", "snort"], img:"permian-lystrosaurus", say:"liss-troh-SOR-us", latin:"\"shovel lizard\"", size:{v:1,kind:"long"},
+    facts:["Pig-sized. Two tusks. A beak like a parrot. Brains: not many. It lived in a hole in the ground and ate anything green.", "Then the Great Dying killed nearly everything. Lystrosaurus, as far as anyone can tell, was in its burrow. It came out, sniffed, and ate a plant. For the next million years, almost every land animal you could meet was a Lystrosaurus. Best guess: it won by being underground, and not fussy."]}
+,
+   {"name": "Gorgonops", "say": "GOR-guh-nops", "latin": "\"gorgon face\"", "img": "permian-gorgonops", "size": {"v": 2.5, "kind": "long"}, "sfx": ["dry", "steps", "growl"], "facts": ["A sabre-toothed killer from long before the sabre-toothed cats. Fangs twelve centimetres long. It was the top hunter of the whole Permian.", "Not a dinosaur, not a mammal. Something in between, on your side of the family tree. Your very distant, very toothy relative."]}
+  ]},
+ {k:"triassic", pins:["pangaea", "tethys", "panthalassa"], pos:{"pangaea": [40, 45], "tethys": [70, 45], "panthalassa": [86, 52]}, world:"still Pangaea, with a desert in the middle so big that rain never reached it", say:"try-ASS-ik", name:"Triassic", era:"Mesozoic", start:252, end:201, color:"#B286AB",
+  began:"An empty world. For millions of years, if you met a land animal, it was probably a Lystrosaurus. Slowly, new things appear in the gaps: the first dinosaurs, small and quick; the first mammals, the size of a mouse; the first flying reptiles; the first turtles.",
+  ended:"The fourth of the Big Five. Pangaea began to tear itself apart, and the crack poured out lava and carbon for thousands of years. Three in four species died. The big crocodile-cousins who ruled the land were wiped out. The dinosaurs, who had been small fry, came through. The next 135 million years were theirs.",
+  word:["reptile","REP-tyle","a cold-blooded animal with scales, such as a lizard or crocodile"],
+  animals:[
+   {name:"Ichthyosaur", sfx:["deep", "splash", "whoosh"], say:"IK-thee-oh-sor", latin:"\"fish lizard\"", img:"triassic", size:{v:3,kind:"long"},
+    facts:["A reptile shaped exactly like a dolphin, because that is the best shape for the job. Eyes the size of dinner plates for seeing in dark water.", "It could not come ashore to lay eggs, so it gave birth to live babies at sea, tail first. Fossils show it happening."]},
+   {name:"Coelophysis", sfx:["dusk", "runsteps", "chirp"], img:"triassic-coelophysis", say:"see-loh-FY-sis", latin:"\"hollow form\"", size:{v:3,kind:"long"},
+    facts:["One of the very first dinosaurs. Thin, fast, hollow-boned, about as long as a car and mostly tail.", "Hundreds were found buried together at Ghost Ranch in New Mexico. A whole gang, caught by a flood."]},
+   {name:"Postosuchus", sfx:["forest", "steps", "growl"], img:"triassic-postosuchus", say:"post-oh-SOO-kus", latin:"\"crocodile from Post\"", size:{v:4,kind:"long"},
+    facts:["Not a dinosaur. A crocodile cousin that stood up tall on four legs and hunted the first dinosaurs for lunch.", "Its family ruled the Triassic. Then the End-Triassic extinction came, and the croc family lost and the dinosaurs won. That is why you have heard of Tyrannosaurus and not of this."]}
+,
+   {"name": "Plateosaurus", "say": "plat-ee-oh-SOR-us", "latin": "\"broad lizard\"", "img": "triassic-plateosaurus", "size": {"v": 8, "kind": "long"}, "sfx": ["dusk", "steps", "chew"], "facts": ["One of the first big dinosaurs. Eight metres long, walked on two legs, small head, long neck, ate plants.", "Its great-great-grandchildren were the giant sauropods. Over a hundred skeletons turned up in one German quarry. A traffic jam, 210 million years old."]}
+  ,
+   {"name": "Eoraptor", "say": "EE-oh-rap-tor", "latin": "\"dawn thief\"", "img": "triassic-eoraptor", "size": {"v": 1, "kind": "long"}, "sfx": ["dry", "runsteps", "chirp"], "facts": ["One of the very first dinosaurs. The size of a large dog, fast, and not fussy about what it ate: it had sharp teeth at the front and leaf-shaped ones at the back, so, both.", "Dug out of a valley in Argentina called the Valley of the Moon in 1991. Everything that came after, every Tyrannosaurus and every pigeon, starts with something like this."]}]},
+ {k:"jurassic", pins:["laurasia", "gondwana", "atlantic", "tethys", "panthalassa"], pos:{"laurasia": [45, 20], "gondwana": [52, 70], "atlantic": [28, 40], "tethys": [72, 42], "panthalassa": [12, 52]}, world:"Pangaea cracks down the middle. The thin blue line is the baby Atlantic", say:"juh-RASS-ik", name:"Jurassic", era:"Mesozoic", start:201, end:145, color:"#7AADBB",
+  began:"The dinosaurs get the planet to themselves and grow into every shape and size. Pangaea splits down the middle and the Atlantic begins as a narrow seaway. The climate is warm and wet, and forests of conifers and ferns feed the biggest land animals that have ever lived.",
+  ended:"No mass extinction. The continents kept drifting, the climate kept shifting, and the Jurassic slid into the Cretaceous without anyone noticing. Not every chapter ends with a disaster.",
+  word:["herbivore","HER-bih-vor","an animal that eats only plants"],
+  animals:[
+   {name:"Stegosaurus", sfx:["forest", "chew", "steps"], say:"steg-oh-SOR-us", latin:"\"roof lizard\"", img:"jurassic", size:{v:9,kind:"long"},
+    facts:["As long as a bus, with plates down its back and four spikes on its tail. Its brain was about the size of a lime.", "The spikes are called the thagomizer, after a cartoon in which a caveman names them in memory of the late Thag Simmons. Scientists liked the joke and kept it."]},
+   {name:"Brachiosaurus", sfx:["forest", "crack", "rumble", "bigsteps"], img:"jurassic-brachiosaurus", say:"brak-ee-oh-SOR-us", latin:"\"arm lizard\"", size:{v:22,kind:"long"},
+    facts:["Its front legs were longer than its back legs, so it stood like a giraffe and could reach 13 metres up: the fourth floor of a building.", "It needed about 400 kilos of plants a day. Four hundred bags of sugar. Every day. No wonder it never sat down."]},
+   {name:"Archaeopteryx", sfx:["forest", "flap", "chirp"], img:"jurassic-archaeopteryx", say:"ar-kee-OP-ter-iks", latin:"\"ancient wing\"", size:{v:0.5,kind:"wingspan"},
+    facts:["The first bird. Feathers, wings, and also teeth, claws on its wings and a long bony tail. Half dinosaur, half pigeon.", "Found in a German quarry in 1861, two years after Darwin's book. Darwin was very pleased."]}
+,
+   {"name": "Ammonite", "say": "AM-uh-nyte", "latin": "a coiled-shell cousin of the squid", "img": "jurassic-ammonite", "size": {"v": 0.3, "kind": "shell"}, "sfx": ["deep", "jet", "bubbles"], "facts": ["A squid living in a coiled shell like a snail's, divided into little rooms. Some were as small as a coin, some bigger than a tractor tyre.", "There were so many, and they changed so fast, that geologists use them like dates on a calendar to tell how old a rock is. Every single one died with the dinosaurs."]},
+   {"name": "Plesiosaurus", "say": "PLEE-see-oh-sor-us", "latin": "\"near lizard\"", "img": "jurassic-plesiosaurus", "size": {"v": 3.5, "kind": "long"}, "sfx": ["deep", "splash", "whoosh"], "facts": ["A sea reptile with four flippers and a neck as long as the rest of it. It flew underwater like a sea turtle.", "The first complete skeleton was dug out in 1823 by Mary Anning, who sold fossils from an English beach for a living and had found her first sea monster, an ichthyosaur, at twelve. She found a lot. The gentlemen scientists took the credit."]},
+   {"name": "Allosaurus", "say": "al-oh-SOR-us", "latin": "\"different lizard\"", "img": "jurassic-allosaurus", "size": {"v": 9, "kind": "long"}, "sfx": ["forest", "bigsteps", "rumble"], "facts": ["The top hunter of the Jurassic, nine metres long, with little horns over its eyes and a mouth that opened very, very wide.", "Its bite was weaker than a crocodile's. Scientists think it swung its head down like an axe instead. Then bit."]},
+   {"name": "Pterodactylus", "say": "tair-oh-DAK-tih-lus", "latin": "\"wing finger\"", "img": "jurassic-pterodactylus", "size": {"v": 1, "kind": "wingspan"}, "sfx": ["wind", "flap", "chirp"], "facts": ["The first flying reptile anyone ever dug up, in 1784. Its wing was skin stretched from one enormously long finger. Pterodactyl means wing-finger.", "Not a dinosaur. Not a bird. About the size of a crow, and it ate fish and insects."]},
+   {"name": "Apatosaurus", "say": "uh-pat-oh-SOR-us", "latin": "\"deceptive lizard\", once called Brontosaurus", "img": "jurassic-apatosaurus", "size": {"v": 22, "kind": "long"}, "sfx": ["forest", "bigsteps", "rumble", "crack"], "facts": ["Longer than two buses, heavier than five elephants, with a tail like a whip the length of a tennis court that may have cracked louder than a gunshot.", "You probably call it Brontosaurus. For a hundred years scientists said Brontosaurus did not exist and told everyone off. In 2015 they checked again. It exists. Sorry."]}
+  ,
+   {"name": "Megalosaurus", "say": "meg-uh-loh-SOR-us", "latin": "\"great lizard\"", "img": "jurassic-megalosaurus", "size": {"v": 9, "kind": "long"}, "sfx": ["forest", "bigsteps", "growl"], "facts": ["The first dinosaur ever given a name, in 1824, by a man called William Buckland who also ate his way through the animal kingdom and said mole was the worst.", "Nobody had a word for what it was. Eighteen years later Richard Owen made one up: dinosaur, terrible lizard. So every dinosaur you have ever heard of is named after this one, which hardly anyone has heard of."]},
+   {"name": "Diplodocus", "say": "dih-PLOD-uh-kus", "latin": "\"double beam\"", "img": "jurassic-diplodocus", "size": {"v": 26, "kind": "long"}, "sfx": ["forest", "bigsteps", "chew"], "facts": ["Longer than a tennis court, mostly neck and tail, with a head the size of a horse's on the end of it. It held its neck out flat and swept it side to side like a hoover.", "Dippy, the cast in the museum, is the most-looked-at skeleton on Earth. Andrew Carnegie, the richest man alive, had copies made and posted them to kings. The one in London stood in the hall for 112 years."]}]},
+ {k:"cretaceous", pins:["wis", "india", "atlantic", "tethys", "antarctica"], pos:{"wis": [17, 30], "india": [72, 56], "atlantic": [35, 52], "tethys": [62, 38], "antarctica": [52, 90]}, world:"the Atlantic widens, India sets off north on its own, and a sea runs straight through the middle of North America", say:"krih-TAY-shus", name:"Cretaceous", era:"Mesozoic", start:145, end:66, color:"#AABC72",
+  began:"Flowers. For the first time in the history of the world, something blooms, and with the flowers come bees and butterflies. The continents look almost like today's. Dinosaurs reach their greatest variety, the first snakes slither, and the biggest flying animal ever stalks the plains like a giant stork.",
+  ended:"The fifth of the Big Five. A rock from space ten kilometres across hit what is now Mexico. The blast threw up so much dust and soot that the sun did not properly shine for years. Plants died, then plankton, then everything that ate them, then everything that ate those. In the sea the ammonites, the sea monsters and most of the plankton vanished. Three in four species died, including every dinosaur that was not a bird. The birds made it. Look out of the window.",
+  word:["asteroid","ASS-ter-oyd","a large rock that travels through space"],
+  animals:[
+   {name:"Tyrannosaurus rex", sfx:["river", "bigsteps", "rumble"], say:"tih-ran-oh-SOR-us REX", latin:"\"tyrant lizard king\"", img:"cretaceous", size:{v:12,kind:"long"},
+    facts:["Twelve metres long. Teeth like bananas. A bite that could crush a car. Arms too short to clap.", "It lived only in the last two million years of the Cretaceous. Then a rock from space ended it. Nothing else ever beat it."]},
+   {name:"Triceratops", sfx:["forest", "chew", "snort"], img:"cretaceous-triceratops", say:"try-SAIR-uh-tops", latin:"\"three-horned face\"", size:{v:9,kind:"long"},
+    facts:["Three horns, a bony frill, and a beak like a parrot for snipping tough plants. Nine metres long.", "It lived at the same time and place as Tyrannosaurus, and some Triceratops fossils have healed bite marks on them. Healed. It got bitten by a T. rex and walked away."]},
+   {name:"Quetzalcoatlus", sfx:["wind", "bigflap"], img:"cretaceous-quetzalcoatlus", say:"ket-sul-koh-AT-lus", latin:"named for an Aztec feathered serpent god", size:{v:10,kind:"wingspan"},
+    facts:["A flying reptile as tall as a giraffe. Wings as wide as a small plane. The biggest thing that ever flew.", "On the ground it walked on all fours and stalked about like a giant stork, picking up small animals and swallowing them whole. Baby dinosaurs, probably."]}
+,
+   {"name": "Velociraptor", "say": "veh-LOSS-ih-rap-tor", "latin": "\"swift thief\"", "img": "cretaceous-velociraptor", "size": {"v": 2, "kind": "long"}, "sfx": ["dry", "runsteps", "chirp"], "facts": ["About the size of a turkey, covered in feathers, with one big hooked claw on each foot. The ones in the films are three times too big and have no feathers.", "A famous fossil shows a Velociraptor and a Protoceratops locked in a fight, buried alive together when a sand dune collapsed on both of them. Nobody won."]},
+   {"name": "Mosasaurus", "say": "MOH-zuh-sor-us", "latin": "\"Meuse River lizard\"", "img": "cretaceous-mosasaurus", "size": {"v": 15, "kind": "long"}, "sfx": ["deep", "whoosh", "jawsnap"], "facts": ["A lizard as long as a bus that went back into the sea and grew paddles. It had a second row of teeth in the roof of its mouth, for pushing you down its throat.", "It is a cousin of today's monitor lizards and snakes. It died in the asteroid extinction, along with everything else big in the sea."]},
+   {"name": "Ankylosaurus", "say": "an-KY-loh-sor-us", "latin": "\"fused lizard\"", "img": "cretaceous-ankylosaurus", "size": {"v": 7, "kind": "long"}, "sfx": ["forest", "steps", "snort"], "facts": ["A tank. Bony armour from nose to tail, even on its eyelids, and a club on the end of its tail the size of a car wheel.", "One swing of the club could break a Tyrannosaurus's leg. T. rex mostly left it alone."]},
+   {"name": "Spinosaurus", "say": "SPY-noh-sor-us", "latin": "\"spine lizard\"", "img": "cretaceous-spinosaurus", "size": {"v": 15, "kind": "long"}, "sfx": ["river", "splash", "rumble"], "facts": ["Longer than Tyrannosaurus, with a crocodile's snout and a sail on its back taller than you.", "It hunted fish in rivers and probably swam. The first bones were kept in a museum in Munich and were blown up by a bomb in 1944. Scientists had to start again from drawings."]},
+   {"name": "Parasaurolophus", "say": "par-uh-sor-OL-uh-fus", "latin": "\"near crested lizard\"", "img": "cretaceous-parasaurolophus", "size": {"v": 9, "kind": "long"}, "sfx": ["forest", "steps", "croak"], "facts": ["A duck-billed plant-eater with a hollow tube on its head nearly two metres long, curving back like a trombone.", "Scientists built a model of the tube and blew into it. It sounds like a foghorn. A herd of them would have been very loud."]}
+  ,
+   {"name": "Iguanodon", "say": "ig-WAH-noh-don", "latin": "\"iguana tooth\"", "img": "cretaceous-iguanodon", "size": {"v": 10, "kind": "long"}, "sfx": ["forest", "bigsteps", "chew"], "facts": ["A plant-eater the size of a bus with a thumb that was one big spike. For fifty years scientists stuck the spike on its nose like a rhino horn. Then they found a skeleton with the thumbs still attached. Oops.", "In 1878 Belgian coal miners broke into a cave 300 metres down and found thirty of them, whole, piled together. The second dinosaur ever named, and the first anyone could put together from head to tail."]},
+   {"name": "Argentinosaurus", "say": "ar-jen-TEE-noh-sor-us", "latin": "\"Argentina lizard\"", "img": "cretaceous-argentinosaurus", "size": {"v": 35, "kind": "long"}, "sfx": ["dry", "bigsteps", "rumble"], "facts": ["The biggest land animal we know of. As long as three buses, as heavy as twelve elephants. One backbone is taller than you. A farmer found a shin bone in 1987 and thought it was a fossil tree.", "It hatched from an egg the size of a football. That is the strangest fact on this whole cliff: the biggest thing that ever walked started smaller than you did."]},
+   {"name": "Pteranodon", "say": "teh-RAN-oh-don", "latin": "\"wing without teeth\"", "img": "cretaceous-pteranodon", "size": {"v": 6, "kind": "wingspan"}, "sfx": ["wind", "bigflap", "shore"], "facts": ["Wings as wide as a car is long, a beak with no teeth, and a crest on the back of its head like a rudder. It flew over the shallow sea that covered Kansas and scooped fish like a pelican.", "Not a dinosaur, and not a bird. A flying reptile, a pterosaur, from a family that invented flying 80 million years before birds did. More than a thousand have been dug out of Kansas, and almost all of them are boys."]},
+   {"name": "Oviraptor", "say": "OH-vih-rap-tor", "latin": "\"egg thief\"", "img": "cretaceous-oviraptor", "size": {"v": 1.6, "kind": "long"}, "sfx": ["dry", "wind", "chirp"], "facts": ["Found in 1923 in the Gobi Desert lying on top of a nest of eggs, so they called it egg thief and said it was stealing them. In 1993 someone looked inside one of the eggs. There was a baby Oviraptor in it. It was the mum.", "Feathered, with a parrot beak and no teeth, and it sat on its eggs with its arms spread over them exactly like a hen. The name stuck. Science has rules about names, even unfair ones."]},
+   {"name": "Yutyrannus", "say": "yoo-tih-RAN-us", "latin": "\"feathered tyrant\"", "img": "cretaceous-yutyrannus", "size": {"v": 9, "kind": "long"}, "sfx": ["forest", "bigsteps", "wind"], "facts": ["A cousin of Tyrannosaurus as long as a bus, covered head to tail in long shaggy feathers like a giant chick. Nobody was sure big dinosaurs had feathers until three of these turned up in China in 2012 with the feathers still on.", "It lived somewhere cold, which is probably why it wore a coat. So picture T. rex, then put a fluffy jacket on it. Scientists are still arguing about how much."]}]},
+ {k:"paleogene", pins:["india", "himalayas", "tethys", "antarctica"], pos:{"india": [70, 46], "himalayas": [70, 34], "tethys": [55, 38], "antarctica": [50, 90]}, world:"nearly today's map. India arrives and hits Asia. The dent is the Himalayas", say:"PAY-lee-oh-jeen", name:"Paleogene", era:"Cenozoic", start:66, end:23, color:"#E2B268",
+  began:"The dinosaurs are gone and the mammals walk out of the shadows. Within ten million years there are mammals the size of rhinos, mammals in the sea and mammals in the air. Around 56 million years ago the whole planet suddenly gets very hot, with palm trees at the poles, then slowly cools.",
+  ended:"A long cooling. Antarctica drifted over the South Pole and grew its ice cap. Warm-weather plants and animals died out in Europe in what is called the Great Break, and grasslands spread across the world as the Neogene began.",
+  epochs:[
+   {name:"Paleocene", say:"PAY-lee-oh-seen", start:66, end:56, line:"The quiet after the asteroid. Mammals are small and the forests are growing back."},
+   {name:"Eocene", say:"EE-oh-seen", start:56, end:34, line:"The hothouse. Palm trees at the poles, whales take to the sea, the first horses are dog-sized."},
+   {name:"Oligocene", say:"OL-ih-goh-seen", start:34, end:23, line:"Cooling down. Antarctica freezes, grasslands open up, and the biggest land mammals ever walk about."}],
+  word:["ancestor","AN-ses-ter","a relative who lived long before you"],
+  animals:[
+   {name:"Basilosaurus", sfx:["deep", "whoosh", "whalecall"], say:"bass-il-oh-SOR-us", latin:"an early whale", img:"paleogene", size:{v:18,kind:"long"},
+    facts:["A whale 18 metres long with a body like a snake and a pair of tiny back legs left over from when its ancestors lived on land.", "The name means king lizard, because the first people to find it thought it was a reptile. It is a mammal. The name stuck anyway."]},
+   {name:"Titanoboa", sfx:["swamp", "slither", "splash"], epoch:"Paleocene", img:"paleogene-titanoboa", say:"ty-tan-oh-BOH-uh", latin:"\"titanic boa\"", size:{v:13,kind:"long"},
+    facts:["The biggest snake that ever lived. As long as a bus. As thick around as you are.", "It could only grow that big because the world was so hot. Be glad it is cooler now."]},
+   {name:"Gastornis", sfx:["forest", "steps", "croak"], epoch:"Eocene", img:"paleogene-gastornis", say:"gas-TOR-nis", latin:"\"Gaston's bird\"", size:{v:2,kind:"tall"},
+    facts:["A bird two metres tall that could not fly, with a beak like a pair of bolt cutters.", "For years everyone said it was a terror bird that hunted little horses. Then they looked at the beak properly. It cracked nuts. Big, scary, vegetarian."]}
+,
+   {"name": "Andrewsarchus", "say": "an-droo-SAR-kus", "latin": "\"Andrews' ruler\"", "img": "paleogene-andrewsarchus", "size": {"v": 1.8, "kind": "tall"}, "sfx": ["savanna", "steps", "growl"], "epoch": "Eocene", "facts": ["We have one skull. It is nearly a metre long, the biggest skull of any meat-eating mammal ever found. Nobody has found the rest of it.", "It looks like a giant wolf. It is not. Its closest living relatives are hippos and whales. A hippo with a wolf's head and hooves."]}
+  ,
+   {"name": "Paraceratherium", "say": "par-uh-ser-uh-THEER-ee-um", "latin": "\"near the hornless beast\"", "img": "paleogene-paraceratherium", "size": {"v": 5, "kind": "tall"}, "sfx": ["savanna", "bigsteps", "snort"], "epoch": "Oligocene", "facts": ["A rhino with no horn, the neck of a giraffe and the height of a two-storey house. The biggest land mammal that ever lived, and almost nobody knows its name. Now you do.", "It ate the tops of trees, three times higher than you could reach standing on a grown-up. A baby one was already taller than a horse."]},
+   {"name": "Ambulocetus", "say": "am-byoo-loh-SEE-tus", "latin": "\"walking whale\"", "img": "paleogene-ambulocetus", "size": {"v": 3, "kind": "long"}, "sfx": ["river", "splash", "breath"], "epoch": "Eocene", "facts": ["A whale with legs. Looks like a crocodile crossed with a sea lion, lived at the edge of a river, and grabbed things that came to drink. Its ears were built for hearing underwater, like a whale's, and its feet for walking, like yours.", "Found in Pakistan in 1994. It is the halfway picture everyone said would never be found: the land animal on its way to becoming a whale. Basilosaurus, further up this cliff, is what it became."]}]},
+ {k:"neogene", pins:["himalayas", "panama", "antarctica"], pos:{"himalayas": [72, 36], "panama": [22, 53], "antarctica": [50, 91]}, world:"today's map, give or take. Panama joins the Americas and the animals start crossing", say:"NEE-oh-jeen", name:"Neogene", era:"Cenozoic", start:23, end:2.6, color:"#E7C775",
+  began:"A cooler, drier planet of grasslands. Grazing animals with tough teeth spread across the plains, and the hunters chasing them grow long legs. In Africa, apes come down from the trees, and some of them start walking on two feet.",
+  ended:"The planet kept cooling until ice sheets began to grow in the north. The first Ice Age marks the end of the Neogene. At about the same moment, in Africa, someone picked up a stone and hit another stone with it to make a sharp edge. The first tool.",
+  epochs:[
+   {name:"Miocene", say:"MY-oh-seen", start:23, end:5.3, line:"Grasslands and grazers. Apes spread across Africa, Asia and Europe. Megalodon rules the seas."},
+   {name:"Pliocene", say:"PLY-oh-seen", start:5.3, end:2.6, line:"Cooler and drier. North and South America join up, and early humans like Lucy walk upright."}],
+  word:["diversify","dy-VER-sih-fy","to become more varied, with many different kinds"],
+  animals:[
+   {name:"Megalodon", sfx:["deep", "whoosh", "jawsnap"], say:"MEG-uh-loh-don", latin:"\"big tooth\"", img:"neogene", size:{v:16,kind:"long"},
+    facts:["A shark three times longer than a great white. Its teeth are as big as your hand. Its mouth could swallow you standing up.", "It hunted whales. When the seas cooled and the whales moved to cold water, Megalodon could not follow, and starved. Nothing killed it. It just ran out of lunch."]},
+   {name:"Deinotherium", sfx:["savanna", "steps", "trumpet"], epoch:"Miocene", img:"neogene-deinotherium", say:"dy-noh-THEER-ee-um", latin:"\"terrible beast\"", size:{v:4,kind:"tall"},
+    facts:["An elephant with its tusks on upside down: they grew from the bottom jaw and curved downwards, like a pickaxe.", "Nobody is sure what the tusks were for. Stripping bark, digging roots, or just showing off."]},
+   {name:"Australopithecus", sfx:["savanna", "grass", "steps"], epoch:"Pliocene", img:"neogene-australopithecus", say:"aw-struh-loh-PITH-ih-kus", latin:"\"southern ape\"", size:{v:1.2,kind:"tall"},
+    facts:["About the height of an eight-year-old, with a brain the size of a chimp's, and it walked upright on two legs. Your relative.", "The most famous skeleton is called Lucy. She was found in 1974 and named after the Beatles song playing in the camp that night."]}
+,
+   {"name": "Terror bird", "say": "TAIR-er BERD", "latin": "Phorusrhacos", "img": "neogene-terror-bird", "size": {"v": 2.5, "kind": "tall"}, "sfx": ["savanna", "runsteps", "croak"], "epoch": "Miocene", "facts": ["A bird taller than a door that could not fly and did not need to. Long legs, hooked beak like a giant eagle's, and it ran down its dinner.", "For millions of years the top hunters in South America were birds. Then the mammals arrived from the north."]}
+  ]},
+ {k:"quaternary", pins:["icesheet", "beringia", "antarctica"], pos:{"icesheet": [24, 14], "beringia": [7, 20], "antarctica": [50, 91]}, world:"today's map under ice three kilometres thick, the sea 120 metres lower, and a dry road from Siberia to Alaska", say:"KWOT-er-nair-ee", name:"Quaternary", era:"Cenozoic", start:2.6, end:0, color:"#EBD9A8",
+  began:"The Ice Age. Great sheets of ice grow and shrink more than twenty times, covering Canada and northern Europe under ice three kilometres thick. Animals grow fur coats and huge bodies to hold in the heat. About 300,000 years ago, humans arrive.",
+  ended:"It has not ended. You are living in it. But about 12,000 years ago, as the ice melted and humans spread everywhere, most of the giant Ice Age animals disappeared: the mammoths, the sabre-tooths, the giant sloths. All of written history fits into the last 5,000 years. You are at the very top of the cliff.",
+  epochs:[
+   {name:"Pleistocene", say:"PLY-stuh-seen", start:2.6, end:0.0117, line:"The Ice Age proper. Mammoths, sabre-toothed cats, giant sloths, and the first modern humans."},
+   {name:"Holocene", say:"HOL-uh-seen", start:0.0117, end:0, line:"The last 11,700 years: the ice retreats, farming begins, and all of written history happens. We live in it."}],
+  word:["Ice Age","ICE ayj","a long time when much of the Earth was covered in ice"],
+  animals:[
+   {name:"Woolly mammoth", sfx:["ice", "bigsteps", "trumpet"], say:"WOOL-ee MAM-uth", latin:"Mammuthus primigenius", img:"quaternary", size:{v:3.4,kind:"tall"},
+    facts:["An elephant in a fur coat, with tusks up to four metres long that curved round in front of its face.", "The last ones lived on a small island off Siberia until about 4,000 years ago. The pyramids were already built. There were mammoths alive while people were building pyramids."]},
+   {name:"Smilodon", sfx:["ice", "growl"], epoch:"Pleistocene", img:"quaternary-smilodon", say:"SMY-loh-don", latin:"the sabre-toothed cat", size:{v:1.1,kind:"tall"},
+    facts:["Fangs 18 centimetres long, but a weaker bite than a lion's. It wrestled its dinner to the ground first, then used the fangs.", "Thousands of them were found in the La Brea tar pits in Los Angeles. One animal got stuck in the tar, a sabre-tooth came to eat it, and got stuck too. Then another came. Then another. For thousands of years."]},
+   {name:"Megatherium", sfx:["forest", "crack", "chew"], epoch:"Pleistocene", img:"quaternary-megatherium", say:"meg-uh-THEER-ee-um", latin:"the giant ground sloth", size:{v:6,kind:"long"},
+    facts:["A sloth the size of an elephant. It stood up on its back legs to pull down whole branches.", "Could it hang from a tree like a sloth today? No. It would have brought the tree down."]}
+,
+   {"name": "Glyptodon", "say": "GLIP-toh-don", "latin": "\"grooved tooth\"", "img": "quaternary-glyptodon", "size": {"v": 3, "kind": "long"}, "sfx": ["savanna", "steps", "snort"], "epoch": "Pleistocene", "facts": ["An armadillo the size of a small car, with a domed shell of bone and a tail like a spiked club.", "When one died, its shell was left behind like an empty igloo. Early humans may have sheltered under them."]},
+   {"name": "Dire wolf", "say": "DYRE WULF", "latin": "Aenocyon dirus", "img": "quaternary-dire-wolf", "size": {"v": 0.9, "kind": "tall"}, "sfx": ["ice", "steps", "growl"], "epoch": "Pleistocene", "facts": ["A real animal, not just from TV. Heavier than any wolf alive today, with jaws built for cracking bone.", "Over 4,000 were found in the La Brea tar pits. Its DNA says it was not even a close cousin of the grey wolf. It just looked like one."]}
+  ,
+   {"name": "Megaloceros", "say": "meg-uh-LOSS-er-os", "latin": "\"great horn\", the Irish elk", "img": "quaternary-megaloceros", "size": {"v": 2.1, "kind": "tall"}, "sfx": ["ice", "wind", "steps"], "epoch": "Pleistocene", "facts": ["A deer as tall as a horse with antlers wider than a car. Three and a half metres across, and it grew a new pair every single year, which took about as much calcium as a cow makes in a lifetime of milk.", "Not Irish, and not an elk. Hundreds have come out of Irish bogs, where the mud kept them, so the name stuck. Big antlers were the point: the does liked them. Then the forests grew back, and you cannot run through a forest with a car on your head."]},
+   {"name": "Neanderthal", "say": "nee-AN-der-tahl", "latin": "Homo neanderthalensis, after a German valley", "img": "quaternary-neanderthal", "size": {"v": 1.65, "kind": "tall"}, "sfx": ["ice", "wind", "crack"], "epoch": "Pleistocene", "facts": ["The other people. Shorter than us, stronger than us, with a bigger nose for warming cold air and a brain slightly larger than yours. They made fire, tools, glue from birch bark, and buried their dead. They lived through 300,000 years of ice.", "Then, about 40,000 years ago, they were gone, and we were not. Nobody is sure why. But if your family comes from anywhere outside Africa, about two percent of you is Neanderthal. They did not vanish. They are in the room."]}]}
+];
+
+// Living fossils: alive today, the family shape barely changed (the species have kept evolving). `since` is the period key where the family first appears.
+const LIVING = [
+ {name:"Coelacanth", say:"SEE-luh-kanth", since:"devonian", img:"devonian-coelacanth", what:"a lobe-finned fish", age:"410 million years",
+  story:"Everybody knew the coelacanth was extinct. It was in all the books. It died with the dinosaurs. Then, in 1938, a museum worker in South Africa called Marjorie Courtenay-Latimer went down to the docks to look at a fishing boat's catch and found a big blue fish with fins like arms that should not have existed. She sent a drawing to a professor. He nearly fainted. The coelacanth had been living in deep dark caves the whole time, not reading the books.",
+  why:"Deep water is boring, and boring is safe. The storms, ice ages and extinctions that wrecked the surface barely reached its caves.", size:"1.5 m long", facts:["It can live 100 years and does not have babies until it is about 50.", "Its spine is a hollow tube filled with oil, which is what the name means.", "It hunts at night, drifting head-down and using an organ in its snout to sense electricity from hidden fish."], then:"Fossil coelacanths from the Devonian are smaller and lived in shallow water; the body plan, with its paired lobed fins and three-lobed tail, is the same.", meet:"Alive only off East Africa and Indonesia, far too deep to visit. Preserved specimens are at the American Museum of Natural History in New York and the Natural History Museum in London.", word:["extinct", "ek-STINKT", "no longer alive anywhere on Earth. The coelacanth was called extinct for a hundred years, and was not."]},
+ {name:"Ginkgo", say:"GINK-oh", since:"permian", img:"living-ginkgo", what:"a tree", age:"270 million years",
+  story:"Fan-shaped leaves that turn pure gold in autumn. Dinosaurs walked under ginkgo trees, and the fossil leaves look exactly like the ones on the pavement today. Wild ginkgos nearly died out; monks in China kept the last ones alive in temple gardens. Now they line city streets all over the world. The fruit smells like sick. Cities plant the boy trees only.",
+  why:"It is almost impossible to kill. Bugs do not eat it, diseases do not catch it, pollution does not bother it. Six ginkgo trees survived the atomic bomb at Hiroshima and are still growing.", size:"up to 35 m tall", facts:["Trees are male or female. Female trees drop fruit that smells like old cheese, so cities plant males.", "A ginkgo can live over 1,000 years. The oldest in China is thought to be about 3,500.", "Its leaves have no middle vein; the veins fan out from the stem in a pattern found in no other living tree."], then:"Jurassic ginkgo fossils have the same fan leaves, sometimes more deeply split. Put a fossil leaf beside a fresh one and you cannot tell the age apart.", meet:"Street trees in almost every city. In New York they line sidewalks across the Upper West Side and fill parks in autumn with gold.", word:["deciduous", "dih-SID-yoo-us", "a tree that drops all its leaves once a year"]},
+ {name:"Horseshoe crab", say:"HORSS-shoo KRAB", since:"ordovician", img:"living-horseshoe-crab", what:"a sea arthropod, closer to spiders than to crabs", age:"445 million years",
+  story:"A helmet with legs underneath and a spike for a tail. Not a crab at all; closer to a spider. It was crawling around Ordovician seabeds before there were trees, before there were fish with jaws, before anything had ever walked on land. Every spring, thousands still come up onto Atlantic beaches to lay eggs, exactly as they did 445 million years ago. Its blood is blue.",
+  why:"The family found a shape that works and kept it, while the details kept quietly evolving underneath. And that blue blood clots the instant it touches a germ, which is why hospitals use it to test every injection you have ever had.", size:"up to 60 cm long", facts:["It has ten eyes, including some on its tail, which sense light and help it keep time with the moon.", "It can go a year without eating.", "Its blue blood, which clots around bacteria, is used to test every vaccine and injection for safety."], then:"Fossils from 445 million years ago show the same horseshoe shield, tail spike and underside of legs. Today's four species are not those animals, but they are built the same way.", meet:"Spring high tides on Atlantic beaches, especially Delaware Bay in May and June, when thousands come ashore at once.", word:["arthropod", "AR-thruh-pod", "an animal with a hard outside skeleton and jointed legs: insects, spiders, crabs and the horseshoe crab"]},
+ {name:"Nautilus", say:"NAW-tih-lus", since:"ordovician", img:"living-nautilus", what:"a shelled cousin of the squid", age:"500 million years",
+  story:"The last of the shelled squids. Its cousins Orthoceras and the ammonites are all gone; the nautilus is still drifting about the Pacific, rising towards the surface at night and sinking by day. It does this by pumping gas in and out of the little rooms inside its shell, like a submarine. It has about 90 tentacles and eyes with no lenses, like a pinhole camera.",
+  why:"It lives deep, moves slowly, and its eggs take a whole year to hatch. When the surface went wrong, the nautilus was already somewhere else.", size:"shell up to 25 cm across", facts:["Its shell has about 30 chambers. It lives only in the newest one and uses the rest as a float.", "It has around 90 tentacles with no suckers, and simple eyes with no lens, like a pinhole camera.", "Each night it rises hundreds of metres to feed, then sinks again before dawn."], then:"Shelled cousins have been drifting about since the Ordovician, and coiled ones since the Devonian. Today's nautiluses are much younger than that; it is the family, and the floating trick, that is ancient.", meet:"Large aquariums with a Pacific exhibit, including the Monterey Bay Aquarium and the New England Aquarium in Boston.", word:["chamber", "CHAYM-ber", "a closed-off room or space. The nautilus adds a new one as it grows."]},
+ {name:"Tuatara", say:"too-uh-TAR-uh", since:"triassic", img:"living-tuatara", what:"a reptile, the last of its order", age:"240 million years",
+  story:"It looks like a lizard. It is not a lizard. Its whole branch of the reptile family tree lived alongside the first dinosaurs, then faded away, leaving exactly one kind alive, on a few small islands off New Zealand. It has a third eye under the skin on top of its head. It grows up for 35 years and can live past 100. It is in no hurry about anything.",
+  why:"Islands, mostly. New Zealand broke away before mammals arrived, so for a very long time the tuatara had few of the hunters that finished off its relatives everywhere else. Why it still looks like its Triassic cousins is a separate question, and the answer is: it does not, entirely. The skull and the teeth are old-fashioned; the rest has kept quietly evolving, and its DNA changes as fast as anyone's.", size:"up to 80 cm long", facts:["It is cold-loving: active at 10 degrees, a temperature that would stop a lizard.", "It grows for 35 years and can live past 100.", "Its teeth are not separate; they are jagged edges of the jawbone itself, so a worn tooth is never replaced."], then:"Triassic relatives look so alike that the tuatara was mistaken for a lizard until 1867, when a museum scientist noticed its skull was built differently.", meet:"Only in New Zealand, on offshore islands and in a few fenced sanctuaries such as Zealandia in Wellington.", word:["sanctuary", "SANK-choo-air-ee", "a safe place where animals are protected"]},
+ {name:"Lungfish", say:"LUNG-fish", since:"devonian", img:"living-lungfish", what:"a fish that breathes air", age:"400 million years",
+  story:"A fish that breathes air. When its pond dries up, the African lungfish digs into the mud, wraps itself in slime, and goes to sleep in a cocoon, breathing through a lung, for months. Years, if it has to. When the rain comes back, it wakes up and swims off. Its Devonian ancestors were cousins of the first animals ever to crawl onto land.",
+  why:"It can live where other fish die. For a lungfish, a drought is not a disaster. It is a nap.", size:"up to 2 m long", facts:["The Australian lungfish has the largest known genome of any animal, 14 times bigger than yours.", "When its pond dries, it can sleep in a mud cocoon for up to four years.", "It uses its fins like legs to walk along the bottom, as its ancestors did before legs existed."], then:"Devonian lungfish had the same tooth plates for crushing shells and the same lung. One kind, Dipterus, could pass for a modern lungfish from a few metres away.", meet:"Freshwater aquariums; the Shedd Aquarium in Chicago kept one named Granddad for over 80 years.", word:["cocoon", "kuh-KOON", "a protective wrapping an animal makes around itself"]},
+ {name:"Crocodile", say:"KROK-uh-dyle", since:"triassic", img:"living-crocodile", what:"a reptile", age:"230 million years",
+  story:"Crocodile ancestors lived through the End-Triassic extinction and then through the asteroid that killed the dinosaurs. Low, armoured, patient, with eyes and nostrils on top so the rest of it can hide underwater. The basic design has not needed a rethink in 80 million years, though the crocodiles themselves have come and gone many times over.",
+  why:"Cold-blooded and slow-burning. A big crocodile can go a year without a meal. When famine comes, the crocodile simply waits for it to leave.", size:"up to 6 m long", facts:["It has the strongest measured bite of any living animal.", "It can hold its breath for over an hour and slow its heart to a few beats a minute.", "Baby crocodiles call from inside the egg, and the mother carries them to the water in her mouth."], then:"Cretaceous crocodiles such as Deinosuchus were three times longer but built the same way: low body, armoured back, eyes and nostrils on top.", meet:"The American alligator, its close cousin, in the Everglades; crocodiles at most large zoos.", word:["ambush", "AM-bush", "to wait hidden, then attack by surprise"]},
+ {name:"Sturgeon", say:"STUR-jun", since:"jurassic", img:"living-sturgeon", what:"a fish", age:"200 million years",
+  story:"Rows of bony plates instead of scales, a tail like a shark's, and whiskers for feeling about in the mud. Sturgeon were swimming under Jurassic skies, and they still swim the Hudson River today. Some live more than 100 years and grow longer than a car.",
+  why:"Rivers are good hiding places. A big, slow fish that eats off the bottom needs nothing fancy to survive, so the shape stuck while the species came and went.", size:"up to 5 m long", facts:["The beluga sturgeon can weigh over a tonne and live 100 years.", "It has no scales; rows of bony plates called scutes run down its body.", "Its skeleton is mostly cartilage, like a shark's, and its tail has a longer top lobe like a shark's too."], then:"Jurassic sturgeon fossils carry the same five rows of scutes and the same long snout with four barbels.", meet:"The Hudson River has its own Atlantic sturgeon; the New York Aquarium and many river aquariums keep them.", word:["barbel", "BAR-bul", "a whisker-like feeler near a fish's mouth, used for finding food"]},
+ {name:"Dawn redwood", say:"DAWN RED-wud", since:"cretaceous", img:"living-dawn-redwood", what:"a tree", age:"100 million years",
+  story:"In 1941 a scientist described it from fossils as an extinct tree. Three years later a Chinese forester walked into a remote valley and found a grove of them, alive, with a shrine built beside the biggest. Seeds were sent all over the world. There is probably one in a park near you, turning copper in November.",
+  why:"One sheltered valley. Sometimes surviving is just a matter of being somewhere nobody looked.", size:"up to 50 m tall", facts:["It is one of very few conifers that lose their needles in winter.", "From one valley in 1944 it has spread to parks on every continent except Antarctica.", "Its fossils were found across the Arctic, where it grew in forests when the poles were warm."], then:"Cretaceous fossils match the living tree twig for twig, down to the way the needles sit in opposite pairs.", meet:"Planted widely: Central Park and the New York Botanical Garden both have them, copper-coloured in November.", word:["grove", "GROHV", "a small group of trees growing together"]},
+ {name:"Cycad", say:"SY-kad", since:"permian", img:"living-cycad", what:"a palm-like plant", age:"280 million years",
+  story:"It looks like a palm. It is closer to a pine. Cycads were the dinosaurs' salad; in the Jurassic they covered the land. Now a few hundred kinds survive in warm places, growing so slowly that a garden cycad can outlive the gardener's grandchildren.",
+  why:"Poison. Every part of a cycad is toxic, so almost nothing eats it. It is pollinated by beetles that have stuck with the same plants for 200 million years.", size:"up to 10 m tall", facts:["Some cycads grow only a few centimetres a year and take 15 years to produce their first cone.", "Cycad cones can heat themselves up to attract pollinating beetles.", "They are the most endangered group of plants on Earth; some species are down to a single wild plant."], then:"Permian and Jurassic cycad fronds in the rock are the same stiff, feather-like shape. Dinosaurs ate them; iguanas and beetles still do.", meet:"Botanical gardens everywhere; the New York Botanical Garden conservatory keeps a collection.", word:["pollinate", "POL-ih-nayt", "to carry pollen from one plant to another so seeds can form"]}
+];
+
+// Named lands and seas for the world maps. Pin positions (x,y in % of the map) are set per period once the maps exist.
+const GEO = {
+  gondwana:{name:"Gondwana", say:"gond-WAH-nuh", line:"The giant of the south. Africa, South America, India, Australia and Antarctica, all stuck together in one lump. It took 400 million years to come apart."},
+  laurentia:{name:"Laurentia", say:"law-REN-shuh", line:"The old heart of North America, with Greenland and a bit of Scotland hanging off it. Yes, Scotland used to be American."},
+  baltica:{name:"Baltica", say:"BOL-tih-kuh", line:"Northern Europe before it was Europe: Scandinavia, the Baltic and Russia as far as the Urals, floating about on its own."},
+  siberia:{name:"Siberia", say:"sy-BEER-ee-uh", line:"A continent all by itself for most of the Paleozoic. When it finally bumped into Europe, the dent became the Ural Mountains."},
+  euramerica:{name:"Euramerica", say:"yoor-uh-MAIR-ih-kuh", line:"Laurentia and Baltica, crashed together and welded. Also called the Old Red Sandstone continent, because it was mostly a rusty red desert."},
+  pangaea:{name:"Pangaea", say:"pan-JEE-uh", line:"\"All the land.\" Every continent on Earth joined into one, from the North Pole to the South, for about 100 million years. You could have walked from Brazil to Nigeria."},
+  laurasia:{name:"Laurasia", say:"law-RAY-zhuh", line:"The top half of Pangaea once it split: North America, Europe and Asia, still holding hands."},
+  tethys:{name:"Tethys Sea", say:"TEE-thiss SEE", line:"The warm sea that cut into the middle of Pangaea like a bite out of a biscuit. The Mediterranean is the last puddle of it."},
+  panthalassa:{name:"Panthalassa", say:"pan-thuh-LASS-uh", line:"\"All the sea.\" One ocean covering everything that was not Pangaea, which was most of the planet. The Pacific is what is left."},
+  rheic:{name:"Rheic Ocean", say:"REE-ik OH-shun", line:"The ocean between the north and the south. It closed like a door, and the slam pushed up the Appalachian Mountains."},
+  iapetus:{name:"Iapetus Ocean", say:"eye-AP-eh-tus OH-shun", line:"An ocean in almost exactly the same place as the Atlantic, 200 million years before the Atlantic. It closed when Laurentia hit Baltica. Then the Atlantic opened again next door."},
+  atlantic:{name:"young Atlantic", say:"at-LAN-tik", line:"A brand-new sea, thin as a river, opening down the crack between the Americas and Africa. It is still getting wider, about as fast as your fingernails grow."},
+  wis:{name:"Western Interior Seaway", say:"WES-tern in-TEER-ee-er SEE-way", line:"A shallow sea running straight down the middle of North America, from the Arctic to the Gulf of Mexico. Sea monsters swam over Kansas."},
+  india:{name:"India", say:"IN-dee-uh", line:"An island continent on the move, heading north at 15 centimetres a year, which for a continent is a sprint. Eventually it hit Asia. Hard."},
+  himalayas:{name:"Himalayas", say:"him-uh-LAY-uz", line:"The dent where India hit Asia. Still rising about 5 millimetres a year, because India has not stopped pushing."},
+  panama:{name:"Panama land bridge", say:"PAN-uh-mah", line:"A thin strip of land that joined the Americas about 3 million years ago. Sloths went north, horses went south, and the ocean currents of the whole world changed."},
+  beringia:{name:"Beringia", say:"beh-RIN-jee-uh", line:"When the sea was 120 metres lower, you could walk from Siberia to Alaska without getting your feet wet. Mammoths did. So did the first people in the Americas."},
+  icesheet:{name:"Ice sheet", say:"ICE sheet", line:"Ice up to 3 kilometres thick on top of Canada, the northern United States, Scandinavia and Britain. The weight pushed the land down. It is still springing back up."},
+  southice:{name:"Southern ice cap", say:"SUTH-ern ICE kap", line:"Gondwana's bottom end froze solid over the South Pole. The ice locked up so much water that the seas dropped around the world."},
+  coalswamp:{name:"Equatorial swamps", say:"ee-kwuh-TOR-ee-ul SWOMPS", line:"The swampy forests strung along the equator. Every tree that fell in them is in a coal mine today."},
+  antarctica:{name:"Antarctica", say:"ant-ARK-tih-kuh", line:"It used to have forests. Once Australia pulled away, cold currents circled it, and it froze into the biggest ice cube on Earth."}
+};
+
+// The Big Five, placed between the periods they separate (after = the younger period's key)
+const EXTINCTIONS = [
+ {k:"end-ordovician", after:"silurian", name:"End-Ordovician extinction", when:444, rank:"1st of the Big Five", toll:"about 85% of species",
+  cause:"Blame the ice. The giant southern continent, Gondwana, drifted over the South Pole and froze. Ice locked up so much water that the sea level fell and the shallow seas drained away, and the shallow seas were where nearly everything lived. Imagine the bath emptying while you are still in it. Then the ice melted and the water came back all at once.",
+  survivors:[["Deep-water animals", "When the shallows drained, the animals already living deep and cold hardly noticed."], ["Animals that lived everywhere", "If you lived in ten places and lost nine, you still had one. Specialists with one home had none."], ["Fish", "Before this, fish were nobodies. Afterwards, with the competition gone, they took over the sea. The Age of Fishes starts here."]]},
+ {k:"late-devonian", after:"carboniferous", name:"Late Devonian extinction", when:372, rank:"2nd of the Big Five", toll:"about 75% of species",
+  cause:"One suspect: trees. The first forests pushed roots down into rock and broke it into soil. Rain washed the soil's goodness into the sea. The sea bloomed with algae. The algae died and rotted, and rotting uses up oxygen. The sea suffocated, over and over, for millions of years. The trees are one suspect among several, and they have not confessed. The reefs collapsed and did not properly grow back for 100 million years. Nobody meant it. The trees were just being trees.",
+  survivors:[["Sharks and ray-finned fish", "Fast swimmers that could move to wherever the water still had air. The armoured fish, like Dunkleosteus, were too slow and heavy to follow, and every one of them died."], ["Freshwater animals", "Rivers and lakes kept their oxygen when the deep sea lost it."], ["The fish with legs", "Lobe-finned fish like Tiktaalik, already half out of the water. Their close relatives are the first animals to walk on land. And, a long way down the line, you."]]},
+ {k:"end-permian", after:"triassic", name:"End-Permian extinction", nick:"the Great Dying", when:252, rank:"3rd of the Big Five, the worst ever", toll:"about 90% of sea species and 70% of land vertebrates",
+  cause:"Here is how to nearly end life on Earth. Step one: set fire to Siberia. Not the trees, the ground. Volcanoes pour out lava across an area the size of Europe for hundreds of thousands of years, and the lava burns through coal buried underneath. Step two: fill the sky with the smoke. The planet heats up by about ten degrees. The sea turns sour and runs out of air. Step three: wait. Nine in ten sea species, gone. Seven in ten on land, gone. Ten million years before the planet is properly alive again. Nobody did this on purpose. It was just the ground.",
+  survivors:[["Lystrosaurus", "Pig-sized, lived in a hole, ate anything. Nobody saw it happen, but the clues point one way: a burrow to hide from the heat, a beak for the tough weeds that were left, and a barrel chest that may have helped with thin air. Afterwards it was most of the animals on Earth, for a million years, by default."], ["Small animals with boring diets", "Big fussy eaters died first. Small animals that would eat anything and could hide underground squeaked through. Lesson: do not be fussy."], ["Diggers in the seabed", "Clams and snails that burrow into the mud survived far better than the reef builders, who were stuck in one place and could not leave."]]},
+ {k:"end-triassic", after:"jurassic", name:"End-Triassic extinction", when:201, rank:"4th of the Big Five", toll:"about 75% of species",
+  cause:"Blame the crack. Pangaea started to split, and the split ran right through it, pouring out lava across what is now the coasts of four continents. Carbon filled the sky again, the sea went sour again, the weather swung wildly. Three in four species died. The big crocodile-cousins who had ruled the land for 50 million years were finished.",
+  survivors:[["Dinosaurs", "Until now they had been small fry next to the croc-cousins. But they grew fast, stood upright, and breathed with air sacs like a bird's, which work well when the air is thin. When the rulers died, the dinosaurs took every empty job. They kept them for 135 million years."], ["The first mammals", "Mouse-sized, warm-blooded, awake at night, eating insects. They stayed small and quiet for another 135 million years, waiting."], ["Turtles and crocodile ancestors", "Slow bodies, slow lives, and water to hide in. Both are still here. Both have outlasted the dinosaurs."]]},
+ {k:"end-cretaceous", after:"paleogene", name:"End-Cretaceous extinction", nick:"the asteroid", when:66, rank:"5th of the Big Five", toll:"about 75% of species, every non-bird dinosaur",
+  cause:"Blame the rock. Ten kilometres across, travelling at 20 kilometres a second, it hit the sea off what is now Mexico. The blast threw up dust and soot that blocked the sun for years. Plants died, then plankton, then everything that ate them, then everything that ate those. In the sea the ammonites, the sea monsters and most of the plankton vanished. Volcanoes in India had already been making things worse. Three in four species died. The crater is called Chicxulub, and all over the world there is a thin grey line in the rock, full of a metal called iridium that is rare on Earth and common in asteroids. That line is the day the dinosaurs died. You can touch it.",
+  survivors:[["Anything smaller than a dog", "Nothing bigger than about 25 kilos survived on land. Small animals need little food and could live on seeds, insects and rotting leftovers while the plants were gone."], ["Birds with beaks", "The birds with teeth died with the dinosaurs. The ones with beaks could crack seeds, and seeds keep for years in the soil. Every bird alive today is a dinosaur that chose seeds."], ["Mammals", "Small, furry, warm, and many of them lived in burrows. Within a few hundred thousand years they were spreading into every empty space the dinosaurs had left."], ["Sharks and bony fish", "Fish could sink to deeper, cooler water and eat whatever still swam, or whatever sank. The deep sea changed least of all."], ["Crocodiles, turtles and frogs", "They lived in fresh water, where the food chain runs on dead leaves washing in from land, not on living plants. The leaves kept coming."], ["The tiny survivors of the sea", "A few kinds of plankton, sponges, corals and clams scraped through on the seabed. From that handful, the oceans slowly refilled."]]}
+];
+
+const EONS = [
+  {name:"Paleozoic", say:"pay-lee-oh-ZOH-ik", start:539, end:252, color:"#94AD90"},
+  {name:"Mesozoic", say:"mez-oh-ZOH-ik", start:252, end:66, color:"#97A6BB"},
+  {name:"Cenozoic", say:"see-noh-ZOH-ik", start:66, end:0, color:"#E3C072"}
+];
+
+const SAY = {
+  "Olenoides":"oh-len-OY-deez","Burgess":"BUR-jess","pterosaur":"TERR-uh-sor","Carnegie":"kar-NEG-ee","calcium":"KAL-see-um","Gobi":"GOH-bee","Basilosaurus":"bass-ill-oh-SOR-us","calcite":"KAL-site","nautiloid":"NAW-tih-loyd","Jaekelopterus":"yay-kel-OP-ter-us",
+  "Tiktaalik":"tik-TAH-lik","horsetails":"HORSS-taylz","synapsid":"sih-NAP-sid","synapsids":"sih-NAP-sidz","Pangaea":"pan-JEE-uh",
+  "Archaeopteryx":"ar-kee-OP-ter-iks","Titanoboa":"ty-tan-oh-BOH-uh","Wrangel":"RANG-gul","Gondwana":"gond-WAH-nuh",
+  "placoderms":"PLAK-oh-dermz","tetrapods":"TET-ruh-podz","Lystrosaurus":"liss-troh-SOR-us","Chicxulub":"CHEEK-shoo-loob",
+  "iridium":"ih-RID-ee-um","Dunkleosteus":"dun-kul-OSS-tee-us","archaeocyath":"ar-kee-oh-SY-ath","Inuktitut":"ih-NOOK-tih-toot",
+  "Biodiversification":"by-oh-dy-ver-sih-fih-KAY-shun","cycads":"SY-kadz","Siberian":"sy-BEER-ee-un","Quaternary":"KWOT-er-nair-ee",
+  "Cretaceous":"krih-TAY-shus","Ordovician":"or-doh-VISH-un","Devonian":"dih-VOH-nee-un","Triassic":"try-ASS-ik","Jurassic":"juh-RASS-ik",
+  "Neogene":"NEE-oh-jeen","Permian":"PER-mee-un","Tyrannosaurus":"tih-ran-oh-SOR-us","Antarctica":"ant-ARK-tih-kuh","metabolisms":"muh-TAB-uh-liz-umz","ammonites":"AM-uh-nytes","Protoceratops":"proh-toh-SAIR-uh-tops","cephalopods":"SEF-uh-loh-podz","Mongolia":"mong-GOH-lee-uh","Hiroshima":"hee-roh-SHEE-muh","Courtenay":"KORT-nee","Latimer":"LAT-ih-mer","thagomizer":"THAG-oh-my-zer","Chicxulub":"CHEEK-shoo-loob","estuaries":"ESS-choo-air-eez","Deinosuchus":"dy-noh-SOO-kus","Dipterus":"DIP-ter-us","genome":"JEE-nohm","scutes":"SKYOOTS","cartilage":"KAR-tih-lij","Everglades":"EV-er-glaydz","barbels":"BAR-bulz","conifers":"KON-ih-ferz","Zealandia":"zee-LAN-dee-uh","plankton":"PLANK-tun","Pleistocene":"PLY-stuh-seen"
+};
+
+
+const lex = (w,say) => `<span class="lex">${w}<i>${say}</i></span>`;
+const SAYRE = new RegExp("\\b("+Object.keys(SAY).join("|")+")\\b","g");
+const withSay = t => t.replace(SAYRE, m=>lex(m,SAY[m]));
+const fmt = n => n >= 1 ? n.toLocaleString("en-US") : n.toString();
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const LAYERS = [...PERIODS].reverse(); // youngest first
+const ALL = PERIODS.flatMap(p=>p.animals.map(a=>({...a, pk:p.k, id:p.k+"/"+a.name})));
+const byId = id => ALL.find(a=>a.id===id);
+const RANKS = [[0,"Rock Hound"],[8,"Field Assistant"],[20,"Fossil Hunter"],[36,"Curator"],[57,"Chief Paleontologist"]];
+const YOU_M = 1.3; // an eight-year-old
+
+let found = new Set(); let soundOn = true; let examPick = null; let stamps = 0; let clues = 0; let chalSeen = 0; let scaled = false; let view = {type:"period", k:"cambrian"};
+try{const s=JSON.parse(localStorage.getItem("gts2")||"null"); if(s){found=new Set(s.found||[]); if(typeof s.sound==="boolean")soundOn=s.sound; if(typeof s.stamps==="number")stamps=s.stamps; if(typeof s.clues==="number")clues=s.clues; if(typeof s.chalSeen==="number")chalSeen=s.chalSeen;}}catch(e){}
+const save=()=>{try{localStorage.setItem("gts2",JSON.stringify({found:[...found],sound:soundOn,stamps,clues,chalSeen}))}catch(e){}};
+
+/* ---------- sound (synthesised, no files) ---------- */
+let AC=null, scrapeNode=null;
+function ac(){ if(!AC){ try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){} } if(AC&&AC.state==="suspended")AC.resume(); return AC; }
+function tone(f,t0,dur,type="sine",g=.18){const c=ac();if(!c||!soundOn)return;const o=c.createOscillator(),v=c.createGain();o.type=type;o.frequency.value=f;v.gain.setValueAtTime(0,t0);v.gain.linearRampToValueAtTime(g,t0+.01);v.gain.exponentialRampToValueAtTime(.0001,t0+dur);o.connect(v).connect(c.destination);o.start(t0);o.stop(t0+dur+.05);}
+function clink(){ // the last rock falls away: a soft low stone tap with a breath of air
+  const c=ac();if(!c||!soundOn)return;const t=c.currentTime;tone(110,t,.22,"sine",.25);
+  const len=c.sampleRate*.4,buf=c.createBuffer(1,len,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;
+  const n=c.createBufferSource();n.buffer=buf;const lp=c.createBiquadFilter();lp.type="lowpass";lp.frequency.value=900;const g=c.createGain();g.gain.setValueAtTime(.07,t);g.gain.exponentialRampToValueAtTime(.0001,t+.35);n.connect(lp).connect(g).connect(c.destination);n.start(t);n.stop(t+.4);}
+function chime(){ // the animal comes alive: a short swell, deep and slow, with a rising fifth that opens and fades
+  const c=ac();if(!c||!soundOn)return;const t=c.currentTime,out=c.createGain();out.gain.value=.9;out.connect(c.destination);
+  const dl=c.createDelay(1);dl.delayTime.value=.33;const fb=c.createGain();fb.gain.value=.3;const wet=c.createGain();wet.gain.value=.3;out.connect(dl);dl.connect(fb).connect(dl);dl.connect(wet).connect(c.destination);
+  [[65.4,"triangle",.09,0,2.8],[98,"triangle",.07,0,2.8]].forEach(([f,ty,g,at,dur])=>{const o=c.createOscillator(),v=c.createGain(),lp=c.createBiquadFilter();o.type=ty;o.frequency.value=f;lp.type="lowpass";lp.frequency.value=350;v.gain.setValueAtTime(0,t+at);v.gain.linearRampToValueAtTime(g,t+at+.7);v.gain.exponentialRampToValueAtTime(.0001,t+at+dur);o.connect(lp).connect(v).connect(out);o.start(t+at);o.stop(t+at+dur+.1);});
+  [[261.6,.15],[392,.55],[523.3,1.0]].forEach(([f,at])=>{const o=c.createOscillator(),v=c.createGain();o.type="sine";o.frequency.value=f;v.gain.setValueAtTime(0,t+at);v.gain.linearRampToValueAtTime(.07,t+at+.45);v.gain.exponentialRampToValueAtTime(.0001,t+at+2.2);o.connect(v).connect(out);o.start(t+at);o.stop(t+at+2.3);});
+  const len=c.sampleRate*3,buf=c.createBuffer(1,len,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;
+  const n=c.createBufferSource();n.buffer=buf;const bp=c.createBiquadFilter();bp.type="lowpass";bp.frequency.setValueAtTime(250,t);bp.frequency.linearRampToValueAtTime(1100,t+1.1);bp.frequency.linearRampToValueAtTime(200,t+2.8);const g=c.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.06,t+1);g.gain.linearRampToValueAtTime(0,t+2.8);n.connect(bp).connect(g).connect(out);n.start(t);n.stop(t+3);}
+function fanfare(){ // a slow oceanic swell: deep drone, surf, and a rising chord that blooms and recedes
+  const c=ac(); if(!c||!soundOn)return; const t=c.currentTime, out=c.createGain(); out.gain.value=.9;
+  // simple echo for depth
+  const dl=c.createDelay(1.5); dl.delayTime.value=.42; const fb=c.createGain(); fb.gain.value=.38; const wet=c.createGain(); wet.gain.value=.35;
+  out.connect(c.destination); out.connect(dl); dl.connect(fb).connect(dl); dl.connect(wet).connect(c.destination);
+  // drone: C2 + G2 with slow detune, 7 s
+  [[65.4,0],[65.4,3],[98,0],[130.8,-2]].forEach(([f,d])=>{const o=c.createOscillator(),g=c.createGain(),lp=c.createBiquadFilter();o.type="triangle";o.frequency.value=f;o.detune.value=d;lp.type="lowpass";lp.frequency.value=400;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.09,t+1.8);g.gain.setValueAtTime(.09,t+4.5);g.gain.exponentialRampToValueAtTime(.0001,t+7.5);o.connect(lp).connect(g).connect(out);o.start(t);o.stop(t+7.6);});
+  // surf: filtered noise swelling in and drawing back
+  const len=c.sampleRate*8,buf=c.createBuffer(1,len,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;
+  const n=c.createBufferSource();n.buffer=buf;const bp=c.createBiquadFilter();bp.type="lowpass";bp.frequency.setValueAtTime(300,t);bp.frequency.linearRampToValueAtTime(1600,t+2.6);bp.frequency.linearRampToValueAtTime(250,t+7);
+  const ng=c.createGain();ng.gain.setValueAtTime(0,t);ng.gain.linearRampToValueAtTime(.12,t+2.4);ng.gain.linearRampToValueAtTime(.03,t+5);ng.gain.linearRampToValueAtTime(0,t+7.5);n.connect(bp).connect(ng).connect(out);n.start(t);n.stop(t+7.6);
+  // the chord blooms: C major rising through the octave, soft sines with slow attacks
+  [[261.6,.6],[329.6,1.0],[392,1.4],[523.3,1.9],[659.3,2.5],[784,3.1]].forEach(([f,at])=>{const o=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0,t+at);g.gain.linearRampToValueAtTime(.075,t+at+.9);g.gain.setValueAtTime(.075,t+4.6);g.gain.exponentialRampToValueAtTime(.0001,t+7.2);o.connect(g).connect(out);o.start(t+at);o.stop(t+7.3);});
+  // a far bell at the crest
+  const b=c.createOscillator(),bg=c.createGain();b.type="sine";b.frequency.value=1046.5;bg.gain.setValueAtTime(0,t+3.4);bg.gain.linearRampToValueAtTime(.06,t+3.5);bg.gain.exponentialRampToValueAtTime(.0001,t+6.5);b.connect(bg).connect(out);b.start(t+3.4);b.stop(t+6.6);
+}
+function thud(){const c=ac();if(!c)return;tone(70,c.currentTime,.25,"sine",.3);}
+function scrape(on){const c=ac();if(!c)return;if(on&&!scrapeNode&&soundOn){const len=c.sampleRate*1.5,buf=c.createBuffer(1,len,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;const src=c.createBufferSource();src.buffer=buf;src.loop=true;const bp=c.createBiquadFilter();bp.type="bandpass";bp.frequency.value=900;bp.Q.value=.6;const g=c.createGain();g.gain.value=.05;src.connect(bp).connect(g).connect(c.destination);src.start();scrapeNode={src,g};}
+  if(!on&&scrapeNode){scrapeNode.g.gain.setTargetAtTime(0,c.currentTime,.03);const n=scrapeNode;scrapeNode=null;setTimeout(()=>n.src.stop(),150);}}
+
+/* ---------- habitat sounds (all synthesised) ---------- */
+function noiseBuf(c,sec){const len=c.sampleRate*sec,b=c.createBuffer(1,len,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;return b;}
+function wind(c,out,t,dur,{lo=200,hi=900,g=.08,gusts=2,type="lowpass"}={}){const n=c.createBufferSource();n.buffer=noiseBuf(c,dur+.2);const f=c.createBiquadFilter();f.type=type;f.Q.value=.7;const v=c.createGain();v.gain.setValueAtTime(0,t);
+  for(let i=0;i<=gusts*4;i++){const tt=t+dur*i/(gusts*4),ph=Math.sin(i/4*Math.PI*2/1)*.5+.5;v.gain.linearRampToValueAtTime(g*(0.35+.65*ph)*(i===gusts*4?0:1),tt);f.frequency.linearRampToValueAtTime(lo+(hi-lo)*ph,tt);}
+  n.connect(f).connect(v).connect(out);n.start(t);n.stop(t+dur+.2);}
+function pip(c,out,t,f,dur,g,type="sine"){const o=c.createOscillator(),v=c.createGain();o.type=type;o.frequency.value=f;v.gain.setValueAtTime(0,t);v.gain.linearRampToValueAtTime(g,t+.01);v.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(v).connect(out);o.start(t);o.stop(t+dur+.05);}
+function thump(c,out,t,f=55,dur=.3,g=.35){const o=c.createOscillator(),v=c.createGain();o.frequency.setValueAtTime(f*1.6,t);o.frequency.exponentialRampToValueAtTime(f,t+.08);v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(v).connect(out);o.start(t);o.stop(t+dur+.05);}
+function burst(c,out,t,dur,{f=1200,q=1,g=.15,type="bandpass"}={}){const n=c.createBufferSource();n.buffer=noiseBuf(c,dur+.05);const bp=c.createBiquadFilter();bp.type=type;bp.frequency.value=f;bp.Q.value=q;const v=c.createGain();v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.0001,t+dur);n.connect(bp).connect(v).connect(out);n.start(t);n.stop(t+dur+.05);}
+const SFX={
+  deep:(c,o,t)=>{wind(c,o,t,4,{lo:120,hi:380,g:.12,gusts:1});const lf=c.createOscillator(),lg=c.createGain();lf.frequency.value=40;lg.gain.setValueAtTime(0,t);lg.gain.linearRampToValueAtTime(.06,t+1);lg.gain.linearRampToValueAtTime(0,t+4);lf.connect(lg).connect(o);lf.start(t);lf.stop(t+4);},
+  shallow:(c,o,t)=>{wind(c,o,t,4,{lo:300,hi:1400,g:.08,gusts:2});},
+  shore:(c,o,t)=>{wind(c,o,t,4.5,{lo:400,hi:2500,g:.1,gusts:2,type:"lowpass"});},
+  stream:(c,o,t)=>{wind(c,o,t,4,{lo:1500,hi:3500,g:.05,gusts:6,type:"bandpass"});for(let i=0;i<40;i++)pip(c,o,t+Math.random()*3.8,2500+Math.random()*3000,.04,.02);},
+  swamp:(c,o,t)=>{wind(c,o,t,4,{lo:300,hi:900,g:.05,gusts:1});for(let i=0;i<24;i++)pip(c,o,t+Math.random()*3.8,3800+Math.random()*1500,.03,.012,"triangle");},
+  marsh:(c,o,t)=>{wind(c,o,t,4,{lo:500,hi:1600,g:.05,gusts:2});for(let i=0;i<30;i++)pip(c,o,t+Math.random()*3.8,4200+Math.random()*1200,.03,.01,"triangle");},
+  river:(c,o,t)=>{wind(c,o,t,4,{lo:800,hi:2200,g:.05,gusts:3,type:"bandpass"});wind(c,o,t,4,{lo:200,hi:600,g:.05,gusts:1});},
+  forest:(c,o,t)=>{wind(c,o,t,4.5,{lo:900,hi:3200,g:.07,gusts:2,type:"bandpass"});for(let i=0;i<10;i++)pip(c,o,t+.5+Math.random()*3.5,2800+Math.random()*1800,.06,.012,"triangle");},
+  dusk:(c,o,t)=>{wind(c,o,t,4,{lo:400,hi:1200,g:.05,gusts:1});for(let i=0;i<16;i++)pip(c,o,t+Math.random()*3.8,3600+Math.random()*900,.05,.012,"triangle");},
+  dry:(c,o,t)=>{wind(c,o,t,4.5,{lo:250,hi:1100,g:.09,gusts:2});},
+  savanna:(c,o,t)=>{wind(c,o,t,4.5,{lo:400,hi:1800,g:.08,gusts:3});},
+  grass:(c,o,t)=>{wind(c,o,t,3,{lo:2000,hi:4500,g:.03,gusts:4,type:"bandpass"});},
+  ice:(c,o,t)=>{wind(c,o,t,5,{lo:300,hi:1200,g:.11,gusts:1});const w=c.createOscillator(),wg=c.createGain();w.type="sine";w.frequency.setValueAtTime(380,t);w.frequency.linearRampToValueAtTime(520,t+2.5);w.frequency.linearRampToValueAtTime(340,t+5);wg.gain.setValueAtTime(0,t);wg.gain.linearRampToValueAtTime(.025,t+1.5);wg.gain.linearRampToValueAtTime(0,t+5);w.connect(wg).connect(o);w.start(t);w.stop(t+5);},
+  wind:(c,o,t)=>{wind(c,o,t,5,{lo:200,hi:1600,g:.13,gusts:2});},
+  current:(c,o,t)=>{wind(c,o,t,4,{lo:150,hi:500,g:.05,gusts:3});},
+  whoosh:(c,o,t)=>{const n=c.createBufferSource();n.buffer=noiseBuf(c,1.6);const f=c.createBiquadFilter();f.type="bandpass";f.Q.value=1.2;f.frequency.setValueAtTime(200,t+.8);f.frequency.exponentialRampToValueAtTime(1800,t+1.5);f.frequency.exponentialRampToValueAtTime(300,t+2.3);const v=c.createGain();v.gain.setValueAtTime(0,t+.8);v.gain.linearRampToValueAtTime(.14,t+1.5);v.gain.linearRampToValueAtTime(0,t+2.4);n.connect(f).connect(v).connect(o);n.start(t+.8);n.stop(t+2.5);},
+  jet:(c,o,t)=>{burst(c,o,t+1.2,.5,{f:600,q:.8,g:.12,type:"lowpass"});},
+  bubbles:(c,o,t)=>{for(let i=0;i<9;i++){const tt=t+.4+Math.random()*3.2,f=600+Math.random()*900;const osc=c.createOscillator(),v=c.createGain();osc.frequency.setValueAtTime(f,tt);osc.frequency.exponentialRampToValueAtTime(f*1.6,tt+.08);v.gain.setValueAtTime(.03,tt);v.gain.exponentialRampToValueAtTime(.0001,tt+.09);osc.connect(v).connect(o);osc.start(tt);osc.stop(tt+.1);}},
+  splash:(c,o,t)=>{burst(c,o,t+1,.35,{f:1800,q:.6,g:.14});burst(c,o,t+1.08,.6,{f:900,q:.5,g:.08,type:"lowpass"});},
+  scuttle:(c,o,t)=>{for(let i=0;i<14;i++)burst(c,o,t+.6+i*.13+Math.random()*.04,.03,{f:3000+Math.random()*1500,q:3,g:.03});},
+  slither:(c,o,t)=>{wind(c,o,t+.5,2.5,{lo:1800,hi:3200,g:.03,gusts:3,type:"bandpass"});},
+  twig:(c,o,t)=>{burst(c,o,t+1.3,.05,{f:2500,q:4,g:.15});burst(c,o,t+2.6,.04,{f:3200,q:4,g:.1});},
+  crack:(c,o,t)=>{burst(c,o,t+1.1,.08,{f:900,q:2,g:.25});burst(c,o,t+1.16,.3,{f:400,q:1,g:.15,type:"lowpass"});for(let i=0;i<12;i++)burst(c,o,t+1.3+Math.random()*1.2,.04,{f:2000+Math.random()*2000,q:3,g:.03});},
+  creak:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain();osc.type="sawtooth";osc.frequency.setValueAtTime(90,t+.8);osc.frequency.linearRampToValueAtTime(140,t+1.8);const f=c.createBiquadFilter();f.type="lowpass";f.frequency.value=500;v.gain.setValueAtTime(0,t+.8);v.gain.linearRampToValueAtTime(.05,t+1.1);v.gain.linearRampToValueAtTime(0,t+1.9);osc.connect(f).connect(v).connect(o);osc.start(t+.8);osc.stop(t+2);},
+  chew:(c,o,t)=>{for(let i=0;i<6;i++)burst(c,o,t+.8+i*.42,.12,{f:500,q:1,g:.08,type:"lowpass"});},
+  steps:(c,o,t)=>{for(let i=0;i<5;i++)thump(c,o,t+.6+i*.55,70,.18,.18);},
+  bigsteps:(c,o,t)=>{for(let i=0;i<4;i++){thump(c,o,t+.5+i*.95,45,.5,.45);burst(c,o,t+.5+i*.95,.15,{f:300,q:.8,g:.08,type:"lowpass"});}},
+  runsteps:(c,o,t)=>{for(let i=0;i<12;i++)thump(c,o,t+.5+i*.21,110,.1,.12);},
+  dig:(c,o,t)=>{for(let i=0;i<7;i++)burst(c,o,t+.7+i*.3,.12,{f:700,q:.8,g:.1,type:"lowpass"});},
+  buzz:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain(),lfo=c.createOscillator(),lg=c.createGain();osc.type="sawtooth";osc.frequency.value=38;lfo.frequency.value=38;lg.gain.value=400;const f=c.createBiquadFilter();f.type="bandpass";f.frequency.value=900;f.Q.value=2;lfo.connect(lg).connect(f.frequency);v.gain.setValueAtTime(0,t+.6);v.gain.linearRampToValueAtTime(.09,t+1);v.gain.linearRampToValueAtTime(0,t+3.4);osc.connect(f).connect(v).connect(o);osc.start(t+.6);lfo.start(t+.6);osc.stop(t+3.5);lfo.stop(t+3.5);},
+  flap:(c,o,t)=>{for(let i=0;i<6;i++)burst(c,o,t+.9+i*.22,.12,{f:700,q:.7,g:.1,type:"lowpass"});},
+  bigflap:(c,o,t)=>{for(let i=0;i<4;i++){burst(c,o,t+1+i*.85,.45,{f:350,q:.6,g:.2,type:"lowpass"});}},
+  breath:(c,o,t)=>{wind(c,o,t+.8,2.2,{lo:300,hi:700,g:.06,gusts:1});},
+  snort:(c,o,t)=>{burst(c,o,t+1.4,.3,{f:450,q:1.2,g:.16,type:"lowpass"});},
+  rumble:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain(),lfo=c.createOscillator(),lg=c.createGain();osc.type="sine";osc.frequency.value=42;lfo.frequency.value=11;lg.gain.value=.5;v.gain.setValueAtTime(0,t+.6);v.gain.linearRampToValueAtTime(.4,t+1.4);v.gain.linearRampToValueAtTime(0,t+3.6);lfo.connect(lg).connect(v.gain);osc.connect(v).connect(o);osc.start(t+.6);lfo.start(t+.6);osc.stop(t+3.7);lfo.stop(t+3.7);},
+  growl:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain(),f=c.createBiquadFilter(),lfo=c.createOscillator(),lg=c.createGain();osc.type="sawtooth";osc.frequency.setValueAtTime(60,t+.8);osc.frequency.linearRampToValueAtTime(75,t+2);osc.frequency.linearRampToValueAtTime(55,t+3);f.type="lowpass";f.frequency.value=420;lfo.frequency.value=28;lg.gain.value=.5;lfo.connect(lg).connect(v.gain);v.gain.setValueAtTime(0,t+.8);v.gain.linearRampToValueAtTime(.16,t+1.3);v.gain.linearRampToValueAtTime(0,t+3.1);osc.connect(f).connect(v).connect(o);osc.start(t+.8);lfo.start(t+.8);osc.stop(t+3.2);lfo.stop(t+3.2);},
+  trumpet:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain(),f=c.createBiquadFilter();osc.type="sawtooth";osc.frequency.setValueAtTime(260,t+1);osc.frequency.linearRampToValueAtTime(520,t+1.5);osc.frequency.linearRampToValueAtTime(440,t+2.3);f.type="bandpass";f.frequency.value=900;f.Q.value=1.5;v.gain.setValueAtTime(0,t+1);v.gain.linearRampToValueAtTime(.14,t+1.3);v.gain.linearRampToValueAtTime(0,t+2.4);osc.connect(f).connect(v).connect(o);osc.start(t+1);osc.stop(t+2.5);},
+  croak:(c,o,t)=>{for(let i=0;i<2;i++){const tt=t+1+i*.9,osc=c.createOscillator(),v=c.createGain(),f=c.createBiquadFilter();osc.type="square";osc.frequency.setValueAtTime(140,tt);osc.frequency.linearRampToValueAtTime(90,tt+.35);f.type="lowpass";f.frequency.value=800;v.gain.setValueAtTime(.08,tt);v.gain.exponentialRampToValueAtTime(.0001,tt+.4);osc.connect(f).connect(v).connect(o);osc.start(tt);osc.stop(tt+.45);}},
+  chirp:(c,o,t)=>{for(let i=0;i<4;i++){const tt=t+.9+i*.5+Math.random()*.2;const osc=c.createOscillator(),v=c.createGain();osc.frequency.setValueAtTime(1800,tt);osc.frequency.linearRampToValueAtTime(2600,tt+.08);osc.frequency.linearRampToValueAtTime(2000,tt+.15);v.gain.setValueAtTime(.04,tt);v.gain.exponentialRampToValueAtTime(.0001,tt+.18);osc.connect(v).connect(o);osc.start(tt);osc.stop(tt+.2);}},
+  whalecall:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain();osc.type="sine";osc.frequency.setValueAtTime(180,t+1);osc.frequency.linearRampToValueAtTime(420,t+2.4);osc.frequency.linearRampToValueAtTime(260,t+3.6);v.gain.setValueAtTime(0,t+1);v.gain.linearRampToValueAtTime(.09,t+1.6);v.gain.linearRampToValueAtTime(0,t+3.7);osc.connect(v).connect(o);osc.start(t+1);osc.stop(t+3.8);},
+  jawsnap:(c,o,t)=>{thump(c,o,t+1.6,90,.25,.4);burst(c,o,t+1.6,.08,{f:1500,q:1,g:.18});}
+};
+function habitat(a){const c=ac();if(!c||!soundOn||!a.sfx)return;const t=c.currentTime,out=c.createGain();out.gain.value=.9;out.connect(c.destination);
+  const dl=c.createDelay(1);dl.delayTime.value=.28;const fb=c.createGain();fb.gain.value=.25;const wet=c.createGain();wet.gain.value=a.sfx[0]==="deep"?.45:.2;out.connect(dl);dl.connect(fb).connect(dl);dl.connect(wet).connect(c.destination);
+  a.sfx.forEach(k=>{try{SFX[k]&&SFX[k](c,out,t);}catch(e){}});}
+const soundBtn=document.getElementById("sound");
+function renderSound(){soundBtn.textContent=soundOn?"Sound on":"Sound off";soundBtn.setAttribute("aria-pressed",String(soundOn));}
+soundBtn.addEventListener("click",()=>{soundOn=!soundOn;renderSound();save();if(soundOn)clink();else scrape(false);});
+renderSound();
+
+/* ---------- cliff ---------- */
+const layersEl=document.getElementById("layers");
+function renderCliff(){
+  layersEl.innerHTML="";
+  LAYERS.forEach((p,i)=>{
+    const b=document.createElement("button"); b.type="button";
+    b.className="layer"+(view.type==="period"&&view.k===p.k?" current":""); b.style.background=p.color;
+    const dots=p.animals.map(a=>`<i class="${found.has(p.k+"/"+a.name)?"on":""}"></i>`).join("");
+    b.innerHTML=`<span class="depth">${i+1}</span><span class="lab">${p.name}<small><em>${p.say}</em> · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</small></span><span class="finds" aria-label="${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found">${dots}</span>`;
+    b.addEventListener("click",()=>{ if(examPick){examPick(p.k);return;} openPeriod(p.k); });
+    layersEl.appendChild(b);
+    const ex=EXTINCTIONS.find(e=>e.after===p.k);
+    if(ex){const r=document.createElement("button");r.type="button";r.className="ext"+(view.type==="ext"&&view.k===ex.k?" current":"");r.innerHTML=`<span>${ex.name}${ex.nick?` · ${ex.nick}`:""}</span><span>${ex.when} Ma</span>`;r.setAttribute("aria-label",ex.name);r.addEventListener("click",()=>openExt(ex.k));layersEl.appendChild(r);}
+  });
+}
+
+/* ---------- panels ---------- */
+const panel=document.getElementById("panel");
+const slab=(a,cls="")=>`<div class="slab ${cls}"><b>${a.name}</b><small>picture coming</small></div>`;
+
+/* ---------- challenges: diet clues (diet: meat | plants | both | tiny-things), clue is the visible evidence ---------- */
+const DIET={
+"Trilobite":["tiny-things","a mouth underneath, pointing backwards, for sifting mud"],"Anomalocaris":["meat","two spiny grabbing arms and a round mouth like a pineapple slice"],"Hallucigenia":["tiny-things","a tiny mouth and no claws, no teeth, nothing to fight with"],"Opabinia":["meat","a long hose on its face with a claw on the end"],
+"Orthoceras":["meat","a beak and tentacles, like a squid"],"Sea lily":["tiny-things","feathery arms held up like a net, and it cannot move"],"Astraspis":["tiny-things","no jaws at all, only a sucking mouth"],"Isotelus":["tiny-things","a wide flat shield for ploughing through mud"],
+"Sea scorpion":["meat","two spiked claws out front"],"Brontoscorpio":["meat","a sting and pincers"],"Birkenia":["tiny-things","no jaws, a mouth like a slot"],"Climatius":["meat","jaws, and spines to stop anyone eating it back"],
+"Dunkleosteus":["meat","jaw edges of bone sharpened like shears"],"Tiktaalik":["meat","a flat crocodile head full of sharp teeth"],"Cladoselache":["meat","a tuna tail for speed and a mouth full of fish"],"Coelacanth":["meat","a big mouth that opens wide and snaps shut"],
+"Meganeura":["meat","huge eyes and spiky legs for catching things in the air"],"Arthropleura":["plants","no jaws to speak of and a body built for mooching through leaf litter"],"Hylonomus":["meat","small sharp teeth, good for insects"],"Pulmonoscorpius":["meat","pincers and a sting"],
+"Dimetrodon":["meat","two kinds of teeth, some for stabbing and some for slicing; the name means two measures of teeth"],"Scutosaurus":["plants","blunt leaf-shaped teeth and a barrel body for digesting tough plants"],"Lystrosaurus":["plants","a beak like a tortoise and two tusks for digging roots"],"Gorgonops":["meat","sabre fangs twelve centimetres long"],
+"Ichthyosaur":["meat","a long snout full of needle teeth, a dolphin's fishing kit"],"Coelophysis":["meat","a narrow head full of small blade-like teeth"],"Postosuchus":["meat","a deep skull and dagger teeth, like a crocodile standing up"],"Plateosaurus":["plants","leaf-shaped teeth and a tiny head on a long neck for reaching into trees"],
+"Stegosaurus":["plants","a toothless beak and tiny leaf-shaped cheek teeth"],"Brachiosaurus":["plants","peg teeth for stripping branches and a neck that reaches the fourth floor"],"Archaeopteryx":["meat","small sharp teeth and claws on its wings"],"Ammonite":["meat","a beak and grabbing tentacles, like its cousin the squid"],"Plesiosaurus":["meat","needle teeth that interlock, a fish trap"],"Allosaurus":["meat","a mouth that opens very, very wide and teeth like serrated knives"],"Pterodactylus":["meat","a long beak full of small sharp teeth for fish"],"Apatosaurus":["plants","peg teeth at the front of a tiny head, and no chewing teeth at all"],
+"Tyrannosaurus rex":["meat","teeth like bananas and a bite that could crush a car"],"Triceratops":["plants","a parrot beak and hundreds of cheek teeth for slicing tough plants"],"Quetzalcoatlus":["meat","a long toothless beak like a stork, for picking up small animals"],"Velociraptor":["meat","a hooked claw on each foot and a mouth of curved teeth"],"Mosasaurus":["meat","a second row of teeth in the roof of its mouth"],"Ankylosaurus":["plants","a beak, small leaf-shaped teeth and a tank body"],"Spinosaurus":["meat","a crocodile snout with cone teeth for holding slippery fish"],"Parasaurolophus":["plants","a duck bill and a dental battery of hundreds of grinding teeth"],
+"Basilosaurus":["meat","a long jaw with pointed teeth at the front and saw-edged ones behind"],"Titanoboa":["meat","it is a snake; snakes do not eat salad"],"Gastornis":["plants","a huge deep beak built for cracking, not tearing, and no hooked tip"],"Andrewsarchus":["meat","a metre-long skull with teeth for crushing bone"],
+"Megalodon":["meat","teeth as big as your hand with serrated edges"],"Deinotherium":["plants","tusks curving down from the lower jaw, and grinding molars"],"Australopithecus":["both","small teeth with thick enamel, fine for fruit, roots and the odd grub"],"Terror bird":["meat","a hooked beak like a giant eagle's"],
+"Woolly mammoth":["plants","flat ridged molars like washboards for grinding grass"],"Smilodon":["meat","fangs 18 centimetres long"],"Megatherium":["plants","peg-like teeth and huge claws for pulling down branches"],"Glyptodon":["plants","grooved grinding teeth (that is what the name means) and no way to catch anything"],"Dire wolf":["meat","jaws built for cracking bone"],"Pikaia":["tiny-things","no jaws, no teeth, a mouth like a slot for sieving"],"Eoraptor":["both","sharp teeth at the front and leaf-shaped ones at the back"],"Megalosaurus":["meat","a deep skull full of curved, serrated teeth"],"Diplodocus":["plants","peg teeth at the front only, like a rake, for stripping leaves"],"Iguanodon":["plants","a beak and ridged cheek teeth like an iguana's, hence the name"],"Argentinosaurus":["plants","a tiny head with peg teeth on an animal the size of three buses; nothing that big catches anything"],"Pteranodon":["meat","a long pelican beak with no teeth, built for scooping fish"],"Oviraptor":["both","a parrot beak with no teeth, good for eggs, shellfish and seeds"],"Yutyrannus":["meat","a tyrannosaur skull with thick stabbing teeth"],"Paraceratherium":["plants","a long neck for reaching the tops of trees, and grinding molars"],"Ambulocetus":["meat","a crocodile's long jaw with pointed teeth, and eyes on top for ambush"],"Megaloceros":["plants","a deer's flat grinding teeth and no front teeth on top at all"],"Neanderthal":["both","teeth like yours, worn from meat, roots, nuts and using them as a third hand"]};
+const DIET_WORD={meat:"Meat",plants:"Plants","both":"Both, anything going","tiny-things":"Tiny things from the mud or water"};
+
+
+/* ---------- challenges: short questions that use what has been dug up ---------- */
+const periodOf=a=>PERIODS.find(q=>q.animals.includes(a));
+const foundAnimals=()=>ALL.filter(x=>found.has(x.id)).map(x=>PERIODS.find(q=>q.k===x.pk).animals.find(a=>a.name===x.name));
+const TEMPT={"Dimetrodon":"Dimetrodon fools everyone. The sail says dinosaur. It is a cousin of yours, and it was dead 40 million years before the first dinosaur hatched.","Coelacanth":"The coelacanth is a trap. It is alive today, so it feels modern. Its family was swimming about before the first tree.","Horseshoe crab":"Alive today, older than trees.","Megalodon":"Big does not mean old. Megalodon is practically yesterday; your grandmother's grandmother's grandmother, a few thousand times over, could have met one.","Sea lily":"Looks like a plant, is an animal, and was already old when the fish turned up.","Nautilus":"Looks like a fancy snail; is a submarine older than the dinosaurs."};
+function buildChallenge(cur){
+  const fa=foundAnimals(); const types=[];
+  const others=fa.filter(a=>a!==cur);
+  const diffP=others.filter(b=>periodOf(b)!==periodOf(cur));
+  if(diffP.length) types.push("first","met");
+  if(DIET[cur.name]) types.push("clue");
+  if(others.length&&!diffP.length) types.push("met");
+  if(!types.length) return null;
+  const t=types[Math.floor(Math.random()*types.length)];
+  if(t==="first"){const b=pick(diffP,1)[0]; const pa=periodOf(cur),pb=periodOf(b); const older=pa.start>pb.start?cur:b; return {t,a:cur,b,ans:older.name,
+    q:`Which came first?`, sub:`${cur.name} or ${b.name}: which one is deeper in the cliff?`, opts:shuffle([cur.name,b.name]),
+    right:`${older.name}. ${periodOf(older).name}, ${fmt(periodOf(older).start)} million years ago, against the ${periodOf(older===cur?b:cur).name}. ${TEMPT[older===cur?b.name:cur.name]||"Deeper is older. Always."}`,
+    wrong:`Other way round. ${older.name} is from the ${periodOf(older).name}, ${fmt(periodOf(older).start)} million years ago; ${(older===cur?b:cur).name} turned up in the ${periodOf(older===cur?b:cur).name}. ${TEMPT[(older===cur?b:cur).name]||"Deeper is older, even when the deeper one looks cleverer."}`};}
+  if(t==="met"){const b=pick(others,1)[0]; const pa=periodOf(cur),pb=periodOf(b); const same=pa===pb; const older=pa.start>pb.start?pa:pb, younger=older===pa?pb:pa; const gap=older.end-younger.start;
+    const trexYou=66; const cmp=gap>trexYou?`That is a bigger gap than between T. rex and you.`:gap>0?`That is ${gap} million years of nobody to talk to.`:``;
+    return {t,a:cur,b,ans:same?"Yes":"No",q:`Could these two have met?`, sub:`${cur.name} and ${b.name}. Same world, or different ones?`, opts:["Yes","No"],
+    right: same?`Yes. Both from the ${pa.name}. Mind you, a layer can be ${pa.start-pa.end} million years thick, so "same layer" is a loose sort of neighbour.`:`No. ${(older===pa?cur:b).name} was gone ${gap>0?gap+" million years":"long"} before ${(older===pa?b:cur).name} was born. ${cmp}`,
+    wrong: same?`They could, actually. Both ${pa.name}. The cliff is honest: same layer, same world, give or take a few million years.`:`Never. ${(older===pa?cur:b).name} is ${older.name}, ${(older===pa?b:cur).name} is ${younger.name}. ${gap>0?gap+" million years apart. "+cmp:"Different layers, different worlds."}`};}
+  const d=DIET[cur.name]; const correct=DIET_WORD[d[0]]; const opts=shuffle([...new Set([correct,...shuffle(Object.values(DIET_WORD).filter(x=>x!==correct)).slice(0,2)])]);
+  return {t,a:cur,ans:correct,q:`What did it eat?`, sub:`Look at the picture. What is the clue?`, opts,
+    right:`${correct}. The giveaway: ${d[1]}.`, wrong:`Look again: ${d[1]}. That says ${correct.toLowerCase()}.`};
+}
+function renderChallenge(p,a){
+  const box=document.getElementById("chal"); const c=buildChallenge(a); if(!c){box.remove();return;}
+  box.innerHTML=`<div class="eyebrow">Quick one · ◆</div><b>${c.q}</b><p>${c.sub}</p><div class="opts">${c.opts.map(o=>`<button class="opt" type="button">${o}</button>`).join("")}</div><button class="linkbtn skip" type="button">Skip it</button>`;
+  box.querySelector(".skip").addEventListener("click",()=>box.remove());
+  box.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>{const ok=btn.textContent===c.ans; if(ok){clues++;save();renderNotebook();clink();}else thud();
+    box.innerHTML=`<div class="eyebrow">${ok?"Cracked it · ◆":"Not that one"}</div><p>${withSay(ok?c.right:c.wrong)}</p><button class="btn ghost" type="button">Carry on</button>`;
+    box.querySelector(".btn").addEventListener("click",()=>box.remove());}));
+}
+
+/* ---------- drifting continents: dissolve through the twelve maps ---------- */
+(function(){
+  const st=document.getElementById("drift-stack"), bar=document.getElementById("drift-bar"), nm=document.getElementById("drift-name"), ma=document.getElementById("drift-ma"), btn=document.getElementById("drift-btn"), fig=document.getElementById("drift");
+  if(!st) return;
+  PERIODS.forEach((p,i)=>{const im=document.createElement("img"); im.src=`img/map-${p.k}.jpg`; im.alt=""; im.loading=i<2?"eager":"lazy"; im.onerror=()=>im.remove(); st.appendChild(im); const b=document.createElement("i"); bar.appendChild(b);});
+  const kb=document.getElementById("key-body"), bars=document.getElementById("key-bars"), labels=document.getElementById("key-labels"), lead=document.getElementById("key-lead");
+  const TROWEL='<svg class="trowel" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l6 1 6 10-3 3L2 11z" fill="#B8651E"/><path d="M15 13l6 6-2 2-6-6z" fill="#5A3A22"/></svg>';
+  if(kb){ const young=[...PERIODS].reverse();
+    young.forEach(p=>{ const b=document.createElement("button"); b.type="button"; b.className="key-bar"; b.dataset.k=p.k; b.style.flex=`${p.start-p.end} 0 0`; b.style.minHeight="3px"; b.style.background=p.color; b.setAttribute("aria-label",`${p.name}, ${p.start-p.end} million years`); b.innerHTML=TROWEL; b.addEventListener("click",()=>{show(PERIODS.indexOf(p)); if(on)play();}); bars.appendChild(b); });
+    EONS.slice().reverse().forEach(e=>{ const box=document.createElement("div"); box.className="key-era"; box.style.flex=`${young.filter(p=>p.era===e.name).length} 1 0`; box.innerHTML=`<b>${e.name}</b>`;
+      young.filter(p=>p.era===e.name).forEach(p=>{ const r=document.createElement("button"); r.type="button"; r.className="key-row"; r.dataset.k=p.k; r.innerHTML=`<span>${p.name}</span>`; r.addEventListener("click",()=>{show(PERIODS.indexOf(p)); if(on)play();}); box.appendChild(r); }); labels.appendChild(box); });
+    const drawLeads=()=>{ const R=kb.getBoundingClientRect(); const W=lead.clientWidth||22; let d=""; PERIODS.forEach(p=>{ const b=bars.querySelector(`[data-k="${p.k}"]`).getBoundingClientRect(), l=labels.querySelector(`[data-k="${p.k}"]`).getBoundingClientRect(); const y1=b.top+b.height/2-R.top, y2=l.top+l.height/2-R.top; d+=`M0 ${y1.toFixed(1)} C ${W*.5} ${y1.toFixed(1)}, ${W*.5} ${y2.toFixed(1)}, ${W} ${y2.toFixed(1)} `; }); lead.innerHTML=`<path d="${d}" fill="none" stroke="rgba(22,23,11,.28)" stroke-width="1"/>`; };
+    new ResizeObserver(drawLeads).observe(kb); requestAnimationFrame(drawLeads);
+  }
+  let i=0, on=true, timer=null; const HOLD=REDUCED?4000:3200;
+  function show(k){ i=(k+PERIODS.length)%PERIODS.length; const p=PERIODS[i];
+    [...st.children].forEach((im,j)=>im.classList.toggle("on",j===i)); [...bar.children].forEach((b,j)=>b.classList.toggle("on",j<=i));
+    if(kb) kb.querySelectorAll(".key-row,.key-bar").forEach(r=>r.classList.toggle("on",r.dataset.k===p.k));
+    window.driftPeriod=p; const sn=document.getElementById("startnote"); if(sn){const left=p.animals.filter(a=>!found.has(p.k+"/"+a.name)).length; sn.textContent=left?`${p.name} · ${left} still buried`:`${p.name} · all found, try the next layer`;}
+    nm.textContent=p.name; ma.textContent=p.end===0?`${fmt(p.start)} million years ago to today`:`${fmt(p.start)} to ${fmt(p.end)} million years ago`; }
+  function tick(){ show(i+1); }
+  function play(){ on=true; btn.textContent="❚❚"; btn.setAttribute("aria-label","Pause"); clearInterval(timer); timer=setInterval(tick,HOLD); }
+  function pause(){ on=false; btn.textContent="▶"; btn.setAttribute("aria-label","Play"); clearInterval(timer); }
+  btn.addEventListener("click",e=>{e.stopPropagation(); on?pause():play();});
+  fig.addEventListener("click",()=>{ openPeriod(PERIODS[i].k); document.getElementById("panel").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); });
+  bar.addEventListener("click",e=>{e.stopPropagation(); const r=bar.getBoundingClientRect(); show(Math.floor((e.clientX-r.left)/r.width*PERIODS.length)); if(on)play();});
+  document.addEventListener("visibilitychange",()=>{ if(document.hidden)clearInterval(timer); else if(on)play(); });
+  show(0); play();
+  const sb=document.getElementById("startdig"); if(sb) sb.addEventListener("click",()=>{ let p=window.driftPeriod||PERIODS[0]; let a=p.animals.find(x=>!found.has(p.k+"/"+x.name)); if(!a){ const q=PERIODS.find(q=>q.animals.some(x=>!found.has(q.k+"/"+x.name))); if(q){p=q;a=q.animals.find(x=>!found.has(q.k+"/"+x.name));} } examPick=null; view={type:"period",k:p.k}; renderCliff(); if(a) startDig(p,a); else openPeriod(p.k); document.getElementById("panel").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); });
+})();
+
+/* ---------- start again (two taps) ---------- */
+(function(){ const b=document.getElementById("resetbtn"); if(!b)return; let armed=null;
+  b.addEventListener("click",()=>{ if(!armed){ b.textContent="Bury everything again? Tap once more."; b.classList.add("arm"); armed=setTimeout(()=>{b.textContent="Start again";b.classList.remove("arm");armed=null;},4000); return; }
+    clearTimeout(armed); armed=null; found=new Set(); stamps=0; clues=0; chalSeen=0; save(); b.textContent="Start again"; b.classList.remove("arm");
+    renderCliff(); renderNotebook(); openPeriod(PERIODS[0].k); scrape(false); window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"}); });
+})();
+
+/* ---------- narration (read-aloud clips) ---------- */
+const AUDIO_BASE="aud/";
+const slug=s=>s.toLowerCase().replace(/[^a-z]+/g,"-").replace(/^-|-$/g,"");
+const readBtn=(id,label="Read to me")=>`<button class="read" type="button" data-aud="${id}" aria-label="${label}">${label}</button>`;
+const narr=new Audio(); narr.preload="none"; let narrId=null;
+function narrBtns(){return [...document.querySelectorAll(`.read[data-aud="${narrId}"]`)];}
+function stopNarr(){ if(!narrId)return; narr.pause(); narr.currentTime=0; narrBtns().forEach(b=>{b.classList.remove("playing","loading");b.textContent=b.dataset.label||"Read to me";}); narrId=null; }
+function playNarr(id,btn){
+  if(narrId===id){stopNarr();return;}
+  stopNarr(); const book=document.getElementById("book"); if(book&&!book.paused)book.pause();
+  narrId=id; btn.dataset.label=btn.textContent; btn.classList.add("playing","loading"); btn.textContent="Stop";
+  narr.src=AUDIO_BASE+id+".mp3"; narr.play().catch(()=>stopNarr());
+}
+narr.addEventListener("playing",()=>narrBtns().forEach(b=>b.classList.remove("loading")));
+narr.addEventListener("ended",stopNarr); narr.addEventListener("error",stopNarr);
+document.addEventListener("click",e=>{const b=e.target.closest(".read[data-aud]"); if(b){e.preventDefault();playNarr(b.dataset.aud,b);}});
+document.addEventListener("DOMContentLoaded",()=>{const book=document.getElementById("book"); if(book)book.addEventListener("play",stopNarr);});
+
+/* ---------- motion: habitat from sfx tags, drifting stills, optional video loop ---------- */
+const VIDEO_BASE="vid/"; const VIDEOS=new Set([]); // add slugs here as clips are rendered
+const HAB=[["ice",["ice"]],["sea",["deep","shallow","bubbles","splash","river","stream","current","shore","marsh","swamp","whalecall","jet"]],["forest",["forest","twig","chirp","dusk","buzz","creak","grass"]],["dry",["dry","savanna","wind","rumble"]],["sky",["flap","bigflap"]]];
+const habitatClass=a=>{const t=a.sfx||[];for(const [h,tags] of HAB)if(tags.some(x=>t.includes(x)))return h;return "forest";};
+const drift=a=>[...a.name].reduce((h,c)=>h+c.charCodeAt(0),0)%4;
+const pic=(a,cls="")=>{ if(!a.img) return slab(a,cls); const v=a.img&&VIDEOS.has(a.img);
+  const media=v?`<video class="${cls} motion d${drift(a)}" src="${VIDEO_BASE}${a.img}.mp4" poster="img/${a.img}.jpg" autoplay muted loop playsinline disablepictureinpicture onerror="this.outerHTML=this.outerHTML.replace('<video','<img').replace('poster=','src=')"></video>`
+                :`<img class="${cls} motion d${drift(a)}" src="img/${a.img}.jpg" alt="${a.name}" draggable="false" onerror="this.remove()">`;
+  return slab(a,cls)+media+`<i class="fx fx-${habitatClass(a)}" aria-hidden="true"></i>`; };
+const sizeLabel=k=>({long:"long",tall:"tall",wingspan:"wingspan",shell:"shell"})[k];
+
+const MAX_SPAN=Math.max(...PERIODS.map(p=>p.start-p.end)), LONGEST=PERIODS.find(p=>p.start-p.end===MAX_SPAN);
+const extEnding=p=>{const n=PERIODS[PERIODS.indexOf(p)+1];return n?EXTINCTIONS.find(e=>e.after===n.k):null;};
+function openPeriod(k){
+  stopNarr(); examPick=null; view={type:"period",k}; renderCliff(); const p=PERIODS.find(q=>q.k===k); const i=PERIODS.indexOf(p);
+  const era=EONS.find(e=>e.name===p.era);
+  const endsExt=extEnding(p), beginsExt=EXTINCTIONS.find(e=>e.after===p.k);
+  panel.className="panel";
+  panel.innerHTML=`
+    <div class="eyebrow">${lex(p.era,era.say)} era · layer ${LAYERS.indexOf(p)+1} of 12</div>
+    <h2>${p.name}<span class="sayb">${p.say}</span></h2>
+    <div class="dur" title="How long it lasted, drawn to the same scale on every layer"><div class="r"><i style="width:${Math.max(3,Math.round((p.start-p.end)/MAX_SPAN*160))}px"></i><span>${p.end===0?"2.6 million years so far":`${p.start-p.end} million years`}${p===LONGEST?", the longest layer":""}</span></div>${p===LONGEST?"":`<div class="r ref"><i></i><span>the ${LONGEST.name}, longest of all: ${MAX_SPAN} million years</span></div>`}</div>
+    <figure class="worldmap" id="worldmap"><div class="mapwrap"><img src="img/map-${p.k}.jpg" alt="How the continents lay in the ${p.name}" loading="eager" onerror="this.closest('figure').remove()">${(p.pins||[]).map(k=>{const g=GEO[k],xy=(p.pos||{})[k];return xy?`<button class="pin" type="button" style="left:${xy[0]}%;top:${xy[1]}%" data-geo="${k}" aria-label="${g.name}"><span>${g.name}</span></button>`:""}).join("")}</div><figcaption>The world then. An artist's best guess. ${p.world?`${p.world}.`:""} Tap a gold pin.</figcaption><div class="geoinfo" id="geoinfo" hidden></div></figure>
+    <div class="bound ${beginsExt?"ext-link":""}"><span class="tag" style="background:${p.color}">Began<span class="tag ma">${fmt(p.start)} Ma</span></span><div><p>${withSay(p.began)}</p>${readBtn(`${p.k}-began`)}${beginsExt?`<p><button class="linkbtn" data-ext="${beginsExt.k}">Read about the ${beginsExt.name}</button></p>`:""}</div></div>
+    ${p.epochs?`<div><h3>Epochs in the ${p.name}</h3><p class="epnote">A period is cut into epochs <span class="lex">epochs<i>EP-oks</i></span>. Tap one.</p><div class="epbar" id="epbar"></div><div class="epinfo" id="epinfo"></div></div>`:""}
+    <div>
+      <h3>Dig here · ${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found</h3>
+      <div class="site" id="site"></div>
+    </div>
+    <div class="bound ${endsExt?"ext-link":""}"><span class="tag" style="background:${p.color}">Ended<span class="tag ma">${p.end===0?"not yet":fmt(p.end)+" Ma"}</span></span><div><p>${withSay(p.ended)}</p>${readBtn(`${p.k}-ended`)}${endsExt?`<p><button class="linkbtn" data-ext="${endsExt.k}">Read about the ${endsExt.name}</button></p>`:""}</div></div>
+    <div><h3>How big was it, really?</h3><div class="sizer" id="sizer"></div></div>
+    ${LIVING.some(l=>l.since===p.k)?`<div><h3>Still alive from the ${p.name}</h3><div class="stillhere">${LIVING.filter(l=>l.since===p.k).map(l=>`<button class="chip" type="button" data-lv="${l.name}">${l.name} <span style="opacity:.75">${l.say}</span></button>`).join("")}</div></div>`:""}
+    <div class="word"><div class="eyebrow">Word worth keeping</div><b>${p.word[0]}</b><span class="sayb">${p.word[1]}</span>${p.word[2]} ${readBtn(`${p.k}-word`,"Say it")}</div>
+    <div class="row">
+      <button class="btn ghost" id="older" type="button" ${i===0?"disabled":""}>← Older: ${i>0?PERIODS[i-1].name:""}</button>
+      <button class="btn ghost" id="younger" type="button" ${i===PERIODS.length-1?"disabled":""}>Younger: ${i<PERIODS.length-1?PERIODS[i+1].name:""} →</button>
+    </div>`;
+  renderSite(p); renderSizer(p); renderEpochs(p);
+  panel.querySelectorAll("[data-ext]").forEach(b=>b.addEventListener("click",()=>openExt(b.dataset.ext)));
+  panel.querySelectorAll(".pin").forEach(b=>b.addEventListener("click",()=>{const g=GEO[b.dataset.geo],gi=document.getElementById("geoinfo");panel.querySelectorAll(".pin").forEach(x=>x.classList.toggle("on",x===b));gi.hidden=false;gi.innerHTML=`<b>${g.name}</b><span class="sayb" style="margin-top:0">${g.say}</span>${withSay(g.line)} ${readBtn(`geo-${b.dataset.geo}`)}`;}));
+  panel.querySelectorAll("[data-lv]").forEach(b=>b.addEventListener("click",()=>{const l=LIVING.find(x=>x.name===b.dataset.lv); const row=[...document.querySelectorAll(".ll-row")].find(r=>r.getAttribute("aria-label").startsWith(l.name+",")); if(row)row.click(); else showLiving(l,p);}));
+  if(i>0)document.getElementById("older").addEventListener("click",()=>openPeriod(PERIODS[i-1].k));
+  if(i<PERIODS.length-1)document.getElementById("younger").addEventListener("click",()=>openPeriod(PERIODS[i+1].k));
+  try{history.replaceState(null,"","#"+k)}catch(e){}
+}
+
+function renderEpochs(p){
+  const bar=document.getElementById("epbar"); if(!bar||!p.epochs)return; const info=document.getElementById("epinfo");
+  const span=p.start-p.end;
+  p.epochs.forEach((e,i)=>{const b=document.createElement("button");b.type="button";b.className="ep";b.style.flex=`${Math.max(.18,(e.start-e.end)/span)} 1 0`;b.style.background=`color-mix(in srgb, ${p.color} ${100-i*22}%, var(--paper))`;b.innerHTML=`<span>${e.name}</span>`;b.setAttribute("aria-label",e.name);
+    b.addEventListener("click",()=>{bar.querySelectorAll(".ep").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+      const end=e.end===0?"today":e.end<1?`${Math.round(e.end*1000).toLocaleString("en-US")},000 years ago`:`${e.end} Ma`; const start=e.start<1?`${Math.round(e.start*1000).toLocaleString("en-US")},000 years ago`:`${e.start} Ma`;
+      info.innerHTML=`<b>${e.name}</b><span class="sayb">${e.say}</span><small>${start} to ${end}</small><p>${withSay(e.line)}</p>`;});
+    bar.appendChild(b);});
+  bar.firstChild.click();
+}
+function renderSite(p){
+  const site=document.getElementById("site"); if(!site)return; site.innerHTML="";
+  p.animals.forEach(a=>{
+    const id=p.k+"/"+a.name, b=document.createElement("button"); b.type="button"; b.className="spot";
+    if(found.has(id)){ b.innerHTML=pic(a)+`<span class="name">${a.name}</span>`; b.setAttribute("aria-label",`${a.name}, found. Open its card`); b.addEventListener("click",()=>showCard(p,a)); }
+    else { b.innerHTML=`<span class="cover"></span>`; b.setAttribute("aria-label","Something buried. Tap to dig it up"); b.addEventListener("click",()=>startDig(p,a)); }
+    site.appendChild(b);
+  });
+}
+
+function renderSizer(p){
+  const el=document.getElementById("sizer"); if(!el)return;
+  const rows=[...p.animals.map(a=>({n:a.name,v:a.size.v,k:a.size.kind,hid:!found.has(p.k+"/"+a.name)})),{n:"You",v:YOU_M,k:"tall",you:true}];
+  const max=Math.max(...rows.map(r=>r.v));
+  el.innerHTML=rows.map(r=>`<div class="r ${r.you?"you":""} ${r.hid?"hid":""}"><span class="n">${r.hid?"? ? ?":r.n}</span><span class="b"><i style="width:${Math.max(1.5,r.v/max*100)}%"></i></span><span class="v">${r.hid?"":r.v+" m "+sizeLabel(r.k)}</span></div>`).join("");
+}
+
+function startDig(p,a){
+  stopNarr();
+  const id=p.k+"/"+a.name;
+  panel.innerHTML=`<div class="eyebrow">${p.name} · digging</div>
+    <h2>There is something in this rock.</h2>
+    <p>Take your trowel and scrape the rock away. Carefully. It has waited a long time.</p>
+    <div class="stage" id="stage">${pic(a)}<canvas class="rock" id="rock" width="520" height="520"></canvas><canvas class="fx" id="fx" width="520" height="520"></canvas></div>
+    <div class="meter"><i id="meter"></i></div>
+    <p class="msg" id="msg"></p>
+    <button class="btn ghost" id="back" type="button">Back to ${p.name}</button>`;
+  document.getElementById("back").addEventListener("click",()=>openPeriod(p.k));
+  const cv=document.getElementById("rock"), ctx=cv.getContext("2d",{willReadFrequently:true}), W=cv.width, H=cv.height;
+  const fx=document.getElementById("fx"), fctx=fx.getContext("2d");
+  const base=ctx.createLinearGradient(0,0,0,H); base.addColorStop(0,"#6b5a4a"); base.addColorStop(1,"#4a3c30");
+  ctx.fillStyle=base; ctx.fillRect(0,0,W,H); ctx.fillStyle=p.color; ctx.globalAlpha=.25; ctx.fillRect(0,0,W,H); ctx.globalAlpha=1;
+  for(let n=0;n<2600;n++){const r=Math.random()*5+1;ctx.fillStyle=`rgba(${Math.random()<.5?0:255},${Math.random()<.5?0:255},${Math.random()<.5?0:255},${Math.random()*.08})`;ctx.beginPath();ctx.arc(Math.random()*W,Math.random()*H,r,0,7);ctx.fill();}
+  for(let y=0;y<H;y+=18){ctx.strokeStyle="rgba(0,0,0,.12)";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,y+Math.random()*6);for(let x=0;x<=W;x+=40)ctx.lineTo(x,y+Math.random()*6);ctx.stroke();}
+  ctx.globalCompositeOperation="destination-out";
+  // chips
+  const chips=[]; let raf=null;
+  function tick(){fctx.clearRect(0,0,W,H);for(let i=chips.length-1;i>=0;i--){const c=chips[i];c.x+=c.vx;c.y+=c.vy;c.vy+=.5;c.life-=.03;if(c.life<=0||c.y>H+10){chips.splice(i,1);continue;}fctx.globalAlpha=Math.max(0,c.life);fctx.fillStyle=c.col;fctx.fillRect(c.x,c.y,c.s,c.s);}fctx.globalAlpha=1;raf=chips.length?requestAnimationFrame(tick):null;}
+  function spawn(x,y){if(REDUCED)return;for(let i=0;i<5;i++)chips.push({x,y,vx:(Math.random()-.5)*8,vy:-Math.random()*6-2,s:Math.random()*5+2,life:1,col:Math.random()<.5?"#8d7b68":"#4a3c30"});if(!raf)raf=requestAnimationFrame(tick);}
+  let down=false, strokes=0, last=null, finished=false;
+  const pt=e=>{const r=cv.getBoundingClientRect();return {x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height}};
+  const brush=(a,b)=>{ctx.lineCap="round";ctx.lineWidth=56;ctx.strokeStyle="rgba(0,0,0,1)";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();};
+  const measure=()=>{const d=ctx.getImageData(0,0,W,H).data;let c=0,t=0;for(let i=3;i<d.length;i+=4*7){t++;if(d[i]<40)c++;}const cleared=c/t;document.getElementById("meter").style.width=Math.min(100,cleared/.5*100)+"%";if(cleared>=.5)finish();};
+  cv.addEventListener("pointerdown",e=>{down=true;last=pt(e);brush(last,last);spawn(last.x,last.y);cv.setPointerCapture(e.pointerId);scrape(true);});
+  cv.addEventListener("pointermove",e=>{if(!down)return;const q=pt(e);brush(last,q);spawn(q.x,q.y);last=q;if(++strokes%6===0)measure();});
+  const up=()=>{if(!down)return;down=false;scrape(false);measure();};
+  cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",up);cv.addEventListener("lostpointercapture",up);
+  function finish(){ if(finished)return; finished=true; scrape(false);
+    document.getElementById("stage").classList.add("cleared"); clink();
+    document.getElementById("msg").className="msg good"; document.getElementById("msg").textContent="Got it.";
+    found.add(id); save(); renderCliff(); renderNotebook();
+    setTimeout(()=>showCard(p,a,true), REDUCED?0:700);
+  }
+}
+
+function sparkle(host){ if(REDUCED)return; const r=host.getBoundingClientRect(); for(let i=0;i<26;i++){const s=document.createElement("span");s.className="spark";s.style.left=(r.width/2)+"px";s.style.top=(r.height/2)+"px";const ang=Math.random()*6.283,d=60+Math.random()*180;s.style.setProperty("--dx",Math.cos(ang)*d+"px");s.style.setProperty("--dy",Math.sin(ang)*d+"px");s.style.background=["#D3C657","#B8922A","#FFF2B0"][i%3];host.appendChild(s);setTimeout(()=>s.remove(),1000);} }
+
+function showCard(p,a,fresh=false){
+  stopNarr(); panel.className="panel";
+  const nextA=p.animals.find(x=>!found.has(p.k+"/"+x.name)); const nextP=PERIODS[PERIODS.indexOf(p)+1]||null;
+  panel.innerHTML=`<div class="eyebrow">${p.name} · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</div>
+    <div class="card">
+      <button class="stage cleared stagebtn" id="stage" type="button" aria-label="Hear ${a.name}'s world">${pic(a)}</button>
+      <div>
+        <div class="name">${a.name}</div><span class="sayb">${a.say}</span>
+        <div class="eyebrow" style="margin-top:4px">${withSay(a.latin)}${a.epoch?` · ${a.epoch} epoch`:""}</div>
+        <div>${readBtn(`${p.k}-${slug(a.name)}`)}</div>
+        <p style="margin-top:8px"><b>${a.size.v>=1?a.size.v+" m":a.size.v>=0.1?Math.round(a.size.v*100)+" cm":Math.round(a.size.v*1000)+" mm"} ${sizeLabel(a.size.kind)}</b> · ${a.size.v>=YOU_M?`about ${(a.size.v/YOU_M).toFixed(a.size.v/YOU_M<3?1:0)} of you, lying down`:`smaller than you. You win.`}</p>
+        <ul class="facts">${a.facts.map(f=>`<li>${withSay(f)}</li>`).join("")}</ul>
+      </div>
+    </div>
+    ${fresh&&found.size>=3&&found.size%3===0&&chalSeen<found.size?`<div class="chal" id="chal"></div>`:""}
+    <div class="row">${nextA?`<button class="btn" id="next" type="button">Dig the next one →</button>`:nextP?`<button class="btn" id="next" type="button">All found here. Up to the ${nextP.name} →</button>`:""}<button class="btn ghost" id="back" type="button">Back to the ${p.name} dig site</button><span class="eyebrow">${[...found].filter(x=>x.startsWith(p.k+"/")).length} of ${p.animals.length} found here</span></div>`;
+  if(document.getElementById("chal")){chalSeen=found.size;save();renderChallenge(p,a);}
+  const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",()=>{ if(nextA)startDig(p,nextA); else openPeriod(nextP.k); });
+  const st=document.getElementById("stage"); st.addEventListener("click",()=>{habitat(a);});
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{st.classList.add("alive"); if(fresh){sparkle(st); habitat(a); if(found.size===ALL.length)setTimeout(fanfare,600);}}));
+  document.getElementById("back").addEventListener("click",()=>openPeriod(p.k));
+}
+
+function openExt(k){
+  stopNarr(); examPick=null; view={type:"ext",k}; renderCliff(); const e=EXTINCTIONS.find(x=>x.k===k);
+  const before=PERIODS.find(p=>p.end===e.when)||PERIODS.find(p=>p.start>e.when&&p.end<e.when), after=PERIODS.find(p=>p.k===e.after);
+  panel.className="panel ext-panel";
+  panel.innerHTML=`<div class="eyebrow">${e.rank} · ${fmt(e.when)} million years ago</div>
+    <h2>${e.name}${e.nick?`<span class="sayb" style="color:var(--ink-soft);font-style:italic;font-family:var(--serif);font-size:1.1rem;letter-spacing:0">also called ${e.nick}</span>`:""}</h2>
+    ${readBtn(`ext-${e.k}`,"Read the whole sorry story")}
+    <div class="toll"><div><b>${e.toll}</b><span>gone</span></div><div><b>${before.name}</b><span>the world before</span></div><div><b>${after.name}</b><span>the world after</span></div></div>
+    <div><h3>What on earth happened</h3><p>${withSay(e.cause)}</p></div>
+    <div><h3>Who made it, and how</h3><ul class="surv">${e.survivors.map(([w,y])=>`<li><b>${withSay(w)}</b>${withSay(y)}</li>`).join("")}</ul></div>
+    <div class="row"><button class="btn ghost" id="b1" type="button">← ${before.name}</button><button class="btn ghost" id="b2" type="button">${after.name} →</button></div>`;
+  document.getElementById("b1").addEventListener("click",()=>openPeriod(before.k));
+  document.getElementById("b2").addEventListener("click",()=>openPeriod(after.k));
+  thud();
+  try{history.replaceState(null,"","#"+k)}catch(e2){}
+}
+
+/* ---------- living fossils ---------- */
+function renderLiving(){
+  const root=document.getElementById("lifelines"); root.innerHTML="";
+  const x=ma=>(539-ma)/539*100;
+  const scale=document.createElement("div"); scale.className="ll-scale";
+  PERIODS.forEach(p=>{const sp=document.createElement("span");const w=(p.start-p.end)/539*100;sp.style.flex=`0 0 ${w}%`;sp.style.background=p.color;sp.textContent=p.name;if(w<6)sp.classList.add("tiny");sp.title=p.name;scale.appendChild(sp);});
+  const body=document.createElement("div"); body.className="ll-body";
+  const today=document.createElement("div"); today.className="ll-today"; today.textContent="today"; body.appendChild(today);
+  EXTINCTIONS.forEach(e=>{const l=document.createElement("div");l.className="ll-ext";l.style.left=x(e.when)+"%";l.dataset.when=e.when+" Ma";l.title=e.name;body.appendChild(l);});
+  const sorted=[...LIVING].map(l=>({l,p:PERIODS.find(q=>q.k===l.since)})).sort((a,b)=>b.p.start-a.p.start);
+  sorted.forEach(({l,p},i)=>{const r=document.createElement("div");r.className="ll-row";r.tabIndex=0;r.setAttribute("role","button");r.setAttribute("aria-label",`${l.name}, since the ${p.name}`);
+    const start=x(p.start - (p.start-p.end)*0.5); // begin mid-period
+    r.innerHTML=`<div class="ll-line" style="left:${start}%;animation-delay:${i*.08}s"></div><div class="ll-name" style="left:${start}%">${l.name}<small>${l.say}</small></div><div class="ll-pic"><div class="slab"><b>${l.name}</b></div>${l.img?`<img src="img/${l.img}.jpg" alt="" onerror="this.remove()">`:""}</div>`;
+    const open=()=>{body.querySelectorAll(".ll-row").forEach(q=>q.classList.remove("on"));r.classList.add("on");showLiving(l,p);};
+    r.addEventListener("click",open); r.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open();}});
+    body.appendChild(r);});
+  const axis=document.createElement("div"); axis.className="ll-axis"; axis.innerHTML="<span>539 million years ago</span><span>each line is how long that family has been getting away with it</span>";
+  root.append(scale,body,axis);
+}
+function showLiving(l,p){
+  stopNarr(); const d=document.getElementById("lv-detail"); d.hidden=false;
+  d.innerHTML=`<div class="pic"><div class="slab"><b>${l.name}</b><small>picture coming</small></div>${l.img?`<img src="img/${l.img}.jpg" alt="${l.name}" onerror="this.remove()">`:""}</div>
+    <div class="body"><b class="n">${l.name}</b><span class="sayb" style="margin-top:0">${l.say}</span><span class="what">${l.what} · ${l.size} · unchanged for about ${l.age}</span> ${readBtn(`living-${slug(l.name)}`)}
+    <button class="since" type="button" style="background:${p.color}">since the ${p.name} · visit the layer</button>
+    <p>${withSay(l.story)}</p>
+    <div class="why"><b>Why it lasted</b>${withSay(l.why)}</div>
+    <div class="lv-sub"><b>Then and now</b>${withSay(l.then)}</div>
+    <ul class="facts lv-facts">${l.facts.map(f=>`<li>${withSay(f)}</li>`).join("")}</ul>
+    <div class="lv-sub"><b>Where to meet one</b>${withSay(l.meet)}</div>
+    <div class="word"><div class="eyebrow">Word worth keeping</div><b>${l.word[0]}</b><span class="sayb">${l.word[1]}</span>${l.word[2]}</div></div>`;
+  d.querySelector(".since").addEventListener("click",()=>{openPeriod(p.k);window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});});
+  d.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"nearest"});
+}
+/* ---------- notebook ---------- */
+function renderNotebook(){
+  const g=document.getElementById("nb-grid"); g.innerHTML="";
+  LAYERS.forEach(p=>p.animals.forEach(a=>{
+    const id=p.k+"/"+a.name, done=found.has(id), d=document.createElement("div"); d.className="nb"+(done?" filled":"");
+    d.innerHTML=done?`<div class="th slab"><b>${a.name}</b></div>${a.img?`<img class="th" src="img/${a.img}.jpg" alt="" onerror="this.remove()" style="margin-left:-58px">`:""}<div><b>${a.name}</b><i>${a.say}</i><small>${p.name}</small></div>`:`${p.name}<br>still buried`;
+    if(done){d.setAttribute("role","button");d.tabIndex=0;const go=()=>showCard(p,a);d.addEventListener("click",go);d.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});}
+    g.appendChild(d);
+  }));
+  const eb=document.getElementById("exambtn"); eb.disabled=found.size<6; eb.title=found.size<6?`Dig up 6 things first (${6-found.size} to go)`:"Ten questions. Only about things you have dug up. No tricks."; const en=document.getElementById("examnote"); if(en) en.textContent=found.size<6?`Dig up ${6-found.size} more to unlock the exam`:"Ten questions, only on what you dug up";
+  document.getElementById("stamps").textContent="★".repeat(Math.min(stamps,12))+(clues?` ◆${clues}`:"");
+  const n=found.size, rank=[...RANKS].reverse().find(([m])=>n>=m)[1], next=RANKS.find(([m])=>m>n);
+  document.getElementById("rank").innerHTML=`${n} of ${ALL.length} finds · <b>${rank}</b>${next?` · ${next[0]-n} more to ${next[1]}`:" · the whole cliff is yours. Show-off."}`;
+}
+
+/* ---------- field exam ---------- */
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const pick=(a,n)=>shuffle(a).slice(0,n);
+function buildExam(){
+  const opened=PERIODS.filter(p=>p.animals.some(a=>found.has(p.k+"/"+a.name)));
+  const dug=ALL.filter(a=>found.has(a.id));
+  const qs=[];
+  // 1 place the fossil
+  pick(dug,3).forEach(a=>qs.push({t:"place",a}));
+  // 2 older or younger
+  for(let i=0;i<2;i++){const pair=pick(dug,2);const pa=PERIODS.find(p=>p.k===pair[0].pk),pb=PERIODS.find(p=>p.k===pair[1].pk);if(pa&&pb&&pa!==pb)qs.push({t:"older",a:pair[0],b:pair[1],ans:pa.start>pb.start?0:1});}
+  // 3 what ended it
+  pick(opened.filter(p=>p.end>0),2).forEach(p=>{const ex=extEnding(p);const opts=shuffle([...pick(EXTINCTIONS.filter(e=>e!==ex),2).map(e=>e.name),"No catastrophe. It ended quietly.",...(ex?[ex.name]:[])]).slice(0,3);const ans=ex?ex.name:"No catastrophe. It ended quietly.";if(!opts.includes(ans))opts[0]=ans;qs.push({t:"ended",p,opts:shuffle(opts),ans});});
+  // 4 word to keep
+  pick(opened,2).forEach(p=>{const others=pick(PERIODS.filter(q=>q!==p),2).map(q=>q.word[0]);qs.push({t:"word",p,opts:shuffle([p.word[0],...others]),ans:p.word[0]});});
+  // 5 say it
+  pick(dug,2).forEach(a=>{const others=pick(ALL.filter(x=>x!==a),2).map(x=>x.name);qs.push({t:"say",a,opts:shuffle([a.name,...others]),ans:a.name});});
+  // pad to ten with more "place" and "say" questions on other finds
+  const used=new Set(qs.filter(q=>q.a).map(q=>q.a.id)); let spare=shuffle(dug.filter(a=>!used.has(a.id))); let flip=true;
+  while(qs.length<10&&spare.length){const a=spare.pop(); if(flip)qs.push({t:"place",a}); else {const others=pick(ALL.filter(x=>x!==a),2).map(x=>x.name);qs.push({t:"say",a,opts:shuffle([a.name,...others]),ans:a.name});} flip=!flip;}
+  return shuffle(qs).slice(0,10);
+}
+function startExam(){
+  if(found.size<6)return;
+  const ex={qs:buildExam(),i:0,right:0}; examStep(ex);
+}
+function examStep(ex){
+  if(ex.i>=ex.qs.length){return examEnd(ex);}
+  const q=ex.qs[ex.i]; examPick=null; renderCliff();
+  const head=`<div class="eyebrow">Prove it · question ${ex.i+1} of ${ex.qs.length}</div>`;
+  const next=()=>{ex.i++;examStep(ex);};
+  const result=(ok,explain)=>{ if(ok){ex.right++;chime();}else thud(); const m=document.getElementById("xmsg"); m.className="msg "+(ok?"good":""); m.innerHTML=(ok?"Correct. ":"No. ")+explain; panel.querySelectorAll(".opt").forEach(b=>b.disabled=true); const n=document.getElementById("xnext"); n.hidden=false; n.focus(); };
+  const foot=`<p class="msg" id="xmsg"></p><button class="btn" id="xnext" type="button" hidden>${ex.i+1<ex.qs.length?"Next":"Finish"}</button>`;
+  panel.className="panel";
+  if(q.t==="place"){
+    const p=PERIODS.find(x=>x.k===q.a.pk); let tries=0;
+    panel.innerHTML=head+`<h2>Where did this one live?</h2><div class="card"><div class="stage cleared alive">${pic(q.a)}</div><div><div class="name">${q.a.name}</div><span class="sayb">${q.a.say}</span><p style="margin-top:10px">Tap its layer on the cliff. Wrong layer and I will only tell you whether to go up or down.</p></div></div>`+foot;
+    document.querySelector(".game").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});
+    examPick=k=>{ if(k===p.k){ examPick=null; result(tries===0,`${q.a.name} lived in the ${p.name}, ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}.`); return; } tries++; const g=PERIODS.find(x=>x.k===k); const m=document.getElementById("xmsg"); m.className="msg"; m.textContent=g.start<p.start?`${g.name}? Too new. Dig deeper.`:`${g.name}? Too old. Come up.`; thud(); };
+  } else if(q.t==="older"){
+    panel.innerHTML=head+`<h2>Which one is older?</h2><div class="pair">${[q.a,q.b].map((a,i)=>`<button class="opt pairbtn" type="button" data-i="${i}">${pic(a)}<b>${a.name}</b><i>${a.say}</i></button>`).join("")}</div>`+foot;
+    panel.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.i;const pa=PERIODS.find(p=>p.k===q.a.pk),pb=PERIODS.find(p=>p.k===q.b.pk);result(i===q.ans,`${[q.a,q.b][q.ans].name} is older: ${pa.name} (${fmt(pa.start)} Ma) and ${pb.name} (${fmt(pb.start)} Ma).`);}));
+  } else if(q.t==="ended"){
+    panel.innerHTML=head+`<h2>What finished off the ${q.p.name}?</h2><span class="sayb">${q.p.say}</span><div class="opts">${q.opts.map(o=>`<button class="opt" type="button">${o}</button>`).join("")}</div>`+foot;
+    panel.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>result(b.textContent===q.ans,withSay(q.p.ended))));
+  } else if(q.t==="word"){
+    panel.innerHTML=head+`<h2>Which word is this?</h2><p class="defn">${q.p.word[2]}</p><div class="opts">${q.opts.map(o=>`<button class="opt" type="button">${o}</button>`).join("")}</div>`+foot;
+    panel.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>result(b.textContent===q.ans,`<b>${q.p.word[0]}</b> <span class="sayb" style="display:inline">${q.p.word[1]}</span>: ${q.p.word[2]}.`)));
+  } else {
+    panel.innerHTML=head+`<h2>Which name sounds like this?</h2><p class="defn"><span class="sayb" style="font-size:1.4rem;display:inline">${q.a.say}</span></p><p>Which name is this?</p><div class="opts">${q.opts.map(o=>`<button class="opt" type="button">${o}</button>`).join("")}</div>`+foot;
+    panel.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>result(b.textContent===q.ans,`${q.a.name}, ${q.a.say}.`)));
+  }
+  document.getElementById("xnext").addEventListener("click",next);
+}
+function examEnd(ex){
+  examPick=null; const passed=ex.right>=Math.ceil(ex.qs.length*0.7); if(passed){stamps++;save();renderNotebook();fanfare();}
+  panel.className="panel";
+  panel.innerHTML=`<div class="eyebrow">Prove it · done</div><h2>${ex.right} out of ${ex.qs.length}.</h2><p>${passed?"Proved. A gold star goes in your notebook.":"Seven out of ten gets the star. Go and dig something up, then come back."}</p>
+    <div class="row"><button class="btn" id="again" type="button">Again</button><button class="btn ghost" id="backc" type="button">Back to the cliff</button></div>`;
+  document.getElementById("again").addEventListener("click",startExam);
+  document.getElementById("backc").addEventListener("click",()=>openPeriod(view.k||"cambrian"));
+}
+document.getElementById("exambtn").addEventListener("click",()=>{startExam();document.querySelector(".game").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});});
+
+renderLiving(); renderNotebook();
+const h=location.hash.replace("#","");
+if(PERIODS.some(p=>p.k===h)) openPeriod(h); else if(EXTINCTIONS.some(e=>e.k===h)) openExt(h); else openPeriod("cambrian");
+</script>
