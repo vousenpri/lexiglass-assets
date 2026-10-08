@@ -306,7 +306,14 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .foot{margin-top:28px;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--yellow);pointer-events:none;animation:fly .9s ease-out forwards}
 @keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
-@media (prefers-reduced-motion:reduce){.spark{display:none}.stage img,.stage .slab{transition:none}.sizer .r .b i{transition:none}}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti i{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;opacity:.95;animation:drop var(--t) cubic-bezier(.2,.6,.3,1) var(--d) forwards;transform:translate(0,-20px) rotate(0)}
+@keyframes drop{0%{transform:translate(0,-20px) rotate(0);opacity:1}100%{transform:translate(var(--x),105vh) rotate(var(--r));opacity:.9}}
+.msg.good{animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.h2-cheer{display:inline-block;animation:cheer .6s ease-out}
+@keyframes cheer{0%{transform:scale(.6) rotate(-6deg);opacity:0}60%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@media (prefers-reduced-motion:reduce){.spark{display:none}.confetti{display:none}.stage img,.stage .slab{transition:none}.sizer .r .b i{transition:none}}
 </style>
 
 <div class="brand">Lexiglass &nbsp;·&nbsp; Deep Time</div>
@@ -689,6 +696,10 @@ const SAYRE = new RegExp("\\b("+Object.keys(SAY).join("|")+")\\b","g");
 const withSay = t => t.replace(SAYRE, m=>lex(m,SAY[m]));
 const fmt = n => n >= 1 ? n.toLocaleString("en-US") : n.toString();
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const CONF=["#E0B340","#C9502A","#4C6B3A","#2F6F8F","#FFF8EE","#B8651E"];
+function confetti(n=60,big=false){ if(REDUCED)return; const c=document.createElement("div"); c.className="confetti"; c.setAttribute("aria-hidden","true");
+  for(let i=0;i<n;i++){const p=document.createElement("i"); const t=(big?2.6:1.8)+Math.random()*1.2; p.style.cssText=`left:${Math.random()*100}vw;background:${CONF[i%CONF.length]};--x:${(Math.random()*160-80).toFixed(0)}px;--r:${(Math.random()*900-450).toFixed(0)}deg;--t:${t.toFixed(2)}s;--d:${(Math.random()*(big?.9:.3)).toFixed(2)}s;width:${6+Math.random()*7|0}px;height:${10+Math.random()*8|0}px`; c.appendChild(p);}
+  document.body.appendChild(c); setTimeout(()=>c.remove(),(big?4500:3200)); }
 const LAYERS = [...PERIODS].reverse(); // youngest first
 const ALL = PERIODS.flatMap(p=>p.animals.map(a=>({...a, pk:p.k, id:p.k+"/"+a.name})));
 const byId = id => ALL.find(a=>a.id===id);
@@ -860,7 +871,7 @@ function renderChallenge(p,a){
   const box=document.getElementById("chal"); const c=buildChallenge(a); if(!c){box.remove();return;}
   box.innerHTML=`<div class="eyebrow">Quick one · ◆</div><b>${c.q}</b><p>${c.sub}</p><div class="opts">${c.opts.map(o=>`<button class="opt" type="button">${o}</button>`).join("")}</div><button class="linkbtn skip" type="button">Skip it</button>`;
   box.querySelector(".skip").addEventListener("click",()=>box.remove());
-  box.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>{const ok=btn.textContent===c.ans; if(ok){clues++;save();renderNotebook();clink();}else thud();
+  box.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>{const ok=btn.textContent===c.ans; if(ok){clues++;save();renderNotebook();clink();confetti(35);}else thud();
     box.innerHTML=`<div class="eyebrow">${ok?"Cracked it · ◆":"Not that one"}</div><p>${withSay(ok?c.right:c.wrong)}</p><button class="btn ghost" type="button">Carry on</button>`;
     box.querySelector(".btn").addEventListener("click",()=>box.remove());}));
 }
@@ -1153,7 +1164,7 @@ function examStep(ex){
   const q=ex.qs[ex.i]; examPick=null; renderCliff();
   const head=`<div class="eyebrow">Prove it · question ${ex.i+1} of ${ex.qs.length}</div>`;
   const next=()=>{ex.i++;examStep(ex);};
-  const result=(ok,explain)=>{ if(ok){ex.right++;chime();}else thud(); const m=document.getElementById("xmsg"); m.className="msg "+(ok?"good":""); m.innerHTML=(ok?"Correct. ":"No. ")+explain; panel.querySelectorAll(".opt").forEach(b=>b.disabled=true); const n=document.getElementById("xnext"); n.hidden=false; n.focus(); };
+  const result=(ok,explain)=>{ if(ok){ex.right++;chime();confetti(50);}else thud(); const m=document.getElementById("xmsg"); m.className="msg "+(ok?"good":""); m.innerHTML=(ok?"Correct. ":"No. ")+explain; panel.querySelectorAll(".opt").forEach(b=>b.disabled=true); const n=document.getElementById("xnext"); n.hidden=false; n.focus(); };
   const foot=`<p class="msg" id="xmsg"></p><button class="btn" id="xnext" type="button" hidden>${ex.i+1<ex.qs.length?"Next":"Finish"}</button>`;
   panel.className="panel";
   if(q.t==="place"){
@@ -1177,9 +1188,9 @@ function examStep(ex){
   document.getElementById("xnext").addEventListener("click",next);
 }
 function examEnd(ex){
-  examPick=null; const passed=ex.right>=Math.ceil(ex.qs.length*0.7); if(passed){stamps++;save();renderNotebook();fanfare();}
+  examPick=null; const passed=ex.right>=Math.ceil(ex.qs.length*0.7); if(passed){stamps++;save();renderNotebook();fanfare();confetti(220,true);}
   panel.className="panel";
-  panel.innerHTML=`<div class="eyebrow">Prove it · done</div><h2>${ex.right} out of ${ex.qs.length}.</h2><p>${passed?"Proved. A gold star goes in your notebook.":"Five out of seven gets the star. Go and dig something up, then come back."}</p>
+  panel.innerHTML=`<div class="eyebrow">Prove it · done</div><h2>${passed?`<span class="h2-cheer">⭐</span> `:""}${ex.right} out of ${ex.qs.length}.</h2><p>${passed?"Proved. A gold star goes in your notebook.":"Five out of seven gets the star. Go and dig something up, then come back."}</p>
     <div class="row"><button class="btn" id="again" type="button">Again</button><button class="btn ghost" id="backc" type="button">Back to the cliff</button></div>`;
   document.getElementById("again").addEventListener("click",startExam);
   document.getElementById("backc").addEventListener("click",()=>openPeriod(view.k||"cambrian"));
