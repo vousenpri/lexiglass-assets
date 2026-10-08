@@ -317,8 +317,8 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   </div>
   <button class="iconbtn" id="sound" type="button" aria-pressed="true">Sound on</button>
 </div>
-<p class="lede">This cliff is 539 million years deep and it is full of bones. You are the one with the brush. Tap any layer to go there: how it started, who lived in it (dig them up, four to thirteen a layer), and how it all went wrong. The thin red stripes are the five times nearly everything died. Deeper is older. Mind the Permian.</p>
-<div class="start"><button class="btn start-btn" id="startdig" type="button">Start digging →</button><span class="start-note" id="startnote"></span></div>
+<p class="lede">This cliff is 539 million years deep and it is full of bones. Grab your trowel and brush up on every layer. Tap any layer to go there: how it started, who lived in it (dig them up, four to thirteen a layer), and how it all went wrong. The thin red stripes are the five times nearly everything died. Deeper is older. Mind the extinctions.</p>
+<div class="start"><button class="btn start-btn" id="startdig" type="button">Start digging →</button></div>
 <div class="hero"><figure class="drift" id="drift" aria-label="The continents drifting from the Cambrian to today">
   <div class="drift-stack" id="drift-stack"></div>
   <figcaption><span class="drift-name" id="drift-name"></span><span class="drift-ma" id="drift-ma"></span><button class="drift-btn" id="drift-btn" type="button" aria-label="Pause">❚❚</button></figcaption>
@@ -431,7 +431,7 @@ const PERIODS = [
   ]},
  {k:"devonian", pins:["euramerica", "gondwana", "siberia", "rheic", "panthalassa"], pos:{"euramerica": [32, 30], "gondwana": [65, 72], "siberia": [85, 15], "rheic": [55, 52], "panthalassa": [14, 62]}, world:"a big red desert continent in the north, Gondwana in the south, and the ocean between them closing like a door", say:"dih-VOH-nee-un", name:"Devonian", era:"Paleozoic", start:419, end:359, color:"#A89CB6",
   began:"The Age of Fishes. Armoured fish, sharks, fish with lungs, fish with fins like legs. On land the plants figure out wood, and the first forests go up. Under them, the first insects and spiders scurry about.",
-  ended:"The second of the Big Five, and one suspect is trees. The new forests pushed roots into rock, which washed food into the sea, which fed gigantic blooms of algae, which rotted and used up the oxygen. The sea suffocated, probably. Three in four species died, including every single armoured fish. Reefs did not fully recover for 100 million years.",
+  ended:"The second of the Big Five, and the prime suspect is trees. The new forests pushed roots into rock, which washed food into the sea, which fed gigantic blooms of algae, which rotted and used up the oxygen. The sea suffocated. Three in four species died, including every single armoured fish. Reefs did not fully recover for 100 million years.",
   word:["armour","AR-mer","a hard covering that protects the body"],
   animals:[
    {name:"Dunkleosteus", sfx:["deep", "whoosh", "jawsnap"], say:"dun-kul-OSS-tee-us", latin:"an armoured fish", img:"devonian", size:{v:4,kind:"long"},
@@ -653,11 +653,11 @@ const EXTINCTIONS = [
   cause:"Blame the ice. The giant southern continent, Gondwana, drifted over the South Pole and froze. Ice locked up so much water that the sea level fell and the shallow seas drained away, and the shallow seas were where nearly everything lived. Imagine the bath emptying while you are still in it. Then the ice melted and the water came back all at once.",
   survivors:[["Deep-water animals", "When the shallows drained, the animals already living deep and cold hardly noticed."], ["Animals that lived everywhere", "If you lived in ten places and lost nine, you still had one. Specialists with one home had none."], ["Fish", "Before this, fish were nobodies. Afterwards, with the competition gone, they took over the sea. The Age of Fishes starts here."]]},
  {k:"late-devonian", after:"carboniferous", name:"Late Devonian extinction", when:372, rank:"2nd of the Big Five", toll:"about 75% of species",
-  cause:"One suspect: trees. The first forests pushed roots down into rock and broke it into soil. Rain washed the soil's goodness into the sea. The sea bloomed with algae. The algae died and rotted, and rotting uses up oxygen. The sea suffocated, over and over, for millions of years. The trees are one suspect among several, and they have not confessed. The reefs collapsed and did not properly grow back for 100 million years. Nobody meant it. The trees were just being trees.",
+  cause:"Prime suspect: trees. The first forests pushed roots down into rock and broke it into soil. Rain washed the soil's goodness into the sea. The sea bloomed with algae. The algae died and rotted, and rotting uses up oxygen. The sea suffocated, over and over, for millions of years. The trees have not confessed, and there are other suspects. The reefs collapsed and did not properly grow back for 100 million years. Nobody meant it. The trees were just being trees.",
   survivors:[["Sharks and ray-finned fish", "Fast swimmers that could move to wherever the water still had air. The armoured fish, like Dunkleosteus, were too slow and heavy to follow, and every one of them died."], ["Freshwater animals", "Rivers and lakes kept their oxygen when the deep sea lost it."], ["The fish with legs", "Lobe-finned fish like Tiktaalik, already half out of the water. Their close relatives are the first animals to walk on land. And, a long way down the line, you."]]},
  {k:"end-permian", after:"triassic", name:"End-Permian extinction", nick:"the Great Dying", when:252, rank:"3rd of the Big Five, the worst ever", toll:"about 90% of sea species and 70% of land vertebrates",
   cause:"Here is how to nearly end life on Earth. Step one: set fire to Siberia. Not the trees, the ground. Volcanoes pour out lava across an area the size of Europe for hundreds of thousands of years, and the lava burns through coal buried underneath. Step two: fill the sky with the smoke. The planet heats up by about ten degrees. The sea turns sour and runs out of air. Step three: wait. Nine in ten sea species, gone. Seven in ten on land, gone. Ten million years before the planet is properly alive again. Nobody did this on purpose. It was just the ground.",
-  survivors:[["Lystrosaurus", "Pig-sized, lived in a hole, ate anything. Nobody saw it happen, but the clues point one way: a burrow to hide from the heat, a beak for the tough weeds that were left, and a barrel chest that may have helped with thin air. Afterwards it was most of the animals on Earth, for a million years, by default."], ["Small animals with boring diets", "Big fussy eaters died first. Small animals that would eat anything and could hide underground squeaked through. Lesson: do not be fussy."], ["Diggers in the seabed", "Clams and snails that burrow into the mud survived far better than the reef builders, who were stuck in one place and could not leave."]]},
+  survivors:[["Lystrosaurus", "Pig-sized, lived in a hole, ate anything. A burrow to hide from the heat, a beak for the tough weeds that were left, and a barrel chest for thin air. Afterwards it was most of the animals on Earth, for a million years, by default."], ["Small animals with boring diets", "Big fussy eaters died first. Small animals that would eat anything and could hide underground squeaked through. Lesson: do not be fussy."], ["Diggers in the seabed", "Clams and snails that burrow into the mud survived far better than the reef builders, who were stuck in one place and could not leave."]]},
  {k:"end-triassic", after:"jurassic", name:"End-Triassic extinction", when:201, rank:"4th of the Big Five", toll:"about 75% of species",
   cause:"Blame the crack. Pangaea started to split, and the split ran right through it, pouring out lava across what is now the coasts of four continents. Carbon filled the sky again, the sea went sour again, the weather swung wildly. Three in four species died. The big crocodile-cousins who had ruled the land for 50 million years were finished.",
   survivors:[["Dinosaurs", "Until now they had been small fry next to the croc-cousins. But they grew fast, stood upright, and breathed with air sacs like a bird's, which work well when the air is thin. When the rulers died, the dinosaurs took every empty job. They kept them for 135 million years."], ["The first mammals", "Mouse-sized, warm-blooded, awake at night, eating insects. They stayed small and quiet for another 135 million years, waiting."], ["Turtles and crocodile ancestors", "Slow bodies, slow lives, and water to hide in. Both are still here. Both have outlasted the dinosaurs."]]},
@@ -883,7 +883,7 @@ function renderChallenge(p,a){
   function show(k){ i=(k+PERIODS.length)%PERIODS.length; const p=PERIODS[i];
     [...st.children].forEach((im,j)=>im.classList.toggle("on",j===i)); [...bar.children].forEach((b,j)=>b.classList.toggle("on",j<=i));
     if(kb) kb.querySelectorAll(".key-row,.key-bar").forEach(r=>r.classList.toggle("on",r.dataset.k===p.k));
-    window.driftPeriod=p; const sn=document.getElementById("startnote"); if(sn){const left=p.animals.filter(a=>!found.has(p.k+"/"+a.name)).length; sn.textContent=left?`${p.name} · ${left} still buried`:`${p.name} · all found, try the next layer`;}
+    window.driftPeriod=p; 
     nm.textContent=p.name; ma.textContent=p.end===0?`${fmt(p.start)} million years ago to today`:`${fmt(p.start)} to ${fmt(p.end)} million years ago`; }
   function tick(){ show(i+1); }
   function play(){ on=true; btn.textContent="❚❚"; btn.setAttribute("aria-label","Pause"); clearInterval(timer); timer=setInterval(tick,HOLD); }
@@ -1048,7 +1048,7 @@ function showCard(p,a,fresh=false){
         <ul class="facts">${a.facts.map(f=>`<li>${withSay(f)}</li>`).join("")}</ul>
       </div>
     </div>
-    ${fresh&&found.size>=3&&found.size%3===0&&chalSeen<found.size?`<div class="chal" id="chal"></div>`:""}
+    ${fresh&&found.size>=6&&found.size%6===0&&chalSeen<found.size?`<div class="chal" id="chal"></div>`:""}
     <div class="row">${nextA?`<button class="btn" id="next" type="button">Dig the next one →</button>`:nextP?`<button class="btn" id="next" type="button">All found here. Up to the ${nextP.name} →</button>`:""}<button class="btn ghost" id="back" type="button">Back to the ${p.name} dig site</button><span class="eyebrow">${[...found].filter(x=>x.startsWith(p.k+"/")).length} of ${p.animals.length} found here</span></div>`;
   if(document.getElementById("chal")){chalSeen=found.size;save();renderChallenge(p,a);}
   const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",()=>{ if(nextA)startDig(p,nextA); else openPeriod(nextP.k); });
@@ -1116,7 +1116,7 @@ function renderNotebook(){
     if(done){d.setAttribute("role","button");d.tabIndex=0;const go=()=>showCard(p,a);d.addEventListener("click",go);d.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});}
     g.appendChild(d);
   }));
-  const eb=document.getElementById("exambtn"); eb.disabled=found.size<6; eb.title=found.size<6?`Dig up 6 things first (${6-found.size} to go)`:"Ten questions. Only about things you have dug up. No tricks."; const en=document.getElementById("examnote"); if(en) en.textContent=found.size<6?`Dig up ${6-found.size} more to unlock the exam`:"Ten questions, only on what you dug up";
+  const eb=document.getElementById("exambtn"); eb.disabled=found.size<6; eb.title=found.size<6?`Dig up 6 things first (${6-found.size} to go)`:"Seven questions. Only about things you have dug up. No tricks."; const en=document.getElementById("examnote"); if(en) en.textContent=found.size<6?`Dig up ${6-found.size} more to unlock the exam`:"Seven questions, only on what you dug up";
   document.getElementById("stamps").textContent="★".repeat(Math.min(stamps,12))+(clues?` ◆${clues}`:"");
   const n=found.size, rank=[...RANKS].reverse().find(([m])=>n>=m)[1], next=RANKS.find(([m])=>m>n);
   document.getElementById("rank").innerHTML=`${n} of ${ALL.length} finds · <b>${rank}</b>${next?` · ${next[0]-n} more to ${next[1]}`:" · the whole cliff is yours. Show-off."}`;
@@ -1141,8 +1141,8 @@ function buildExam(){
   pick(dug,2).forEach(a=>{const others=pick(ALL.filter(x=>x!==a),2).map(x=>x.name);qs.push({t:"say",a,opts:shuffle([a.name,...others]),ans:a.name});});
   // pad to ten with more "place" and "say" questions on other finds
   const used=new Set(qs.filter(q=>q.a).map(q=>q.a.id)); let spare=shuffle(dug.filter(a=>!used.has(a.id))); let flip=true;
-  while(qs.length<10&&spare.length){const a=spare.pop(); if(flip)qs.push({t:"place",a}); else {const others=pick(ALL.filter(x=>x!==a),2).map(x=>x.name);qs.push({t:"say",a,opts:shuffle([a.name,...others]),ans:a.name});} flip=!flip;}
-  return shuffle(qs).slice(0,10);
+  while(qs.length<7&&spare.length){const a=spare.pop(); if(flip)qs.push({t:"place",a}); else {const others=pick(ALL.filter(x=>x!==a),2).map(x=>x.name);qs.push({t:"say",a,opts:shuffle([a.name,...others]),ans:a.name});} flip=!flip;}
+  return shuffle(qs).slice(0,7);
 }
 function startExam(){
   if(found.size<6)return;
@@ -1179,7 +1179,7 @@ function examStep(ex){
 function examEnd(ex){
   examPick=null; const passed=ex.right>=Math.ceil(ex.qs.length*0.7); if(passed){stamps++;save();renderNotebook();fanfare();}
   panel.className="panel";
-  panel.innerHTML=`<div class="eyebrow">Prove it · done</div><h2>${ex.right} out of ${ex.qs.length}.</h2><p>${passed?"Proved. A gold star goes in your notebook.":"Seven out of ten gets the star. Go and dig something up, then come back."}</p>
+  panel.innerHTML=`<div class="eyebrow">Prove it · done</div><h2>${ex.right} out of ${ex.qs.length}.</h2><p>${passed?"Proved. A gold star goes in your notebook.":"Five out of seven gets the star. Go and dig something up, then come back."}</p>
     <div class="row"><button class="btn" id="again" type="button">Again</button><button class="btn ghost" id="backc" type="button">Back to the cliff</button></div>`;
   document.getElementById("again").addEventListener("click",startExam);
   document.getElementById("backc").addEventListener("click",()=>openPeriod(view.k||"cambrian"));
