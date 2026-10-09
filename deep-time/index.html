@@ -339,7 +339,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="key-body" id="key-body"><div class="key-bars" id="key-bars"></div><svg class="key-lead" id="key-lead" aria-hidden="true"></svg><div class="key-labels" id="key-labels"></div></div>
   <div class="key-foot">drawn to scale · deeper is older</div>
 </div></div>
-<div class="listen" id="listen"><div><div class="eyebrow">Or have it read to you</div><b>The whole chapter, out loud. 57 minutes.</b><span>Every layer, every extinction, every living fossil. Press play and dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div>
+<div class="listen" id="listen"><div><div class="eyebrow">Or have it read to you</div><b>The whole chapter, out loud. 66 minutes.</b><span>Every layer, every extinction, every living fossil. Press play and dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div>
 <section class="why" aria-label="Why study the geologic time scale">
   <div class="eyebrow">Why learn this?</div>
   <h2>The Earth kept a diary. Nobody was supposed to read it.</h2>
@@ -863,9 +863,9 @@ function buildChallenge(cur){
     wrong:`Other way round. ${older.name} is from the ${periodOf(older).name}, ${fmt(periodOf(older).start)} million years ago; ${(older===cur?b:cur).name} turned up in the ${periodOf(older===cur?b:cur).name}. ${TEMPT[(older===cur?b:cur).name]||"Deeper is older, even when the deeper one looks cleverer."}`};}
   if(t==="met"){const b=pick(others,1)[0]; const pa=periodOf(cur),pb=periodOf(b); const same=pa===pb; const older=pa.start>pb.start?pa:pb, younger=older===pa?pb:pa; const gap=older.end-younger.start;
     const trexYou=66; const cmp=gap>trexYou?`That is a bigger gap than between T. rex and you.`:gap>0?`That is ${gap} million years of nobody to talk to.`:``;
-    return {t,a:cur,b,ans:same?"Yes":"No",q:`Could these two have met?`, sub:`${cur.name} and ${b.name}. Same world, or different ones?`, opts:["Yes","No"],
-    right: same?`Yes. Both from the ${pa.name}. Mind you, a layer can be ${pa.start-pa.end} million years thick, so "same layer" is a loose sort of neighbour.`:`No. ${(older===pa?cur:b).name} was gone ${gap>0?gap+" million years":"long"} before ${(older===pa?b:cur).name} was born. ${cmp}`,
-    wrong: same?`They could, actually. Both ${pa.name}. The cliff is honest: same layer, same world, give or take a few million years.`:`Never. ${(older===pa?cur:b).name} is ${older.name}, ${(older===pa?b:cur).name} is ${younger.name}. ${gap>0?gap+" million years apart. "+cmp:"Different layers, different worlds."}`};}
+    return {t,a:cur,b,ans:same?"Yes":"No",q:`Same layer of the cliff?`, sub:`${cur.name} and ${b.name}. Dug out of the same layer, or different ones?`, opts:["Yes","No"],
+    right: same?`Yes. Both from the ${pa.name}. That does not mean they met: the ${pa.name} is ${pa.start-pa.end} million years thick, and two animals from the same layer can be further apart in time than you and the last T. rex.`:`No. ${(older===pa?cur:b).name} was gone ${gap>0?gap+" million years":"long"} before ${(older===pa?b:cur).name} was born. ${cmp}`,
+    wrong: same?`Same layer, actually. Both ${pa.name}. Whether they ever met is another question; a layer that thick holds a lot of strangers.`:`Never. ${(older===pa?cur:b).name} is ${older.name}, ${(older===pa?b:cur).name} is ${younger.name}. ${gap>0?gap+" million years apart. "+cmp:"Different layers, different worlds."}`};}
   const d=DIET[cur.name]; const correct=DIET_WORD[d[0]]; const opts=shuffle([...new Set([correct,...shuffle(Object.values(DIET_WORD).filter(x=>x!==correct)).slice(0,2)])]);
   return {t,a:cur,ans:correct,q:`What did it eat?`, sub:`Look at the picture. What is the clue?`, opts,
     right:`${correct}. The giveaway: ${d[1]}.`, wrong:`Look again: ${d[1]}. That says ${correct.toLowerCase()}.`};
@@ -1014,7 +1014,7 @@ function startDig(p,a){
   panel.innerHTML=`<div class="eyebrow">${p.name} · digging</div>
     <h2>There is something in this rock.</h2>
     <p>Take your trowel and scrape the rock away. Carefully. It has waited a long time.</p>
-    <div class="stage" id="stage">${pic(a)}<canvas class="rock" id="rock" width="520" height="520"></canvas><canvas class="fx" id="fx" width="520" height="520"></canvas></div>
+    <div class="stage" id="stage">${pic(a)}<canvas class="rock" id="rock" width="520" height="520" tabindex="0" role="img" aria-label="Rock face. Press space or enter to scrape, or drag with a pointer."></canvas><canvas class="fx" id="fx" width="520" height="520"></canvas></div>
     <div class="meter"><i id="meter"></i></div>
     <p class="msg" id="msg"></p>
     <button class="btn ghost" id="back" type="button">Back to ${p.name}</button>`;
@@ -1038,6 +1038,7 @@ function startDig(p,a){
   cv.addEventListener("pointermove",e=>{if(!down)return;const q=pt(e);brush(last,q);spawn(q.x,q.y);last=q;if(++strokes%6===0)measure();});
   const up=()=>{if(!down)return;down=false;scrape(false);measure();};
   cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",up);cv.addEventListener("lostpointercapture",up);
+  let ky=28; cv.addEventListener("keydown",e=>{ if(e.key!==" "&&e.key!=="Enter")return; e.preventDefault(); const y=ky; brush({x:0,y},{x:W,y}); spawn(W/2,y); ky=(ky+52)%H; scrape(true); setTimeout(()=>scrape(false),150); measure(); });
   function finish(){ if(finished)return; finished=true; scrape(false);
     document.getElementById("stage").classList.add("cleared"); clink();
     document.getElementById("msg").className="msg good"; document.getElementById("msg").textContent="Got it.";
