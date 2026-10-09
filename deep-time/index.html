@@ -147,7 +147,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .lex i{font-style:normal;font-family:var(--sans);font-weight:500;font-size:.62em;letter-spacing:.04em;color:var(--copper);margin-left:.35em;vertical-align:1px}
 .dur{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:-2px 0 14px;display:grid;gap:5px}
 .dur .r{display:flex;align-items:center;gap:10px}.dur i{display:block;height:6px;background:var(--ink);border-radius:3px;flex:0 0 auto}.dur .ref i{width:160px;background:var(--rule)}.dur .ref span{opacity:.8}
-@media (max-width:760px){.hero{grid-template-columns:1fr}.key{display:none}.ext{height:28px}}
+.nb-code{border:1px dashed var(--rule);border-radius:14px;padding:12px 14px;margin:8px 0 12px;font-family:var(--sans);font-size:13px}.nb-code .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}.nb-code code{font-family:ui-monospace,Menlo,monospace;font-size:14px;letter-spacing:.06em;background:var(--cream);padding:6px 10px;border-radius:8px;overflow-wrap:anywhere}.nb-code input{flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;font:inherit}
 .nb-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px}.nb-actions .btn{font-size:1.05rem}.nb-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}.reset{margin-left:auto;border:1px solid var(--rule)}.reset.arm{color:#fff;background:var(--copper);border-color:var(--copper);font-weight:600}
 .chal{background:var(--cream);border:1px solid var(--gold);border-radius:14px;padding:14px 16px;margin-top:4px}.chal b{font-family:var(--serif);font-size:1.4rem;font-weight:600;display:block;line-height:1.1;margin:4px 0 2px}.chal p{margin:4px 0 10px}.chal .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.chal .skip{font-size:.85rem;opacity:.7}
 .start{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 2px}.start-btn{font-size:1.15rem;padding:12px 22px}.start-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
@@ -321,6 +321,8 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .h2-cheer{display:inline-block;animation:cheer .6s ease-out}
 @keyframes cheer{0%{transform:scale(.6) rotate(-6deg);opacity:0}60%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
 @media (prefers-reduced-motion:reduce){.spark{display:none}.confetti{display:none}.stage img,.stage .slab{transition:none}.sizer .r .b i{transition:none}}
+/* phone overrides, last so they win */
+@media (max-width:760px){.hero{grid-template-columns:1fr}.key{display:none}.ext{height:28px}}
 </style>
 </head>
 <body>
@@ -395,7 +397,8 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 
 <section class="notebook" aria-label="Field notebook">
   <div class="nb-head"><h3>Your field notebook</h3><div class="nb-right"><span class="rank" id="rank"></span><span class="stamps" id="stamps" aria-label="Field exams passed"></span></div></div>
-  <div class="nb-actions"><button class="btn" id="exambtn" type="button">Prove it →</button><span class="nb-note" id="examnote"></span><button class="btn ghost reset" id="resetbtn" type="button">Start again</button></div>
+  <div class="nb-actions"><button class="btn" id="exambtn" type="button">Prove it →</button><span class="nb-note" id="examnote"></span><button class="btn ghost" id="codebtn" type="button">Notebook code</button><button class="btn ghost reset" id="resetbtn" type="button">Start again</button></div>
+  <div class="nb-code" id="nbcode" hidden><p>Your notebook as a code. Write it down or send it to another device; typing it in there brings every find back.</p><div class="row"><code id="codeout"></code><button class="btn ghost" id="codecopy" type="button">Copy</button></div><div class="row"><input id="codein" type="text" placeholder="Paste a code" autocomplete="off" spellcheck="false"><button class="btn ghost" id="codeload" type="button">Restore</button></div><p class="msg" id="codemsg"></p></div>
   <div class="nb-grid" id="nb-grid"></div>
 </section>
 <div class="foot"><span>See more in every layer</span></div>
@@ -461,7 +464,7 @@ const PERIODS = [
    {"name": "Coelacanth", "say": "SEE-luh-kanth", "latin": "\"hollow spine\"", "img": "devonian-coelacanth", "size": {"v": 1.5, "kind": "long"}, "sfx": ["deep", "whoosh", "bubbles"], "living": true, "facts": ["A fish with arms. Its fins have bones in them like a leg and it moves them in turn, left-right, like walking.", "Everyone agreed it died out 66 million years ago. In 1938 a museum lady in South Africa found one on a fishing boat. Everyone had to say sorry to the fish."]}
   ]},
  {k:"carboniferous", pins:["pangaea", "southice", "coalswamp", "tethys", "panthalassa"], pos:{"pangaea": [44, 30], "southice": [46, 80], "coalswamp": [46, 50], "tethys": [72, 45], "panthalassa": [86, 70]}, world:"everything crunches together. Ice on the bottom, swamps round the middle", say:"kar-buh-NIF-er-us", name:"Carboniferous", era:"Paleozoic", start:359, end:299, color:"#839B82",
-  began:"Swamp world. Steaming forests of giant ferns and tree-sized horsetails cover the land. The air has so much oxygen that insects grow as big as birds and millipedes as long as cars. When the trees fall, they do not rot properly; they pile up and become the coal we dig today. Most of the coal on Earth is Carboniferous trees.",
+  began:"Swamp world. Steaming forests of giant ferns and tree-sized horsetails cover the land. The air has so much oxygen that insects grow as big as birds and millipedes as long as cars. When the trees fall, they do not rot properly; they pile up and become the coal we dig today. Much of the coal we dig today is these trees.",
   ended:"The rainforests collapsed. The climate turned dry and cold, the swamps broke up into islands, and the amphibians who had to lay their eggs in water were in trouble. The reptiles were not. Their eggs had shells. Small change, big winners.",
   word:["wingspan","WING-span","the distance from one wing tip to the other"],
   animals:[
@@ -660,7 +663,7 @@ const GEO = {
   beringia:{name:"Beringia", say:"beh-RIN-jee-uh", line:"When the sea was 120 metres lower, you could walk from Siberia to Alaska without getting your feet wet. Mammoths did. So did the first people in the Americas."},
   icesheet:{name:"Ice sheet", say:"ICE sheet", line:"Ice up to 3 kilometres thick on top of Canada, the northern United States, Scandinavia and Britain. The weight pushed the land down. It is still springing back up."},
   southice:{name:"Southern ice cap", say:"SUTH-ern ICE kap", line:"Gondwana's bottom end froze solid over the South Pole. The ice locked up so much water that the seas dropped around the world."},
-  coalswamp:{name:"Equatorial swamps", say:"ee-kwuh-TOR-ee-ul SWOMPS", line:"The swampy forests strung along the equator. Most of the coal on Earth is these trees."},
+  coalswamp:{name:"Equatorial swamps", say:"ee-kwuh-TOR-ee-ul SWOMPS", line:"The swampy forests strung along the equator. Much of the coal we dig today is these trees."},
   antarctica:{name:"Antarctica", say:"ant-ARK-tih-kuh", line:"It used to have forests. Once Australia pulled away, cold currents circled it, and it froze into the biggest ice cube on Earth."}
 };
 
@@ -720,6 +723,14 @@ let pendingReveal=null; const cancelReveal=()=>{if(pendingReveal){clearTimeout(p
 let found = new Set(); let soundOn = true; let examPick = null; let stamps = 0; let clues = 0; let chalSeen = 0; let scaled = false; let view = {type:"period", k:"cambrian"};
 try{const s=JSON.parse(localStorage.getItem("gts2")||"null"); if(s){const known=new Set(ALL.map(a=>a.id)); found=new Set((Array.isArray(s.found)?s.found:[]).filter(x=>known.has(x))); if(typeof s.sound==="boolean")soundOn=s.sound; if(typeof s.stamps==="number")stamps=s.stamps; if(typeof s.clues==="number")clues=s.clues; if(typeof s.chalSeen==="number")chalSeen=s.chalSeen;}}catch(e){}
 const save=()=>{try{localStorage.setItem("gts2",JSON.stringify({found:[...found],sound:soundOn,stamps,clues,chalSeen}))}catch(e){}};
+const B36="0123456789abcdefghijklmnopqrstuvwxyz";
+function notebookCode(){ let bits=0n; ALL.forEach((a,i)=>{if(found.has(a.id))bits|=(1n<<BigInt(i));}); let m=bits.toString(36); const raw=`${m}-${stamps}-${clues}`; let sum=0; for(const ch of raw)sum=(sum*31+ch.charCodeAt(0))%1296; return `GT-${raw}-${B36[sum/36|0]}${B36[sum%36]}`.toUpperCase(); }
+function loadCode(txt){ const t=(txt||"").trim().toLowerCase().replace(/\s+/g,""); const m=t.match(/^gt-([0-9a-z]+)-(\d+)-(\d+)-([0-9a-z]{2})$/); if(!m)return false; const raw=`${m[1]}-${m[2]}-${m[3]}`; let sum=0; for(const ch of raw)sum=(sum*31+ch.charCodeAt(0))%1296; if(B36[sum/36|0]+B36[sum%36]!==m[4])return false; let bits=0n; for(const ch of m[1]){bits=bits*36n+BigInt(B36.indexOf(ch));} const f=new Set(); ALL.forEach((a,i)=>{if((bits>>BigInt(i))&1n)f.add(a.id);}); found=f; stamps=+m[2]; clues=+m[3]; chalSeen=found.size; save(); return true; }
+(function(){ const btn=document.getElementById("codebtn"), box=document.getElementById("nbcode"), out=document.getElementById("codeout"), inp=document.getElementById("codein"), msg=document.getElementById("codemsg"); if(!btn)return;
+  btn.addEventListener("click",()=>{ box.hidden=!box.hidden; if(!box.hidden){out.textContent=notebookCode(); msg.textContent=""; box.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"nearest"});} });
+  document.getElementById("codecopy").addEventListener("click",async()=>{ try{await navigator.clipboard.writeText(out.textContent); msg.className="msg good"; msg.textContent="Copied.";}catch(e){ msg.className="msg"; msg.textContent="Select the code and copy it by hand."; } });
+  document.getElementById("codeload").addEventListener("click",()=>{ if(loadCode(inp.value)){ renderCliff(); renderNotebook(); openPeriod(PERIODS[0].k); out.textContent=notebookCode(); msg.className="msg good"; msg.textContent=`Restored. ${found.size} finds back in the notebook.`; } else { msg.className="msg"; msg.textContent="That code did not work. Check it and try again."; } });
+})();
 
 /* ---------- sound (synthesised, no files) ---------- */
 let AC=null, scrapeNode=null;
@@ -872,8 +883,8 @@ function buildChallenge(cur){
   if(t==="met"){const b=pick(others,1)[0]; const pa=periodOf(cur),pb=periodOf(b); const same=pa===pb; const older=pa.start>pb.start?pa:pb, younger=older===pa?pb:pa; const gap=older.end-younger.start;
     const trexYou=66; const cmp=gap>trexYou?`That is a bigger gap than between T. rex and you.`:gap>0?`That is ${gap} million years of nobody to talk to.`:``;
     return {t,a:cur,b,ans:same?"Yes":"No",q:`Same layer of the cliff?`, sub:`${cur.name} and ${b.name}. Dug out of the same layer, or different ones?`, opts:["Yes","No"],
-    right: same?`Yes. Both from the ${pa.name}. That does not mean they met: the ${pa.name} is ${pa.start-pa.end} million years thick, and two animals from the same layer can be further apart in time than you and the last T. rex.`:`No. ${(older===pa?cur:b).name} was gone ${gap>0?gap+" million years":"long"} before ${(older===pa?b:cur).name} was born. ${cmp}`,
-    wrong: same?`Same layer, actually. Both ${pa.name}. Whether they ever met is another question; a layer that thick holds a lot of strangers.`:`Never. ${(older===pa?cur:b).name} is ${older.name}, ${(older===pa?b:cur).name} is ${younger.name}. ${gap>0?gap+" million years apart. "+cmp:"Different layers, different worlds."}`};}
+    right: same?`Yes. Both from the ${pa.name}. That does not mean they met: the ${pa.name} is ${pa.start-pa.end} million years thick, and two animals from the same layer can be further apart in time than you and the last T. rex.`:`No. ${(older===pa?cur:b).name} is filed under the ${older.name}, ${(older===pa?b:cur).name} under the ${younger.name}. ${gap>0?`The layers are ${gap} million years apart. `+cmp:"Next-door layers, different worlds."}`,
+    wrong: same?`Same layer, actually. Both ${pa.name}. Whether they ever met is another question; a layer that thick holds a lot of strangers.`:`Different layers. ${(older===pa?cur:b).name} is filed under the ${older.name}, ${(older===pa?b:cur).name} under the ${younger.name}. ${gap>0?`The layers are ${gap} million years apart. `+cmp:"Next-door layers, different worlds."}`};}
   const d=DIET[cur.name]; const correct=DIET_WORD[d[0]]; const opts=shuffle([...new Set([correct,...shuffle(Object.values(DIET_WORD).filter(x=>x!==correct)).slice(0,2)])]);
   return {t,a:cur,ans:correct,q:`What did it eat?`, sub:`Look at the picture. What is the clue?`, opts,
     right:`${correct}. The giveaway: ${d[1]}.`, wrong:`Look again: ${d[1]}. That says ${correct.toLowerCase()}.`};
@@ -911,7 +922,7 @@ function renderChallenge(p,a){
   function play(){ on=true; btn.textContent="❚❚"; btn.setAttribute("aria-label","Pause"); clearInterval(timer); timer=setInterval(tick,HOLD); }
   function pause(){ on=false; btn.textContent="▶"; btn.setAttribute("aria-label","Play"); clearInterval(timer); }
   btn.addEventListener("click",e=>{e.stopPropagation(); on?pause():play();});
-  fig.tabIndex=0; fig.setAttribute("role","button"); fig.setAttribute("aria-label","Open the period shown on the map"); fig.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();fig.click();}});
+  fig.tabIndex=0; fig.setAttribute("role","button"); fig.setAttribute("aria-label","Open the period shown on the map"); fig.addEventListener("keydown",e=>{if(e.target!==fig)return; if(e.key==="Enter"||e.key===" "){e.preventDefault();fig.click();}});
   fig.addEventListener("click",()=>{ openPeriod(PERIODS[i].k); document.getElementById("panel").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); });
   bar.addEventListener("click",e=>{e.stopPropagation(); const r=bar.getBoundingClientRect(); show(Math.floor((e.clientX-r.left)/r.width*PERIODS.length)); if(on)play();});
   document.addEventListener("visibilitychange",()=>{ if(document.hidden)clearInterval(timer); else if(on)play(); });
