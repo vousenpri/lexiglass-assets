@@ -51,7 +51,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 
 /* cliff */
 .cliff{user-select:none;-webkit-user-select:none;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--paper);position:sticky;top:env(safe-area-inset-top,0px)}
-@media (max-width:760px){.cliff{position:static}}
+@media (max-width:760px){.cliff{position:static}.ext span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}.ext span:last-child{white-space:nowrap;flex:none}.ext .nick{display:none}.layer .finds{flex-wrap:wrap;max-width:60px;justify-content:flex-end;gap:2px}.layer .finds i{width:6px;height:6px}}
 .cliff-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding:9px 14px;border-bottom:1px solid var(--rule)}
 .layers{display:flex;flex-direction:column}
 .layer{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:0 12px 0 0;height:50px;position:relative;text-align:left;color:#16170B;transition:filter .15s;border-radius:0}
@@ -819,7 +819,7 @@ function renderCliff(){
     b.addEventListener("click",()=>{ if(examPick){examPick(p.k);return;} openPeriod(p.k); });
     layersEl.appendChild(b);
     const ex=EXTINCTIONS.find(e=>e.after===p.k);
-    if(ex){const r=document.createElement("button");r.type="button";r.className="ext"+(view.type==="ext"&&view.k===ex.k?" current":"");r.innerHTML=`<span>${ex.name}${ex.nick?` · ${ex.nick}`:""}</span><span>${ex.when} Ma</span>`;r.setAttribute("aria-label",ex.name);r.addEventListener("click",()=>openExt(ex.k));layersEl.appendChild(r);}
+    if(ex){const r=document.createElement("button");r.type="button";r.className="ext"+(view.type==="ext"&&view.k===ex.k?" current":"");r.innerHTML=`<span>${ex.name}${ex.nick?`<span class="nick"> · ${ex.nick}</span>`:""}</span><span>${ex.when} Ma</span>`;r.setAttribute("aria-label",ex.name);r.addEventListener("click",()=>openExt(ex.k));layersEl.appendChild(r);}
   });
 }
 
@@ -1173,8 +1173,8 @@ function examStep(ex){
   panel.className="panel";
   if(q.t==="place"){
     const p=PERIODS.find(x=>x.k===q.a.pk); let tries=0;
-    panel.innerHTML=head+`<h2>Where did this one live?</h2><div class="card"><div class="stage cleared alive">${pic(q.a)}</div><div><div class="name">${q.a.name}</div><span class="sayb">${q.a.say}</span><p style="margin-top:10px">Tap its layer on the cliff. Wrong layer and I will only tell you whether to go up or down.</p></div></div>`+foot;
-    document.querySelector(".game").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});
+    panel.innerHTML=head+`<h2>Where did this one live?</h2><div class="card"><div class="stage cleared alive">${pic(q.a)}</div><div><div class="name">${q.a.name}</div><span class="sayb">${q.a.say}</span><p style="margin-top:10px">Tap its layer on the cliff${NARROW()?" above":""}. Wrong layer and I will only tell you whether to go up or down.</p></div></div>`+foot;
+    (NARROW()?panel:document.querySelector(".game")).scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});
     examPick=k=>{ if(k===p.k){ examPick=null; result(tries===0,`${q.a.name} lived in the ${p.name}, ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}.`); return; } tries++; const g=PERIODS.find(x=>x.k===k); const m=document.getElementById("xmsg"); m.className="msg"; m.textContent=g.start<p.start?`${g.name}? Too new. Dig deeper.`:`${g.name}? Too old. Come up.`; thud(); };
   } else if(q.t==="older"){
     panel.innerHTML=head+`<h2>Which one is older?</h2><div class="pair">${[q.a,q.b].map((a,i)=>`<button class="opt pairbtn" type="button" data-i="${i}">${pic(a)}<b>${a.name}</b><i>${a.say}</i></button>`).join("")}</div>`+foot;
@@ -1199,7 +1199,8 @@ function examEnd(ex){
   document.getElementById("again").addEventListener("click",startExam);
   document.getElementById("backc").addEventListener("click",()=>openPeriod(view.k||"cambrian"));
 }
-document.getElementById("exambtn").addEventListener("click",()=>{startExam();document.querySelector(".game").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});});
+const NARROW=()=>matchMedia("(max-width:760px)").matches;
+document.getElementById("exambtn").addEventListener("click",()=>{startExam();(NARROW()?panel:document.querySelector(".game")).scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});});
 
 renderLiving(); renderNotebook();
 const h=location.hash.replace("#","");
