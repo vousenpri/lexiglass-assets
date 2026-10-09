@@ -728,7 +728,7 @@ function notebookCode(){ let bits=0n; ALL.forEach((a,i)=>{if(found.has(a.id))bit
 function loadCode(txt){ const t=(txt||"").trim().toLowerCase().replace(/\s+/g,""); const m=t.match(/^gt-([0-9a-z]+)-(\d+)-(\d+)-([0-9a-z]{2})$/); if(!m)return false; const raw=`${m[1]}-${m[2]}-${m[3]}`; let sum=0; for(const ch of raw)sum=(sum*31+ch.charCodeAt(0))%1296; if(B36[sum/36|0]+B36[sum%36]!==m[4])return false; let bits=0n; for(const ch of m[1]){bits=bits*36n+BigInt(B36.indexOf(ch));} const f=new Set(); ALL.forEach((a,i)=>{if((bits>>BigInt(i))&1n)f.add(a.id);}); found=f; stamps=+m[2]; clues=+m[3]; chalSeen=found.size; save(); return true; }
 (function(){ const btn=document.getElementById("codebtn"), box=document.getElementById("nbcode"), out=document.getElementById("codeout"), inp=document.getElementById("codein"), msg=document.getElementById("codemsg"); if(!btn)return;
   btn.addEventListener("click",()=>{ box.hidden=!box.hidden; if(!box.hidden){out.textContent=notebookCode(); msg.textContent=""; box.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"nearest"});} });
-  document.getElementById("codecopy").addEventListener("click",async()=>{ try{await navigator.clipboard.writeText(out.textContent); msg.className="msg good"; msg.textContent="Copied.";}catch(e){ msg.className="msg"; msg.textContent="Select the code and copy it by hand."; } });
+  document.getElementById("codecopy").addEventListener("click",async()=>{ out.textContent=notebookCode(); try{await navigator.clipboard.writeText(out.textContent); msg.className="msg good"; msg.textContent="Copied.";}catch(e){ msg.className="msg"; msg.textContent="Select the code and copy it by hand."; } });
   document.getElementById("codeload").addEventListener("click",()=>{ if(loadCode(inp.value)){ renderCliff(); renderNotebook(); openPeriod(PERIODS[0].k); out.textContent=notebookCode(); msg.className="msg good"; msg.textContent=`Restored. ${found.size} finds back in the notebook.`; } else { msg.className="msg"; msg.textContent="That code did not work. Check it and try again."; } });
 })();
 
@@ -883,7 +883,7 @@ function buildChallenge(cur){
   if(t==="met"){const b=pick(others,1)[0]; const pa=periodOf(cur),pb=periodOf(b); const same=pa===pb; const older=pa.start>pb.start?pa:pb, younger=older===pa?pb:pa; const gap=older.end-younger.start;
     const trexYou=66; const cmp=gap>trexYou?`That is a bigger gap than between T. rex and you.`:gap>0?`That is ${gap} million years of nobody to talk to.`:``;
     return {t,a:cur,b,ans:same?"Yes":"No",q:`Same layer of the cliff?`, sub:`${cur.name} and ${b.name}. Dug out of the same layer, or different ones?`, opts:["Yes","No"],
-    right: same?`Yes. Both from the ${pa.name}. That does not mean they met: the ${pa.name} is ${pa.start-pa.end} million years thick, and two animals from the same layer can be further apart in time than you and the last T. rex.`:`No. ${(older===pa?cur:b).name} is filed under the ${older.name}, ${(older===pa?b:cur).name} under the ${younger.name}. ${gap>0?`The layers are ${gap} million years apart. `+cmp:"Next-door layers, different worlds."}`,
+    right: same?`Yes. Both from the ${pa.name}. Being in the same layer does not prove they lived at the same time: the ${pa.name} is ${pa.start-pa.end} million years thick.`:`No. ${(older===pa?cur:b).name} is filed under the ${older.name}, ${(older===pa?b:cur).name} under the ${younger.name}. ${gap>0?`The layers are ${gap} million years apart. `+cmp:"Next-door layers, different worlds."}`,
     wrong: same?`Same layer, actually. Both ${pa.name}. Whether they ever met is another question; a layer that thick holds a lot of strangers.`:`Different layers. ${(older===pa?cur:b).name} is filed under the ${older.name}, ${(older===pa?b:cur).name} under the ${younger.name}. ${gap>0?`The layers are ${gap} million years apart. `+cmp:"Next-door layers, different worlds."}`};}
   const d=DIET[cur.name]; const correct=DIET_WORD[d[0]]; const opts=shuffle([...new Set([correct,...shuffle(Object.values(DIET_WORD).filter(x=>x!==correct)).slice(0,2)])]);
   return {t,a:cur,ans:correct,q:`What did it eat?`, sub:`Look at the picture. What is the clue?`, opts,
@@ -1145,6 +1145,7 @@ function showLiving(l,p){
 /* ---------- notebook ---------- */
 function renderNotebook(){
   const g=document.getElementById("nb-grid"); g.innerHTML="";
+  const co=document.getElementById("codeout"); if(co&&typeof notebookCode==="function") co.textContent=notebookCode();
   LAYERS.forEach(p=>p.animals.forEach(a=>{
     const id=p.k+"/"+a.name, done=found.has(id), d=document.createElement("div"); d.className="nb"+(done?" filled":""); d.style.setProperty("--pc",p.color);
     d.innerHTML=done?`<div class="th slab"><b>${a.name}</b></div>${a.img?`<img class="th" src="img/${a.img}.jpg" alt="" onerror="this.remove()" style="margin-left:-58px">`:""}<div><b>${a.name}</b><i>${a.say}</i><small>${p.name}</small></div>`:`${p.name}<br>still buried`;
