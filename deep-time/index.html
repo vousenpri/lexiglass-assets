@@ -317,6 +317,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .confetti i{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;opacity:.95;animation:drop var(--t) cubic-bezier(.2,.6,.3,1) var(--d) forwards;transform:translate(0,-20px) rotate(0)}
 @keyframes drop{0%{transform:translate(0,-20px) rotate(0);opacity:1}100%{transform:translate(var(--x),105vh) rotate(var(--r));opacity:.9}}
 .msg.good{animation:pop .35s ease-out}
+@media (prefers-reduced-motion:no-preference){.panel.quake{animation:quake 3s cubic-bezier(.3,0,.7,1) both}@keyframes quake{0%,100%{transform:translate(0,0)}8%{transform:translate(-2px,1px)}16%{transform:translate(3px,-1px)}24%{transform:translate(-5px,2px)}32%{transform:translate(6px,-2px)}40%{transform:translate(-6px,3px)}48%{transform:translate(5px,-3px)}56%{transform:translate(-4px,2px)}64%{transform:translate(4px,-1px)}72%{transform:translate(-3px,1px)}80%{transform:translate(2px,-1px)}88%{transform:translate(-1px,0)}94%{transform:translate(1px,0)}}}
 @keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
 .h2-cheer{display:inline-block;animation:cheer .6s ease-out}
 @keyframes cheer{0%{transform:scale(.6) rotate(-6deg);opacity:0}60%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
@@ -818,9 +819,13 @@ const SFX={
   whalecall:(c,o,t)=>{const osc=c.createOscillator(),v=c.createGain();osc.type="sine";osc.frequency.setValueAtTime(180,t+1);osc.frequency.linearRampToValueAtTime(420,t+2.4);osc.frequency.linearRampToValueAtTime(260,t+3.6);v.gain.setValueAtTime(0,t+1);v.gain.linearRampToValueAtTime(.09,t+1.6);v.gain.linearRampToValueAtTime(0,t+3.7);osc.connect(v).connect(o);osc.start(t+1);osc.stop(t+3.8);},
   jawsnap:(c,o,t)=>{thump(c,o,t+1.6,90,.25,.4);burst(c,o,t+1.6,.08,{f:1500,q:1,g:.18});}
 };
-function habitat(a){const c=ac();if(!c||!soundOn||!a.sfx)return;const t=c.currentTime,out=c.createGain();out.gain.value=.9;out.connect(c.destination);
+function habitat(a){if(a.sfx&&a.sfx.includes("rumble"))quake();const c=ac();if(!c||!soundOn||!a.sfx)return;const t=c.currentTime,out=c.createGain();out.gain.value=.9;out.connect(c.destination);
   const dl=c.createDelay(1);dl.delayTime.value=.28;const fb=c.createGain();fb.gain.value=.25;const wet=c.createGain();wet.gain.value=a.sfx[0]==="deep"?.45:.2;out.connect(dl);dl.connect(fb).connect(dl);dl.connect(wet).connect(c.destination);
   a.sfx.forEach(k=>{try{SFX[k]&&SFX[k](c,out,t);}catch(e){}});}
+// The ground shakes when something very big walks past. Timed to the rumble: starts at .6s, peaks ~1.4s, gone by 3.6s.
+let quakeT=null;
+function quake(){ if(REDUCED)return; clearTimeout(quakeT); panel.classList.remove("quake"); void panel.offsetWidth;
+  quakeT=setTimeout(()=>{panel.classList.add("quake"); quakeT=setTimeout(()=>panel.classList.remove("quake"),3100);},600); }
 const soundBtn=document.getElementById("sound");
 function renderSound(){soundBtn.textContent=soundOn?"Effects on":"Effects off";soundBtn.setAttribute("aria-pressed",String(soundOn));}
 soundBtn.addEventListener("click",()=>{soundOn=!soundOn;renderSound();save();if(soundOn)clink();else scrape(false);});
