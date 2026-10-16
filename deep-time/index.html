@@ -128,7 +128,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   @keyframes cloud{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
 }
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
-.stage canvas.rock{cursor:crosshair}
+.stage canvas.rock{cursor:crosshair;touch-action:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
 .stage canvas.fx{pointer-events:none}
 .stage.cleared canvas.rock{pointer-events:none;opacity:0;transition:opacity .5s}
 .meter{height:6px;background:var(--soil-1);border-radius:3px;overflow:hidden;max-width:520px;margin:0 auto;width:100%}
@@ -1034,7 +1034,7 @@ function startDig(p,a){
   panel.innerHTML=`<div class="eyebrow">${p.name} · digging</div>
     <h2>There is something in this rock.</h2>
     <p>Take your trowel and scrape the rock away. Carefully. It has waited a long time.</p>
-    <div class="stage" id="stage">${pic(a)}<canvas class="rock" id="rock" width="520" height="520" tabindex="0" role="img" aria-label="Rock face. Press space or enter to scrape, or drag with a pointer."></canvas><canvas class="fx" id="fx" width="520" height="520"></canvas></div>
+    <div class="stage" id="stage">${pic(a)}<canvas class="rock" id="rock" width="520" height="520" tabindex="0" role="img" aria-label="Rock face. Rub it with a finger, drag with a mouse, or press space or enter to scrape."></canvas><canvas class="fx" id="fx" width="520" height="520"></canvas></div>
     <div class="meter"><i id="meter"></i></div>
     <p class="msg" id="msg"></p>
     <button class="btn ghost" id="back" type="button">Back to ${p.name}</button>`;
@@ -1050,14 +1050,18 @@ function startDig(p,a){
   const chips=[]; let raf=null;
   function tick(){fctx.clearRect(0,0,W,H);for(let i=chips.length-1;i>=0;i--){const c=chips[i];c.x+=c.vx;c.y+=c.vy;c.vy+=.5;c.life-=.03;if(c.life<=0||c.y>H+10){chips.splice(i,1);continue;}fctx.globalAlpha=Math.max(0,c.life);fctx.fillStyle=c.col;fctx.fillRect(c.x,c.y,c.s,c.s);}fctx.globalAlpha=1;raf=chips.length?requestAnimationFrame(tick):null;}
   function spawn(x,y){if(REDUCED)return;for(let i=0;i<5;i++)chips.push({x,y,vx:(Math.random()-.5)*8,vy:-Math.random()*6-2,s:Math.random()*5+2,life:1,col:Math.random()<.5?"#8d7b68":"#4a3c30"});if(!raf)raf=requestAnimationFrame(tick);}
-  let down=false, strokes=0, last=null, finished=false;
+  // One entry per finger / pen / mouse button, so two fingers scrape two tracks.
+  const fingers=new Map(); let strokes=0, finished=false;
   const pt=e=>{const r=cv.getBoundingClientRect();return {x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height}};
   const brush=(a,b)=>{ctx.lineCap="round";ctx.lineWidth=56;ctx.strokeStyle="rgba(0,0,0,1)";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();};
   const measure=()=>{const d=ctx.getImageData(0,0,W,H).data;let c=0,t=0;for(let i=3;i<d.length;i+=4*7){t++;if(d[i]<40)c++;}const cleared=c/t;document.getElementById("meter").style.width=Math.min(100,cleared/.5*100)+"%";if(cleared>=.5)finish();};
-  cv.addEventListener("pointerdown",e=>{down=true;last=pt(e);brush(last,last);spawn(last.x,last.y);cv.setPointerCapture(e.pointerId);scrape(true);});
-  cv.addEventListener("pointermove",e=>{if(!down)return;const q=pt(e);brush(last,q);spawn(q.x,q.y);last=q;if(++strokes%6===0)measure();});
-  const up=()=>{if(!down)return;down=false;scrape(false);measure();};
+  cv.addEventListener("pointerdown",e=>{e.preventDefault();const q=pt(e);fingers.set(e.pointerId,q);brush(q,q);spawn(q.x,q.y);try{cv.setPointerCapture(e.pointerId);}catch(_){}if(fingers.size===1)scrape(true);});
+  cv.addEventListener("pointermove",e=>{const last=fingers.get(e.pointerId);if(!last)return;const q=pt(e);brush(last,q);spawn(q.x,q.y);fingers.set(e.pointerId,q);if(++strokes%6===0)measure();});
+  const up=e=>{if(!fingers.delete(e.pointerId))return;if(fingers.size===0){scrape(false);measure();}};
   cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",up);cv.addEventListener("lostpointercapture",up);
+  // Belt and braces for older iOS inside an iframe: stop the page scrolling or zooming while a finger is on the rock.
+  const block=e=>{if(!finished)e.preventDefault();};
+  cv.addEventListener("touchstart",block,{passive:false});cv.addEventListener("touchmove",block,{passive:false});
   let ky=28; cv.addEventListener("keydown",e=>{ if(e.key!==" "&&e.key!=="Enter")return; e.preventDefault(); const y=ky; brush({x:0,y},{x:W,y}); spawn(W/2,y); ky=(ky+52)%H; scrape(true); setTimeout(()=>scrape(false),150); measure(); });
   function finish(){ if(finished)return; finished=true; scrape(false);
     document.getElementById("stage").classList.add("cleared"); clink();
