@@ -89,7 +89,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .linkbtn{padding:0;color:var(--copper);font-style:italic;text-decoration:underline;text-underline-offset:3px}
 
 .site{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
-@media (max-width:420px){.site{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.site{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.spot .name{font-size:.8rem}}
 .spot{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--soil-5);display:block;padding:0;border:1px solid var(--rule)}
 .spot:hover{filter:brightness(1.06)}
 .spot .cover{position:absolute;inset:0;background:repeating-linear-gradient(170deg,var(--soil-3) 0 10px,var(--soil-5) 10px 18px)}
@@ -321,6 +321,44 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 @keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
 .h2-cheer{display:inline-block;animation:cheer .6s ease-out}
 @keyframes cheer{0%{transform:scale(.6) rotate(-6deg);opacity:0}60%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+/* ---------- phone: strip + sheet ---------- */
+.learn{display:contents}
+.sheetbar{display:none}
+@media (max-width:760px){
+  main{display:flex;flex-direction:column}
+  .brand{order:0}.top{order:1}.lede{order:2}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.listen{order:7}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
+  .start{margin:16px 0 0}.start-btn{width:100%;justify-content:center;text-align:center}
+  .learn{display:flex;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -18px 0;padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .learn::-webkit-scrollbar{display:none}
+  .keywords{display:contents}
+  .learn>.why,.learn .kw{flex:0 0 84%;scroll-snap-align:center;margin:0;box-sizing:border-box}
+  .why{padding:16px 16px 18px;border-radius:14px}.why h2{font-size:1.45rem;margin:4px 0 10px}
+  .why-grid{display:flex;flex-direction:column;gap:7px}
+  .why-card{padding:0;border:0;background:none;gap:0;border-radius:0}
+  .why-card img{display:none}
+  .why-card:first-child img{display:block;aspect-ratio:2/1;border-radius:10px;margin-bottom:8px}
+  .why-card b{font-size:1.02rem}.why-card span{font-size:.88rem;line-height:1.3}
+  .learn-dots{display:flex;justify-content:center;gap:7px;margin-top:10px}
+  .learn-dots i{width:6px;height:6px;border-radius:50%;background:var(--rule);transition:background .2s}
+  .learn-dots i.on{background:var(--gold)}
+  .game{display:block;margin-top:18px}
+  .panel{display:none}
+  body.sheet-open{overflow:hidden}
+  body.sheet-open .panel{display:flex;position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;border-radius:0;border:0;margin:0;padding:calc(56px + env(safe-area-inset-top,0px)) 16px 40px;-webkit-overflow-scrolling:touch}
+  body.sheet-open .panel>.eyebrow:first-child{order:-3}body.sheet-open .panel>h2{order:-2}body.sheet-open .panel>.digblock{order:-1}
+  body.sheet-open .sheetbar{display:flex}
+  .sheetbar{position:fixed;top:0;left:0;right:0;z-index:41;height:calc(48px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 8px 0;align-items:center;gap:6px;background:var(--paper);border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:12px;letter-spacing:.06em}
+  .sb-back{flex:none;padding:8px 10px 8px 6px;color:var(--copper);font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+  .sb-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--serif);font-size:1.15rem;font-weight:600;letter-spacing:0;text-align:center}
+  .sb-nav{flex:none;display:flex;gap:2px}
+  .sb-btn{padding:8px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);white-space:nowrap}
+  .sb-btn:disabled{opacity:.3}
+  .sb-btn:empty{display:none}
+  body.sheet-dock{overflow:auto}
+  body.sheet-dock .panel{top:auto;bottom:0;max-height:46vh;padding:14px 16px 24px;border-top:2px solid var(--gold);box-shadow:0 -10px 30px rgba(0,0,0,.18);border-radius:14px 14px 0 0}
+  body.sheet-dock .sheetbar{display:none}
+  body.sheet-dock .cliff{margin-bottom:48vh}
+}
 @media (prefers-reduced-motion:reduce){.spark{display:none}.confetti{display:none}.stage img,.stage .slab{transition:none}.sizer .r .b i{transition:none}}
 /* phone overrides, last so they win */
 @media (max-width:760px){.hero{grid-template-columns:1fr}.key{display:none}.ext{height:28px}}
@@ -350,6 +388,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="key-foot">drawn to scale · deeper is older</div>
 </div></div>
 <div class="listen" id="listen"><div><div class="eyebrow">Or have it read to you</div><b>The whole chapter, out loud. 65 minutes.</b><span>Every layer, every extinction, every living fossil. Press play and dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div>
+<div class="learn" id="learn">
 <section class="why" aria-label="Why study the geologic time scale">
   <div class="eyebrow">Why learn this?</div>
   <h2>The Earth kept a diary. Nobody was supposed to read it.</h2>
@@ -378,7 +417,10 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="kw"><b>trowel</b><i>TROW-ul</i><span>a small flat blade with a handle, for scraping dirt away a little at a time. Archaeologists love theirs and will not lend it to you. Paleontologists add a rock hammer, a dental pick and a paintbrush. On this cliff, your finger is the trowel.</span></div>
   <div class="kw"><b>mass extinction</b><i>MASS ek-STINK-shun</i><span>when most of the living things on the whole planet die out at once. It has happened five times since the Cambrian. Life came back every time, but never the same life.</span></div>
 </div>
+</div>
+<div class="learn-dots" id="learn-dots" aria-hidden="true"></div>
 
+<div class="sheetbar" id="sheetbar"><button class="sb-back" id="sb-back" type="button">← Cliff</button><span class="sb-title" id="sb-title"></span><span class="sb-nav"><button class="sb-btn" id="sb-prev" type="button"></button><button class="sb-btn" id="sb-next" type="button"></button></span></div>
 <div class="game">
   <section class="cliff" aria-label="Cliff of strata">
     <div class="cliff-head"><span>Cliff face</span><span>top is newest, bottom is bedrock</span></div>
@@ -840,10 +882,10 @@ function renderCliff(){
     b.className="layer"+(view.type==="period"&&view.k===p.k?" current":""); b.style.background=p.color;
     const dots=p.animals.map(a=>`<i class="${found.has(p.k+"/"+a.name)?"on":""}"></i>`).join("");
     b.innerHTML=`<span class="depth">${i+1}</span><span class="lab">${p.name}<small><em>${p.say}</em> · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</small></span><span class="finds" aria-label="${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found">${dots}</span>`;
-    b.addEventListener("click",()=>{ if(examPick){examPick(p.k);return;} openPeriod(p.k); });
+    b.addEventListener("click",()=>{ if(examPick){examPick(p.k);return;} openPeriod(p.k); openSheet(); });
     layersEl.appendChild(b);
     const ex=EXTINCTIONS.find(e=>e.after===p.k);
-    if(ex){const r=document.createElement("button");r.type="button";r.className="ext"+(view.type==="ext"&&view.k===ex.k?" current":"");r.innerHTML=`<span>${ex.name}${ex.nick?`<span class="nick"> · ${ex.nick}</span>`:""}</span><span>${ex.when} Ma</span>`;r.setAttribute("aria-label",ex.name);r.addEventListener("click",()=>openExt(ex.k));layersEl.appendChild(r);}
+    if(ex){const r=document.createElement("button");r.type="button";r.className="ext"+(view.type==="ext"&&view.k===ex.k?" current":"");r.innerHTML=`<span>${ex.name}${ex.nick?`<span class="nick"> · ${ex.nick}</span>`:""}</span><span>${ex.when} Ma</span>`;r.setAttribute("aria-label",ex.name);r.addEventListener("click",()=>{openExt(ex.k);openSheet();});layersEl.appendChild(r);}
   });
 }
 
@@ -928,18 +970,18 @@ function renderChallenge(p,a){
   function pause(){ on=false; btn.textContent="▶"; btn.setAttribute("aria-label","Play"); clearInterval(timer); }
   btn.addEventListener("click",e=>{e.stopPropagation(); on?pause():play();});
   fig.tabIndex=0; fig.setAttribute("role","button"); fig.setAttribute("aria-label","Open the period shown on the map"); fig.addEventListener("keydown",e=>{if(e.target!==fig)return; if(e.key==="Enter"||e.key===" "){e.preventDefault();fig.click();}});
-  fig.addEventListener("click",()=>{ openPeriod(PERIODS[i].k); document.getElementById("panel").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); });
+  fig.addEventListener("click",()=>{ openPeriod(PERIODS[i].k); goPanel(); });
   bar.addEventListener("click",e=>{e.stopPropagation(); const r=bar.getBoundingClientRect(); show(Math.floor((e.clientX-r.left)/r.width*PERIODS.length)); if(on)play();});
   document.addEventListener("visibilitychange",()=>{ if(document.hidden)clearInterval(timer); else if(on)play(); });
   show(0); if(REDUCED){pause();} else play();
-  const sb=document.getElementById("startdig"); if(sb) sb.addEventListener("click",()=>{ let p=window.driftPeriod||PERIODS[0]; let a=p.animals.find(x=>!found.has(p.k+"/"+x.name)); if(!a){ const q=PERIODS.find(q=>q.animals.some(x=>!found.has(q.k+"/"+x.name))); if(q){p=q;a=q.animals.find(x=>!found.has(q.k+"/"+x.name));} } examPick=null; view={type:"period",k:p.k}; renderCliff(); if(a) startDig(p,a); else openPeriod(p.k); document.getElementById("panel").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); });
+  const sb=document.getElementById("startdig"); if(sb) sb.addEventListener("click",()=>{ let p=window.driftPeriod||PERIODS[0]; let a=p.animals.find(x=>!found.has(p.k+"/"+x.name)); if(!a){ const q=PERIODS.find(q=>q.animals.some(x=>!found.has(q.k+"/"+x.name))); if(q){p=q;a=q.animals.find(x=>!found.has(q.k+"/"+x.name));} } examPick=null; view={type:"period",k:p.k}; renderCliff(); if(a) startDig(p,a); else openPeriod(p.k); goPanel(); });
 })();
 
 /* ---------- start again (two taps) ---------- */
 (function(){ const b=document.getElementById("resetbtn"); if(!b)return; let armed=null;
   b.addEventListener("click",()=>{ if(!armed){ b.textContent="Bury everything again? Tap once more."; b.classList.add("arm"); armed=setTimeout(()=>{b.textContent="Start again";b.classList.remove("arm");armed=null;},4000); return; }
     clearTimeout(armed); armed=null; found=new Set(); stamps=0; clues=0; chalSeen=0; save(); b.textContent="Start again"; b.classList.remove("arm");
-    renderCliff(); renderNotebook(); openPeriod(PERIODS[0].k); scrape(false); window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"}); });
+    renderCliff(); renderNotebook(); closeSheet(); openPeriod(PERIODS[0].k); scrape(false); window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"}); });
 })();
 
 /* ---------- narration (read-aloud clips) ---------- */
@@ -985,7 +1027,7 @@ function openPeriod(k){
     <figure class="worldmap" id="worldmap"><div class="mapwrap"><img src="img/map-${p.k}.jpg" alt="How the continents lay in the ${p.name}" loading="eager" onerror="this.closest('figure').remove()">${(p.pins||[]).map(k=>{const g=GEO[k],xy=(p.pos||{})[k];return xy?`<button class="pin" type="button" style="left:${xy[0]}%;top:${xy[1]}%" data-geo="${k}" aria-label="${g.name}"><span>${g.name}</span></button>`:""}).join("")}</div><figcaption>The world then. An artist's best guess. ${p.world?`${p.world}.`:""} Tap a gold pin.</figcaption><div class="geoinfo" id="geoinfo" hidden></div></figure>
     <div class="bound ${beginsExt?"ext-link":""}"><span class="tag" style="background:${p.color}">Began<span class="tag ma">${fmt(p.start)} Ma</span></span><div><p>${withSay(p.began)}</p>${readBtn(`${p.k}-began`)}${beginsExt?`<p><button class="linkbtn" data-ext="${beginsExt.k}">Read about the ${beginsExt.name}</button></p>`:""}</div></div>
     ${p.epochs?`<div><h3>Epochs in the ${p.name}</h3><p class="epnote">A period is cut into epochs <span class="lex">epochs<i>EP-oks</i></span>. Tap one.</p><div class="epbar" id="epbar"></div><div class="epinfo" id="epinfo"></div></div>`:""}
-    <div>
+    <div class="digblock">
       <h3>Dig here · ${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found</h3>
       <div class="site" id="site"></div>
     </div>
@@ -1004,6 +1046,7 @@ function openPeriod(k){
   if(i>0)document.getElementById("older").addEventListener("click",()=>openPeriod(PERIODS[i-1].k));
   if(i<PERIODS.length-1)document.getElementById("younger").addEventListener("click",()=>openPeriod(PERIODS[i+1].k));
   try{history.replaceState(null,"","#"+k)}catch(e){}
+  syncSheet();
 }
 
 function renderEpochs(p){
@@ -1043,7 +1086,7 @@ function startDig(p,a){
     <div class="meter"><i id="meter"></i></div>
     <p class="msg" id="msg"></p>
     <button class="btn ghost" id="back" type="button">Back to ${p.name}</button>`;
-  document.getElementById("back").addEventListener("click",()=>openPeriod(p.k));
+  document.getElementById("back").addEventListener("click",()=>openPeriod(p.k)); syncSheet();
   const cv=document.getElementById("rock"), ctx=cv.getContext("2d",{willReadFrequently:true}), W=cv.width, H=cv.height;
   const fx=document.getElementById("fx"), fctx=fx.getContext("2d");
   const base=ctx.createLinearGradient(0,0,0,H); base.addColorStop(0,"#6b5a4a"); base.addColorStop(1,"#4a3c30");
@@ -1098,7 +1141,7 @@ function showCard(p,a,fresh=false){
   const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",()=>{ if(nextA)startDig(p,nextA); else openPeriod(nextP.k); });
   const st=document.getElementById("stage"); st.addEventListener("click",()=>{habitat(a);});
   requestAnimationFrame(()=>requestAnimationFrame(()=>{st.classList.add("alive"); if(fresh){sparkle(st); habitat(a); if(found.size===ALL.length)setTimeout(fanfare,600);}}));
-  document.getElementById("back").addEventListener("click",()=>openPeriod(p.k));
+  document.getElementById("back").addEventListener("click",()=>openPeriod(p.k)); syncSheet();
 }
 
 function openExt(k){
@@ -1116,6 +1159,7 @@ function openExt(k){
   document.getElementById("b2").addEventListener("click",()=>openPeriod(after.k));
   thud();
   try{history.replaceState(null,"","#"+k)}catch(e2){}
+  syncSheet();
 }
 
 /* ---------- living fossils ---------- */
@@ -1200,11 +1244,11 @@ function examStep(ex){
   const next=()=>{ex.i++;examStep(ex);};
   const result=(ok,explain)=>{ if(ok){ex.right++;chime();confetti(50);}else thud(); const m=document.getElementById("xmsg"); m.className="msg "+(ok?"good":""); m.innerHTML=(ok?"Correct. ":"No. ")+explain; panel.querySelectorAll(".opt").forEach(b=>b.disabled=true); const n=document.getElementById("xnext"); n.hidden=false; n.focus(); };
   const foot=`<p class="msg" id="xmsg"></p><button class="btn" id="xnext" type="button" hidden>${ex.i+1<ex.qs.length?"Next":"Finish"}</button>`;
-  panel.className="panel";
+  panel.className="panel"; dockSheet(false);
   if(q.t==="place"){
     const p=PERIODS.find(x=>x.k===q.a.pk); let tries=0;
     panel.innerHTML=head+`<h2>Where did this one live?</h2><div class="card"><div class="stage cleared alive">${pic(q.a)}</div><div><div class="name">${q.a.name}</div><span class="sayb">${q.a.say}</span><p style="margin-top:10px">Tap its layer on the cliff${NARROW()?" above":""}. Wrong layer and I will only tell you whether to go up or down.</p></div></div>`+foot;
-    (NARROW()?panel:document.querySelector(".game")).scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});
+    goPanel(); dockSheet(true);
     examPick=k=>{ if(k===p.k){ examPick=null; result(tries===0,`${q.a.name} lived in the ${p.name}, ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}.`); return; } tries++; const g=PERIODS.find(x=>x.k===k); const m=document.getElementById("xmsg"); m.className="msg"; m.textContent=g.start<p.start?`${g.name}? Too new. Dig deeper.`:`${g.name}? Too old. Come up.`; thud(); };
   } else if(q.t==="older"){
     panel.innerHTML=head+`<h2>Which one is older?</h2><div class="pair">${[q.a,q.b].map((a,i)=>`<button class="opt pairbtn" type="button" data-i="${i}">${pic(a)}<b>${a.name}</b><i>${a.say}</i></button>`).join("")}</div>`+foot;
@@ -1223,18 +1267,45 @@ function examStep(ex){
 }
 function examEnd(ex){
   examPick=null; const passed=ex.right>=Math.ceil(ex.qs.length*0.7); if(passed){stamps++;save();renderNotebook();fanfare();confetti(220,true);}
-  panel.className="panel";
+  panel.className="panel"; dockSheet(false);
   panel.innerHTML=`<div class="eyebrow">Prove it · done</div><h2>${passed?`<span class="h2-cheer">⭐</span> `:""}${ex.right} out of ${ex.qs.length}.</h2><p>${passed?"Proved. A gold star goes in your notebook.":"Five out of seven gets the star. Go and dig something up, then come back."}</p>
     <div class="row"><button class="btn" id="again" type="button">Again</button><button class="btn ghost" id="backc" type="button">Back to the cliff</button></div>`;
   document.getElementById("again").addEventListener("click",startExam);
   document.getElementById("backc").addEventListener("click",()=>{const k=view.type==="ext"?(EXTINCTIONS.find(e=>e.k===view.k)||{}).after:view.k; openPeriod(PERIODS.some(p=>p.k===k)?k:"cambrian");});
 }
 const NARROW=()=>matchMedia("(max-width:760px)").matches;
-document.getElementById("exambtn").addEventListener("click",()=>{startExam();(NARROW()?panel:document.querySelector(".game")).scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});});
+/* ---------- phone sheet: the panel slides over the page; the cliff stays where you left it ---------- */
+const SHEET={on:false,y:0,pushed:false};
+function openSheet(){ if(!NARROW()||SHEET.on)return; SHEET.y=scrollY; SHEET.on=true; document.body.classList.add("sheet-open"); panel.scrollTop=0; try{history.pushState({sheet:1},"",location.href);SHEET.pushed=true;}catch(e){} syncSheet(); }
+function closeSheet(){ if(!SHEET.on)return; SHEET.on=false; SHEET.pushed=false; document.body.classList.remove("sheet-open","sheet-dock"); stopNarr(); scrollTo({top:SHEET.y}); }
+function dockSheet(on){ if(!SHEET.on)return; document.body.classList.toggle("sheet-dock",!!on); if(on){ document.querySelector(".cliff").scrollIntoView({behavior:"auto",block:"start"}); } }
+function goPanel(){ if(NARROW()) openSheet(); else document.querySelector(".game").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); }
+function syncSheet(){ if(!SHEET.on)return; panel.scrollTop=0;
+  const t=document.getElementById("sb-title"), pv=document.getElementById("sb-prev"), nx=document.getElementById("sb-next");
+  const ey=panel.querySelector(".eyebrow"); const exam=ey&&/^Prove it/.test(ey.textContent);
+  let p=null, e=null; if(view.type==="period")p=PERIODS.find(q=>q.k===view.k); else {e=EXTINCTIONS.find(x=>x.k===view.k);}
+  t.textContent=exam?"Prove it":p?p.name:e?e.name:"";
+  let older=null, younger=null;
+  if(!exam&&p){const i=PERIODS.indexOf(p); older=i>0?PERIODS[i-1]:null; younger=i<PERIODS.length-1?PERIODS[i+1]:null;}
+  if(!exam&&e){older=PERIODS.find(q=>q.end===e.when)||null; younger=PERIODS.find(q=>q.k===e.after)||null;}
+  pv.textContent=older?"‹ "+older.name:""; nx.textContent=younger?younger.name+" ›":"";
+  pv.onclick=older?()=>openPeriod(older.k):null; nx.onclick=younger?()=>openPeriod(younger.k):null;
+}
+document.getElementById("sb-back").addEventListener("click",()=>{ if(SHEET.pushed){history.back();} else closeSheet(); });
+addEventListener("popstate",()=>{ if(SHEET.on){SHEET.pushed=false;closeSheet();} });
+addEventListener("keydown",e=>{ if(e.key==="Escape"&&SHEET.on)document.getElementById("sb-back").click(); });
+matchMedia("(max-width:760px)").addEventListener("change",m=>{ if(!m.matches)closeSheet(); });
+/* ---------- phone strip dots ---------- */
+(function(){ const L=document.getElementById("learn"), D=document.getElementById("learn-dots"); if(!L||!D)return;
+  const cards=[L.querySelector(".why"),...L.querySelectorAll(".kw")]; D.innerHTML=cards.map(()=>"<i></i>").join("");
+  const upd=()=>{ const c=L.scrollLeft+L.clientWidth/2; let best=0,bd=1e9; cards.forEach((k,i)=>{const d=Math.abs(k.offsetLeft+k.offsetWidth/2-c); if(d<bd){bd=d;best=i;}}); [...D.children].forEach((d,i)=>d.classList.toggle("on",i===best)); };
+  L.addEventListener("scroll",upd,{passive:true}); addEventListener("resize",upd); upd();
+})();
+document.getElementById("exambtn").addEventListener("click",()=>{startExam();goPanel();});
 
 renderLiving(); renderNotebook();
 const h=location.hash.replace("#","");
-if(PERIODS.some(p=>p.k===h)) openPeriod(h); else if(EXTINCTIONS.some(e=>e.k===h)) openExt(h); else openPeriod("cambrian");
+if(PERIODS.some(p=>p.k===h)){openPeriod(h);openSheet();} else if(EXTINCTIONS.some(e=>e.k===h)){openExt(h);openSheet();} else openPeriod("cambrian");
 </script>
 </main>
 </body>
