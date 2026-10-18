@@ -143,6 +143,17 @@ h1 em{font-style:italic;color:var(--purple);font-weight:500}
 @media (prefers-reduced-motion:no-preference){.dust.clean img{animation:found .9s ease-out}@keyframes found{0%{transform:scale(1)}40%{transform:scale(1.12) rotate(-6deg)}100%{transform:scale(1)}}}
 .head{align-items:center}.portraits{align-items:center;margin-bottom:10px}
 .coinwrap{display:flex;flex-direction:column;align-items:center;gap:6px}.coinlbl{font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+.hoard{margin-top:24px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:18px 20px 22px}
+.hoard-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}.hoard-head h3{font-size:1.7rem;margin:2px 0 0}
+.hoard-sum{text-align:right}.hoard-sum b{display:block;font-family:var(--serif);font-size:1.6rem;font-weight:600;line-height:1;color:var(--gold)}.hoard-sum span{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.hoard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-top:14px}
+.hc{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px 6px;border:1px dashed var(--rule);border-radius:14px;background:var(--cream);font:inherit;color:var(--ink-soft)}
+.hc img,.hq{width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.hq{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,var(--rule) 0 3px,var(--cream) 3px 7px);font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.4rem;color:var(--ink-soft);box-shadow:none}
+.hc b{font-family:var(--serif);font-size:.9rem;font-weight:600;line-height:1;color:var(--ink)}.hc i{font-style:normal;font-family:var(--sans);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);min-height:11px}
+.hc.got{border-style:solid;border-color:var(--gold);background:var(--paper);cursor:pointer}.hc.got:hover{border-color:var(--ink)}
+.hoard-note{font-size:.98rem;color:var(--ink-soft);margin:14px 0 0;max-width:70ch;line-height:1.38}
+@media (max-width:760px){.hoard{padding:14px 12px 16px}.hoard-grid{grid-template-columns:repeat(4,1fr)}.hoard-sum{text-align:left}}
 .words{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;max-width:none}.word{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:10px 14px 12px;display:flex;flex-direction:column}.word b{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.1}.word .sayb{font-family:var(--sans);font-size:12px;letter-spacing:.06em;color:var(--copper);font-weight:500;margin:3px 0 6px}.word>span:last-child{font-size:.98rem;line-height:1.35}
 .qnote{font-style:italic;color:var(--ink-soft);margin:6px 0 0;font-size:1rem}
 .seg{min-width:6px}
@@ -231,6 +242,11 @@ h1 em{font-style:italic;color:var(--purple);font-weight:500}
   <div class="roster" id="roster"></div>
   <div class="tablet" id="tablet"></div>
 </section>
+<section class="hoard" id="hoard" aria-label="Your hoard">
+  <div class="hoard-head"><div><div class="eyebrow">Taking stock</div><h3>Your hoard</h3></div><div class="hoard-sum" id="hoard-sum"></div></div>
+  <div class="hoard-grid" id="hoard-grid"></div>
+  <p class="hoard-note">A hoard is what numismatists call a pile of old coins found together, usually buried by someone who meant to come back for it and never did. Worth is counted in sestertii, the coin Romans did their sums in: one aureus is 100, one denarius is 4. A legionary earned about 900 a year, so check how many years of soldiering you are holding.</p>
+</section>
 
 
 <section class="whybox" aria-label="Why learn this">
@@ -310,10 +326,17 @@ function render(){
   ${e[7]&&e[7].length?`<h3 class="sub">Worth telling at dinner</h3><ul class="anec">${e[7].map(a=>`<li>${a}</li>`).join('')}</ul><details class="gossip"><summary>Did this really happen?</summary><p>Romans loved a shocking story. Especially about an emperor they hated. The horse, the mushrooms and the toilet tax are in several ancient writers. The rose petals and the deflating cushions come from one book, the Historia Augusta, which makes things up on nearly every page. When you read "people said", that is your clue.</p></details>`:''}
   ${(VOCAB[e[0]]||[]).length?`<h3 class="sub">Words worth keeping</h3><div class="words">${VOCAB[e[0]].map(w=>`<div class="word"><b>${w[0]}</b><span class="sayb">${w[1]}</span><span>${w[2]}</span></div>`).join('')}</div>`:''}
   <div class="nav"><button class="btn" id="prev" ${vis.indexOf(cur)<=0?'disabled':''}>← Previous</button><button class="btn" id="nxt" ${vis.indexOf(cur)>=vis.length-1?'disabled':''}>Next →</button></div>`;
-  initDust();const tl=document.getElementById('tally');if(tl)tl.textContent=purse();
+  renderHoard();initDust();const tl=document.getElementById('tally');if(tl)tl.textContent=purse();
   document.getElementById('prev').onclick=()=>select(vis[vis.indexOf(cur)-1]);document.getElementById('nxt').onclick=()=>select(vis[vis.indexOf(cur)+1]);
 }
 function select(i){cur=i;met.add(i);render();}
+const WORTH={aureus:100,solidus:100,denarius:4,sestertius:1};
+function renderHoard(){const g=document.getElementById('hoard-grid');if(!g)return;const coins=E.filter(x=>x[10]);let worth=0;
+  g.innerHTML=coins.map(e=>{const ok=clean.has(e[0]);const k=kindOf(e[0]);if(ok)worth+=WORTH[k];const src=Array.isArray(e[10])?e[10][0]:e[10];
+    return `<button class="hc${ok?' got':''}" type="button" title="${e[0]}${ok?', '+k:''}" data-i="${E.indexOf(e)}">${ok?`<img src="${src}" alt="">`:'<span class="hq">?</span>'}<b>${ok?e[0].split(' ')[0].replace(',','').replace('Galba','Galba +2'):'·'}</b><i>${ok?k:''}</i></button>`;}).join('');
+  [...g.children].forEach(b=>b.onclick=()=>{select(+b.dataset.i);document.getElementById('tablet').scrollIntoView({behavior:'smooth',block:'start'});});
+  const wk=worth/900*52;const pay=wk<52?`about ${Math.max(1,Math.round(wk))} week${Math.round(wk)===1?'':'s'}`:`about ${(worth/900).toFixed(1).replace(/\.0$/,'')} years`;
+  document.getElementById('hoard-sum').innerHTML=clean.size?`<b>${worth.toLocaleString()} sestertii</b><span>${clean.size} of ${coins.length} coins · ${pay} of a legionary's pay</span>`:`<b>0 sestertii</b><span>Nothing yet. Pick a ruler and rub.</span>`;}
 function initDust(){const d=document.getElementById('dust');if(!d)return;const c=d.querySelector('canvas'),W=240;c.width=W;c.height=W;const g=c.getContext('2d');
   // soil: layered noise
   g.fillStyle='#8E7A62';g.fillRect(0,0,W,W);for(let i=0;i<2600;i++){g.fillStyle=`rgba(${60+Math.random()*60|0},${45+Math.random()*40|0},${25+Math.random()*25|0},${.35+Math.random()*.5})`;const r=1+Math.random()*4;g.beginPath();g.arc(Math.random()*W,Math.random()*W,r,0,7);g.fill();}
@@ -346,7 +369,7 @@ drawMap();restart();
 // start buttons
 document.querySelectorAll('.start [data-go]').forEach(b=>b.onclick=()=>{const g=b.dataset.go;const i=g==='random'?Math.random()*E.length|0:E.findIndex(e=>e[0]===g);document.getElementById('tab-explore').click();filter=null;select(i);document.getElementById('explore').scrollIntoView({behavior:'smooth',block:'start'});});
 // tabs
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',String(x===t)));const tb=t.dataset.tab;document.getElementById('explore').hidden=tb!=='explore';document.getElementById('quiz').hidden=tb!=='quiz';document.querySelector('.strip').hidden=tb!=='explore';if(tb==='quiz'&&!qs.length)startQuiz();});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',String(x===t)));const tb=t.dataset.tab;document.getElementById('explore').hidden=tb!=='explore';document.getElementById('hoard').hidden=tb!=='explore';document.getElementById('quiz').hidden=tb!=='quiz';document.querySelector('.strip').hidden=tb!=='explore';if(tb==='quiz'&&!qs.length)startQuiz();});
 
 // quiz
 let qs=[],qi=0,score=0;
