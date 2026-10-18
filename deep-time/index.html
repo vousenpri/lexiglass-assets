@@ -330,11 +330,12 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   .start{margin:16px 0 0}.start-btn{width:100%;justify-content:center;text-align:center}
   .learn{display:flex;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -18px 0;padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .learn::-webkit-scrollbar{display:none}
-  .keywords{display:contents}
-  .learn>.why,.learn .kw{flex:0 0 84%;scroll-snap-align:center;margin:0;box-sizing:border-box}
+  .learn>.why,.learn>.keywords{flex:0 0 84%;scroll-snap-align:center;margin:0;box-sizing:border-box}
   .why{padding:16px 16px 18px;border-radius:14px}.why h2{font-size:1.45rem;margin:4px 0 10px}
-  .learn .kw{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:16px 16px 18px;display:flex;flex-direction:column;justify-content:center}
-  .learn .kw b{font-size:1.9rem}.learn .kw i{font-size:13px;margin:6px 0 10px}.learn .kw span{font-size:1.05rem;line-height:1.4}
+  .keywords{display:flex;flex-direction:column;gap:14px;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:16px 16px 18px}
+  .keywords::before{content:"Handy vocab";font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:-4px}
+  .learn .kw{background:none;border:0;border-radius:0;padding:0}
+  .learn .kw b{font-size:1.25rem}.learn .kw i{font-size:12px;margin:2px 0 4px}.learn .kw span{font-size:.88rem;line-height:1.3}
   .why-grid{display:flex;flex-direction:column;gap:7px}
   .why-card{padding:0;border:0;background:none;gap:0;border-radius:0}
   .why-card img{display:none}
@@ -1299,7 +1300,7 @@ addEventListener("keydown",e=>{ if(e.key==="Escape"&&SHEET.on)document.getElemen
 matchMedia("(max-width:760px)").addEventListener("change",m=>{ if(!m.matches)closeSheet(); });
 /* ---------- phone strip dots ---------- */
 (function(){ const L=document.getElementById("learn"), D=document.getElementById("learn-dots"); if(!L||!D)return;
-  const cards=[L.querySelector(".why"),...L.querySelectorAll(".kw")]; D.innerHTML=cards.map(()=>"<i></i>").join("");
+  const cards=[L.querySelector(".why"),L.querySelector(".keywords")]; D.innerHTML=cards.map(()=>"<i></i>").join("");
   const upd=()=>{ const c=L.scrollLeft+L.clientWidth/2; let best=0,bd=1e9; cards.forEach((k,i)=>{const d=Math.abs(k.offsetLeft+k.offsetWidth/2-c); if(d<bd){bd=d;best=i;}}); [...D.children].forEach((d,i)=>d.classList.toggle("on",i===best)); };
   L.addEventListener("scroll",upd,{passive:true}); addEventListener("resize",upd); upd();
 })();
