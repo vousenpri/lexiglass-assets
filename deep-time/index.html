@@ -22,7 +22,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .brand{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px}
-.top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}.top>div:first-child{flex:1 1 420px;min-width:0}
+.topright{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:0 1 440px}
 h1{font-family:var(--serif);font-size:3rem;font-weight:600;line-height:1;margin:0;letter-spacing:-.01em}
 h1 em{font-style:italic;color:var(--green);font-weight:500}
 @media (max-width:520px){h1{font-size:2.3rem}}
@@ -176,9 +177,10 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .drift-btn{margin-left:auto;background:rgba(22,23,11,.55);color:#FFF8EE;border:1px solid rgba(255,248,238,.4);border-radius:999px;width:34px;height:34px;font-size:11px;cursor:pointer}
 .drift-bar{position:absolute;left:0;right:0;bottom:0;height:4px;display:flex}.drift-bar i{flex:1;background:rgba(255,248,238,.25);margin-right:1px;transition:background .4s}.drift-bar i.on{background:var(--gold)}
 @media (prefers-reduced-motion:reduce){.drift-stack img{transition:none}}
-.listen{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--cream);border:1px solid var(--rule);border-radius:16px;padding:14px 18px;margin:18px 0 6px}
-.listen>div{flex:1 1 260px}.listen b{font-family:var(--serif);font-size:1.25rem;font-weight:600;display:block;line-height:1.15;margin:4px 0 2px}.listen span{color:var(--ink-soft);font-size:.95rem}
-.listen audio{flex:1 1 280px;max-width:420px;height:40px}
+.listen{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--cream);border:1px solid var(--rule);border-radius:16px;padding:10px 14px;max-width:460px}
+.listen>div{flex:1 1 180px}.listen b{font-family:var(--serif);font-size:1.2rem;font-weight:600;display:block;line-height:1.15}.listen span{color:var(--ink-soft);font-size:.85rem;display:block}
+.listen audio{flex:1 1 200px;max-width:260px;height:36px}
+@media (max-width:760px){.topright{align-items:stretch;width:100%}.listen{max-width:none}}
 .read{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);background:transparent;border-radius:999px;padding:5px 11px;cursor:pointer;vertical-align:middle;margin:6px 0 0;transition:background .15s,color .15s}
 .read::before{content:"▶";font-size:9px}.read:hover{background:var(--gold);color:#fff}
 .read.playing{background:var(--green);border-color:var(--green);color:#fff}.read.playing::before{content:"■"}
@@ -326,7 +328,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .sheetbar{display:none}
 @media (max-width:760px){
   main{display:flex;flex-direction:column}
-  .brand{order:0}.top{order:1}.lede{order:2}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.listen{order:7}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
+  .brand{order:0}.top{order:1}.lede{order:2}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
   .start{margin:16px 0 0}.start-btn{width:100%;justify-content:center;text-align:center}
   .learn{display:flex;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -18px 0;padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .learn::-webkit-scrollbar{display:none}
@@ -376,7 +378,8 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
     <h1>Get a Grip on the <em>Geologic</em> Time Scale</h1>
     <span class="say-h1">jee-uh-LOJ-ik</span>
   </div>
-  <button class="iconbtn" id="sound" type="button" aria-pressed="true" title="Digging and reward sounds. Narration has its own buttons.">Effects on</button>
+  <div class="topright"><button class="iconbtn" id="sound" type="button" aria-pressed="true" title="Digging and reward sounds. Narration has its own buttons.">Effects on</button>
+  <div class="listen" id="listen"><div><b>Listen to Deep Time</b><span>The whole chapter, out loud. 65 minutes. Dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div></div>
 </div>
 <p class="lede">This cliff is 539 million years deep and it is full of bones. Grab your trowel and brush up on every layer. Tap any layer to go there: how it started, who lived in it (dig them up, four to thirteen a layer), and how it all went wrong. The thin red stripes are the five times nearly everything died. Deeper is older. Mind the extinctions.</p>
 <div class="start"><button class="btn start-btn" id="startdig" type="button">Start digging →</button></div>
@@ -390,7 +393,6 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="key-body" id="key-body"><div class="key-bars" id="key-bars"></div><svg class="key-lead" id="key-lead" aria-hidden="true"></svg><div class="key-labels" id="key-labels"></div></div>
   <div class="key-foot">drawn to scale · deeper is older</div>
 </div></div>
-<div class="listen" id="listen"><div><div class="eyebrow">Or have it read to you</div><b>The whole chapter, out loud. 65 minutes.</b><span>Every layer, every extinction, every living fossil. Press play and dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div>
 <div class="learn" id="learn">
 <section class="why" aria-label="Why study the geologic time scale">
   <div class="eyebrow">Why learn this?</div>
