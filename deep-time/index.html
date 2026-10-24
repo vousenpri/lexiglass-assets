@@ -180,7 +180,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .listen{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--cream);border:1px solid var(--rule);border-radius:16px;padding:10px 14px;max-width:460px}
 .listen>div{flex:1 1 180px}.listen b{font-family:var(--serif);font-size:1.2rem;font-weight:600;display:block;line-height:1.15}.listen span{color:var(--ink-soft);font-size:.85rem;display:block}
 .listen audio{flex:1 1 200px;max-width:260px;height:36px}
-@media (max-width:760px){.topright{align-items:stretch;width:100%}.listen{max-width:none}}
+@media (max-width:760px){.top{display:contents}.topright{display:contents}.top>div:first-child{flex:none}#sound{order:1;align-self:flex-start;margin:8px 0 0}.listen{order:7;max-width:none;margin:14px 0 0}}
 .read{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);background:transparent;border-radius:999px;padding:5px 11px;cursor:pointer;vertical-align:middle;margin:6px 0 0;transition:background .15s,color .15s}
 .read::before{content:"▶";font-size:9px}.read:hover{background:var(--gold);color:#fff}
 .read.playing{background:var(--green);border-color:var(--green);color:#fff}.read.playing::before{content:"■"}
@@ -328,7 +328,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .sheetbar{display:none}
 @media (max-width:760px){
   main{display:flex;flex-direction:column}
-  .brand{order:0}.top{order:1}.lede{order:2}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
+  .brand{order:0}.top>div:first-child{order:1}.lede{order:2}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
   .start{margin:16px 0 0}.start-btn{width:100%;justify-content:center;text-align:center}
   .learn{display:flex;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -18px 0;padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .learn::-webkit-scrollbar{display:none}
