@@ -359,6 +359,11 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   .sb-btn{padding:8px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);white-space:nowrap}
   .sb-btn:disabled{opacity:.3}
   .sb-btn:empty{display:none}
+  .float-next{display:none}
+  body.sheet-open .float-next{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:42;justify-content:center;padding:10px 16px calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--paper) 70%,transparent);pointer-events:none}
+  body.sheet-open .float-next .btn{pointer-events:auto;box-shadow:0 6px 20px rgba(0,0,0,.22);font-size:1.05rem;padding:12px 22px}
+  body.sheet-open .panel{padding-bottom:96px}
+  body.sheet-dock .float-next{display:none}
   body.sheet-dock{overflow:auto}
   body.sheet-dock .panel{top:auto;bottom:0;max-height:46vh;padding:14px 16px 24px;border-top:2px solid var(--gold);box-shadow:0 -10px 30px rgba(0,0,0,.18);border-radius:14px 14px 0 0}
   body.sheet-dock .sheetbar{display:none}
@@ -425,6 +430,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 </div>
 <div class="learn-dots" id="learn-dots" aria-hidden="true"></div>
 
+<div class="float-next" id="floatnext" hidden></div>
 <div class="sheetbar" id="sheetbar"><button class="sb-back" id="sb-back" type="button">← Cliff</button><span class="sb-title" id="sb-title"></span><span class="sb-nav"><button class="sb-btn" id="sb-prev" type="button"></button><button class="sb-btn" id="sb-next" type="button"></button></span></div>
 <div class="game">
   <section class="cliff" aria-label="Cliff of strata">
@@ -1021,7 +1027,7 @@ const sizeLabel=k=>({long:"long",tall:"tall",wingspan:"wingspan",shell:"shell"})
 const MAX_SPAN=Math.max(...PERIODS.map(p=>p.start-p.end)), LONGEST=PERIODS.find(p=>p.start-p.end===MAX_SPAN);
 const extEnding=p=>{const n=PERIODS[PERIODS.indexOf(p)+1];return n?EXTINCTIONS.find(e=>e.after===n.k):null;};
 function openPeriod(k){
-  stopNarr(); cancelReveal(); examPick=null; view={type:"period",k}; renderCliff(); const p=PERIODS.find(q=>q.k===k); const i=PERIODS.indexOf(p);
+  stopNarr(); cancelReveal(); {const fl=document.getElementById("floatnext"); if(fl){fl.hidden=true;fl.innerHTML="";}} examPick=null; view={type:"period",k}; renderCliff(); const p=PERIODS.find(q=>q.k===k); const i=PERIODS.indexOf(p);
   const era=EONS.find(e=>e.name===p.era);
   const endsExt=extEnding(p), beginsExt=EXTINCTIONS.find(e=>e.after===p.k);
   panel.className="panel";
@@ -1082,7 +1088,7 @@ function renderSizer(p){
 }
 
 function startDig(p,a){
-  stopNarr();
+  stopNarr(); {const fl=document.getElementById("floatnext"); if(fl){fl.hidden=true;fl.innerHTML="";}}
   const id=p.k+"/"+a.name;
   panel.innerHTML=`<div class="eyebrow">${p.name} · digging</div>
     <h2>There is something in this rock.</h2>
@@ -1143,7 +1149,9 @@ function showCard(p,a,fresh=false){
     ${fresh&&found.size>=6&&found.size%6===0&&chalSeen<found.size?`<div class="chal" id="chal"></div>`:""}
     <div class="row">${nextA?`<button class="btn" id="next" type="button">Dig the next one →</button>`:nextP?`<button class="btn" id="next" type="button">All found here. Up to the ${nextP.name} →</button>`:""}<button class="btn ghost" id="back" type="button">Back to the ${p.name} dig site</button><span class="eyebrow">${[...found].filter(x=>x.startsWith(p.k+"/")).length} of ${p.animals.length} found here</span></div>`;
   if(document.getElementById("chal")){chalSeen=found.size;save();renderChallenge(p,a);}
-  const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",()=>{ if(nextA)startDig(p,nextA); else openPeriod(nextP.k); });
+  const goNext=()=>{ if(nextA)startDig(p,nextA); else if(nextP)openPeriod(nextP.k); };
+  const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",goNext);
+  const fl=document.getElementById("floatnext"); if(fl){ if(nextA||nextP){ fl.hidden=false; fl.innerHTML=`<button class="btn" type="button">${nextA?"Dig the next one →":`Up to the ${nextP.name} →`}</button>`; fl.querySelector("button").addEventListener("click",goNext); } else { fl.hidden=true; fl.innerHTML=""; } }
   const st=document.getElementById("stage"); st.addEventListener("click",()=>{habitat(a);});
   requestAnimationFrame(()=>requestAnimationFrame(()=>{st.classList.add("alive"); if(fresh){sparkle(st); habitat(a); if(found.size===ALL.length)setTimeout(fanfare,600);}}));
   document.getElementById("back").addEventListener("click",()=>openPeriod(p.k)); syncSheet();
