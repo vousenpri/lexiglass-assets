@@ -181,6 +181,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .ruler i{display:block;height:100%;background:var(--c);opacity:.6;cursor:pointer;border-right:1px solid var(--bg);min-width:2px}
 .ruler i:hover,.ruler i.on{opacity:1}
 .ruler em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);pointer-events:none;transform:translateX(-1px)}
+.ticks{display:flex;position:relative;height:14px;margin-top:2px;font-family:var(--sans);font-size:10px;letter-spacing:.02em;color:var(--ink-soft)}.ticks span{position:relative;white-space:nowrap;overflow:visible;padding-left:3px;border-left:1px solid var(--rule);line-height:14px}.ticks span:last-child::after{content:"0";position:absolute;right:0;top:0;padding-right:0}@media (max-width:760px){.ticks{font-size:8px;letter-spacing:0}.ticks span{padding-left:2px}}
 .ruler-lbl{display:flex;justify-content:space-between;font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
 .ruler-lbl span:nth-child(2){text-transform:none;letter-spacing:.02em}
 @media (max-width:760px){.ruler-lbl span:nth-child(2){display:none}.eras{font-size:8px;letter-spacing:.08em}}
@@ -427,7 +428,8 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="cloth"><div class="track" id="ctrack"><div class="rail" id="crail"></div></div><div class="marker" aria-hidden="true"></div><div class="badge" id="cbadge"></div><div class="ctl"><button type="button" id="cprev" aria-label="Previous fossil">◀</button><button type="button" id="cnext" aria-label="Next fossil">▶</button></div></div>
   <div class="eras" id="eras" aria-hidden="true"></div>
   <div class="ruler" id="ruler" aria-label="The twelve layers: tap to jump"></div>
-  <div class="ruler-lbl"><span>539 Ma · Cambrian</span><span>Every fossil in the cliff, oldest on the left. Drag the strip; the colour is the layer. Tap a layer to jump.</span><span>Today · Quaternary</span></div>
+  <div class="ticks" id="ticks" aria-hidden="true"></div>
+  <div class="ruler-lbl"><span>Million years ago, when each layer began</span><span>Every fossil in the cliff, oldest on the left. Drag the strip; the colour is the layer. Tap a layer to jump.</span><span>Today</span></div>
 </div>
 <div class="hero"><figure class="drift" id="drift" aria-label="The continents drifting from the Cambrian to today">
   <div class="drift-stack" id="drift-stack"></div>
@@ -823,6 +825,7 @@ let walkSync=()=>{};
   let needle; const blocks=[];
   PERIODS.forEach(p=>{ const b=document.createElement("i"); b.style.width=(p.animals.length/ALL.length*100)+"%"; b.style.setProperty("--c",p.color); b.title=p.name; b.dataset.k=p.k; b.addEventListener("click",()=>{ const t=tiles.find(x=>x.dataset.id.startsWith(p.k+"/")); tr.scrollTo({left:centreOf(t),behavior:REDUCED?"auto":"smooth"}); }); ruler.appendChild(b); blocks.push(b); });
   needle=document.createElement("em"); ruler.appendChild(needle);
+  const ticks=document.getElementById("ticks"); PERIODS.forEach(p=>{ const sp=document.createElement("span"); sp.style.width=(p.animals.length/ALL.length*100)+"%"; sp.textContent=p.start; ticks.appendChild(sp); });
   const eraNames=[...new Set(PERIODS.map(p=>p.era))]; eraNames.forEach(e=>{ const n=PERIODS.filter(p=>p.era===e).reduce((s,p)=>s+p.animals.length,0); const sp=document.createElement("span"); sp.style.width=(n/ALL.length*100)+"%"; sp.textContent=e; eras.appendChild(sp); });
   const layout=()=>{ const half=tr.clientWidth/2; padL.style.width=padR.style.width=half+"px"; };
   const centreOf=t=>t.offsetLeft+t.offsetWidth/2-tr.clientWidth/2;
