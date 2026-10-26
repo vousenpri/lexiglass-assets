@@ -168,6 +168,22 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .cloth .ctl button{width:32px;height:32px;border-radius:50%;background:rgba(22,23,11,.6);color:#FFF8EE;border:1px solid rgba(255,248,238,.35);font-size:12px;font-family:var(--sans);padding:0;cursor:pointer}
 .cloth .ctl button:disabled{opacity:.35;cursor:default}
 @media (max-width:760px){.cloth{height:170px}}
+.walk{margin:18px 0 0}
+.walk .cloth{margin:0;border-radius:12px 12px 0 0}
+.fs{border-right:1px solid rgba(22,23,11,.18)}
+.fs.on::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 3px var(--gold);pointer-events:none}
+.fs .lbl{position:absolute;left:0;right:0;bottom:0;font-family:var(--sans);font-size:10px;letter-spacing:.06em;line-height:1.2;padding:4px 6px;background:rgba(22,23,11,.6);color:#FFF8EE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+.fs.buried .lbl{display:none}
+.eras{display:flex;height:18px;font-family:var(--sans);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--rule);border-top:0;background:var(--paper)}
+.eras span{display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;border-right:1px solid var(--rule)}
+.eras span:last-child{border-right:0}
+.ruler{display:flex;height:16px;border:1px solid var(--rule);border-top:0;border-radius:0 0 8px 8px;overflow:hidden;position:relative;background:var(--paper)}
+.ruler i{display:block;height:100%;background:var(--c);opacity:.6;cursor:pointer;border-right:1px solid var(--bg);min-width:2px}
+.ruler i:hover,.ruler i.on{opacity:1}
+.ruler em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);pointer-events:none;transform:translateX(-1px)}
+.ruler-lbl{display:flex;justify-content:space-between;font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+.ruler-lbl span:nth-child(2){text-transform:none;letter-spacing:.02em}
+@media (max-width:760px){.ruler-lbl span:nth-child(2){display:none}.eras{font-size:8px;letter-spacing:.08em}}
 .nb-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px}.nb-actions .btn{font-size:1.05rem}.nb-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}.reset{margin-left:auto;border:1px solid var(--rule)}.reset.arm{color:#fff;background:var(--copper);border-color:var(--copper);font-weight:600}
 .chal{background:var(--cream);border:1px solid var(--gold);border-radius:14px;padding:14px 16px;margin-top:4px}.chal b{font-family:var(--serif);font-size:1.4rem;font-weight:600;display:block;line-height:1.1;margin:4px 0 2px}.chal p{margin:4px 0 10px}.chal .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.chal .skip{font-size:.85rem;opacity:.7}
 .start{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 2px}.start-btn{font-size:1.15rem;padding:12px 22px}.start-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
@@ -347,7 +363,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .sheetbar{display:none}
 @media (max-width:760px){
   main{display:flex;flex-direction:column}
-  .brand{order:0}.top>div:first-child{order:1}.lede{order:2}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
+  .brand{order:0}.top>div:first-child{order:1}.lede{order:2}.walk{order:3}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
   .start{margin:16px 0 0}.start-btn{width:100%;justify-content:center;text-align:center}
   .learn{display:flex;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -18px 0;padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .learn::-webkit-scrollbar{display:none}
@@ -369,7 +385,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   .panel{display:none}
   body.sheet-open{overflow:hidden}
   body.sheet-open .panel{display:flex;position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;border-radius:0;border:0;margin:0;padding:calc(56px + env(safe-area-inset-top,0px)) 16px 40px;-webkit-overflow-scrolling:touch}
-  body.sheet-open .panel>.eyebrow:first-child{order:-3}body.sheet-open .panel>h2{order:-2}body.sheet-open .panel>.digblock{order:-1}body.sheet-open .panel>.cloth{order:-2;margin:0 -16px 10px;border-radius:0;border-width:1px 0}
+  body.sheet-open .panel>.eyebrow:first-child{order:-3}body.sheet-open .panel>h2{order:-2}body.sheet-open .panel>.digblock{order:-1}
   body.sheet-open .sheetbar{display:flex}
   .sheetbar{position:fixed;top:0;left:0;right:0;z-index:41;height:calc(48px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 8px 0;align-items:center;gap:6px;background:var(--paper);border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:12px;letter-spacing:.06em}
   .sb-back{flex:none;padding:8px 10px 8px 6px;color:var(--copper);font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
@@ -407,6 +423,12 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 </div>
 <p class="lede">This cliff is 539 million years deep and it is full of bones. Grab your trowel and brush up on every layer. Tap any layer to go there: how it started, who lived in it (dig them up, four to thirteen a layer), and how it all went wrong. The thin red stripes are the five times nearly everything died. Deeper is older. Mind the extinctions.</p>
 <div class="start"><button class="btn start-btn" id="startdig" type="button">Start digging →</button></div>
+<div class="walk" id="walk" aria-label="Every fossil in the cliff, oldest to newest">
+  <div class="cloth"><div class="track" id="ctrack"><div class="rail" id="crail"></div></div><div class="marker" aria-hidden="true"></div><div class="badge" id="cbadge"></div><div class="ctl"><button type="button" id="cprev" aria-label="Previous fossil">◀</button><button type="button" id="cnext" aria-label="Next fossil">▶</button></div></div>
+  <div class="eras" id="eras" aria-hidden="true"></div>
+  <div class="ruler" id="ruler" aria-label="The twelve layers: tap to jump"></div>
+  <div class="ruler-lbl"><span>539 Ma · Cambrian</span><span>Every fossil in the cliff, oldest on the left. Drag the strip; the colour is the layer. Tap a layer to jump.</span><span>Today · Quaternary</span></div>
+</div>
 <div class="hero"><figure class="drift" id="drift" aria-label="The continents drifting from the Cambrian to today">
   <div class="drift-stack" id="drift-stack"></div>
   <figcaption><span class="drift-name" id="drift-name"></span><span class="drift-ma" id="drift-ma"></span><button class="drift-btn" id="drift-btn" type="button" aria-label="Pause">❚❚</button></figcaption>
@@ -788,6 +810,40 @@ function confetti(n=60,big=false){ if(REDUCED)return; const c=document.createEle
   document.body.appendChild(c); setTimeout(()=>c.remove(),(big?4500:3200)); }
 const LAYERS = [...PERIODS].reverse(); // youngest first
 const ALL = PERIODS.flatMap(p=>p.animals.map(a=>({...a, pk:p.k, id:p.k+"/"+a.name})));
+// The walk: every fossil, oldest to newest, as one strip with the layers marked beneath
+let walkSync=()=>{};
+(()=>{ const tr=document.getElementById("ctrack"), rail=document.getElementById("crail"), badge=document.getElementById("cbadge"), ruler=document.getElementById("ruler"), eras=document.getElementById("eras"); if(!tr)return;
+  const padL=document.createElement("div"), padR=document.createElement("div"); padL.className=padR.className="pad"; rail.appendChild(padL);
+  const tiles=ALL.map(x=>{ const t=document.createElement("div"); t.className="fs"; t.dataset.id=x.id; t.setAttribute("role","button"); t.tabIndex=0; rail.appendChild(t); return t; });
+  rail.appendChild(padR);
+  const pOf=t=>PERIODS.find(q=>q.k===t.dataset.id.split("/")[0]);
+  const aOf=t=>{const p=pOf(t); return p.animals.find(a=>p.k+"/"+a.name===t.dataset.id);};
+  const dress=()=>tiles.forEach(t=>{ const f=found.has(t.dataset.id), a=aOf(t), p=pOf(t); if(t.dataset.f===String(f))return; t.dataset.f=String(f); t.classList.toggle("buried",!f); t.setAttribute("aria-label",f?a.name+", "+p.name:"Still buried in the "+p.name+". Tap to dig"); t.style.background=f?"":`repeating-linear-gradient(135deg,${p.color}66 0 10px,${p.color}33 10px 20px)`; t.innerHTML=f?(a.img?`<img src="img/${a.img}.jpg" alt="" loading="lazy" onerror="this.remove()">`:"")+`<div class="lbl">${a.name}</div>`:`<span>?</span><div class="dig">Tap to dig</div>`; });
+  // ruler + eras, widths proportional to fossil count
+  let needle; const blocks=[];
+  PERIODS.forEach(p=>{ const b=document.createElement("i"); b.style.width=(p.animals.length/ALL.length*100)+"%"; b.style.setProperty("--c",p.color); b.title=p.name; b.dataset.k=p.k; b.addEventListener("click",()=>{ const t=tiles.find(x=>x.dataset.id.startsWith(p.k+"/")); tr.scrollTo({left:centreOf(t),behavior:REDUCED?"auto":"smooth"}); }); ruler.appendChild(b); blocks.push(b); });
+  needle=document.createElement("em"); ruler.appendChild(needle);
+  const eraNames=[...new Set(PERIODS.map(p=>p.era))]; eraNames.forEach(e=>{ const n=PERIODS.filter(p=>p.era===e).reduce((s,p)=>s+p.animals.length,0); const sp=document.createElement("span"); sp.style.width=(n/ALL.length*100)+"%"; sp.textContent=e; eras.appendChild(sp); });
+  const layout=()=>{ const half=tr.clientWidth/2; padL.style.width=padR.style.width=half+"px"; };
+  const centreOf=t=>t.offsetLeft+t.offsetWidth/2-tr.clientWidth/2;
+  const under=()=>{ const c=tr.scrollLeft+tr.clientWidth/2; let best=tiles[0],bd=1e9; for(const t of tiles){const d=Math.abs(t.offsetLeft+t.offsetWidth/2-c); if(d<bd){bd=d;best=t;}} return best; };
+  let curId=null, quiet=false;
+  const paint=()=>{ const t=under(), p=pOf(t), a=aOf(t), f=found.has(t.dataset.id), i=tiles.indexOf(t); badge.innerHTML=`<b>${p.name}</b>${f?a.name:"Still buried"}`; needle.style.left=((i+.5)/tiles.length*100)+"%"; blocks.forEach(b=>b.classList.toggle("on",b.dataset.k===p.k)); tiles.forEach(x=>x.classList.toggle("on",x===t)); document.getElementById("cprev").disabled=i===0; document.getElementById("cnext").disabled=i===tiles.length-1; };
+  let settle=null, raf=null, down=false, sx=0, sl=0, moved=false;
+  const settled=()=>{ if(down||quiet)return; const t=under(), id=t.dataset.id; if(id===curId)return; curId=id; const p=pOf(t), a=aOf(t); if(found.has(id))showCard(p,a); else if(view.k!==p.k||view.type!=="period")openPeriod(p.k); };
+  tr.addEventListener("scroll",()=>{ if(!raf)raf=requestAnimationFrame(()=>{raf=null;paint();}); clearTimeout(settle); settle=setTimeout(settled,220); });
+  tr.addEventListener("wheel",e=>{ if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();tr.scrollLeft+=e.deltaY;} },{passive:false});
+  tr.addEventListener("pointerdown",e=>{ if(e.pointerType==="touch")return; down=true;moved=false;sx=e.clientX;sl=tr.scrollLeft;tr.classList.add("drag");tr.setPointerCapture(e.pointerId); });
+  tr.addEventListener("pointermove",e=>{ if(down){ if(Math.abs(e.clientX-sx)>4)moved=true; tr.scrollLeft=sl-(e.clientX-sx);} });
+  const up=()=>{ if(!down)return; down=false; tr.classList.remove("drag"); tr.scrollTo({left:centreOf(under()),behavior:REDUCED?"auto":"smooth"}); clearTimeout(settle); settle=setTimeout(settled,220); };
+  tr.addEventListener("pointerup",up); tr.addEventListener("pointercancel",up);
+  tiles.forEach(t=>{ const go=()=>{ if(moved){moved=false;return;} const p=pOf(t), a=aOf(t); curId=t.dataset.id; tr.scrollTo({left:centreOf(t),behavior:REDUCED?"auto":"smooth"}); if(found.has(t.dataset.id)){showCard(p,a);} else {startDig(p,a);} goPanel(); }; t.addEventListener("click",go); t.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();go();} }); });
+  const stepTo=d=>{ const n=tiles[Math.max(0,Math.min(tiles.length-1,tiles.indexOf(under())+d))]; tr.scrollTo({left:centreOf(n),behavior:REDUCED?"auto":"smooth"}); };
+  document.getElementById("cprev").addEventListener("click",()=>stepTo(-1)); document.getElementById("cnext").addEventListener("click",()=>stepTo(1));
+  addEventListener("resize",()=>{ const t=under(); layout(); quiet=true; tr.scrollLeft=centreOf(t); setTimeout(()=>quiet=false,300); },{passive:true});
+  walkSync=(id)=>{ dress(); const t=tiles.find(x=>x.dataset.id===id); if(!t)return; curId=id; quiet=true; tr.scrollTo({left:centreOf(t),behavior:REDUCED?"auto":"smooth"}); paint(); setTimeout(()=>quiet=false,600); };
+  requestAnimationFrame(()=>{ layout(); dress(); quiet=true; tr.scrollLeft=centreOf(tiles[0]); paint(); setTimeout(()=>quiet=false,300); });
+})();
 const byId = id => ALL.find(a=>a.id===id);
 const RANKS = [[0,"Rock Hound"],[8,"Field Assistant"],[20,"Fossil Hunter"],[36,"Curator"],[57,"Chief Paleontologist"]];
 const YOU_M = 1.3; // an eight-year-old
@@ -1154,8 +1210,7 @@ function sparkle(host){ if(REDUCED)return; const r=host.getBoundingClientRect();
 function showCard(p,a,fresh=false){
   stopNarr(); panel.className="panel";
   const nextA=p.animals.find(x=>!found.has(p.k+"/"+x.name)); const nextP=PERIODS[PERIODS.indexOf(p)+1]||null;
-  const strip=`<div class="cloth" id="cloth"><div class="track" id="ctrack"><div class="rail"><div class="pad"></div>${p.animals.map((x,i)=>{const f=found.has(p.k+"/"+x.name); return `<div class="fs${f?"":" buried"}" data-i="${i}" role="button" tabindex="0" aria-label="${f?x.name:"Still buried. Tap to dig"}">${f&&x.img?`<img src="img/${x.img}.jpg" alt="" loading="lazy" onerror="this.remove()">`:f?"":`<span>?</span><div class="dig">Tap to dig</div>`}</div>`;}).join("")}<div class="pad"></div></div></div><div class="marker" aria-hidden="true"></div><div class="badge" id="cbadge"></div><div class="ctl"><button type="button" id="cprev" aria-label="Previous fossil">◀</button><button type="button" id="cnext" aria-label="Next fossil">▶</button></div></div>`;
-  panel.innerHTML=`<div class="eyebrow">${p.name} · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</div>${strip}
+  panel.innerHTML=`<div class="eyebrow">${p.name} · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</div>
     <div class="card">
       <button class="stage cleared stagebtn" id="stage" type="button" aria-label="Hear ${a.name}'s world">${pic(a)}</button>
       <div>
@@ -1170,24 +1225,7 @@ function showCard(p,a,fresh=false){
     <div class="row">${nextA?`<button class="btn" id="next" type="button">Dig the next one →</button>`:nextP?`<button class="btn" id="next" type="button">All found here. Up to the ${nextP.name} →</button>`:""}<button class="btn ghost" id="back" type="button">Back to the ${p.name} dig site</button><span class="eyebrow">${[...found].filter(x=>x.startsWith(p.k+"/")).length} of ${p.animals.length} found here</span></div>`;
   if(document.getElementById("chal")){chalSeen=found.size;save();renderChallenge(p,a);}
   const goNext=()=>{ if(nextA)startDig(p,nextA); else if(nextP)openPeriod(nextP.k); };
-  (()=>{ const cl=document.getElementById("cloth"); if(!cl)return; const tr=document.getElementById("ctrack"), badge=document.getElementById("cbadge"), tiles=[...cl.querySelectorAll(".fs")], pads=cl.querySelectorAll(".pad");
-    const layout=()=>{ const half=tr.clientWidth/2; pads.forEach(d=>d.style.width=half+"px"); };
-    const centreOf=t=>t.offsetLeft+t.offsetWidth/2-tr.clientWidth/2;
-    const under=()=>{ const c=tr.scrollLeft+tr.clientWidth/2; let best=tiles[0],bd=1e9; tiles.forEach(t=>{const d=Math.abs(t.offsetLeft+t.offsetWidth/2-c); if(d<bd){bd=d;best=t;}}); return best; };
-    const paint=()=>{ const t=under(); const x=p.animals[+t.dataset.i]; const f=found.has(p.k+"/"+x.name); badge.innerHTML=`<b>${+t.dataset.i+1} of ${p.animals.length}</b>${f?x.name:"Still buried"}`; document.getElementById("cprev").disabled=t===tiles[0]; document.getElementById("cnext").disabled=t===tiles[tiles.length-1]; };
-    layout(); tr.scrollLeft=centreOf(tiles[p.animals.indexOf(a)]); paint();
-    let settle=null, raf=null, down=false, sx=0, sl=0, moved=false;
-    tr.addEventListener("scroll",()=>{ if(!raf)raf=requestAnimationFrame(()=>{raf=null;paint();}); clearTimeout(settle); settle=setTimeout(()=>{ if(down)return; const t=under(); const x=p.animals[+t.dataset.i]; if(x!==a&&found.has(p.k+"/"+x.name))showCard(p,x); },180); });
-    tr.addEventListener("wheel",e=>{ if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();tr.scrollLeft+=e.deltaY;} },{passive:false});
-    tr.addEventListener("pointerdown",e=>{ if(e.pointerType==="touch")return; down=true;moved=false;sx=e.clientX;sl=tr.scrollLeft;tr.classList.add("drag");tr.setPointerCapture(e.pointerId); });
-    tr.addEventListener("pointermove",e=>{ if(down){ if(Math.abs(e.clientX-sx)>4)moved=true; tr.scrollLeft=sl-(e.clientX-sx);} });
-    const up=()=>{ if(!down)return; down=false; tr.classList.remove("drag"); tr.scrollTo({left:centreOf(under()),behavior:"smooth"}); };
-    tr.addEventListener("pointerup",up); tr.addEventListener("pointercancel",up);
-    tiles.forEach(t=>{ const go=()=>{ if(moved){moved=false;return;} const x=p.animals[+t.dataset.i]; if(x===a)return; if(found.has(p.k+"/"+x.name))showCard(p,x); else startDig(p,x); }; t.addEventListener("click",go); t.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();go();} }); });
-    const stepTo=d=>{ const n=tiles[Math.max(0,Math.min(tiles.length-1,tiles.indexOf(under())+d))]; tr.scrollTo({left:centreOf(n),behavior:"smooth"}); };
-    document.getElementById("cprev").addEventListener("click",()=>stepTo(-1)); document.getElementById("cnext").addEventListener("click",()=>stepTo(1));
-    addEventListener("resize",()=>{ if(!cl.isConnected)return; const t=under(); layout(); tr.scrollLeft=centreOf(t); },{passive:true});
-  })();
+  walkSync(p.k+"/"+a.name);
   const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",goNext);
   const fl=document.getElementById("floatnext"); if(fl){ if(nextA||nextP){ fl.hidden=false; fl.innerHTML=`<button class="btn" type="button">${nextA?"Dig the next one →":`Up to the ${nextP.name} →`}</button>`; fl.querySelector("button").addEventListener("click",goNext); } else { fl.hidden=true; fl.innerHTML=""; } }
   const st=document.getElementById("stage"); st.addEventListener("click",()=>{habitat(a);});
