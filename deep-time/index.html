@@ -149,15 +149,25 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .dur{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:-2px 0 14px;display:grid;gap:5px}
 .dur .r{display:flex;align-items:center;gap:10px}.dur i{display:block;height:6px;background:var(--ink);border-radius:3px;flex:0 0 auto}.dur .ref i{width:160px;background:var(--rule)}.dur .ref span{opacity:.8}
 .nb-code{border:1px dashed var(--rule);border-radius:14px;padding:12px 14px;margin:8px 0 12px;font-family:var(--sans);font-size:13px}.nb-code .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}.nb-code code{font-family:ui-monospace,Menlo,monospace;font-size:14px;letter-spacing:.06em;background:var(--cream);padding:6px 10px;border-radius:8px;overflow-wrap:anywhere}.nb-code input{flex:1;min-width:160px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;font:inherit}
-.fstrip{display:flex;flex:none;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 2px 8px;margin:-4px 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.fstrip::-webkit-scrollbar{display:none}
-.fs{flex:none;width:64px;height:64px;border-radius:12px;overflow:hidden;position:relative;border:2px solid transparent;background:var(--soil-3);scroll-snap-align:center;padding:0}
-.fs img{width:100%;height:100%;object-fit:cover;display:block}
-.fs span{position:absolute;left:0;right:0;bottom:0;font-family:var(--sans);font-size:9px;letter-spacing:.04em;line-height:1.1;padding:3px 4px;background:rgba(22,23,11,.62);color:#FFF8EE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fs.buried{background:repeating-linear-gradient(135deg,var(--soil-3) 0 6px,var(--soil-5) 6px 12px)}
-.fs.buried span{position:static;display:flex;align-items:center;justify-content:center;height:100%;background:none;font-family:var(--serif);font-size:1.6rem;color:rgba(22,23,11,.55)}
-.fs.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--paper) inset}
-.fs:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.cloth{flex:none;position:relative;height:220px;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--soil-5);margin:2px 0 12px}
+.cloth .track{height:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.cloth .track::-webkit-scrollbar{display:none}.cloth .track.drag{cursor:grabbing;scroll-snap-type:none}
+.cloth .rail{height:100%;display:flex;width:max-content}
+.cloth .pad{flex:none;height:100%}
+.fs{flex:none;height:100%;aspect-ratio:1;position:relative;scroll-snap-align:center;padding:0;background:var(--soil-3);border-right:1px solid rgba(22,23,11,.25);user-select:none;-webkit-user-select:none;cursor:pointer}
+.fs img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.fs.buried{background:repeating-linear-gradient(135deg,var(--soil-3) 0 10px,var(--soil-5) 10px 20px)}
+.fs.buried span{display:flex;align-items:center;justify-content:center;height:100%;font-family:var(--serif);font-size:3rem;color:rgba(22,23,11,.5)}
+.fs.buried .dig{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper)}
+.cloth .marker{position:absolute;left:50%;top:0;bottom:0;width:0;border-left:2px dashed rgba(184,146,42,.85);pointer-events:none}
+.cloth .marker::before,.cloth .marker::after{content:"";position:absolute;left:-7px;border:6px solid transparent}
+.cloth .marker::before{top:0;border-top:8px solid var(--gold)}.cloth .marker::after{bottom:0;border-bottom:8px solid var(--gold)}
+.cloth .badge{position:absolute;left:10px;top:8px;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(22,23,11,.72);color:#FFF8EE;padding:5px 10px;border-radius:999px;pointer-events:none;max-width:62%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cloth .badge b{color:#F3D27A;font-weight:500;margin-right:8px}
+.cloth .ctl{position:absolute;right:8px;top:6px;display:flex;gap:6px}
+.cloth .ctl button{width:32px;height:32px;border-radius:50%;background:rgba(22,23,11,.6);color:#FFF8EE;border:1px solid rgba(255,248,238,.35);font-size:12px;font-family:var(--sans);padding:0;cursor:pointer}
+.cloth .ctl button:disabled{opacity:.35;cursor:default}
+@media (max-width:760px){.cloth{height:170px}}
 .nb-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px}.nb-actions .btn{font-size:1.05rem}.nb-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}.reset{margin-left:auto;border:1px solid var(--rule)}.reset.arm{color:#fff;background:var(--copper);border-color:var(--copper);font-weight:600}
 .chal{background:var(--cream);border:1px solid var(--gold);border-radius:14px;padding:14px 16px;margin-top:4px}.chal b{font-family:var(--serif);font-size:1.4rem;font-weight:600;display:block;line-height:1.1;margin:4px 0 2px}.chal p{margin:4px 0 10px}.chal .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.chal .skip{font-size:.85rem;opacity:.7}
 .start{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 2px}.start-btn{font-size:1.15rem;padding:12px 22px}.start-note{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
@@ -359,7 +369,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   .panel{display:none}
   body.sheet-open{overflow:hidden}
   body.sheet-open .panel{display:flex;position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;border-radius:0;border:0;margin:0;padding:calc(56px + env(safe-area-inset-top,0px)) 16px 40px;-webkit-overflow-scrolling:touch}
-  body.sheet-open .panel>.eyebrow:first-child{order:-3}body.sheet-open .panel>h2{order:-2}body.sheet-open .panel>.digblock{order:-1}body.sheet-open .panel>.fstrip{order:-2;margin:0 -16px 6px;padding:4px 16px 8px}
+  body.sheet-open .panel>.eyebrow:first-child{order:-3}body.sheet-open .panel>h2{order:-2}body.sheet-open .panel>.digblock{order:-1}body.sheet-open .panel>.cloth{order:-2;margin:0 -16px 10px;border-radius:0;border-width:1px 0}
   body.sheet-open .sheetbar{display:flex}
   .sheetbar{position:fixed;top:0;left:0;right:0;z-index:41;height:calc(48px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 8px 0;align-items:center;gap:6px;background:var(--paper);border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:12px;letter-spacing:.06em}
   .sb-back{flex:none;padding:8px 10px 8px 6px;color:var(--copper);font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
@@ -1144,7 +1154,7 @@ function sparkle(host){ if(REDUCED)return; const r=host.getBoundingClientRect();
 function showCard(p,a,fresh=false){
   stopNarr(); panel.className="panel";
   const nextA=p.animals.find(x=>!found.has(p.k+"/"+x.name)); const nextP=PERIODS[PERIODS.indexOf(p)+1]||null;
-  const strip=`<div class="fstrip" id="fstrip" aria-label="Fossils in this layer">${p.animals.map((x,i)=>{const f=found.has(p.k+"/"+x.name); return `<button type="button" class="fs${x===a?" on":""}${f?"":" buried"}" data-i="${i}" aria-label="${f?x.name:"Still buried. Tap to dig"}">${f&&x.img?`<img src="img/${x.img}.jpg" alt="" loading="lazy" onerror="this.remove()">`:""}<span>${f?x.name:"?"}</span></button>`;}).join("")}</div>`;
+  const strip=`<div class="cloth" id="cloth"><div class="track" id="ctrack"><div class="rail"><div class="pad"></div>${p.animals.map((x,i)=>{const f=found.has(p.k+"/"+x.name); return `<div class="fs${f?"":" buried"}" data-i="${i}" role="button" tabindex="0" aria-label="${f?x.name:"Still buried. Tap to dig"}">${f&&x.img?`<img src="img/${x.img}.jpg" alt="" loading="lazy" onerror="this.remove()">`:f?"":`<span>?</span><div class="dig">Tap to dig</div>`}</div>`;}).join("")}<div class="pad"></div></div></div><div class="marker" aria-hidden="true"></div><div class="badge" id="cbadge"></div><div class="ctl"><button type="button" id="cprev" aria-label="Previous fossil">◀</button><button type="button" id="cnext" aria-label="Next fossil">▶</button></div></div>`;
   panel.innerHTML=`<div class="eyebrow">${p.name} · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</div>${strip}
     <div class="card">
       <button class="stage cleared stagebtn" id="stage" type="button" aria-label="Hear ${a.name}'s world">${pic(a)}</button>
@@ -1160,7 +1170,24 @@ function showCard(p,a,fresh=false){
     <div class="row">${nextA?`<button class="btn" id="next" type="button">Dig the next one →</button>`:nextP?`<button class="btn" id="next" type="button">All found here. Up to the ${nextP.name} →</button>`:""}<button class="btn ghost" id="back" type="button">Back to the ${p.name} dig site</button><span class="eyebrow">${[...found].filter(x=>x.startsWith(p.k+"/")).length} of ${p.animals.length} found here</span></div>`;
   if(document.getElementById("chal")){chalSeen=found.size;save();renderChallenge(p,a);}
   const goNext=()=>{ if(nextA)startDig(p,nextA); else if(nextP)openPeriod(nextP.k); };
-  const fsEl=document.getElementById("fstrip"); if(fsEl){ fsEl.querySelectorAll(".fs").forEach(b=>b.addEventListener("click",()=>{const x=p.animals[+b.dataset.i]; if(x===a)return; if(found.has(p.k+"/"+x.name))showCard(p,x); else startDig(p,x);})); const on=fsEl.querySelector(".fs.on"); if(on) requestAnimationFrame(()=>{ fsEl.scrollLeft=Math.max(0,on.offsetLeft-fsEl.clientWidth/2+on.offsetWidth/2); }); }
+  (()=>{ const cl=document.getElementById("cloth"); if(!cl)return; const tr=document.getElementById("ctrack"), badge=document.getElementById("cbadge"), tiles=[...cl.querySelectorAll(".fs")], pads=cl.querySelectorAll(".pad");
+    const layout=()=>{ const half=tr.clientWidth/2; pads.forEach(d=>d.style.width=half+"px"); };
+    const centreOf=t=>t.offsetLeft+t.offsetWidth/2-tr.clientWidth/2;
+    const under=()=>{ const c=tr.scrollLeft+tr.clientWidth/2; let best=tiles[0],bd=1e9; tiles.forEach(t=>{const d=Math.abs(t.offsetLeft+t.offsetWidth/2-c); if(d<bd){bd=d;best=t;}}); return best; };
+    const paint=()=>{ const t=under(); const x=p.animals[+t.dataset.i]; const f=found.has(p.k+"/"+x.name); badge.innerHTML=`<b>${+t.dataset.i+1} of ${p.animals.length}</b>${f?x.name:"Still buried"}`; document.getElementById("cprev").disabled=t===tiles[0]; document.getElementById("cnext").disabled=t===tiles[tiles.length-1]; };
+    layout(); tr.scrollLeft=centreOf(tiles[p.animals.indexOf(a)]); paint();
+    let settle=null, raf=null, down=false, sx=0, sl=0, moved=false;
+    tr.addEventListener("scroll",()=>{ if(!raf)raf=requestAnimationFrame(()=>{raf=null;paint();}); clearTimeout(settle); settle=setTimeout(()=>{ if(down)return; const t=under(); const x=p.animals[+t.dataset.i]; if(x!==a&&found.has(p.k+"/"+x.name))showCard(p,x); },180); });
+    tr.addEventListener("wheel",e=>{ if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();tr.scrollLeft+=e.deltaY;} },{passive:false});
+    tr.addEventListener("pointerdown",e=>{ if(e.pointerType==="touch")return; down=true;moved=false;sx=e.clientX;sl=tr.scrollLeft;tr.classList.add("drag");tr.setPointerCapture(e.pointerId); });
+    tr.addEventListener("pointermove",e=>{ if(down){ if(Math.abs(e.clientX-sx)>4)moved=true; tr.scrollLeft=sl-(e.clientX-sx);} });
+    const up=()=>{ if(!down)return; down=false; tr.classList.remove("drag"); tr.scrollTo({left:centreOf(under()),behavior:"smooth"}); };
+    tr.addEventListener("pointerup",up); tr.addEventListener("pointercancel",up);
+    tiles.forEach(t=>{ const go=()=>{ if(moved){moved=false;return;} const x=p.animals[+t.dataset.i]; if(x===a)return; if(found.has(p.k+"/"+x.name))showCard(p,x); else startDig(p,x); }; t.addEventListener("click",go); t.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();go();} }); });
+    const stepTo=d=>{ const n=tiles[Math.max(0,Math.min(tiles.length-1,tiles.indexOf(under())+d))]; tr.scrollTo({left:centreOf(n),behavior:"smooth"}); };
+    document.getElementById("cprev").addEventListener("click",()=>stepTo(-1)); document.getElementById("cnext").addEventListener("click",()=>stepTo(1));
+    addEventListener("resize",()=>{ if(!cl.isConnected)return; const t=under(); layout(); tr.scrollLeft=centreOf(t); },{passive:true});
+  })();
   const nx=document.getElementById("next"); if(nx)nx.addEventListener("click",goNext);
   const fl=document.getElementById("floatnext"); if(fl){ if(nextA||nextP){ fl.hidden=false; fl.innerHTML=`<button class="btn" type="button">${nextA?"Dig the next one →":`Up to the ${nextP.name} →`}</button>`; fl.querySelector("button").addEventListener("click",goNext); } else { fl.hidden=true; fl.innerHTML=""; } }
   const st=document.getElementById("stage"); st.addEventListener("click",()=>{habitat(a);});
