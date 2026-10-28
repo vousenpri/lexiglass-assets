@@ -1,0 +1,1151 @@
+{
+ "note": "Rome narration clips. Each id plays from aud/<id>.mp3. say = one word or phrase, voiced to match its respelling; read = Read to me text. One take per clip.",
+ "clips": [
+  {
+   "id": "julius-caesar-name",
+   "kind": "say",
+   "text": "Julius Caesar",
+   "respelling": "JOO-lee-us SEE-zer"
+  },
+  {
+   "id": "julius-caesar-q0",
+   "kind": "say",
+   "text": "Veni, vidi, vici.",
+   "respelling": "WAY-nee, WEE-dee, WEE-kee"
+  },
+  {
+   "id": "julius-caesar-q1",
+   "kind": "say",
+   "text": "Alea iacta est.",
+   "respelling": "AH-leh-ah YAHK-tah est"
+  },
+  {
+   "id": "julius-caesar-q2",
+   "kind": "say",
+   "text": "Et tu, Brute?",
+   "respelling": "et TOO, BROO-teh"
+  },
+  {
+   "id": "julius-caesar-w-dictator",
+   "kind": "say",
+   "text": "dictator",
+   "respelling": "DIK-tay-ter"
+  },
+  {
+   "id": "julius-caesar-w-republic",
+   "kind": "say",
+   "text": "Republic",
+   "respelling": "ri-PUB-lik"
+  },
+  {
+   "id": "julius-caesar-w-ransom",
+   "kind": "say",
+   "text": "ransom",
+   "respelling": "RAN-sum"
+  },
+  {
+   "id": "julius-caesar-w-assassinate",
+   "kind": "say",
+   "text": "assassinate",
+   "respelling": "uh-SASS-in-ate"
+  },
+  {
+   "id": "julius-caesar-intro",
+   "kind": "read",
+   "text": "Not an emperor. Write that down, because people get it wrong all the time. Caesar was a dictator, which in Rome was an actual job title and not just an insult. He had all the power an emperor would later have, he just never got the crown. Sixty senators decided he was about to put one on, so they put a stop to it with twenty-three daggers. Here's the funny bit: his NAME became the word for emperor. Caesar. Kaiser. Tsar. The man they killed for wanting to be king ended up as the word for king."
+  },
+  {
+   "id": "julius-caesar-fate",
+   "kind": "read",
+   "text": "Stabbed 23 times by his so-called friends, right next to a statue of his old enemy Pompey."
+  },
+  {
+   "id": "augustus-name",
+   "kind": "say",
+   "text": "Augustus",
+   "respelling": "aw-GUS-tus"
+  },
+  {
+   "id": "augustus-q0",
+   "kind": "say",
+   "text": "Festina lente.",
+   "respelling": "fess-TEE-nah LEN-teh"
+  },
+  {
+   "id": "augustus-q2",
+   "kind": "say",
+   "text": "Acta est fabula, plaudite.",
+   "respelling": "AHK-tah est FAH-boo-lah, PLOW-dih-teh"
+  },
+  {
+   "id": "augustus-q3",
+   "kind": "say",
+   "text": "Quintili Vare, legiones redde!",
+   "respelling": "kwin-TIL-ee WAH-reh, leg-ee-OH-nayss RED-deh"
+  },
+  {
+   "id": "augustus-w-client-king",
+   "kind": "say",
+   "text": "client king",
+   "respelling": "KLY-ent king"
+  },
+  {
+   "id": "augustus-w-diadem",
+   "kind": "say",
+   "text": "diadem",
+   "respelling": "DY-a-dem"
+  },
+  {
+   "id": "augustus-w-heir",
+   "kind": "say",
+   "text": "heir",
+   "respelling": "AIR (silent h)"
+  },
+  {
+   "id": "augustus-w-civil-war",
+   "kind": "say",
+   "text": "civil war",
+   "respelling": "SIV-ul WAR"
+  },
+  {
+   "id": "augustus-w-legion",
+   "kind": "say",
+   "text": "legion",
+   "respelling": "LEE-jun"
+  },
+  {
+   "id": "augustus-w-principate",
+   "kind": "say",
+   "text": "principate",
+   "respelling": "PRIN-sih-pate"
+  },
+  {
+   "id": "augustus-intro",
+   "kind": "read",
+   "text": "Caesar's great-nephew, and a lot sneakier than his uncle. He finished off the civil wars, then told everyone he was giving Rome its old Republic back. He was not. He kept all the power, called himself 'first citizen' instead of 'king', and the Senate pretended to believe him. That's the trick that made him emperor number one: never say the word. He ruled for just over 40 years, the longest reign on this page."
+  },
+  {
+   "id": "augustus-fate",
+   "kind": "read",
+   "text": "Died in bed at 75. In Rome that counts as a miracle."
+  },
+  {
+   "id": "tiberius-name",
+   "kind": "say",
+   "text": "Tiberius",
+   "respelling": "ty-BEER-ee-us"
+  },
+  {
+   "id": "tiberius-q0",
+   "kind": "say",
+   "text": "Oderint dum probent.",
+   "respelling": "OH-deh-rint doom PROH-bent"
+  },
+  {
+   "id": "tiberius-w-stepson",
+   "kind": "say",
+   "text": "stepson",
+   "respelling": "STEP-sun"
+  },
+  {
+   "id": "tiberius-w-astrologer",
+   "kind": "say",
+   "text": "astrologer",
+   "respelling": "uh-STROL-uh-jer"
+  },
+  {
+   "id": "tiberius-w-treason",
+   "kind": "say",
+   "text": "treason",
+   "respelling": "TREE-zun"
+  },
+  {
+   "id": "tiberius-w-edict",
+   "kind": "say",
+   "text": "edict",
+   "respelling": "EE-dikt"
+  },
+  {
+   "id": "tiberius-intro",
+   "kind": "read",
+   "text": "Augustus's stepson, and a very good general with a very bad attitude. He hated being emperor and everybody could tell. After twelve years he gave up, moved to the island of Capri and left Rome to a nasty piece of work called Sejanus, the head of his bodyguard. When Sejanus got too big for his boots, Tiberius had him executed, then put half of Rome on trial for being his friends."
+  },
+  {
+   "id": "tiberius-fate",
+   "kind": "read",
+   "text": "Died at 77. Possibly of old age. Possibly smothered with a pillow. Rome did not send flowers."
+  },
+  {
+   "id": "caligula-name",
+   "kind": "say",
+   "text": "Caligula",
+   "respelling": "kuh-LIG-yoo-luh"
+  },
+  {
+   "id": "caligula-q0",
+   "kind": "say",
+   "text": "Oderint dum metuant.",
+   "respelling": "OH-deh-rint doom MEH-too-ahnt"
+  },
+  {
+   "id": "caligula-w-consul",
+   "kind": "say",
+   "text": "consul",
+   "respelling": "KON-sul"
+  },
+  {
+   "id": "caligula-w-prophecy",
+   "kind": "say",
+   "text": "prophecy",
+   "respelling": "PROF-uh-see"
+  },
+  {
+   "id": "caligula-w-spoils",
+   "kind": "say",
+   "text": "spoils",
+   "respelling": "SPOYLZ"
+  },
+  {
+   "id": "caligula-w-praetorian-guard",
+   "kind": "say",
+   "text": "Praetorian Guard",
+   "respelling": "pry-TOR-ee-un GARD"
+  },
+  {
+   "id": "caligula-intro",
+   "kind": "read",
+   "text": "His real name was Gaius. 'Caligula' means 'Little Boots', a nickname from when he toddled round the army camp as a baby in a tiny soldier's outfit. Cute. For about six months the grown-up Caligula was the most popular emperor ever. Then, for reasons nobody has ever agreed on, he turned so cruel and so strange that after nearly four years his own guards killed him. He was 28."
+  },
+  {
+   "id": "caligula-fate",
+   "kind": "read",
+   "text": "Stabbed by his own bodyguards in a corridor. First emperor to be sacked by the people paid to protect him. Not the last."
+  },
+  {
+   "id": "claudius-name",
+   "kind": "say",
+   "text": "Claudius",
+   "respelling": "KLAW-dee-us"
+  },
+  {
+   "id": "claudius-w-stammer",
+   "kind": "say",
+   "text": "stammer",
+   "respelling": "STAM-er"
+  },
+  {
+   "id": "claudius-w-etruscans",
+   "kind": "say",
+   "text": "Etruscans",
+   "respelling": "ih-TRUSS-kunz"
+  },
+  {
+   "id": "claudius-w-executed",
+   "kind": "say",
+   "text": "executed",
+   "respelling": "EK-suh-kyoo-tid"
+  },
+  {
+   "id": "claudius-w-niece",
+   "kind": "say",
+   "text": "niece",
+   "respelling": "NEESS"
+  },
+  {
+   "id": "claudius-intro",
+   "kind": "read",
+   "text": "After Caligula's murder the bodyguards found his uncle Claudius hiding behind a curtain, shaking. They made him emperor on the spot, mostly because he was the only member of the family left alive. Everyone thought he was an idiot. He wasn't. He conquered Britain, built a harbour, and actually ran the empire properly for thirteen years. Then his fourth wife fed him a plate of mushrooms. Or so they say."
+  },
+  {
+   "id": "claudius-fate",
+   "kind": "read",
+   "text": "Poisoned mushrooms. Chef: his wife. Probably."
+  },
+  {
+   "id": "nero-name",
+   "kind": "say",
+   "text": "Nero",
+   "respelling": "NEER-oh"
+  },
+  {
+   "id": "nero-q0",
+   "kind": "say",
+   "text": "Qualis artifex pereo!",
+   "respelling": "KWAH-liss AR-tih-fex PEH-reh-oh"
+  },
+  {
+   "id": "nero-w-senate",
+   "kind": "say",
+   "text": "Senate",
+   "respelling": "SEN-it"
+  },
+  {
+   "id": "nero-w-colossus",
+   "kind": "say",
+   "text": "Colossus",
+   "respelling": "kuh-LOSS-us"
+  },
+  {
+   "id": "nero-w-chariot",
+   "kind": "say",
+   "text": "chariot",
+   "respelling": "CHAR-ee-ut"
+  },
+  {
+   "id": "nero-w-persecute",
+   "kind": "say",
+   "text": "persecute",
+   "respelling": "PER-suh-kyoot"
+  },
+  {
+   "id": "nero-intro",
+   "kind": "read",
+   "text": "The last of the Caesar family, and the one who proves that being related to Augustus is no guarantee of anything. Nero sang on stage (illegal for a gentleman), raced chariots, murdered his mum, and when half of Rome burned down he blamed the Christians. When the army finally turned on him he ran away to a villa and killed himself at 30. He wanted to be remembered as a great singer. He is remembered as Nero."
+  },
+  {
+   "id": "nero-fate",
+   "kind": "read",
+   "text": "Stabbed himself in the throat (with help) while the Senate hunted him down. Last words: 'What an artist dies in me!' Rome begged to differ."
+  },
+  {
+   "id": "agrippina-the-younger-name",
+   "kind": "say",
+   "text": "Agrippina the Younger",
+   "respelling": "ag-rih-PEE-nuh"
+  },
+  {
+   "id": "agrippina-the-younger-w-regency",
+   "kind": "say",
+   "text": "regency",
+   "respelling": "REE-jun-see"
+  },
+  {
+   "id": "agrippina-the-younger-w-ambassador",
+   "kind": "say",
+   "text": "ambassador",
+   "respelling": "am-BASS-uh-der"
+  },
+  {
+   "id": "agrippina-the-younger-w-watchword",
+   "kind": "say",
+   "text": "watchword",
+   "respelling": "WOTCH-werd"
+  },
+  {
+   "id": "agrippina-the-younger-w-memoirs",
+   "kind": "say",
+   "text": "memoirs",
+   "respelling": "MEM-wahrz"
+  },
+  {
+   "id": "agrippina-the-younger-intro",
+   "kind": "read",
+   "text": "Never an emperor, but for about a year she might as well have been. Great-granddaughter of Augustus, sister of Caligula, wife (and niece!) of Claudius, mother of Nero. She got her 16-year-old son onto the throne, had her own face stamped on the coins next to his, sat behind a curtain while he met ambassadors, and had the palace password set to 'best of mothers'. Within a year Nero's advisers had shoved her out. Within five, Nero had her killed."
+  },
+  {
+   "id": "agrippina-the-younger-fate",
+   "kind": "read",
+   "text": "Murdered by soldiers sent by her own son. She'd been expecting it."
+  },
+  {
+   "id": "galba-otho-vitellius-name",
+   "kind": "say",
+   "text": "Galba, Otho & Vitellius",
+   "respelling": "GAL-buh, OH-thoh and vih-TEL-ee-us"
+  },
+  {
+   "id": "galba-otho-vitellius-q0",
+   "kind": "say",
+   "text": "Legi a me militem, non emi.",
+   "respelling": "LAY-ghee ah may MEE-lih-tem, nohn AY-mee"
+  },
+  {
+   "id": "galba-otho-vitellius-w-governor",
+   "kind": "say",
+   "text": "governor",
+   "respelling": "GUV-er-ner"
+  },
+  {
+   "id": "galba-otho-vitellius-w-bonus",
+   "kind": "say",
+   "text": "bonus",
+   "respelling": "BOH-nus"
+  },
+  {
+   "id": "galba-otho-vitellius-w-banquet",
+   "kind": "say",
+   "text": "banquet",
+   "respelling": "BANG-kwit"
+  },
+  {
+   "id": "galba-otho-vitellius-w-civil-war",
+   "kind": "say",
+   "text": "civil war",
+   "respelling": "SIV-ul WAR"
+  },
+  {
+   "id": "galba-otho-vitellius-intro",
+   "kind": "read",
+   "text": "Nero died in June 68 with no heir, and Rome discovered a horrible secret: ANYONE with an army could be emperor. Galba, the 70-year-old governor of Spain, got there first and promptly refused to pay the bodyguards the bonus they'd been promised. So in January 69 the bodyguards killed him and backed Otho instead. Meanwhile the army in Germany had already picked its own man, the enormous Vitellius, who beat Otho in April. Otho killed himself rather than drag the war on. Vitellius lasted eight months before yet another army arrived and finished him. Fourth emperor of the year: Vespasian. He stayed."
+  },
+  {
+   "id": "galba-otho-vitellius-fate",
+   "kind": "read",
+   "text": "Galba: stabbed in the Forum. Otho: stabbed himself. Vitellius: dragged through the streets, tortured, killed on the public staircase and thrown in the river. One year, three funerals."
+  },
+  {
+   "id": "vespasian-name",
+   "kind": "say",
+   "text": "Vespasian",
+   "respelling": "vess-PAY-zhun"
+  },
+  {
+   "id": "vespasian-q0",
+   "kind": "say",
+   "text": "Pecunia non olet.",
+   "respelling": "peh-KOO-nee-ah nohn OH-let"
+  },
+  {
+   "id": "vespasian-q1",
+   "kind": "say",
+   "text": "Vae, puto deus fio.",
+   "respelling": "WHY, POO-toh DEH-oos FEE-oh"
+  },
+  {
+   "id": "vespasian-w-treasury",
+   "kind": "say",
+   "text": "treasury",
+   "respelling": "TREZH-uh-ree"
+  },
+  {
+   "id": "vespasian-w-ammonia",
+   "kind": "say",
+   "text": "ammonia",
+   "respelling": "uh-MOH-nee-uh"
+  },
+  {
+   "id": "vespasian-w-deify",
+   "kind": "say",
+   "text": "deify",
+   "respelling": "DEE-ih-fy"
+  },
+  {
+   "id": "vespasian-w-amphitheatre",
+   "kind": "say",
+   "text": "amphitheatre",
+   "respelling": "AM-fih-thee-uh-ter"
+  },
+  {
+   "id": "vespasian-intro",
+   "kind": "read",
+   "text": "The winner of the Year of the Four Emperors, and the first emperor who wasn't posh. Vespasian was a blunt, tough, tight-fisted soldier from a family of tax collectors, and he was exactly what Rome needed. He found the treasury empty and filled it (see the toilet story below), started building the Colosseum, and had the decency to die of natural causes. His sons took over. That went less well."
+  },
+  {
+   "id": "vespasian-fate",
+   "kind": "read",
+   "text": "Died of a dodgy stomach, standing up, because he said an emperor should die on his feet."
+  },
+  {
+   "id": "titus-name",
+   "kind": "say",
+   "text": "Titus",
+   "respelling": "TY-tus"
+  },
+  {
+   "id": "titus-q0",
+   "kind": "say",
+   "text": "Amici, diem perdidi.",
+   "respelling": "ah-MEE-kee, DEE-em PER-dih-dee"
+  },
+  {
+   "id": "titus-w-siege",
+   "kind": "say",
+   "text": "siege",
+   "respelling": "SEEJ"
+  },
+  {
+   "id": "titus-w-eruption",
+   "kind": "say",
+   "text": "eruption",
+   "respelling": "ih-RUP-shun"
+  },
+  {
+   "id": "titus-w-plague",
+   "kind": "say",
+   "text": "plague",
+   "respelling": "PLAYG"
+  },
+  {
+   "id": "titus-w-mourn",
+   "kind": "say",
+   "text": "mourn",
+   "respelling": "MORN"
+  },
+  {
+   "id": "titus-intro",
+   "kind": "read",
+   "text": "Vespasian's son. Before he was emperor he flattened Jerusalem and burned its temple, which Romans thought was brilliant. As emperor he opened the Colosseum with 100 days of games, and then had the worst luck of any ruler in history: two months into his reign Mount Vesuvius blew up and buried Pompeii, then Rome caught fire, then a plague arrived. Titus spent his own money sorting all of it out, and people loved him for it. Then he died."
+  },
+  {
+   "id": "titus-fate",
+   "kind": "read",
+   "text": "A fever, aged 41, after only two years. Rome actually cried."
+  },
+  {
+   "id": "domitian-name",
+   "kind": "say",
+   "text": "Domitian",
+   "respelling": "doh-MISH-un"
+  },
+  {
+   "id": "domitian-q0",
+   "kind": "say",
+   "text": "Dominus et deus noster.",
+   "respelling": "DOH-mih-noos et DEH-oos NOSS-ter"
+  },
+  {
+   "id": "domitian-w-autocrat",
+   "kind": "say",
+   "text": "autocrat",
+   "respelling": "AW-tuh-krat"
+  },
+  {
+   "id": "domitian-w-courtier",
+   "kind": "say",
+   "text": "courtier",
+   "respelling": "KOR-tee-er"
+  },
+  {
+   "id": "domitian-w-treatise",
+   "kind": "say",
+   "text": "treatise",
+   "respelling": "TREE-tiss"
+  },
+  {
+   "id": "domitian-w-monument",
+   "kind": "say",
+   "text": "monument",
+   "respelling": "MON-yoo-munt"
+  },
+  {
+   "id": "domitian-intro",
+   "kind": "read",
+   "text": "Titus's little brother, and a very different animal. Domitian was efficient, suspicious, and absolutely sure he was better than everyone. He ordered his letters to begin 'Our Lord and God commands...' The Senate loathed him, and when he was finally murdered they had his name hacked off every building and statue in the empire. The army, who he'd paid well, were furious. The Senate didn't care."
+  },
+  {
+   "id": "domitian-fate",
+   "kind": "read",
+   "text": "Stabbed in his bedroom by a servant who'd hidden the dagger in a bandage. The Senate then chiselled his name off every monument in Rome."
+  },
+  {
+   "id": "nerva-name",
+   "kind": "say",
+   "text": "Nerva",
+   "respelling": "NER-vuh"
+  },
+  {
+   "id": "nerva-w-adopt",
+   "kind": "say",
+   "text": "adopt",
+   "respelling": "uh-DOPT"
+  },
+  {
+   "id": "nerva-w-informer",
+   "kind": "say",
+   "text": "informer",
+   "respelling": "in-FORM-er"
+  },
+  {
+   "id": "nerva-w-frontier",
+   "kind": "say",
+   "text": "frontier",
+   "respelling": "frun-TEER"
+  },
+  {
+   "id": "nerva-intro",
+   "kind": "read",
+   "text": "After Domitian's murder the Senate picked a safe, polite, elderly senator with no children and no army. The army hated that. So Nerva did something clever: he adopted Trajan, the toughest general on the frontier, as his son and heir. The soldiers calmed down, Nerva died peacefully a few months later, and Rome got a long run of emperors who were adopted rather than born to the job. Part choice, part luck: Nerva, Trajan, Hadrian and Antoninus Pius had no surviving son, so each had to pick somebody, and adoption carried the succession all the way to Marcus Aurelius. Marcus did have a son who survived. His name was Commodus."
+  },
+  {
+   "id": "nerva-fate",
+   "kind": "read",
+   "text": "Died of old age after sixteen months. By this point that's practically showing off."
+  },
+  {
+   "id": "trajan-name",
+   "kind": "say",
+   "text": "Trajan",
+   "respelling": "TRAY-jun"
+  },
+  {
+   "id": "trajan-q0",
+   "kind": "say",
+   "text": "Optimus Princeps",
+   "respelling": "OP-tih-moos PRIN-keps"
+  },
+  {
+   "id": "trajan-w-dacia",
+   "kind": "say",
+   "text": "Dacia",
+   "respelling": "DAY-shuh"
+  },
+  {
+   "id": "trajan-w-mesopotamia",
+   "kind": "say",
+   "text": "Mesopotamia",
+   "respelling": "mess-uh-puh-TAY-mee-uh"
+  },
+  {
+   "id": "trajan-w-relief",
+   "kind": "say",
+   "text": "relief",
+   "respelling": "ri-LEEF"
+  },
+  {
+   "id": "trajan-w-widow",
+   "kind": "say",
+   "text": "widow",
+   "respelling": "WID-oh"
+  },
+  {
+   "id": "trajan-intro",
+   "kind": "read",
+   "text": "The first emperor from a provincial family (Spain), and the one the Senate liked best. They called him Optimus Princeps, Best Ruler, and they meant it. He conquered Dacia (Romania), filled Rome with buildings paid for with Dacian gold, then marched east and pushed the empire to the biggest it would ever be. Look at the map. That's Trajan."
+  },
+  {
+   "id": "trajan-fate",
+   "kind": "read",
+   "text": "Fell ill on the way home from conquering Mesopotamia. Died in a town in Turkey, which was annoying because he wanted to die in Rome."
+  },
+  {
+   "id": "hadrian-name",
+   "kind": "say",
+   "text": "Hadrian",
+   "respelling": "HAY-dree-un"
+  },
+  {
+   "id": "hadrian-q0",
+   "kind": "say",
+   "text": "Animula vagula blandula",
+   "respelling": "ah-NIM-oo-lah WAH-goo-lah BLAN-doo-lah"
+  },
+  {
+   "id": "hadrian-w-frontier",
+   "kind": "say",
+   "text": "frontier",
+   "respelling": "frun-TEER"
+  },
+  {
+   "id": "hadrian-w-architect",
+   "kind": "say",
+   "text": "architect",
+   "respelling": "AR-kih-tekt"
+  },
+  {
+   "id": "hadrian-w-philosopher",
+   "kind": "say",
+   "text": "philosopher",
+   "respelling": "fih-LOSS-uh-fer"
+  },
+  {
+   "id": "hadrian-w-deify",
+   "kind": "say",
+   "text": "deify",
+   "respelling": "DEE-ih-fy"
+  },
+  {
+   "id": "hadrian-intro",
+   "kind": "read",
+   "text": "Trajan's young cousin and ward, and the Senate was never quite sure Trajan had really adopted him. Hadrian immediately gave back most of what Trajan had conquered in the east, which made him unpopular, and spent the rest of his reign walking round the edge of the empire fixing the fences. Including one you can still visit: a wall right across northern England. He also grew a beard like a Greek philosopher. Every emperor for the next 150 years copied it. Check the busts. Then check Constantine's."
+  },
+  {
+   "id": "hadrian-fate",
+   "kind": "read",
+   "text": "A long, miserable illness. He begged his servants to kill him. They refused. He wrote a poem about it instead."
+  },
+  {
+   "id": "antoninus-pius-name",
+   "kind": "say",
+   "text": "Antoninus Pius",
+   "respelling": "an-toh-NY-nus PY-us"
+  },
+  {
+   "id": "antoninus-pius-q0",
+   "kind": "say",
+   "text": "Aequanimitas.",
+   "respelling": "eye-kwah-NIM-ih-tahs"
+  },
+  {
+   "id": "antoninus-pius-w-pius",
+   "kind": "say",
+   "text": "pius",
+   "respelling": "PY-us"
+  },
+  {
+   "id": "antoninus-pius-w-treasury",
+   "kind": "say",
+   "text": "treasury",
+   "respelling": "TREZH-uh-ree"
+  },
+  {
+   "id": "antoninus-pius-w-aequanimitas",
+   "kind": "say",
+   "text": "aequanimitas",
+   "respelling": "eye-kwah-NIM-ih-tahss"
+  },
+  {
+   "id": "antoninus-pius-intro",
+   "kind": "read",
+   "text": "Twenty-three years as emperor and, by Roman standards, almost nothing went wrong. Some border fighting, a plot or two that fizzled, a famine and a fire, and that was it. He never even left Italy. He built a second wall in Scotland because Hadrian's wasn't far enough north, kept the money safe, and handed a full treasury to the next man. Boring? Yes. Do you know how rare 'boring' is on this page?"
+  },
+  {
+   "id": "antoninus-pius-fate",
+   "kind": "read",
+   "text": "Old age, peacefully, after eating too much cheese at dinner. His last word to the guards was 'Calm'."
+  },
+  {
+   "id": "faustina-the-elder-name",
+   "kind": "say",
+   "text": "Faustina the Elder",
+   "respelling": "faw-STEE-nuh"
+  },
+  {
+   "id": "faustina-the-elder-w-augusta",
+   "kind": "say",
+   "text": "Augusta",
+   "respelling": "aw-GUS-tuh"
+  },
+  {
+   "id": "faustina-the-elder-w-deify",
+   "kind": "say",
+   "text": "deify",
+   "respelling": "DEE-ih-fy"
+  },
+  {
+   "id": "faustina-the-elder-w-orphan",
+   "kind": "say",
+   "text": "orphan",
+   "respelling": "OR-fun"
+  },
+  {
+   "id": "faustina-the-elder-w-mint",
+   "kind": "say",
+   "text": "mint",
+   "respelling": "MINT"
+  },
+  {
+   "id": "faustina-the-elder-intro",
+   "kind": "read",
+   "text": "Wife of Antoninus Pius. She was only empress for two years, but her husband mourned her for the other twenty-one. He made her a goddess, struck coins with her face on them for the rest of his life, and built her a temple in the Forum that is STILL THERE (it got turned into a church, which is why it survived). He also set up a fund in her name to feed poor girls, the Puellae Faustinianae, Faustina's Girls. That bit is lovely."
+  },
+  {
+   "id": "faustina-the-elder-fate",
+   "kind": "read",
+   "text": "Illness, aged about 40. Her husband never got over it."
+  },
+  {
+   "id": "lucius-verus-name",
+   "kind": "say",
+   "text": "Lucius Verus",
+   "respelling": "LOO-shus VEER-us"
+  },
+  {
+   "id": "lucius-verus-w-co-emperor",
+   "kind": "say",
+   "text": "co-emperor",
+   "respelling": "koh-EM-per-er"
+  },
+  {
+   "id": "lucius-verus-w-parthians",
+   "kind": "say",
+   "text": "Parthians",
+   "respelling": "PAR-thee-unz"
+  },
+  {
+   "id": "lucius-verus-w-sesterces",
+   "kind": "say",
+   "text": "sesterces",
+   "respelling": "SESS-ter-seez"
+  },
+  {
+   "id": "lucius-verus-intro",
+   "kind": "read",
+   "text": "The empire's first co-emperor: Marcus Aurelius was put in charge alongside him, two emperors at once. Marcus did the work. Lucius did the parties. He was sent east to fight the Parthians, let his generals win the war, and came home with the loot, a troupe of actors, and (not his fault, but still) a plague that killed millions across the empire. Then he died, and Marcus was on his own."
+  },
+  {
+   "id": "lucius-verus-fate",
+   "kind": "read",
+   "text": "A stroke in a carriage. Or the plague. Either way, aged 38."
+  },
+  {
+   "id": "marcus-aurelius-name",
+   "kind": "say",
+   "text": "Marcus Aurelius",
+   "respelling": "MAR-kus aw-REE-lee-us"
+  },
+  {
+   "id": "marcus-aurelius-w-philosopher",
+   "kind": "say",
+   "text": "philosopher",
+   "respelling": "fih-LOSS-uh-fer"
+  },
+  {
+   "id": "marcus-aurelius-w-stoic",
+   "kind": "say",
+   "text": "Stoic",
+   "respelling": "STOH-ik"
+  },
+  {
+   "id": "marcus-aurelius-w-meditations",
+   "kind": "say",
+   "text": "Meditations",
+   "respelling": "med-ih-TAY-shunz"
+  },
+  {
+   "id": "marcus-aurelius-w-dowry",
+   "kind": "say",
+   "text": "dowry",
+   "respelling": "DOW-ree"
+  },
+  {
+   "id": "marcus-aurelius-intro",
+   "kind": "read",
+   "text": "The philosopher emperor. He spent his whole life training to think calmly and do his duty, and then the gods tested him with everything at once: a plague, a flood, a famine, a rebellion, and a war with the German tribes that lasted most of his reign. He fought it from a freezing tent on the Danube and wrote a private notebook of advice to himself while he did. It survived. We call it the Meditations. People still read it on the train."
+  },
+  {
+   "id": "marcus-aurelius-fate",
+   "kind": "read",
+   "text": "Illness in an army camp on the Danube, aged 58, with the war still not won."
+  },
+  {
+   "id": "faustina-the-younger-name",
+   "kind": "say",
+   "text": "Faustina the Younger",
+   "respelling": "faw-STEE-nuh"
+  },
+  {
+   "id": "faustina-the-younger-q0",
+   "kind": "say",
+   "text": "Mater Castrorum",
+   "respelling": "MAH-ter kass-TROH-room"
+  },
+  {
+   "id": "faustina-the-younger-w-mater-castrorum",
+   "kind": "say",
+   "text": "Mater Castrorum",
+   "respelling": "MAH-ter kass-TROR-um"
+  },
+  {
+   "id": "faustina-the-younger-w-gladiator",
+   "kind": "say",
+   "text": "gladiator",
+   "respelling": "GLAD-ee-ay-ter"
+  },
+  {
+   "id": "faustina-the-younger-w-rebellion",
+   "kind": "say",
+   "text": "rebellion",
+   "respelling": "ri-BELL-yun"
+  },
+  {
+   "id": "faustina-the-younger-w-dowry",
+   "kind": "say",
+   "text": "dowry",
+   "respelling": "DOW-ree"
+  },
+  {
+   "id": "faustina-the-younger-intro",
+   "kind": "read",
+   "text": "Daughter of Antoninus Pius and Faustina the Elder, cousin and wife of Marcus Aurelius, mother of Commodus (sorry about that). She held the title Augusta for 28 years, longer than most of the emperors on this page lasted. She had at least thirteen children, went with Marcus to the army camps on the frozen Danube, and the soldiers gave her a title no woman had ever had before: Mater Castrorum. Mother of the Camp."
+  },
+  {
+   "id": "faustina-the-younger-fate",
+   "kind": "read",
+   "text": "Died suddenly in a mountain village in Turkey. Her husband named the village after her."
+  },
+  {
+   "id": "commodus-name",
+   "kind": "say",
+   "text": "Commodus",
+   "respelling": "KOM-uh-dus"
+  },
+  {
+   "id": "commodus-q0",
+   "kind": "say",
+   "text": "Hercules Romanus",
+   "respelling": "HER-koo-layss roh-MAH-noos"
+  },
+  {
+   "id": "commodus-w-hercules",
+   "kind": "say",
+   "text": "Hercules",
+   "respelling": "HER-kyoo-leez"
+  },
+  {
+   "id": "commodus-w-gladiator",
+   "kind": "say",
+   "text": "gladiator",
+   "respelling": "GLAD-ee-ay-ter"
+  },
+  {
+   "id": "commodus-w-sesterces",
+   "kind": "say",
+   "text": "sesterces",
+   "respelling": "SESS-ter-seez"
+  },
+  {
+   "id": "commodus-w-laurel",
+   "kind": "say",
+   "text": "laurel",
+   "respelling": "LOR-ul"
+  },
+  {
+   "id": "commodus-intro",
+   "kind": "read",
+   "text": "The philosopher's son, and the first emperor in a hundred years to get the job just for being born. Commodus was big, strong, handsome and lazy, and he believed he was the god Hercules come back to earth. He dressed in a lion skin, fought in the Colosseum, renamed every month of the year after himself and renamed Rome too. After twelve years of this, the people closest to him decided enough was enough."
+  },
+  {
+   "id": "commodus-fate",
+   "kind": "read",
+   "text": "Poisoned by his girlfriend. Threw it up. So his wrestling coach strangled him in the bath."
+  },
+  {
+   "id": "septimius-severus-name",
+   "kind": "say",
+   "text": "Septimius Severus",
+   "respelling": "sep-TIM-ee-us seh-VEER-us"
+  },
+  {
+   "id": "septimius-severus-q1",
+   "kind": "say",
+   "text": "Omnia fui et nihil expedit.",
+   "respelling": "OM-nee-ah FOO-ee et NIH-hil EX-peh-dit"
+  },
+  {
+   "id": "septimius-severus-w-punic",
+   "kind": "say",
+   "text": "Punic",
+   "respelling": "PYOO-nik"
+  },
+  {
+   "id": "septimius-severus-w-horoscope",
+   "kind": "say",
+   "text": "horoscope",
+   "respelling": "HOR-uh-skohp"
+  },
+  {
+   "id": "septimius-severus-w-campaign",
+   "kind": "say",
+   "text": "campaign",
+   "respelling": "kam-PAYN"
+  },
+  {
+   "id": "septimius-severus-w-harmonious",
+   "kind": "say",
+   "text": "harmonious",
+   "respelling": "har-MOH-nee-us"
+  },
+  {
+   "id": "septimius-severus-intro",
+   "kind": "read",
+   "text": "An African. Born in Leptis Magna in what's now Libya, with a North African accent he never lost. After Commodus there was another year of chaos (five emperors this time, if you're counting) and Severus, the toughest general, won. He paid the soldiers more than anyone ever had and told everyone else to get lost. Then he marched into Scotland to finish it off. He never did. He died at York, in the cold, with the job half done. His advice to his two sons is below. They ignored it."
+  },
+  {
+   "id": "septimius-severus-fate",
+   "kind": "read",
+   "text": "Illness at York, in the rain, after two hard years fighting in Scotland."
+  },
+  {
+   "id": "elagabalus-name",
+   "kind": "say",
+   "text": "Elagabalus",
+   "respelling": "el-uh-GAB-uh-lus"
+  },
+  {
+   "id": "elagabalus-q0",
+   "kind": "say",
+   "text": "Sacerdos amplissimus dei invicti Solis Elagabali",
+   "respelling": "sah-KER-dohss am-PLISS-ih-moos DEH-ee in-WIK-tee SOH-liss el-ah-GAH-bah-lee"
+  },
+  {
+   "id": "elagabalus-w-priest",
+   "kind": "say",
+   "text": "priest",
+   "respelling": "PREEST"
+  },
+  {
+   "id": "elagabalus-w-vestal-virgin",
+   "kind": "say",
+   "text": "Vestal Virgin",
+   "respelling": "VESS-tul VER-jin"
+  },
+  {
+   "id": "elagabalus-w-historia-augusta",
+   "kind": "say",
+   "text": "Historia Augusta",
+   "respelling": "hiss-TOR-ee-uh aw-GUS-tuh"
+  },
+  {
+   "id": "elagabalus-w-scandal",
+   "kind": "say",
+   "text": "scandal",
+   "respelling": "SKAN-dul"
+  },
+  {
+   "id": "elagabalus-intro",
+   "kind": "read",
+   "text": "The strangest emperor of the lot, and that's saying something. He was a fourteen-year-old priest of a Syrian sun god, put on the throne by his grandmother, who told the army he was secretly the son of a popular dead emperor. Elagabalus arrived in Rome with his god (a big black stone), announced it was now the top god of the Romans, built it a temple, and spent four years scandalising everyone. The bodyguards killed him when he was 18 and handed the job to his cousin."
+  },
+  {
+   "id": "elagabalus-fate",
+   "kind": "read",
+   "text": "Murdered by his bodyguards at 18, dragged through the streets and thrown in the river. His mum too."
+  },
+  {
+   "id": "crisis-and-recovery-w-porphyry",
+   "kind": "say",
+   "text": "porphyry",
+   "respelling": "POR-fuh-ree"
+  },
+  {
+   "id": "crisis-and-recovery-w-sarcophagus",
+   "kind": "say",
+   "text": "sarcophagus",
+   "respelling": "sar-KOF-a-gus"
+  },
+  {
+   "id": "crisis-and-recovery-w-crisis",
+   "kind": "say",
+   "text": "crisis",
+   "respelling": "KRY-sis"
+  },
+  {
+   "id": "crisis-and-recovery-w-inflation",
+   "kind": "say",
+   "text": "inflation",
+   "respelling": "in-FLAY-shun"
+  },
+  {
+   "id": "crisis-and-recovery-w-tetrarchy",
+   "kind": "say",
+   "text": "tetrarchy",
+   "respelling": "TET-rar-kee"
+  },
+  {
+   "id": "crisis-and-recovery-intro",
+   "kind": "read",
+   "text": "The page skips from Elagabalus to Constantine, and this is what happened in between. After the Severans the army discovered it could make an emperor anywhere, and did, about twenty-six times in fifty years. Plague came back. The money went bad: the silver coin ended up mostly bronze with a silver wash. Goths crossed the Danube, Persians captured an emperor alive, and for a while Gaul and the East ran themselves. Then two tough soldiers from the Balkans put it back together: Aurelian in the 270s, who rebuilt the frontiers and gave up Dacia, and Diocletian from 284, who spent twenty years repairing everything and in 293 decided the job was too big for one man, splitting it four ways: two senior emperors and two juniors. He retired in 305. Within a year the four were fighting each other, and that is where Constantine came in."
+  },
+  {
+   "id": "crisis-and-recovery-fate",
+   "kind": "read",
+   "text": "Most of them: killed by their own soldiers. Average time in the job, under four years."
+  },
+  {
+   "id": "constantine-name",
+   "kind": "say",
+   "text": "Constantine",
+   "respelling": "KON-stun-teen"
+  },
+  {
+   "id": "constantine-q0",
+   "kind": "say",
+   "text": "In hoc signo vinces.",
+   "respelling": "in hock SIG-noh WIN-kayss"
+  },
+  {
+   "id": "constantine-w-porphyrogenitus",
+   "kind": "say",
+   "text": "porphyrogenitus",
+   "respelling": "por-fih-roh-JEN-ih-tus"
+  },
+  {
+   "id": "constantine-w-baptism",
+   "kind": "say",
+   "text": "baptism",
+   "respelling": "BAP-tiz-um"
+  },
+  {
+   "id": "constantine-w-milvian-bridge",
+   "kind": "say",
+   "text": "Milvian Bridge",
+   "respelling": "MIL-vee-un BRIJ"
+  },
+  {
+   "id": "constantine-w-bosphorus",
+   "kind": "say",
+   "text": "Bosphorus",
+   "respelling": "BOSS-fuh-rus"
+  },
+  {
+   "id": "constantine-w-colossal",
+   "kind": "say",
+   "text": "colossal",
+   "respelling": "kuh-LOSS-ul"
+  },
+  {
+   "id": "constantine-intro",
+   "kind": "read",
+   "text": "The emperor who changed everything. Emperor from 306, he beat his biggest rival at the Milvian Bridge in 312 after, he said, seeing a cross in the sky with the words 'In this sign, conquer'. He conquered. The persecution of Christians had been called off in 311 by an older emperor, Galerius, on his deathbed; in 313 Constantine and his colleague Licinius agreed that Christians could worship freely anywhere. Then Constantine made Christianity fashionable, then he built himself a brand new capital city on the Bosphorus and modestly named it Constantinople. Rome, the city, was never the centre of the world again. Last emperor on this page, and the one whose decisions you can still see all around you."
+  },
+  {
+   "id": "constantine-fate",
+   "kind": "read",
+   "text": "Illness aged about 65. He put off being baptised until he was actually dying. Lots of people did then: baptism wiped the slate, so the later the better. Eusebius says he had hoped to do it in the River Jordan. Either way, he left it to the last minute."
+  },
+  {
+   "id": "kw-emperor",
+   "kind": "say",
+   "text": "emperor",
+   "respelling": "EM-per-er"
+  },
+  {
+   "id": "kw-spqr",
+   "kind": "say",
+   "text": "SPQR",
+   "respelling": "ess-pee-kew-AR"
+  },
+  {
+   "id": "kw-senate",
+   "kind": "say",
+   "text": "Senate",
+   "respelling": "SEN-it"
+  },
+  {
+   "id": "kw-praetorian",
+   "kind": "say",
+   "text": "praetorian",
+   "respelling": "pree-TOR-ee-un"
+  },
+  {
+   "id": "kw-numismatics",
+   "kind": "say",
+   "text": "numismatics",
+   "respelling": "noo-miz-MAT-iks"
+  },
+  {
+   "id": "kw-aureus",
+   "kind": "say",
+   "text": "aureus",
+   "respelling": "AW-ree-us"
+  },
+  {
+   "id": "kw-denarius",
+   "kind": "say",
+   "text": "denarius",
+   "respelling": "dih-NAIR-ee-us"
+  },
+  {
+   "id": "kw-sestertius",
+   "kind": "say",
+   "text": "sestertius",
+   "respelling": "sess-TER-shus"
+  },
+  {
+   "id": "kw-dynasty",
+   "kind": "say",
+   "text": "dynasty",
+   "respelling": "DY-nuh-stee"
+  }
+ ]
+}
