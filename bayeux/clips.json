@@ -1,0 +1,965 @@
+{
+ "note": "Bayeux narration clips. Each id plays from aud/<id>.mp3. say = a word, caption or phrase voiced to match its respelling; read = Read to me text. One take per clip.",
+ "clips": [
+  {
+   "id": "edward-lat",
+   "kind": "say",
+   "text": "EDWARD REX",
+   "respelling": "ED-ward REX"
+  },
+  {
+   "id": "edward-story",
+   "kind": "read",
+   "text": "King Edward of England had been on the throne for over twenty years, had no children, and was so holy that people called him the Confessor. Everybody wanted to know who got the crown when he died. The cloth starts with Edward telling Harold Godwinson, the richest and most powerful earl in England, to go somewhere. It does not say where, or why. That is on purpose. The Normans said Edward was sending Harold to promise the crown to Duke William of Normandy. The English said Harold was going to fetch two relatives William was keeping as hostages. One English monk said he was just going fishing and got blown off course. Pick your story. The embroiderers very carefully did not."
+  },
+  {
+   "id": "edward-w-confessor",
+   "kind": "say",
+   "text": "confessor",
+   "respelling": "kun-FESS-er"
+  },
+  {
+   "id": "edward-w-earl",
+   "kind": "say",
+   "text": "earl",
+   "respelling": "ERL"
+  },
+  {
+   "id": "edward-w-heir",
+   "kind": "say",
+   "text": "heir",
+   "respelling": "AIR (silent h)"
+  },
+  {
+   "id": "edward-w-hostage",
+   "kind": "say",
+   "text": "hostage",
+   "respelling": "HOSS-tij"
+  },
+  {
+   "id": "bosham-lat",
+   "kind": "say",
+   "text": "UBI HAROLD DUX ANGLORUM ET SUI MILITES EQUITANT AD BOSHAM ECCLESIAM",
+   "respelling": "OO-bee HAR-old DOOKS ang-GLOR-um et SOO-ee MEE-lee-tays EK-wee-tant ad BOZ-um ek-KLAY-zee-am"
+  },
+  {
+   "id": "bosham-story",
+   "kind": "read",
+   "text": "Harold rides to his own manor at Bosham on the Sussex coast like a man on holiday: hawk, hounds, a gang of mates. He stops at the church to pray, which is what you did before a sea crossing, then eats a big dinner in a first-floor hall. The church in the picture is still there. You can walk into it. Note what the cloth calls him: DUX ANGLORUM, \"a leader of the English\". Not king. Not yet. The Normans who paid for this cloth were very careful with job titles."
+  },
+  {
+   "id": "bosham-w-manor",
+   "kind": "say",
+   "text": "manor",
+   "respelling": "MAN-er"
+  },
+  {
+   "id": "bosham-w-falconry",
+   "kind": "say",
+   "text": "falconry",
+   "respelling": "FAWL-kun-ree"
+  },
+  {
+   "id": "bosham-w-titulus",
+   "kind": "say",
+   "text": "titulus",
+   "respelling": "TIT-yoo-luss"
+  },
+  {
+   "id": "bosham-w-saxon",
+   "kind": "say",
+   "text": "Saxon",
+   "respelling": "SAK-sun"
+  },
+  {
+   "id": "guy-lat",
+   "kind": "say",
+   "text": "HIC APPREHENDIT WIDO HAROLDUM",
+   "respelling": "heek ap-pray-HEN-dit WEE-doh har-OL-dum"
+  },
+  {
+   "id": "guy-story",
+   "kind": "read",
+   "text": "The wind had other plans. Harold's ship came ashore not in Normandy but in Ponthieu, next door, where Count Guy (the cloth spells him WIDO) ran a nice little business arresting anyone who washed up on his beach and selling them back to their families. Harold was the biggest fish ever to land in his net. He was marched off to the castle at Beaurain and kept there while Guy worked out the price."
+  },
+  {
+   "id": "guy-w-count",
+   "kind": "say",
+   "text": "count",
+   "respelling": "KOWNT"
+  },
+  {
+   "id": "guy-w-ransom",
+   "kind": "say",
+   "text": "ransom",
+   "respelling": "RAN-sum"
+  },
+  {
+   "id": "guy-w-seize",
+   "kind": "say",
+   "text": "seize",
+   "respelling": "SEEZ"
+  },
+  {
+   "id": "guy-w-channel",
+   "kind": "say",
+   "text": "Channel",
+   "respelling": "CHAN-ul"
+  },
+  {
+   "id": "turold-lat",
+   "kind": "say",
+   "text": "UBI NUNTII WILLELMI DUCIS VENERUNT AD WIDONEM · TUROLD",
+   "respelling": "OO-bee NOON-tsee-ee wil-LEL-mee DOO-chis veh-NAY-runt ad wee-DOH-nem, TOO-rold"
+  },
+  {
+   "id": "turold-story",
+   "kind": "read",
+   "text": "Duke William of Normandy heard that his neighbour had caught the most important man in England and was not going to let a prize like that sit in someone else's castle. He sent messengers. The cloth shows them twice, racing. Guy got the message. Harold was handed over, and William paid Guy off with land. Harold was now William's guest, which is a polite word for exactly what he had been with Guy."
+  },
+  {
+   "id": "turold-w-messenger",
+   "kind": "say",
+   "text": "messenger",
+   "respelling": "MESS-en-jer"
+  },
+  {
+   "id": "turold-w-tenant",
+   "kind": "say",
+   "text": "tenant",
+   "respelling": "TEN-unt"
+  },
+  {
+   "id": "turold-w-norman",
+   "kind": "say",
+   "text": "Norman",
+   "respelling": "NOR-mun"
+  },
+  {
+   "id": "turold-w-duke",
+   "kind": "say",
+   "text": "duke",
+   "respelling": "DYOOK"
+  },
+  {
+   "id": "rouen-lat",
+   "kind": "say",
+   "text": "HIC DUX WILGELMUS CUM HAROLDO VENIT AD PALATIUM SUUM",
+   "respelling": "heek DOOKS wil-GEL-mus koom har-OL-doh VAY-nit ad pa-LAH-tsee-um SOO-um"
+  },
+  {
+   "id": "rouen-story",
+   "kind": "read",
+   "text": "Meet William. He was about 36, had been Duke of Normandy since he was seven or eight, and had spent most of that time killing people who thought a boy whose mother was a tanner's daughter should not be duke. He won. By 1064 he was the hardest man in northern France. He had Harold brought to Rouen, treated him like an honoured guest, and never once let him out of sight."
+  },
+  {
+   "id": "rouen-w-palace",
+   "kind": "say",
+   "text": "palace",
+   "respelling": "PAL-iss"
+  },
+  {
+   "id": "rouen-w-guardian",
+   "kind": "say",
+   "text": "guardian",
+   "respelling": "GAR-dee-un"
+  },
+  {
+   "id": "rouen-w-tanner",
+   "kind": "say",
+   "text": "tanner",
+   "respelling": "TAN-er"
+  },
+  {
+   "id": "rouen-w-hospitality",
+   "kind": "say",
+   "text": "hospitality",
+   "respelling": "hoss-pih-TAL-ih-tee"
+  },
+  {
+   "id": "aelfgyva-lat",
+   "kind": "say",
+   "text": "UBI UNUS CLERICUS ET ÆLFGYVA",
+   "respelling": "OO-bee OO-nus KLAY-ree-kus et ALF-yih-vuh"
+  },
+  {
+   "id": "aelfgyva-story",
+   "kind": "read",
+   "text": "This is the most argued-over scene on the cloth. A priest touches the face of a woman called Ælfgyva, and the caption stops mid-sentence: \"Where a cleric and Ælfgyva\" ... and then nothing. No verb. Everyone in 1070 clearly knew what happened. Nobody has known since. Was she Harold's sister, promised to a Norman? A daughter of William's promised to Harold? A scandal involving a nun? Ælfgyva was a common English name. She is the only woman on the cloth with her name stitched above her and we have no idea who she is."
+  },
+  {
+   "id": "aelfgyva-w-cleric",
+   "kind": "say",
+   "text": "cleric",
+   "respelling": "KLERR-ik"
+  },
+  {
+   "id": "aelfgyva-w-scandal",
+   "kind": "say",
+   "text": "scandal",
+   "respelling": "SKAN-dul"
+  },
+  {
+   "id": "aelfgyva-w-mystery",
+   "kind": "say",
+   "text": "mystery",
+   "respelling": "MISS-ter-ee"
+  },
+  {
+   "id": "aelfgyva-w-border",
+   "kind": "say",
+   "text": "border",
+   "respelling": "BOR-der"
+  },
+  {
+   "id": "mont-lat",
+   "kind": "say",
+   "text": "HIC HAROLD DUX TRAHEBAT EOS DE ARENA",
+   "respelling": "heek HAR-old DOOKS trah-HAY-bat AY-ohs day ah-RAY-nah"
+  },
+  {
+   "id": "mont-story",
+   "kind": "read",
+   "text": "William took his guest to war. He was fighting Conan, Duke of Brittany, and marched his army past Mont-Saint-Michel across the mouth of the river Couesnon, where the tide comes in, the locals say, as fast as a galloping horse, and the sand swallows people. Some Normans got stuck. Harold, who was a big man, waded in and pulled two of them out, one on his back. The Norman embroiderers gave him a whole scene for it. Remember that: they were about to call him an oath-breaker and a usurper, and they still showed him saving their men. Then the army went to Dol, and Conan ran away down a rope."
+  },
+  {
+   "id": "mont-w-quicksand",
+   "kind": "say",
+   "text": "quicksand",
+   "respelling": "KWIK-sand"
+  },
+  {
+   "id": "mont-w-tide",
+   "kind": "say",
+   "text": "tide",
+   "respelling": "TYDE"
+  },
+  {
+   "id": "mont-w-ally",
+   "kind": "say",
+   "text": "ally",
+   "respelling": "AL-eye"
+  },
+  {
+   "id": "mont-w-brittany",
+   "kind": "say",
+   "text": "Brittany",
+   "respelling": "BRIT-un-ee"
+  },
+  {
+   "id": "dinan-lat",
+   "kind": "say",
+   "text": "ET CUNAN CLAVES PORREXIT",
+   "respelling": "et KOO-nan KLAH-vays por-REK-sit"
+  },
+  {
+   "id": "dinan-story",
+   "kind": "read",
+   "text": "Conan ran to Dinan and shut himself in the castle. The Normans attacked it on horseback, which is not how you attack a castle, and set fire to the wooden wall, which is. Conan gave up. He did not walk out and hand over the keys; he passed them out on the tip of a lance, and a Norman knight took them on the tip of his. That is how you surrender without getting close enough to be stabbed."
+  },
+  {
+   "id": "dinan-w-motte",
+   "kind": "say",
+   "text": "motte",
+   "respelling": "MOT"
+  },
+  {
+   "id": "dinan-w-bailey",
+   "kind": "say",
+   "text": "bailey",
+   "respelling": "BAY-lee"
+  },
+  {
+   "id": "dinan-w-siege",
+   "kind": "say",
+   "text": "siege",
+   "respelling": "SEEJ"
+  },
+  {
+   "id": "dinan-w-surrender",
+   "kind": "say",
+   "text": "surrender",
+   "respelling": "suh-REN-der"
+  },
+  {
+   "id": "arms-lat",
+   "kind": "say",
+   "text": "HIC WILLELMUS DEDIT ARMA HAROLDO",
+   "respelling": "heek wil-LEL-mus DAY-dit AR-mah har-OL-doh"
+  },
+  {
+   "id": "arms-story",
+   "kind": "read",
+   "text": "After the war, William gave Harold arms: a helmet, mail and a banner, in a ceremony that looks like being knighted. It felt like an honour. It was a trap. In Norman eyes a man who took arms from a lord became that lord's man, bound to him for life. Harold had just, as far as every Norman watching was concerned, become William's vassal. The English version of the story does not mention this scene at all, which tells you how the English felt about it."
+  },
+  {
+   "id": "arms-w-vassal",
+   "kind": "say",
+   "text": "vassal",
+   "respelling": "VASS-ul"
+  },
+  {
+   "id": "arms-w-hauberk",
+   "kind": "say",
+   "text": "hauberk",
+   "respelling": "HAW-berk"
+  },
+  {
+   "id": "arms-w-lord",
+   "kind": "say",
+   "text": "lord",
+   "respelling": "LORD"
+  },
+  {
+   "id": "arms-w-banner",
+   "kind": "say",
+   "text": "banner",
+   "respelling": "BAN-er"
+  },
+  {
+   "id": "oath-lat",
+   "kind": "say",
+   "text": "UBI HAROLD SACRAMENTUM FECIT WILLELMO DUCI",
+   "respelling": "OO-bee HAR-old sak-rah-MEN-tum FAY-chit wil-LEL-moh DOO-chee"
+  },
+  {
+   "id": "oath-story",
+   "kind": "read",
+   "text": "This is the scene the whole cloth was made for. At Bayeux, where the embroidery still lives, Harold put a hand on each of two holy reliquaries and swore an oath to William. What did he swear? The cloth does not say. The Normans said: to support William's claim to England when Edward died. An oath on relics was the most serious promise a man could make in 1064, because you were promising to the saints, and saints held grudges. When Harold later took the crown himself, the Normans could call him an oath-breaker, and the Pope agreed. This one picture is the whole Norman case for invading England."
+  },
+  {
+   "id": "oath-w-oath",
+   "kind": "say",
+   "text": "oath",
+   "respelling": "OHTH"
+  },
+  {
+   "id": "oath-w-relic",
+   "kind": "say",
+   "text": "relic",
+   "respelling": "RELL-ik"
+  },
+  {
+   "id": "oath-w-reliquary",
+   "kind": "say",
+   "text": "reliquary",
+   "respelling": "RELL-ih-kwerr-ee"
+  },
+  {
+   "id": "oath-w-perjury",
+   "kind": "say",
+   "text": "perjury",
+   "respelling": "PER-jer-ee"
+  },
+  {
+   "id": "return-lat",
+   "kind": "say",
+   "text": "HIC HAROLD DUX REVERSUS EST AD ANGLICAM TERRAM ET VENIT AD EDWARDUM REGEM",
+   "respelling": "heek HAR-old DOOKS reh-VER-sus est ad ANG-glee-kam TER-ram et VAY-nit ad ed-WAR-dum RAY-jem"
+  },
+  {
+   "id": "return-story",
+   "kind": "read",
+   "text": "Harold came home. Compare the two kings: in the first scene Edward was broad, calm and enormous on his throne. Now he is thin, bent and pointing. Harold, who rode out tall with a hawk, stands with his head down and his hands spread. The embroiderers were not allowed to write \"and Edward told him off\", but they could stitch it. Something has gone wrong, and the man with the axe behind Harold knows it too."
+  },
+  {
+   "id": "return-w-return",
+   "kind": "say",
+   "text": "return",
+   "respelling": "ri-TURN"
+  },
+  {
+   "id": "return-w-reproach",
+   "kind": "say",
+   "text": "reproach",
+   "respelling": "ri-PROHCH"
+  },
+  {
+   "id": "return-w-posture",
+   "kind": "say",
+   "text": "posture",
+   "respelling": "POSS-cher"
+  },
+  {
+   "id": "return-w-calamity",
+   "kind": "say",
+   "text": "calamity",
+   "respelling": "kuh-LAM-ih-tee"
+  },
+  {
+   "id": "funeral-lat",
+   "kind": "say",
+   "text": "HIC EADWARDUS REX IN LECTO ALLOQUITUR FIDELES · ET HIC DEFUNCTUS EST",
+   "respelling": "heek ay-ad-WAR-dus REX in LEK-toh al-LOK-wee-tur fee-DAY-lays, et heek day-FOONK-tus est"
+  },
+  {
+   "id": "funeral-story",
+   "kind": "read",
+   "text": "Edward died on 5 January 1066, a week after his brand-new church at Westminster was consecrated. He had been too ill to go to the opening. The cloth shows his funeral first and his deathbed second, which seems backwards until you realise the deathbed is the point: on his last day, Edward, with Harold at his side and Queen Edith crying at his feet, reached out and touched Harold's hand. The English said this was Edward naming Harold as his heir. The Normans said a dying man's mumble could not cancel an oath to the saints. He was buried in the new church on 6 January. Harold was crowned in it the same day."
+  },
+  {
+   "id": "funeral-w-consecrate",
+   "kind": "say",
+   "text": "consecrate",
+   "respelling": "KON-sih-krate"
+  },
+  {
+   "id": "funeral-w-deathbed",
+   "kind": "say",
+   "text": "deathbed",
+   "respelling": "DETH-bed"
+  },
+  {
+   "id": "funeral-w-shroud",
+   "kind": "say",
+   "text": "shroud",
+   "respelling": "SHROWD"
+  },
+  {
+   "id": "funeral-w-abbey",
+   "kind": "say",
+   "text": "abbey",
+   "respelling": "AB-ee"
+  },
+  {
+   "id": "crown-lat",
+   "kind": "say",
+   "text": "HIC RESIDET HAROLD REX ANGLORUM · STIGANT ARCHIEPISCOPUS",
+   "respelling": "heek REH-zee-det HAR-old REX ang-GLOR-um, STEE-gant ar-kee-eh-PIS-koh-pus"
+  },
+  {
+   "id": "crown-story",
+   "kind": "read",
+   "text": "Harold was crowned on 6 January 1066, the day Edward was buried, in the church where Edward lay. Fast work. The cloth now calls him REX ANGLORUM, King of the English, for the first and almost the last time. And it puts Archbishop Stigand next to him, name and all. That was a dig. Stigand had got the top church job in England in a way the Pope did not accept, and had been excommunicated by at least two popes. Every Norman looking at this scene would read: crowned by the wrong priest, in a hurry, on a dead man's grave."
+  },
+  {
+   "id": "crown-w-coronation",
+   "kind": "say",
+   "text": "coronation",
+   "respelling": "korr-uh-NAY-shun"
+  },
+  {
+   "id": "crown-w-orb",
+   "kind": "say",
+   "text": "orb",
+   "respelling": "ORB"
+  },
+  {
+   "id": "crown-w-sceptre",
+   "kind": "say",
+   "text": "sceptre",
+   "respelling": "SEP-ter"
+  },
+  {
+   "id": "crown-w-excommunicated",
+   "kind": "say",
+   "text": "excommunicated",
+   "respelling": "eks-kuh-MYOO-nih-kay-ted"
+  },
+  {
+   "id": "comet-lat",
+   "kind": "say",
+   "text": "ISTI MIRANT STELLAM",
+   "respelling": "IS-tee MEE-rant STEL-lam"
+  },
+  {
+   "id": "comet-story",
+   "kind": "read",
+   "text": "In late April 1066 a comet appeared over England and hung in the sky for about a week. Everybody saw it. Nobody knew what it was, except that stars did not normally have tails or move, so it must mean something, and the something was never good. Harold was told. The cloth shows him wincing. And in the border below, the embroiderers stitched a row of pale, empty ships: the invasion fleet that does not exist yet, floating in the king's head. It is the cleverest piece of storytelling on the whole cloth. The comet was Halley's. It comes back every 76 years or so. It did not know anything about Harold."
+  },
+  {
+   "id": "comet-w-comet",
+   "kind": "say",
+   "text": "comet",
+   "respelling": "KOM-it"
+  },
+  {
+   "id": "comet-w-omen",
+   "kind": "say",
+   "text": "omen",
+   "respelling": "OH-men"
+  },
+  {
+   "id": "comet-w-portent",
+   "kind": "say",
+   "text": "portent",
+   "respelling": "POR-tent"
+  },
+  {
+   "id": "comet-w-marvel",
+   "kind": "say",
+   "text": "marvel",
+   "respelling": "MAR-vul"
+  },
+  {
+   "id": "ships-lat",
+   "kind": "say",
+   "text": "HIC WILLELMUS DUX JUSSIT NAVES AEDIFICARE",
+   "respelling": "heek wil-LEL-mus DOOKS YOOS-sit NAH-vays ay-dee-fee-KAH-ray"
+  },
+  {
+   "id": "ships-story",
+   "kind": "read",
+   "text": "The news reached William that Harold had taken the crown. He was, by every account, furious, and then very organised. Normandy had no fleet. So he ordered one built from scratch: hundreds of ships, each a long open boat with a square sail, the same design the Vikings had used to get to Normandy in the first place. The man beside him in the picture is his half-brother Odo, Bishop of Bayeux, who had the money, the planning, and, most people think, the idea for this cloth."
+  },
+  {
+   "id": "ships-w-fleet",
+   "kind": "say",
+   "text": "fleet",
+   "respelling": "FLEET"
+  },
+  {
+   "id": "ships-w-adze",
+   "kind": "say",
+   "text": "adze",
+   "respelling": "ADZ"
+  },
+  {
+   "id": "ships-w-tonsure",
+   "kind": "say",
+   "text": "tonsure",
+   "respelling": "TON-sher"
+  },
+  {
+   "id": "ships-w-timber",
+   "kind": "say",
+   "text": "timber",
+   "respelling": "TIM-ber"
+  },
+  {
+   "id": "launch-lat",
+   "kind": "say",
+   "text": "HIC TRAHUNT NAVES AD MARE",
+   "respelling": "heek TRAH-hunt NAH-vays ad MAH-ray"
+  },
+  {
+   "id": "launch-story",
+   "kind": "read",
+   "text": "By August the fleet was ready at the mouth of the river Dives and the army was camped beside it: perhaps 7,000 men, 2,000 horses, and enough beer to keep everyone from going home. Then they waited. For weeks. The wind blew the wrong way. William moved the whole lot up the coast to Saint-Valéry-sur-Somme and waited some more. He had the bones of the local saint carried out and paraded on the beach, to ask for a south wind. On 27 September he got one."
+  },
+  {
+   "id": "launch-w-launch",
+   "kind": "say",
+   "text": "launch",
+   "respelling": "LAWNCH"
+  },
+  {
+   "id": "launch-w-prow",
+   "kind": "say",
+   "text": "prow",
+   "respelling": "PROW, rhymes with cow"
+  },
+  {
+   "id": "launch-w-provisions",
+   "kind": "say",
+   "text": "provisions",
+   "respelling": "pruh-VIZH-unz"
+  },
+  {
+   "id": "launch-w-stalemate",
+   "kind": "say",
+   "text": "stalemate",
+   "respelling": "STALE-mate"
+  },
+  {
+   "id": "cart-lat",
+   "kind": "say",
+   "text": "ISTI PORTANT ARMAS AD NAVES ET HIC TRAHUNT CARRUM CUM VINO ET ARMIS",
+   "respelling": "IS-tee POR-tant AR-mahs ad NAH-vays et heek TRAH-hunt KAR-rum koom VEE-noh et AR-mees"
+  },
+  {
+   "id": "cart-story",
+   "kind": "read",
+   "text": "Packing for an invasion. The cloth shows what went on the ships: mail coats, helmets, swords, lances, and a cart with a barrel of wine big enough to swim in. Look at how the mail is carried: on a pole, between two men, because a hauberk weighs about as much as a large dog and nobody wears it until they have to. The embroiderers knew their kit. Whoever drew this had packed for a war."
+  },
+  {
+   "id": "cart-w-hauberk",
+   "kind": "say",
+   "text": "hauberk",
+   "respelling": "HAW-berk"
+  },
+  {
+   "id": "cart-w-quartermaster",
+   "kind": "say",
+   "text": "quartermaster",
+   "respelling": "KWOR-ter-mass-ter"
+  },
+  {
+   "id": "cart-w-lance",
+   "kind": "say",
+   "text": "lance",
+   "respelling": "LANSS"
+  },
+  {
+   "id": "cart-w-barrel",
+   "kind": "say",
+   "text": "barrel",
+   "respelling": "BARR-ul"
+  },
+  {
+   "id": "crossing-lat",
+   "kind": "say",
+   "text": "HIC WILLELMUS DUX IN MAGNO NAVIGIO MARE TRANSIVIT ET VENIT AD PEVENESÆ",
+   "respelling": "heek wil-LEL-mus DOOKS in MAHN-yoh nah-VEE-joh MAH-ray tran-SEE-vit et VAY-nit ad peh-veh-NAY-zay"
+  },
+  {
+   "id": "crossing-story",
+   "kind": "read",
+   "text": "On 27 September the wind turned. The fleet sailed at dusk and crossed in the dark, which is a mad thing to do with 700 open boats. William's own ship, the Mora, was faster than the rest and arrived off England alone at dawn with no other sail in sight. William is said to have ordered breakfast and a glass of wine while he waited. The others caught up. They landed at Pevensey on 28 September, unopposed, because Harold's army had gone home three weeks earlier and Harold himself was 250 miles away in York, getting over a battle he had won three days before."
+  },
+  {
+   "id": "crossing-w-masthead",
+   "kind": "say",
+   "text": "masthead",
+   "respelling": "MAST-hed"
+  },
+  {
+   "id": "crossing-w-stern",
+   "kind": "say",
+   "text": "stern",
+   "respelling": "STERN"
+  },
+  {
+   "id": "crossing-w-navigate",
+   "kind": "say",
+   "text": "navigate",
+   "respelling": "NAV-ih-gate"
+  },
+  {
+   "id": "crossing-w-unopposed",
+   "kind": "say",
+   "text": "unopposed",
+   "respelling": "un-uh-POHZD"
+  },
+  {
+   "id": "feast-lat",
+   "kind": "say",
+   "text": "HIC EXEUNT CABALLI DE NAVIBUS · HIC COQUITUR CARO · ET HIC EPISCOPUS CIBUM ET POTUM BENEDICIT",
+   "respelling": "heek EK-say-unt kah-BAL-lee day NAH-vee-bus, heek KOK-wee-tur KAH-roh, et heek eh-PIS-koh-pus CHEE-bum et POH-tum beh-neh-DEE-chit"
+  },
+  {
+   "id": "feast-story",
+   "kind": "read",
+   "text": "First the horses come off, which is easier in a picture than in a harbour. Then the Normans do what armies do: ride out and take everyone's food. The cloth shows the kitchen in detail: a chicken on a skewer, a cauldron on a fire, a man blowing a horn to say dinner is ready. The knights eat off their shields, pushed together as a table. And at the centre of the table sits Odo, blessing the meal. The bishop's hand is raised, and above it the caption carefully explains that the bishop is blessing. In case you missed the bishop."
+  },
+  {
+   "id": "feast-w-forage",
+   "kind": "say",
+   "text": "forage",
+   "respelling": "FORR-ij"
+  },
+  {
+   "id": "feast-w-skewer",
+   "kind": "say",
+   "text": "skewer",
+   "respelling": "SKYOO-er"
+  },
+  {
+   "id": "feast-w-bless",
+   "kind": "say",
+   "text": "bless",
+   "respelling": "BLESS"
+  },
+  {
+   "id": "feast-w-cauldron",
+   "kind": "say",
+   "text": "cauldron",
+   "respelling": "KAWL-drun"
+  },
+  {
+   "id": "motte-lat",
+   "kind": "say",
+   "text": "ISTE JUSSIT UT FODERETUR CASTELLUM AT HESTENGA · HIC DOMUS INCENDITUR",
+   "respelling": "IS-tay YOOS-sit oot foh-deh-RAY-tur kas-TEL-lum at hes-TENG-gah, heek DOH-mus in-CHEN-dee-tur"
+  },
+  {
+   "id": "motte-story",
+   "kind": "read",
+   "text": "William moved to Hastings and did the first thing a Norman does in a new place: dug a castle. The cloth shows the motte going up in stripes of earth, and two of the diggers having a fight with their spades, because this was a job for pressed locals and they were not enjoying it. Then a messenger arrives with news of Harold. And then, with no comment at all, a house is burned and a mother leads her child out of it. They are the only people on the whole cloth who are simply victims of the war. Nobody looks at them."
+  },
+  {
+   "id": "motte-w-castle",
+   "kind": "say",
+   "text": "castle",
+   "respelling": "KASS-ul"
+  },
+  {
+   "id": "motte-w-pillage",
+   "kind": "say",
+   "text": "pillage",
+   "respelling": "PILL-ij"
+  },
+  {
+   "id": "motte-w-refugee",
+   "kind": "say",
+   "text": "refugee",
+   "respelling": "ref-yoo-JEE"
+  },
+  {
+   "id": "motte-w-usurper",
+   "kind": "say",
+   "text": "usurper",
+   "respelling": "yoo-ZER-per"
+  },
+  {
+   "id": "scouts-lat",
+   "kind": "say",
+   "text": "HIC WILLELMUS DUX INTERROGAT VITALEM SI VIDISSET HAROLDI EXERCITUM",
+   "respelling": "heek wil-LEL-mus DOOKS in-TER-roh-gat vee-TAH-lem see vee-DIS-set har-OL-dee ek-SER-chee-tum"
+  },
+  {
+   "id": "scouts-story",
+   "kind": "read",
+   "text": "Harold came south as fast as he had gone north, picking up men on the way, and reached the hills above Hastings on 13 October. Both sides sent scouts. The cloth shows William questioning his, a knight named Vital, and Harold hearing from his own, a man peering round a tree. The two scouts are stitched back to back, looking in opposite directions, with nothing between them. That is the morning of 14 October, with both armies already moving. Within an hour or two they would meet."
+  },
+  {
+   "id": "scouts-w-scout",
+   "kind": "say",
+   "text": "scout",
+   "respelling": "SKOWT"
+  },
+  {
+   "id": "scouts-w-reconnaissance",
+   "kind": "say",
+   "text": "reconnaissance",
+   "respelling": "ri-KON-ih-sunss"
+  },
+  {
+   "id": "scouts-w-interrogate",
+   "kind": "say",
+   "text": "interrogate",
+   "respelling": "in-TERR-uh-gate"
+  },
+  {
+   "id": "scouts-w-exhausted",
+   "kind": "say",
+   "text": "exhausted",
+   "respelling": "ig-ZAW-sted"
+  },
+  {
+   "id": "charge-lat",
+   "kind": "say",
+   "text": "HIC WILLELMUS DUX ALLOQUITUR SUIS MILITIBUS UT PREPARARENT SE VIRILITER ET SAPIENTER AD PROELIUM CONTRA ANGLORUM EXERCITUM",
+   "respelling": "heek wil-LEL-mus DOOKS al-LOK-wee-tur SOO-ees mee-LEE-tee-bus oot pray-pah-RAH-rent say vee-REE-lee-ter et sah-pee-EN-ter ad PRAY-lee-um KON-trah ang-GLOR-um ek-SER-chee-tum"
+  },
+  {
+   "id": "charge-story",
+   "kind": "read",
+   "text": "Nine in the morning, 14 October. Harold had put his army on top of a ridge about seven miles from Hastings, where the Normans would have to charge uphill. His best men, the housecarls, stood at the front with shields locked together and two-handed axes that could cut a horse in half. William had cavalry, which the English did not, and archers, which they had hardly any of. He sent the archers first; the arrows mostly bounced off the shields. He sent the knights; the horses would not ride into a wall of axes. It went on like this for most of the day. It is one of the longest battle scenes in medieval art, and the embroiderers put the archers in the border because they had run out of room."
+  },
+  {
+   "id": "charge-w-shield-wall",
+   "kind": "say",
+   "text": "shield wall",
+   "respelling": "SHEELD WAWL"
+  },
+  {
+   "id": "charge-w-housecarl",
+   "kind": "say",
+   "text": "housecarl",
+   "respelling": "HOWSS-karl"
+  },
+  {
+   "id": "charge-w-fyrd",
+   "kind": "say",
+   "text": "fyrd",
+   "respelling": "FERD"
+  },
+  {
+   "id": "charge-w-cavalry",
+   "kind": "say",
+   "text": "cavalry",
+   "respelling": "KAV-ul-ree"
+  },
+  {
+   "id": "odo-lat",
+   "kind": "say",
+   "text": "HIC CECIDERUNT LEWINE ET GYRÐ FRATRES HAROLDI REGIS · HIC ODO EPISCOPUS BACULUM TENENS CONFORTAT PUEROS · HIC EST WILLELMUS DUX",
+   "respelling": "heek cheh-chee-DAY-runt LAY-oh-win et GIRTH FRAH-trays har-OL-dee RAY-jis, heek OH-doh eh-PIS-koh-pus BAH-koo-lum TEH-nens kon-FOR-tat POO-eh-rohs, heek est wil-LEL-mus DOOKS"
+  },
+  {
+   "id": "odo-story",
+   "kind": "read",
+   "text": "In the afternoon it nearly all went wrong for William. A rumour ran through the Norman lines that the duke was dead, and men began to run. William pulled his helmet up off his face and rode along the line shouting that he was alive, and Eustace of Boulogne pointed at him, so the cloth can write HERE IS DUKE WILLIAM in case you missed it. Odo, who as a bishop was not supposed to shed blood, is shown waving a club at the young knights to turn them round. \"Strengthening the boys\", says the caption, which is a polite way of putting it. On the English side Harold's brothers Gyrth and Leofwine were already dead. The wall was thinning."
+  },
+  {
+   "id": "odo-w-rumour",
+   "kind": "say",
+   "text": "rumour",
+   "respelling": "ROO-mer"
+  },
+  {
+   "id": "odo-w-rally",
+   "kind": "say",
+   "text": "rally",
+   "respelling": "RAL-ee"
+  },
+  {
+   "id": "odo-w-baculum",
+   "kind": "say",
+   "text": "baculum",
+   "respelling": "BAK-yoo-lum"
+  },
+  {
+   "id": "odo-w-feigned-retreat",
+   "kind": "say",
+   "text": "feigned retreat",
+   "respelling": "FAYND ri-TREET"
+  },
+  {
+   "id": "harold-lat",
+   "kind": "say",
+   "text": "HIC HAROLD REX INTERFECTUS EST · ET FUGA VERTERUNT ANGLI",
+   "respelling": "heek HAR-old REX in-ter-FEK-tus est, et FOO-gah ver-TAY-runt ANG-glee"
+  },
+  {
+   "id": "harold-story",
+   "kind": "read",
+   "text": "Late in the day the wall broke, and Harold died. How is the most famous question on the cloth. Under the caption \"Here King Harold was slain\" there are two Englishmen: one pulling at an arrow in his eye, one being hacked by a horseman. Is Harold the first, the second, or both, shown twice like a comic strip? The arrow story was written down within twenty years and everybody knows it. The sword story is probably what actually happened: Norman knights rode him down and cut him to pieces. Later monks told how his body was so badly mangled that Edith Swan-neck, his wife in the old Danish fashion, had to find it by marks only she knew. The English ran. The cloth runs out. The last metre or two is missing and nobody knows what was on it. Probably William being crowned, on Christmas Day 1066, in Edward's church. The embroiderers gave him nine months of hard work. The moths gave him nothing."
+  },
+  {
+   "id": "harold-w-slain",
+   "kind": "say",
+   "text": "slain",
+   "respelling": "SLAYN"
+  },
+  {
+   "id": "harold-w-legend",
+   "kind": "say",
+   "text": "legend",
+   "respelling": "LEJ-und"
+  },
+  {
+   "id": "harold-w-restoration",
+   "kind": "say",
+   "text": "restoration",
+   "respelling": "ress-tor-AY-shun"
+  },
+  {
+   "id": "harold-w-abrupt",
+   "kind": "say",
+   "text": "abrupt",
+   "respelling": "uh-BRUPT"
+  },
+  {
+   "id": "kw-embroidery",
+   "kind": "say",
+   "text": "embroidery",
+   "respelling": "im-BROY-der-ee"
+  },
+  {
+   "id": "kw-tapestry",
+   "kind": "say",
+   "text": "tapestry",
+   "respelling": "TAP-iss-tree"
+  },
+  {
+   "id": "kw-norman",
+   "kind": "say",
+   "text": "Norman",
+   "respelling": "NOR-mun"
+  },
+  {
+   "id": "kw-anglo-saxon",
+   "kind": "say",
+   "text": "Anglo-Saxon",
+   "respelling": "ANG-glo SAK-sun"
+  },
+  {
+   "id": "kw-conquest",
+   "kind": "say",
+   "text": "conquest",
+   "respelling": "KON-kwest"
+  },
+  {
+   "id": "kw-oath",
+   "kind": "say",
+   "text": "oath",
+   "respelling": "OHTH"
+  },
+  {
+   "id": "kw-titulus",
+   "kind": "say",
+   "text": "titulus",
+   "respelling": "TIT-yoo-luss"
+  },
+  {
+   "id": "kw-border",
+   "kind": "say",
+   "text": "border",
+   "respelling": "BOR-der"
+  },
+  {
+   "id": "latin-hic",
+   "kind": "say",
+   "text": "HIC",
+   "respelling": "heek"
+  },
+  {
+   "id": "latin-ubi",
+   "kind": "say",
+   "text": "UBI",
+   "respelling": "OO-bee"
+  },
+  {
+   "id": "latin-et",
+   "kind": "say",
+   "text": "ET",
+   "respelling": "et"
+  },
+  {
+   "id": "latin-rex",
+   "kind": "say",
+   "text": "REX",
+   "respelling": "REX"
+  },
+  {
+   "id": "latin-dux",
+   "kind": "say",
+   "text": "DUX",
+   "respelling": "DOOKS"
+  },
+  {
+   "id": "latin-episcopus",
+   "kind": "say",
+   "text": "EPISCOPUS",
+   "respelling": "eh-PIS-koh-pus"
+  },
+  {
+   "id": "latin-milites",
+   "kind": "say",
+   "text": "MILITES",
+   "respelling": "MEE-lee-tays"
+  },
+  {
+   "id": "latin-navis-naves",
+   "kind": "say",
+   "text": "NAVIS, NAVES",
+   "respelling": "NAH-vis, NAH-vays"
+  },
+  {
+   "id": "latin-venit",
+   "kind": "say",
+   "text": "VENIT",
+   "respelling": "VAY-nit"
+  },
+  {
+   "id": "latin-mare",
+   "kind": "say",
+   "text": "MARE",
+   "respelling": "MAH-ray"
+  },
+  {
+   "id": "latin-anglorum",
+   "kind": "say",
+   "text": "ANGLORUM",
+   "respelling": "ang-GLOR-um"
+  },
+  {
+   "id": "latin-interfectus-est",
+   "kind": "say",
+   "text": "INTERFECTUS EST",
+   "respelling": "in-ter-FEK-tus est"
+  }
+ ]
+}
