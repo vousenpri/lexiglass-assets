@@ -571,10 +571,6 @@ const PERIODS = [
  {k:"carboniferous", pins:["pangaea", "southice", "coalswamp", "tethys", "panthalassa"], pos:{"pangaea": [44, 30], "southice": [46, 80], "coalswamp": [46, 50], "tethys": [72, 45], "panthalassa": [86, 70]}, world:"everything crunches together. Ice on the bottom, swamps round the middle", say:"kar-buh-NIF-er-us", name:"Carboniferous", era:"Paleozoic", start:359, end:299, color:"#839B82",
   began:"Swamp world. Steaming forests of giant ferns and tree-sized horsetails cover the land. The air has so much oxygen that insects grow as big as birds and millipedes as long as cars. When the trees fall, they do not rot properly; they pile up and become the coal we dig today. Much of the coal we dig today is these trees.",
   ended:"The rainforests collapsed. The climate turned dry and cold, the swamps broke up into islands, and the amphibians who had to lay their eggs in water were in trouble. The reptiles were not. Their eggs had shells. Small change, big winners.",
-  epochKind:"subperiod",
-  epochs:[
-   {name:"Mississippian", say:"miss-ih-SIP-ee-un", start:359, end:323, line:"Warm shallow seas and the heyday of the sea lilies, called crinoids. They grew in meadows so thick that whole layers of limestone in Iowa and Missouri are made almost entirely of their broken stems."},
-   {name:"Pennsylvanian", say:"pen-sil-VAY-nee-un", start:323, end:299, line:"Coal swamps. Giant ferns and scale trees topple into the mud and slowly become coal, and giant dragonflies patrol the air."}],
   word:["wingspan","WING-span","the distance from one wing tip to the other"],
   animals:[
    {name:"Meganeura", sfx:["marsh", "buzz"], say:"meg-uh-NOOR-uh", latin:"a giant griffinfly", img:"carboniferous", size:{v:0.7,kind:"wingspan"},
@@ -809,7 +805,7 @@ const SAY = {
   "iridium":"ih-RID-ee-um","Dunkleosteus":"dun-kul-OSS-tee-us","archaeocyath":"ar-kee-oh-SY-ath","Inuktitut":"ih-NOOK-tih-toot",
   "Biodiversification":"by-oh-dy-ver-sih-fih-KAY-shun","cycads":"SY-kadz","Siberian":"sy-BEER-ee-un","Quaternary":"KWOT-er-nair-ee",
   "Cretaceous":"krih-TAY-shus","Ordovician":"or-doh-VISH-un","Devonian":"dih-VOH-nee-un","Triassic":"try-ASS-ik","Jurassic":"juh-RASS-ik",
-  "Neogene":"NEE-oh-jeen","Permian":"PER-mee-un","Tyrannosaurus":"tih-ran-oh-SOR-us","Antarctica":"ant-ARK-tih-kuh","metabolisms":"muh-TAB-uh-liz-umz","ammonites":"AM-uh-nytes","Protoceratops":"proh-toh-SAIR-uh-tops","cephalopods":"SEF-uh-loh-podz","Mongolia":"mong-GOH-lee-uh","Hiroshima":"hee-roh-SHEE-muh","Courtenay":"KORT-nee","Latimer":"LAT-ih-mer","thagomizer":"THAG-oh-my-zer","Chicxulub":"CHEEK-shoo-loob","estuaries":"ESS-choo-air-eez","Deinosuchus":"dy-noh-SOO-kus","Dipterus":"DIP-ter-us","genome":"JEE-nohm","scutes":"SKYOOTS","cartilage":"KAR-tih-lij","Everglades":"EV-er-glaydz","barbels":"BAR-bulz","conifers":"KON-ih-ferz","Zealandia":"zee-LAN-dee-uh","plankton":"PLANK-tun","Pleistocene":"PLY-stuh-seen","crinoids":"KRY-noydz"
+  "Neogene":"NEE-oh-jeen","Permian":"PER-mee-un","Tyrannosaurus":"tih-ran-oh-SOR-us","Antarctica":"ant-ARK-tih-kuh","metabolisms":"muh-TAB-uh-liz-umz","ammonites":"AM-uh-nytes","Protoceratops":"proh-toh-SAIR-uh-tops","cephalopods":"SEF-uh-loh-podz","Mongolia":"mong-GOH-lee-uh","Hiroshima":"hee-roh-SHEE-muh","Courtenay":"KORT-nee","Latimer":"LAT-ih-mer","thagomizer":"THAG-oh-my-zer","Chicxulub":"CHEEK-shoo-loob","estuaries":"ESS-choo-air-eez","Deinosuchus":"dy-noh-SOO-kus","Dipterus":"DIP-ter-us","genome":"JEE-nohm","scutes":"SKYOOTS","cartilage":"KAR-tih-lij","Everglades":"EV-er-glaydz","barbels":"BAR-bulz","conifers":"KON-ih-ferz","Zealandia":"zee-LAN-dee-uh","plankton":"PLANK-tun","Pleistocene":"PLY-stuh-seen"
 };
 
 
@@ -993,7 +989,7 @@ function renderCliff(){
   layersEl.innerHTML="";
   LAYERS.forEach((p,i)=>{
     const b=document.createElement("button"); b.type="button";
-    const eps=p.epochs&&p.epochKind!=="subperiod";
+    const eps=!!p.epochs;
     b.className="layer"+(eps?" has-eps":"")+(view.type==="period"&&view.k===p.k?" current":""); b.style.background=p.color;
     const dots=p.animals.map(a=>`<i class="${found.has(p.k+"/"+a.name)?"on":""}"></i>`).join("");
     b.innerHTML=`<span class="depth">${i+1}</span><span class="lab">${p.name}<small><em>${p.say}</em> · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</small></span>${eps?`<span class="eps">${p.epochs.map((e,j)=>`<i data-ep="${j}">${e.name}</i>`).reverse().join("")}</span>`:""}<span class="finds" aria-label="${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found">${dots}</span>`;
@@ -1142,7 +1138,7 @@ function openPeriod(k){
     <div class="dur" title="How long it lasted, drawn to the same scale on every layer"><div class="r"><i style="width:${Math.max(3,Math.round((p.start-p.end)/MAX_SPAN*160))}px"></i><span>${p.end===0?"2.58 million years so far":`${p.start-p.end} million years`}${p===LONGEST?", the longest layer":""}</span></div>${p===LONGEST?"":`<div class="r ref"><i></i><span>the ${LONGEST.name}, longest of all: ${MAX_SPAN} million years</span></div>`}</div>
     <figure class="worldmap" id="worldmap"><div class="mapwrap"><img src="img/map-${p.k}.jpg" alt="How the continents lay in the ${p.name}" loading="eager" onerror="this.closest('figure').remove()">${(p.pins||[]).map(k=>{const g=GEO[k],xy=(p.pos||{})[k];return xy?`<button class="pin" type="button" style="left:${xy[0]}%;top:${xy[1]}%" data-geo="${k}" aria-label="${g.name}"><span>${g.name}</span></button>`:""}).join("")}</div><figcaption>The world then. An artist's best guess. ${p.world?`${p.world}.`:""} Tap a gold pin.</figcaption><div class="geoinfo" id="geoinfo" hidden></div></figure>
     <div class="bound ${beginsExt?"ext-link":""}"><span class="tag" style="background:${p.color}">Began<span class="tag ma">${fmt(p.start)} Ma</span></span><div><p>${withSay(p.began)}</p>${readBtn(`${p.k}-began`)}${beginsExt?`<p><button class="linkbtn" data-ext="${beginsExt.k}">Read about the ${beginsExt.name}</button></p>`:""}</div></div>
-    ${p.epochs?`<div>${p.epochKind==="subperiod"?`<h3>The ${p.name} in two halves</h3><p class="epnote">Geologists cut this period in two, called subperiods <span class="lex">subperiods<i>SUB-peer-ee-udz</i></span>. Tap one.</p>`:`<h3>Epochs in the ${p.name}</h3><p class="epnote">A period is cut into epochs <span class="lex">epochs<i>EP-oks</i></span>. Tap one.</p>`}<div class="epbar" id="epbar"></div><div class="epinfo" id="epinfo"></div></div>`:""}
+    ${p.epochs?`<div><h3>Epochs in the ${p.name}</h3><p class="epnote">A period is cut into epochs <span class="lex">epochs<i>EP-oks</i></span>. Tap one.</p><div class="epbar" id="epbar"></div><div class="epinfo" id="epinfo"></div></div>`:""}
     <div class="digblock">
       <h3>Dig here · ${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found</h3>
       <div class="site" id="site"></div>
