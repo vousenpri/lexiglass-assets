@@ -68,6 +68,13 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .layer .lab small{display:block;font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.06em;opacity:.8;line-height:1;margin-top:3px}
 .layer .lab small em{font-style:normal;color:#5A2E10;opacity:1}
 .layer .finds{display:flex;gap:3px}
+.layer.has-eps{grid-template-columns:34px 1fr auto auto}
+.layer .eps{display:flex;flex-direction:column;align-self:stretch;width:94px;border-left:1px solid rgba(22,23,11,.2)}
+.layer .eps i{flex:1 1 0;display:flex;align-items:center;padding:0 7px;font-style:normal;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.02em;line-height:1;color:#16170B;background:rgba(255,248,238,.16);border-top:1px solid rgba(22,23,11,.16);white-space:nowrap;overflow:hidden}
+.layer .eps i:nth-child(even){background:rgba(255,248,238,.32)}
+.layer .eps i:first-child{border-top:0}
+.layer .eps i:hover{background:rgba(255,248,238,.6)}
+@media (max-width:420px){.layer .eps{width:76px}.layer .eps i{font-size:10px;padding:0 5px;letter-spacing:0}}
 .layer .finds i{width:7px;height:7px;border-radius:50%;background:rgba(22,23,11,.15);border:1px solid rgba(22,23,11,.3)}
 .layer .finds i.on{background:#16170B}
 .ext{display:flex;align-items:center;justify-content:space-between;gap:8px;height:20px;padding:0 12px;width:100%;background:repeating-linear-gradient(90deg,var(--ext) 0 6px,color-mix(in srgb,var(--ext) 75%,#000) 6px 9px);color:var(--ext-ink);font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border-radius:0}
@@ -564,6 +571,10 @@ const PERIODS = [
  {k:"carboniferous", pins:["pangaea", "southice", "coalswamp", "tethys", "panthalassa"], pos:{"pangaea": [44, 30], "southice": [46, 80], "coalswamp": [46, 50], "tethys": [72, 45], "panthalassa": [86, 70]}, world:"everything crunches together. Ice on the bottom, swamps round the middle", say:"kar-buh-NIF-er-us", name:"Carboniferous", era:"Paleozoic", start:359, end:299, color:"#839B82",
   began:"Swamp world. Steaming forests of giant ferns and tree-sized horsetails cover the land. The air has so much oxygen that insects grow as big as birds and millipedes as long as cars. When the trees fall, they do not rot properly; they pile up and become the coal we dig today. Much of the coal we dig today is these trees.",
   ended:"The rainforests collapsed. The climate turned dry and cold, the swamps broke up into islands, and the amphibians who had to lay their eggs in water were in trouble. The reptiles were not. Their eggs had shells. Small change, big winners.",
+  epochKind:"subperiod",
+  epochs:[
+   {name:"Mississippian", say:"miss-ih-SIP-ee-un", start:359, end:323, line:"Warm shallow seas and the heyday of the sea lilies, called crinoids. They grew in meadows so thick that whole layers of limestone in Iowa and Missouri are made almost entirely of their broken stems."},
+   {name:"Pennsylvanian", say:"pen-sil-VAY-nee-un", start:323, end:299, line:"Coal swamps. Giant ferns and scale trees topple into the mud and slowly become coal, and giant dragonflies patrol the air."}],
   word:["wingspan","WING-span","the distance from one wing tip to the other"],
   animals:[
    {name:"Meganeura", sfx:["marsh", "buzz"], say:"meg-uh-NOOR-uh", latin:"a giant griffinfly", img:"carboniferous", size:{v:0.7,kind:"wingspan"},
@@ -667,12 +678,12 @@ const PERIODS = [
   ,
    {"name": "Paraceratherium", "say": "par-uh-ser-uh-THEER-ee-um", "latin": "\"near the hornless beast\"", "img": "paleogene-paraceratherium", "size": {"v": 5, "kind": "tall"}, "sfx": ["savanna", "bigsteps", "snort"], "epoch": "Oligocene", "facts": ["A rhino with no horn, the neck of a giraffe and the height of a two-storey house. The biggest land mammal that ever lived, and almost nobody knows its name. Now you do.", "It ate the tops of trees, three times higher than you could reach standing on a grown-up. A baby one was already taller than a horse."]},
    {"name": "Ambulocetus", "say": "am-byoo-loh-SEE-tus", "latin": "\"walking whale\"", "img": "paleogene-ambulocetus", "size": {"v": 3, "kind": "long"}, "sfx": ["river", "splash", "breath"], "epoch": "Eocene", "facts": ["A whale with legs. Looks like a crocodile crossed with a sea lion, lived at the edge of a river, and grabbed things that came to drink. Its ears were built for hearing underwater, like a whale's, and its feet for walking, like yours.", "Dug out of Pakistan and named in 1994. It is the halfway picture everyone said would never be found: the land animal on its way to becoming a whale. Basilosaurus, further up this cliff, is what it became."]}]},
- {k:"neogene", pins:["himalayas", "panama", "antarctica"], pos:{"himalayas": [72, 36], "panama": [22, 53], "antarctica": [50, 91]}, world:"today's map, give or take. Panama joins the Americas and the animals start crossing", say:"NEE-oh-jeen", name:"Neogene", era:"Cenozoic", start:23, end:2.6, color:"#E7C775",
+ {k:"neogene", pins:["himalayas", "panama", "antarctica"], pos:{"himalayas": [72, 36], "panama": [22, 53], "antarctica": [50, 91]}, world:"today's map, give or take. Panama joins the Americas and the animals start crossing", say:"NEE-oh-jeen", name:"Neogene", era:"Cenozoic", start:23, end:2.58, color:"#E7C775",
   began:"A cooler, drier planet of grasslands. Grazing animals with tough teeth spread across the plains, and the hunters chasing them grow long legs. In Africa, apes come down from the trees, and some of them start walking on two feet.",
   ended:"The planet kept cooling until ice sheets began to grow in the north. The first Ice Age marks the end of the Neogene. Long before that, in Africa, someone had already picked up a stone and hit another stone with it to make a sharp edge. The oldest tools we have found are 3.3 million years old, older than the first Ice Age, and older than our own kind.",
   epochs:[
    {name:"Miocene", say:"MY-oh-seen", start:23, end:5.3, line:"Grasslands and grazers. Apes spread across Africa, Asia and Europe. Megalodon rules the seas."},
-   {name:"Pliocene", say:"PLY-oh-seen", start:5.3, end:2.6, line:"Cooler and drier. North and South America join up, and early humans like Lucy walk upright."}],
+   {name:"Pliocene", say:"PLY-oh-seen", start:5.3, end:2.58, line:"Cooler and drier. North and South America join up, and early humans like Lucy walk upright."}],
   word:["diversify","dy-VER-sih-fy","to become more varied, with many different kinds"],
   animals:[
    {name:"Megalodon", sfx:["deep", "whoosh", "jawsnap"], say:"MEG-uh-loh-don", latin:"\"big tooth\"", img:"neogene", size:{v:16,kind:"long"},
@@ -684,11 +695,11 @@ const PERIODS = [
 ,
    {"name": "Terror bird", "say": "TAIR-er BERD", "latin": "Phorusrhacos", "img": "neogene-terror-bird", "size": {"v": 2.5, "kind": "tall"}, "sfx": ["savanna", "runsteps", "croak"], "epoch": "Miocene", "facts": ["A bird taller than a door that could not fly and did not need to. Long legs, hooked beak like a giant eagle's, and it ran down its dinner.", "For millions of years the top hunters in South America were birds. Then the mammals arrived from the north."]}
   ]},
- {k:"quaternary", pins:["icesheet", "beringia", "antarctica"], pos:{"icesheet": [24, 14], "beringia": [7, 20], "antarctica": [50, 91]}, world:"today's map under ice three kilometres thick, the sea 120 metres lower, and a dry road from Siberia to Alaska", say:"KWOT-er-nair-ee", name:"Quaternary", era:"Cenozoic", start:2.6, end:0, color:"#EBD9A8",
+ {k:"quaternary", pins:["icesheet", "beringia", "antarctica"], pos:{"icesheet": [24, 14], "beringia": [7, 20], "antarctica": [50, 91]}, world:"today's map under ice three kilometres thick, the sea 120 metres lower, and a dry road from Siberia to Alaska", say:"KWOT-er-nair-ee", name:"Quaternary", era:"Cenozoic", start:2.58, end:0, color:"#EBD9A8",
   began:"The Ice Age. Great sheets of ice grow and shrink more than twenty times, covering Canada and northern Europe under ice three kilometres thick. Animals grow fur coats and huge bodies to hold in the heat. About 300,000 years ago, humans arrive.",
   ended:"It has not ended. You are living in it. But about 12,000 years ago, as the ice melted and humans spread everywhere, most of the giant Ice Age animals disappeared: the mammoths, the sabre-tooths, the giant sloths. All of written history fits into the last 5,000 years. You are at the very top of the cliff.",
   epochs:[
-   {name:"Pleistocene", say:"PLY-stuh-seen", start:2.6, end:0.0117, line:"The Ice Age proper. Mammoths, sabre-toothed cats, giant sloths, and the first modern humans."},
+   {name:"Pleistocene", say:"PLY-stuh-seen", start:2.58, end:0.0117, line:"The Ice Age proper. Mammoths, sabre-toothed cats, giant sloths, and the first modern humans."},
    {name:"Holocene", say:"HOL-uh-seen", start:0.0117, end:0, line:"The last 11,700 years: the ice retreats, farming begins, and all of written history happens. We live in it."}],
   word:["Ice Age","ICE ayj","a long time when much of the Earth was covered in ice"],
   animals:[
@@ -798,7 +809,7 @@ const SAY = {
   "iridium":"ih-RID-ee-um","Dunkleosteus":"dun-kul-OSS-tee-us","archaeocyath":"ar-kee-oh-SY-ath","Inuktitut":"ih-NOOK-tih-toot",
   "Biodiversification":"by-oh-dy-ver-sih-fih-KAY-shun","cycads":"SY-kadz","Siberian":"sy-BEER-ee-un","Quaternary":"KWOT-er-nair-ee",
   "Cretaceous":"krih-TAY-shus","Ordovician":"or-doh-VISH-un","Devonian":"dih-VOH-nee-un","Triassic":"try-ASS-ik","Jurassic":"juh-RASS-ik",
-  "Neogene":"NEE-oh-jeen","Permian":"PER-mee-un","Tyrannosaurus":"tih-ran-oh-SOR-us","Antarctica":"ant-ARK-tih-kuh","metabolisms":"muh-TAB-uh-liz-umz","ammonites":"AM-uh-nytes","Protoceratops":"proh-toh-SAIR-uh-tops","cephalopods":"SEF-uh-loh-podz","Mongolia":"mong-GOH-lee-uh","Hiroshima":"hee-roh-SHEE-muh","Courtenay":"KORT-nee","Latimer":"LAT-ih-mer","thagomizer":"THAG-oh-my-zer","Chicxulub":"CHEEK-shoo-loob","estuaries":"ESS-choo-air-eez","Deinosuchus":"dy-noh-SOO-kus","Dipterus":"DIP-ter-us","genome":"JEE-nohm","scutes":"SKYOOTS","cartilage":"KAR-tih-lij","Everglades":"EV-er-glaydz","barbels":"BAR-bulz","conifers":"KON-ih-ferz","Zealandia":"zee-LAN-dee-uh","plankton":"PLANK-tun","Pleistocene":"PLY-stuh-seen"
+  "Neogene":"NEE-oh-jeen","Permian":"PER-mee-un","Tyrannosaurus":"tih-ran-oh-SOR-us","Antarctica":"ant-ARK-tih-kuh","metabolisms":"muh-TAB-uh-liz-umz","ammonites":"AM-uh-nytes","Protoceratops":"proh-toh-SAIR-uh-tops","cephalopods":"SEF-uh-loh-podz","Mongolia":"mong-GOH-lee-uh","Hiroshima":"hee-roh-SHEE-muh","Courtenay":"KORT-nee","Latimer":"LAT-ih-mer","thagomizer":"THAG-oh-my-zer","Chicxulub":"CHEEK-shoo-loob","estuaries":"ESS-choo-air-eez","Deinosuchus":"dy-noh-SOO-kus","Dipterus":"DIP-ter-us","genome":"JEE-nohm","scutes":"SKYOOTS","cartilage":"KAR-tih-lij","Everglades":"EV-er-glaydz","barbels":"BAR-bulz","conifers":"KON-ih-ferz","Zealandia":"zee-LAN-dee-uh","plankton":"PLANK-tun","Pleistocene":"PLY-stuh-seen","crinoids":"KRY-noydz"
 };
 
 
@@ -982,10 +993,12 @@ function renderCliff(){
   layersEl.innerHTML="";
   LAYERS.forEach((p,i)=>{
     const b=document.createElement("button"); b.type="button";
-    b.className="layer"+(view.type==="period"&&view.k===p.k?" current":""); b.style.background=p.color;
+    const eps=p.epochs&&p.epochKind!=="subperiod";
+    b.className="layer"+(eps?" has-eps":"")+(view.type==="period"&&view.k===p.k?" current":""); b.style.background=p.color;
     const dots=p.animals.map(a=>`<i class="${found.has(p.k+"/"+a.name)?"on":""}"></i>`).join("");
-    b.innerHTML=`<span class="depth">${i+1}</span><span class="lab">${p.name}<small><em>${p.say}</em> · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</small></span><span class="finds" aria-label="${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found">${dots}</span>`;
-    b.addEventListener("click",()=>{ if(examPick){examPick(p.k);return;} openPeriod(p.k); openSheet(); });
+    b.innerHTML=`<span class="depth">${i+1}</span><span class="lab">${p.name}<small><em>${p.say}</em> · ${fmt(p.start)} to ${p.end===0?"today":fmt(p.end)+" Ma"}</small></span>${eps?`<span class="eps">${p.epochs.map((e,j)=>`<i data-ep="${j}">${e.name}</i>`).reverse().join("")}</span>`:""}<span class="finds" aria-label="${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found">${dots}</span>`;
+    b.addEventListener("click",ev=>{ if(examPick){examPick(p.k);return;} const ep=ev.target.closest&&ev.target.closest("[data-ep]"); openPeriod(p.k); openSheet();
+      if(ep){const bt=document.querySelectorAll("#epbar .ep")[+ep.dataset.ep]; if(bt){bt.click(); setTimeout(()=>bt.parentNode.parentNode.scrollIntoView({block:"center",behavior:REDUCED?"auto":"smooth"}),80);}} });
     layersEl.appendChild(b);
     const ex=EXTINCTIONS.find(e=>e.after===p.k);
     if(ex){const r=document.createElement("button");r.type="button";r.className="ext"+(view.type==="ext"&&view.k===ex.k?" current":"");r.innerHTML=`<span>${ex.name}${ex.nick?`<span class="nick"> · ${ex.nick}</span>`:""}</span><span>${ex.when} Ma</span>`;r.setAttribute("aria-label",ex.name);r.addEventListener("click",()=>{openExt(ex.k);openSheet();});layersEl.appendChild(r);}
@@ -1126,10 +1139,10 @@ function openPeriod(k){
   panel.innerHTML=`
     <div class="eyebrow">${lex(p.era,era.say)} era · layer ${LAYERS.indexOf(p)+1} of 12</div>
     <h2>${p.name}<span class="sayb">${p.say}</span></h2>
-    <div class="dur" title="How long it lasted, drawn to the same scale on every layer"><div class="r"><i style="width:${Math.max(3,Math.round((p.start-p.end)/MAX_SPAN*160))}px"></i><span>${p.end===0?"2.6 million years so far":`${p.start-p.end} million years`}${p===LONGEST?", the longest layer":""}</span></div>${p===LONGEST?"":`<div class="r ref"><i></i><span>the ${LONGEST.name}, longest of all: ${MAX_SPAN} million years</span></div>`}</div>
+    <div class="dur" title="How long it lasted, drawn to the same scale on every layer"><div class="r"><i style="width:${Math.max(3,Math.round((p.start-p.end)/MAX_SPAN*160))}px"></i><span>${p.end===0?"2.58 million years so far":`${p.start-p.end} million years`}${p===LONGEST?", the longest layer":""}</span></div>${p===LONGEST?"":`<div class="r ref"><i></i><span>the ${LONGEST.name}, longest of all: ${MAX_SPAN} million years</span></div>`}</div>
     <figure class="worldmap" id="worldmap"><div class="mapwrap"><img src="img/map-${p.k}.jpg" alt="How the continents lay in the ${p.name}" loading="eager" onerror="this.closest('figure').remove()">${(p.pins||[]).map(k=>{const g=GEO[k],xy=(p.pos||{})[k];return xy?`<button class="pin" type="button" style="left:${xy[0]}%;top:${xy[1]}%" data-geo="${k}" aria-label="${g.name}"><span>${g.name}</span></button>`:""}).join("")}</div><figcaption>The world then. An artist's best guess. ${p.world?`${p.world}.`:""} Tap a gold pin.</figcaption><div class="geoinfo" id="geoinfo" hidden></div></figure>
     <div class="bound ${beginsExt?"ext-link":""}"><span class="tag" style="background:${p.color}">Began<span class="tag ma">${fmt(p.start)} Ma</span></span><div><p>${withSay(p.began)}</p>${readBtn(`${p.k}-began`)}${beginsExt?`<p><button class="linkbtn" data-ext="${beginsExt.k}">Read about the ${beginsExt.name}</button></p>`:""}</div></div>
-    ${p.epochs?`<div><h3>Epochs in the ${p.name}</h3><p class="epnote">A period is cut into epochs <span class="lex">epochs<i>EP-oks</i></span>. Tap one.</p><div class="epbar" id="epbar"></div><div class="epinfo" id="epinfo"></div></div>`:""}
+    ${p.epochs?`<div>${p.epochKind==="subperiod"?`<h3>The ${p.name} in two halves</h3><p class="epnote">Geologists cut this period in two, called subperiods <span class="lex">subperiods<i>SUB-peer-ee-udz</i></span>. Tap one.</p>`:`<h3>Epochs in the ${p.name}</h3><p class="epnote">A period is cut into epochs <span class="lex">epochs<i>EP-oks</i></span>. Tap one.</p>`}<div class="epbar" id="epbar"></div><div class="epinfo" id="epinfo"></div></div>`:""}
     <div class="digblock">
       <h3>Dig here · ${p.animals.filter(a=>found.has(p.k+"/"+a.name)).length} of ${p.animals.length} found</h3>
       <div class="site" id="site"></div>
