@@ -51,7 +51,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .btn.ghost{color:var(--ink);background:transparent}
 .btn:disabled{opacity:.35;cursor:default}
 
-.game{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:18px;margin-top:26px;align-items:start}
+.game{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:18px;margin-top:18px;align-items:start}
 @media (max-width:760px){.game{grid-template-columns:1fr}}
 
 /* cliff */
@@ -149,7 +149,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .card .stage{max-width:none}
 .stagebtn{padding:0;display:block;cursor:pointer;width:100%}
 .stagebtn::after{content:"tap to listen";position:absolute;right:10px;bottom:10px;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(22,23,11,.6);color:#FFF8EE;padding:3px 8px;border-radius:999px}
-.card .name{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1.02}
+.card .name{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1.02}.card .name:focus{outline:none}
 .facts{margin:10px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;font-size:1.05rem;line-height:1.35}
 .lex{white-space:nowrap}
 .lex i{font-style:normal;font-family:var(--sans);font-weight:500;font-size:.62em;letter-spacing:.04em;color:var(--copper);margin-left:.35em;vertical-align:1px}
@@ -266,6 +266,23 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .sizer .r.hid .b i{background:transparent;border:1px dashed var(--soil-5)}
 .sizer .r .v{font-family:var(--sans);font-size:12px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap}
 
+/* read next: one shelf per layer, oldest first, and a shelf for grown-ups */
+.books{margin-top:24px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:22px 26px 26px}
+.books h2{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:600;line-height:1.05;margin:4px 0 0;text-wrap:balance}
+.books h2 em{font-style:italic;color:var(--green);font-weight:500}
+.shelves{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
+.shelf{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:12px 14px 14px;border-top:5px solid var(--pc,var(--rule))}
+.shelf h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:0 0 8px;line-height:1.1}
+.shelf h3 small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-top:3px}
+.shelf ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.shelf li{font-size:1rem;line-height:1.3}
+.shelf a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+.shelf a:hover{text-decoration-color:var(--copper)}
+.shelf li i{display:block;font-style:normal;font-family:var(--sans);font-size:11px;color:var(--ink-soft);letter-spacing:.02em}
+.shelf li span{display:block;color:var(--ink-soft);font-size:.95rem}
+.shelf.grown{border-top-color:var(--gold)}
+@media (max-width:520px){.books{padding:16px 16px 18px}}
+
 /* extinction panel */
 .panel.ext-panel{border-color:var(--ext)}
 .toll{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
@@ -372,7 +389,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 .sheetbar{display:none}
 @media (max-width:760px){
   main{display:flex;flex-direction:column}
-  .brand{order:0}.top>div:first-child{order:1}.lede{order:2}.walk{order:3}.hero{order:3}.learn{order:4}.learn-dots{order:5}.start{order:6}.sheetbar{order:8}.game{order:9}.living{order:10}.notebook{order:11}.foot{order:12}
+  .brand{order:0}.top>div:first-child{order:1}.game{order:2}.lede{order:3}.walk{order:4}.hero{order:4}.learn{order:5}.learn-dots{order:6}.sheetbar{order:8}.living{order:10}.notebook{order:11}.books{order:12}.foot{order:13}
   .start{margin:16px 0 0}.start-btn{width:100%;justify-content:center;text-align:center}
   .learn{display:flex;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:18px -18px 0;padding:0 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .learn::-webkit-scrollbar{display:none}
@@ -430,8 +447,16 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="topright"><button class="iconbtn" id="sound" type="button" aria-pressed="true" title="Digging and reward sounds. Narration has its own buttons.">Effects on</button>
   <div class="listen" id="listen"><div><b>Listen to Deep Time</b><span>The whole chapter, out loud. 65 minutes. Dig while you listen.</span></div><audio id="book" controls preload="none" src="aud/full-audiobook.mp3"></audio></div></div>
 </div>
+<div class="game">
+  <section class="cliff" aria-label="Cliff of strata">
+    <div class="cliff-head"><span>Cliff face</span><span>top is newest, bottom is bedrock</span></div>
+    <div class="layers" id="layers"></div>
+    <div class="ground">bedrock · 539 million years down · almost nothing with a shell or a bone below this, and four billion more years of Earth under that</div>
+  </section>
+  <section class="panel" id="panel" aria-live="polite"></section>
+</div>
+
 <p class="lede">This cliff is 539 million years deep and it is full of bones. Grab your trowel and brush up on every layer. Tap any layer to go there: how it started, who lived in it (dig them up, four to thirteen a layer), and how it all went wrong. The thin red stripes are the five times nearly everything died. Deeper is older. Mind the extinctions.</p>
-<div class="start"><button class="btn start-btn" id="startdig" type="button">Start digging →</button></div>
 <div class="walk" id="walk" aria-label="Every fossil in the cliff, oldest to newest">
   <div class="cloth"><div class="track" id="ctrack"><div class="rail" id="crail"></div></div><div class="marker" aria-hidden="true"></div><div class="badge" id="cbadge"></div><div class="ctl"><button type="button" id="cprev" aria-label="Previous fossil">◀</button><button type="button" id="cnext" aria-label="Next fossil">▶</button></div></div>
   <div class="eras" id="eras" aria-hidden="true"></div>
@@ -483,14 +508,6 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 
 <div class="float-next" id="floatnext" hidden></div>
 <div class="sheetbar" id="sheetbar"><button class="sb-back" id="sb-back" type="button">← Cliff</button><span class="sb-title" id="sb-title"></span><span class="sb-nav"><button class="sb-btn" id="sb-prev" type="button"></button><button class="sb-btn" id="sb-next" type="button"></button></span></div>
-<div class="game">
-  <section class="cliff" aria-label="Cliff of strata">
-    <div class="cliff-head"><span>Cliff face</span><span>top is newest, bottom is bedrock</span></div>
-    <div class="layers" id="layers"></div>
-    <div class="ground">bedrock · 539 million years down · almost nothing with a shell or a bone below this, and four billion more years of Earth under that</div>
-  </section>
-  <section class="panel" id="panel" aria-live="polite"></section>
-</div>
 
 <section class="living" aria-label="Living fossils">
   <div class="eyebrow">Still here</div>
@@ -505,6 +522,40 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="nb-actions"><button class="btn" id="exambtn" type="button">Prove it →</button><span class="nb-note" id="examnote"></span><button class="btn ghost" id="codebtn" type="button">Notebook code</button><button class="btn ghost reset" id="resetbtn" type="button">Start again</button></div>
   <div class="nb-code" id="nbcode" hidden><p>Your notebook as a code. Write it down or send it to another device; typing it in there brings every find back.</p><div class="row"><code id="codeout"></code><button class="btn ghost" id="codecopy" type="button">Copy</button></div><div class="row"><input id="codein" type="text" placeholder="Paste a code" autocomplete="off" spellcheck="false"><button class="btn ghost" id="codeload" type="button">Restore</button></div><p class="msg" id="codemsg"></p></div>
   <div class="nb-grid" id="nb-grid"></div>
+</section>
+<section class="books" id="books" aria-label="Read next">
+  <div class="eyebrow">Read next</div>
+  <h2>Books to dig into. <em>One shelf per layer, and one for the grown-ups.</em></h2>
+  <p class="lede" style="margin-top:4px">Books to borrow, buy new, or find secondhand. Your library will have most of them.</p>
+  <div class="shelves">
+    <div class="shelf" style="--pc:#94AD90"><h3>The whole cliff<small>all 539 million years</small></h3><ul>
+      <li><a href="https://www.amazon.com/dp/0547203594" target="_blank" rel="noopener">Life Story</a><i>Virginia Lee Burton · 1962</i><span>The whole thing as a stage play, one act per age. Still the best.</span></li>
+      <li><a href="https://www.amazon.com/dp/1783706821" target="_blank" rel="noopener">The Story of Life: Evolution</a><i>Fiona Munro, Ruth Symons, pictures by Katie Scott · Welcome to the Museum</i><span>The gallery version. Big, quiet, and the drawings are worth the price.</span></li>
+      <li><a href="https://www.amazon.com/dp/1250113237" target="_blank" rel="noopener">Grandmother Fish</a><i>Jonathan Tweet · ages 4 and up</i><span>Wiggle like a fish, breathe like a reptile. For the youngest digger in the house.</span></li>
+      <li><a href="https://www.amazon.com/dp/0809043114" target="_blank" rel="noopener">Evolution: The Story of Life on Earth</a><i>Jay Hosler, art by Kevin and Zander Cannon · graphic novel</i><span>For a reader who wants the long version, with jokes.</span></li>
+    </ul></div>
+    <div class="shelf" style="--pc:#9EAD7C"><h3>Before the dinosaurs, and their beginnings<small>layers 12 to 6</small></h3><ul>
+      <li><a href="https://www.amazon.com/dp/142632104X" target="_blank" rel="noopener">When Fish Got Feet, When Bugs Were Big, and When Dinos Dawned</a><i>Hannah Bonner · National Geographic Kids</i><span>Three cartoon books in one: fish growing legs and bugs taking to the air (Silurian and Devonian), the coal swamps and the first reptiles (Carboniferous and Permian), and the dawn of the dinosaurs (Triassic). Funny and exact. Nobody else has written these layers for children.</span></li>
+      <li><a href="https://www.amazon.com/dp/0062382071" target="_blank" rel="noopener">Fossils Tell of Long Ago</a><i>Aliki · Let's-Read-and-Find-Out</i><span>How a fish becomes a stone. The book to read before the first dig.</span></li>
+    </ul></div>
+    <div class="shelf" style="--pc:#7AADBB"><h3>Jurassic and Cretaceous<small>layers 5 and 4</small></h3><ul>
+      <li><a href="https://www.amazon.com/dp/0544582381" target="_blank" rel="noopener">Prehistoric Actual Size</a><i>Steve Jenkins</i><span>Every animal at its real size, so a page is a Velociraptor's claw or one eye of a giant.</span></li>
+      <li><a href="https://www.amazon.com/dp/0763699004" target="_blank" rel="noopener">Dinosaurium</a><i>Lily Murray, pictures by Chris Wormell · Welcome to the Museum</i><span>The museum you can keep on a shelf.</span></li>
+      <li><a href="https://www.amazon.com/dp/0142411930" target="_blank" rel="noopener">Boy, Were We Wrong About Dinosaurs!</a><i>Kathleen Kudlinski</i><span>Every time scientists checked, they had to say sorry. That is the job.</span></li>
+      <li><a href="https://www.amazon.com/dp/1845077008" target="_blank" rel="noopener">Stone Girl Bone Girl</a><i>Laurence Anholt, pictures by Sheila Moxley</i><span>Mary Anning, twelve years old, finds a sea monster on a beach. It was a Jurassic ichthyosaur. Meet the digger.</span></li>
+    </ul></div>
+    <div class="shelf" style="--pc:#E2B268"><h3>Paleogene and Neogene<small>layers 3 and 2</small></h3><ul>
+      <li><a href="https://www.amazon.com/dp/1912413973" target="_blank" rel="noopener">When the Whales Walked</a><i>Dougal Dixon, pictures by Hannah Bailey</i><span>Thirteen journeys from one shape to another: the whale that had legs, the bird that was a dinosaur.</span></li>
+    </ul></div>
+    <div class="shelf" style="--pc:#EBD9A8"><h3>Quaternary<small>layer 1, the top</small></h3><ul>
+      <li><a href="https://www.amazon.com/dp/015204700X" target="_blank" rel="noopener">Mammoths on the Move</a><i>Lisa Wheeler, pictures by Kurt Cyrus</i><span>A poem that stomps. Out of print, so look in the library or buy it used.</span></li>
+    </ul></div>
+    <div class="shelf grown"><h3>For the grown-ups<small>when the child is asleep</small></h3><ul>
+      <li><a href="https://www.amazon.com/dp/0307277453" target="_blank" rel="noopener">Your Inner Fish</a><i>Neil Shubin</i><span>The man who found Tiktaalik on why your hand is a fin.</span></li>
+      <li><a href="https://www.amazon.com/dp/0062490435" target="_blank" rel="noopener">The Rise and Fall of the Dinosaurs</a><i>Steve Brusatte</i><span>The Mesozoic, layers 6 to 4, by someone who digs it up.</span></li>
+      <li><a href="https://www.amazon.com/s?k=The+Rise+and+Reign+of+the+Mammals+Brusatte" target="_blank" rel="noopener">The Rise and Reign of the Mammals</a><i>Steve Brusatte</i><span>What happened next, layers 3 to 1, up to you.</span></li>
+    </ul></div>
+  </div>
 </section>
 <div class="foot"><span>See more in every layer</span></div>
 
@@ -1112,7 +1163,7 @@ function playNarr(id,btn){
 narr.addEventListener("playing",()=>narrBtns().forEach(b=>b.classList.remove("loading")));
 narr.addEventListener("ended",stopNarr); narr.addEventListener("error",stopNarr);
 document.addEventListener("click",e=>{const b=e.target.closest(".read[data-aud]"); if(b){e.preventDefault();playNarr(b.dataset.aud,b);}});
-document.addEventListener("DOMContentLoaded",()=>{const book=document.getElementById("book"); if(book)book.addEventListener("play",stopNarr);});
+document.addEventListener("DOMContentLoaded",()=>{const book=document.getElementById("book"); if(book)book.addEventListener("play",()=>{stopNarr(); if(!NARROW()){const w=document.getElementById("walk"); if(w)w.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});}});});
 
 /* ---------- motion: habitat from sfx tags, drifting stills, optional video loop ---------- */
 const VIDEO_BASE="vid/"; const VIDEOS=new Set([]); // add slugs here as clips are rendered
@@ -1147,12 +1198,14 @@ function openPeriod(k){
     <div><h3>How big was it, really?</h3><div class="sizer" id="sizer"></div></div>
     ${LIVING.some(l=>l.since===p.k)?`<div><h3>Still alive from the ${p.name}</h3><div class="stillhere">${LIVING.filter(l=>l.since===p.k).map(l=>`<button class="chip" type="button" data-lv="${l.name}">${l.name} <span style="opacity:.75">${l.say}</span></button>`).join("")}</div></div>`:""}
     <div class="word"><div class="eyebrow">Word worth keeping</div><b>${p.word[0]}</b><span class="sayb">${p.word[1]}</span>${p.word[2]} ${readBtn(`${p.k}-word`,"Say it")}</div>
+    <p><button class="linkbtn" type="button" data-books>Books to read next, for every layer</button></p>
     <div class="row">
       <button class="btn ghost" id="older" type="button" ${i===0?"disabled":""}>← Older: ${i>0?PERIODS[i-1].name:""}</button>
       <button class="btn ghost" id="younger" type="button" ${i===PERIODS.length-1?"disabled":""}>Younger: ${i<PERIODS.length-1?PERIODS[i+1].name:""} →</button>
     </div>`;
   renderSite(p); renderSizer(p); renderEpochs(p);
   panel.querySelectorAll("[data-ext]").forEach(b=>b.addEventListener("click",()=>openExt(b.dataset.ext)));
+  panel.querySelectorAll("[data-books]").forEach(b=>b.addEventListener("click",()=>{closeSheet();document.getElementById("books").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"});}));
   panel.querySelectorAll(".pin").forEach(b=>b.addEventListener("click",()=>{const g=GEO[b.dataset.geo],gi=document.getElementById("geoinfo");panel.querySelectorAll(".pin").forEach(x=>x.classList.toggle("on",x===b));gi.hidden=false;gi.innerHTML=`<b>${g.name}</b><span class="sayb" style="margin-top:0">${g.say}</span>${withSay(g.line)} ${readBtn(`geo-${b.dataset.geo}`)}`;}));
   panel.querySelectorAll("[data-lv]").forEach(b=>b.addEventListener("click",()=>{const l=LIVING.find(x=>x.name===b.dataset.lv); const row=[...document.querySelectorAll(".ll-row")].find(r=>r.getAttribute("aria-label").startsWith(l.name+",")); if(row)row.click(); else showLiving(l,p);}));
   if(i>0)document.getElementById("older").addEventListener("click",()=>openPeriod(PERIODS[i-1].k));
@@ -1240,7 +1293,7 @@ function showCard(p,a,fresh=false){
     <div class="card">
       <button class="stage cleared stagebtn" id="stage" type="button" aria-label="Hear ${a.name}'s world">${pic(a)}</button>
       <div>
-        <div class="name">${a.name}</div><span class="sayb">${a.say}</span>
+        <div class="name" id="cardname" tabindex="-1">${a.name}</div><span class="sayb">${a.say}</span>
         <div class="eyebrow" style="margin-top:4px">${withSay(a.latin)}${a.epoch?` · ${a.epoch} epoch`:""}</div>
         <div>${readBtn(`${p.k}-${slug(a.name)}`)}</div>
         <p style="margin-top:8px"><b>${a.size.v>=1?a.size.v+" m":a.size.v>=0.1?Math.round(a.size.v*100)+" cm":Math.round(a.size.v*1000)+" mm"} ${sizeLabel(a.size.kind)}</b> · ${a.size.v>=YOU_M?`about ${(a.size.v/YOU_M).toFixed(a.size.v/YOU_M<3?1:0)} of you, lying down`:`smaller than you. You win.`}</p>
@@ -1257,6 +1310,9 @@ function showCard(p,a,fresh=false){
   const st=document.getElementById("stage"); st.addEventListener("click",()=>{habitat(a);});
   requestAnimationFrame(()=>requestAnimationFrame(()=>{st.classList.add("alive"); if(fresh){sparkle(st); habitat(a); if(found.size===ALL.length)setTimeout(fanfare,600);}}));
   document.getElementById("back").addEventListener("click",()=>openPeriod(p.k)); syncSheet();
+  // the reveal deserves to be seen: bring the top of the card into view and put focus on the name
+  const nm=document.getElementById("cardname"); if(nm)nm.focus({preventScroll:true});
+  if(fresh){ if(SHEET.on)panel.scrollTop=0; else panel.scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); }
 }
 
 function openExt(k){
@@ -1420,7 +1476,7 @@ document.getElementById("exambtn").addEventListener("click",()=>{startExam();goP
 
 renderLiving(); renderNotebook();
 const h=location.hash.replace("#","");
-if(PERIODS.some(p=>p.k===h)){openPeriod(h);openSheet();} else if(EXTINCTIONS.some(e=>e.k===h)){openExt(h);openSheet();} else openPeriod("cambrian");
+if(PERIODS.some(p=>p.k===h)){openPeriod(h);openSheet();} else if(EXTINCTIONS.some(e=>e.k===h)){openExt(h);openSheet();} else { const p0=PERIODS.find(q=>q.animals.some(x=>!found.has(q.k+"/"+x.name))); if(p0){ const a0=p0.animals.find(x=>!found.has(p0.k+"/"+x.name)); view={type:"period",k:p0.k}; renderCliff(); startDig(p0,a0); openSheet(); } else openPeriod("cambrian"); }
 </script>
 </main>
 </body>
