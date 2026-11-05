@@ -178,6 +178,10 @@ h1 em{font-style:italic;color:var(--purple);font-weight:500}
 .side.t-purple{--tc:var(--purple)}.side.t-still{--tc:var(--gold)}.side.t-friend{--tc:var(--copper)}
 .thread-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:16px}.thread{background:var(--cream);border:1px solid var(--rule);border-left:4px solid var(--tc);border-radius:0 14px 14px 0;padding:12px 14px 14px}.thread.t-purple{--tc:var(--purple)}.thread.t-still{--tc:var(--gold)}.thread.t-friend{--tc:var(--copper)}.thread b{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.1;display:block}.thread i{font-style:normal;font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tc);font-weight:500}.thread span{display:block;font-size:.98rem;line-height:1.35;color:var(--ink-soft);margin:4px 0 8px}.stops{display:flex;flex-wrap:wrap;gap:6px}.stop{font-family:var(--sans);font-size:12px;padding:4px 10px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--ink)}.stop:hover{border-color:var(--ink)}.stop small{color:var(--ink-soft);margin-left:4px}
 @media (max-width:760px){.side{padding:12px 12px 14px}.side .gal{grid-template-columns:1fr 1fr}}
+.books{margin-top:24px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:22px 26px 26px}.books h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:4px 0 0}.books h2 em{font-style:italic;color:var(--purple);font-weight:500}
+.shelves{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}.shelf{background:var(--cream);border:1px solid var(--rule);border-radius:14px;padding:12px 14px 14px;border-top:5px solid var(--pc,var(--rule))}.shelf h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:0 0 8px;line-height:1.1}.shelf h3 small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-top:3px}.shelf ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.shelf li{font-size:1rem;line-height:1.3}.shelf a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}.shelf a:hover{text-decoration-color:var(--copper)}.shelf li i{display:block;font-style:normal;font-family:var(--sans);font-size:11px;color:var(--ink-soft);letter-spacing:.02em}.shelf li span{display:block;font-size:.95rem;color:var(--ink-soft);line-height:1.35}.shelf.hi{box-shadow:0 0 0 2px var(--pc)}
+.readlink{font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);background:transparent;border-radius:999px;padding:5px 11px}.readlink:hover{background:var(--gold);color:#fff}
+@media (max-width:760px){.books{padding:14px 12px 16px}}
 .living{margin-top:24px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:22px 26px 26px}.living h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:4px 0 0}.living h2 em{font-style:italic;color:var(--purple);font-weight:500}
 .still-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}.still{background:var(--cream);border:1px solid var(--rule);border-left:4px solid var(--purple);border-radius:0 14px 14px 0;padding:12px 14px 14px;display:flex;flex-direction:column;gap:5px}.still b{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.1}.still i{font-style:normal;font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--copper);font-weight:500}.still span{font-size:1rem;line-height:1.35}.still em{font-style:normal;font-size:.95rem;line-height:1.35;color:var(--ink-soft);border-top:1px dashed var(--rule);padding-top:6px;margin-top:2px}
 @media (max-width:760px){.living{padding:14px 12px 16px}.still-grid{grid-template-columns:1fr}}
@@ -287,6 +291,42 @@ h1 em{font-style:italic;color:var(--purple);font-weight:500}
   <h2>Three stories that run through the reigns. <em>Tap a stop to jump there.</em></h2>
   <p class="lede" style="margin-top:4px">Each one lives inside the reign where it happened, under the ruler's own page. This is the map. Travel details were checked in November 2026; check again before you go.</p>
   <div class="thread-list" id="threads"></div>
+</section>
+<section class="books" id="books" aria-label="Read next">
+  <div class="eyebrow">Read next</div>
+  <h2>Books to dig into. <em>One shelf per dynasty, and one for the grown-ups.</em></h2>
+  <p class="lede" style="margin-top:4px">Books to borrow, buy new, or find secondhand. Your library will have most of them.</p>
+  <div class="shelves">
+    <div class="shelf" id="shelf-all" style="--pc:#66234F"><h3>The whole empire<small>every chapter</small></h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Rotten+Romans+Terry+Deary+Horrible+Histories" target="_blank" rel="noopener">Rotten Romans</a><i>Terry Deary, pictures by Martin Brown · Horrible Histories</i><span>The book this page is trying to be. Toilets, togas, and who got stabbed.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Ruthless+Romans+Terry+Deary+Horrible+Histories" target="_blank" rel="noopener">Ruthless Romans</a><i>Terry Deary · Horrible Histories</i><span>The sequel, for when Rotten Romans runs out.</span></li>
+      <li><a href="https://www.amazon.com/s?k=DK+Eyewitness+Ancient+Rome" target="_blank" rel="noopener">Ancient Rome</a><i>DK Eyewitness</i><span>Photographs of the real things: coins, helmets, a loaf from Pompeii.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Usborne+Romans+Anthony+Marks" target="_blank" rel="noopener">Romans</a><i>Usborne</i><span>The clear, short version with the cutaway drawings.</span></li>
+    </ul></div>
+    <div class="shelf" id="shelf-jc" style="--pc:#7a3b2e"><h3>Caesar and the Julio-Claudians<small>chapters 1 to 8</small></h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Asterix+the+Gaul+Goscinny+Uderzo" target="_blank" rel="noopener">Asterix the Gaul</a><i>Goscinny and Uderzo · comic</i><span>Caesar, as seen by the one village he never conquered. Start here, then read all of them.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Suetonius+Twelve+Caesars+Penguin+Classics" target="_blank" rel="noopener">The Twelve Caesars</a><i>Suetonius, about AD 120 · older readers</i><span>The gossip, from the man who wrote it down. The horse is in here. So are the mushrooms.</span></li>
+      <li><a href="https://www.amazon.com/s?k=I+Claudius+Robert+Graves" target="_blank" rel="noopener">I, Claudius</a><i>Robert Graves · 1934 · older readers and grown-ups</i><span>Claudius tells the family story himself, stammer and all. The best novel about this page.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Dynasty+Tom+Holland" target="_blank" rel="noopener">Dynasty</a><i>Tom Holland · grown-ups</i><span>Augustus to Nero, told like a thriller.</span></li>
+    </ul></div>
+    <div class="shelf" id="shelf-fl" style="--pc:#3e6a5a"><h3>Vesuvius and the Flavians<small>chapters 9 to 11</small></h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Thieves+of+Ostia+Caroline+Lawrence+Roman+Mysteries" target="_blank" rel="noopener">The Thieves of Ostia</a><i>Caroline Lawrence · The Roman Mysteries, book 1 · ages 8+</i><span>Four friends and a dog solve crimes in the port of Rome, in the summer Titus became emperor. Seventeen books follow.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Secrets+of+Vesuvius+Caroline+Lawrence" target="_blank" rel="noopener">The Secrets of Vesuvius</a><i>Caroline Lawrence · The Roman Mysteries, book 2</i><span>The same four, on the wrong side of the bay in August AD 79.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Escape+from+Pompeii+Christina+Balit" target="_blank" rel="noopener">Escape from Pompeii</a><i>Christina Balit · picture book</i><span>The eruption for younger readers, with the pictures doing the shouting.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Pax+Tom+Holland" target="_blank" rel="noopener">Pax</a><i>Tom Holland · grown-ups</i><span>Vespasian to Hadrian: how Rome ran the world in its best century.</span></li>
+    </ul></div>
+    <div class="shelf" id="shelf-na" style="--pc:#2f5378"><h3>Hadrian's Wall and the good emperors<small>chapters 12 to 22</small></h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Eagle+of+the+Ninth+Rosemary+Sutcliff" target="_blank" rel="noopener">The Eagle of the Ninth</a><i>Rosemary Sutcliff · 1954 · ages 10+</i><span>A young officer goes north of Hadrian's Wall to find his father's lost legion. Still the best Roman Britain story.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Marcus+Aurelius+Meditations+Gregory+Hays" target="_blank" rel="noopener">Meditations</a><i>Marcus Aurelius, translated by Gregory Hays · older readers and grown-ups</i><span>The notebook from the tent on the Danube. Short, and still good advice.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Hadrian+and+the+Triumph+of+Rome+Everitt" target="_blank" rel="noopener">Hadrian and the Triumph of Rome</a><i>Anthony Everitt · grown-ups</i><span>The traveller, the wall, and the beard.</span></li>
+    </ul></div>
+    <div class="shelf grown" id="shelf-grown" style="--pc:#B8922A"><h3>For the grown-ups<small>and anyone who wants the long version</small></h3><ul>
+      <li><a href="https://www.amazon.com/s?k=SPQR+Mary+Beard" target="_blank" rel="noopener">SPQR</a><i>Mary Beard</i><span>A history of ancient Rome, by the person who makes it funniest and clearest. Start here.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Rubicon+Tom+Holland" target="_blank" rel="noopener">Rubicon</a><i>Tom Holland</i><span>How the Republic died and Caesar crossed the river.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Augustus+Adrian+Goldsworthy" target="_blank" rel="noopener">Augustus</a><i>Adrian Goldsworthy</i><span>The first emperor, as a soldier, a politician and a grandfather.</span></li>
+      <li><a href="https://www.amazon.com/s?k=The+Silver+Pigs+Lindsey+Davis" target="_blank" rel="noopener">The Silver Pigs</a><i>Lindsey Davis · Falco, book 1</i><span>A private detective in Vespasian's Rome. Twenty books, all funny.</span></li>
+    </ul></div>
+  </div>
 </section>
 <section class="whybox" aria-label="Why learn this">
   <div class="eyebrow">Why learn this?</div>
@@ -404,6 +444,7 @@ function initMQ(){document.querySelectorAll('.mq').forEach(box=>{if(box.dataset.
 function renderThreads(){const box=document.getElementById('threads');if(!box)return;const stops={purple:[],still:[],friend:[]};E.forEach((e,i)=>(SIDE[e[0]]||[]).forEach(c=>stops[c.t].push([i,c.t==='still'?c.title:c.step?c.step.split(' ')[0]+' · '+e[0]:e[0]+' · Herod'])));
   box.innerHTML=Object.keys(THREADS).map(k=>`<div class="thread t-${k}"><i>${stops[k].length} ${stops[k].length===1?'stop':'stops'}</i><b>${THREADS[k][0]}</b><span>${THREADS[k][1]}</span><div class="stops">${stops[k].map(([i,l])=>`<button class="stop" type="button" data-i="${i}" data-t="${k}">${l}</button>`).join('')}</div></div>`).join('');
   box.querySelectorAll('.stop').forEach(b=>b.onclick=()=>{select(+b.dataset.i);setTimeout(()=>{const s=document.querySelector('.side.t-'+b.dataset.t);if(s)s.open=true;(s||tablet).scrollIntoView({behavior:'smooth',block:'start'});},80);});}
+const SHELF={pre:'jc',jc:'jc',aug:'jc',y4:'fl',fl:'fl',na:'na',sev:'na',cr:'all',tet:'all'};
 function render(){
   document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',String(filter===c.dataset.f)));
   document.querySelectorAll('.seg:not(.gap)').forEach(s=>{const e=E[s.dataset.i];s.classList.toggle('dim',filter==='good'?!GOOD.has(e[0]):(!!filter&&e[4]!==filter));s.classList.toggle('on',+s.dataset.i===cur);});
@@ -423,8 +464,9 @@ function render(){
   <div class="nobble" id="nobble"></div>
   ${(VOCAB[e[0]]||[]).length?`<h3 class="sub">Words worth keeping</h3><div class="words">${VOCAB[e[0]].map(w=>`<div class="word"><b>${w[0]}</b><span class="sayb">${w[1]}</span>${readBtn(slug(e[0])+'-w-'+slug(w[0]),'Say it')}<span>${w[2]}</span></div>`).join('')}</div>`:''}
   ${renderSide(e)}
-  <div class="nav"><button class="btn" id="prev" ${vis.indexOf(cur)<=0?'disabled':''}>← Previous</button><button class="btn" id="nxt" ${vis.indexOf(cur)>=vis.length-1?'disabled':''}>Next →</button></div>`;
+  <div class="nav"><button class="btn" id="prev" ${vis.indexOf(cur)<=0?'disabled':''}>← Previous</button><button class="readlink" type="button" data-shelf="${SHELF[e[4]]||'all'}">Books for this reign</button><button class="btn" id="nxt" ${vis.indexOf(cur)>=vis.length-1?'disabled':''}>Next →</button></div>`;
   renderHoard();updateStart();initDust();renderNobble();initMQ();const tl=document.getElementById('tally');if(tl)tl.textContent=purse();
+  const rl=tablet.querySelector('.readlink');if(rl)rl.onclick=()=>{document.querySelectorAll('.shelf').forEach(s=>s.classList.remove('hi'));const s=document.getElementById('shelf-'+rl.dataset.shelf);(s||document.getElementById('books')).scrollIntoView({behavior:'smooth',block:'start'});if(s)s.classList.add('hi');};
   const goP=()=>select(vis[vis.indexOf(cur)-1]),goN=()=>select(vis[vis.indexOf(cur)+1]);document.getElementById('prev').onclick=goP;document.getElementById('nxt').onclick=goN;document.getElementById('prev2').onclick=goP;document.getElementById('nxt2').onclick=goN;
 }
 function select(i){cur=i;met.add(i);render();}
