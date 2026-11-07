@@ -17,6 +17,7 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C1B17;--paper:#25241F;--cream:#2C2A24;--ink:#F1EDE3;--ink-soft:#B3AC9C;--rule:#5C5443;--green:#8FA36E;--green-deep:#C4D3A8;--blue:#8B95C9;--gold:#CBA94B;--copper:#D98A4A;--soil-1:#4A4136;--soil-3:#3C342B;--soil-5:#2E2821;--hollow:#26211B;--ext:#C25A48;--ext-ink:#1C1B17;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#1C1B17;--paper:#25241F;--cream:#2C2A24;--ink:#F1EDE3;--ink-soft:#B3AC9C;--rule:#5C5443;--green:#8FA36E;--green-deep:#C4D3A8;--blue:#8B95C9;--gold:#CBA94B;--copper:#D98A4A;--soil-1:#4A4136;--soil-3:#3C342B;--soil-5:#2E2821;--hollow:#26211B;--ext:#C25A48;--ext-ink:#1C1B17;color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.4;padding-inline:18px;padding-block:28px 60px;max-width:1040px;margin:0 auto}
 @media (max-width:520px){body{font-size:17px}}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
@@ -384,6 +385,26 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
 @keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
 .h2-cheer{display:inline-block;animation:cheer .6s ease-out}
 @keyframes cheer{0%{transform:scale(.6) rotate(-6deg);opacity:0}60%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+
+/* phone pass: shorter page, simpler living fossils */
+.nb-left{display:none}
+@media (max-width:760px){
+  .nb:not(.filled){display:none}
+  .nb-left{display:block;margin:10px 0 0;font-style:italic;color:var(--ink-soft)}
+  .nb-grid{grid-template-columns:1fr;gap:8px}.nb{min-height:60px}
+  .nb-grid:empty{display:none}
+  .nb-actions{gap:8px}.reset{margin-left:0}
+  .living{padding:16px 16px 18px}
+  .ll-scale,.ll-ext,.ll-line,.ll-axis,.ll-today{display:none}
+  .lifelines{--right:0px}
+  .ll-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;padding:0;margin:0;background:none}
+  .ll-row{height:auto;min-height:56px;flex-direction:row-reverse;justify-content:flex-end;gap:8px;padding:6px;border:1px solid var(--rule);border-radius:12px;background:var(--cream)}
+  .ll-row .ll-pic{position:relative;right:auto;top:auto;transform:none;width:44px;height:44px;flex:none}
+  .ll-row .ll-name{position:static;transform:none;margin:0;padding:0;background:none;font-size:1rem;white-space:normal;line-height:1.1;left:auto!important}
+  .ll-row.on{border-color:var(--gold)}
+  .books{padding:16px 16px 18px}
+  .shelves{grid-template-columns:1fr}
+}
 /* ---------- phone: strip + sheet ---------- */
 .learn{display:contents}
 .sheetbar{display:none}
@@ -521,7 +542,7 @@ h1 em{font-style:italic;color:var(--green);font-weight:500}
   <div class="nb-head"><h3>Your field notebook</h3><div class="nb-right"><span class="rank" id="rank"></span><span class="stamps" id="stamps" aria-label="Field exams passed"></span></div></div>
   <div class="nb-actions"><button class="btn" id="exambtn" type="button">Prove it →</button><span class="nb-note" id="examnote"></span><button class="btn ghost" id="codebtn" type="button">Notebook code</button><button class="btn ghost reset" id="resetbtn" type="button">Start again</button></div>
   <div class="nb-code" id="nbcode" hidden><p>Your notebook as a code. Write it down or send it to another device; typing it in there brings every find back.</p><div class="row"><code id="codeout"></code><button class="btn ghost" id="codecopy" type="button">Copy</button></div><div class="row"><input id="codein" type="text" placeholder="Paste a code" autocomplete="off" spellcheck="false"><button class="btn ghost" id="codeload" type="button">Restore</button></div><p class="msg" id="codemsg"></p></div>
-  <div class="nb-grid" id="nb-grid"></div>
+  <div class="nb-grid" id="nb-grid"></div><p class="nb-left" id="nb-left"></p>
 </section>
 <section class="books" id="books" aria-label="Read next">
   <div class="eyebrow">Read next</div>
@@ -1378,6 +1399,7 @@ function renderNotebook(){
   }));
   const eb=document.getElementById("exambtn"); eb.disabled=found.size<6; eb.title=found.size<6?`Dig up 6 things first (${6-found.size} to go)`:"Seven questions. Only about things you have dug up. No tricks."; const en=document.getElementById("examnote"); if(en) en.textContent=found.size<6?`Dig up ${6-found.size} more to unlock the exam`:"Seven questions, only on what you dug up";
   document.getElementById("stamps").textContent="★".repeat(Math.min(stamps,12))+(clues?` ◆${clues}`:"");
+  const nl=document.getElementById("nb-left"); if(nl) nl.textContent=found.size<ALL.length?`${ALL.length-found.size} still buried in the cliff.`:"";
   const n=found.size, rank=[...RANKS].reverse().find(([m])=>n>=m)[1], next=RANKS.find(([m])=>m>n);
   document.getElementById("rank").innerHTML=`${n} of ${ALL.length} finds · <b>${rank}</b>${next?` · ${next[0]-n} more to ${next[1]}`:" · the whole cliff is yours. Show-off."}`;
 }
@@ -1447,8 +1469,8 @@ function examEnd(ex){
 const NARROW=()=>matchMedia("(max-width:760px)").matches;
 /* ---------- phone sheet: the panel slides over the page; the cliff stays where you left it ---------- */
 const SHEET={on:false,y:0,pushed:false};
-function openSheet(){ if(!NARROW()||SHEET.on)return; SHEET.y=scrollY; SHEET.on=true; document.body.classList.add("sheet-open"); panel.scrollTop=0; try{history.pushState({sheet:1},"",location.href);SHEET.pushed=true;}catch(e){} syncSheet(); }
-function closeSheet(){ if(!SHEET.on)return; SHEET.on=false; SHEET.pushed=false; document.body.classList.remove("sheet-open","sheet-dock"); stopNarr(); scrollTo({top:SHEET.y}); }
+function openSheet(){ if(!NARROW()||SHEET.on)return; SHEET.y=scrollY; SHEET.on=true; document.body.classList.add("sheet-open"); panel.scrollTop=0; syncSheet(); }
+function closeSheet(toCliff){ if(!SHEET.on)return; SHEET.on=false; document.body.classList.remove("sheet-open","sheet-dock"); stopNarr(); const fl=document.getElementById("floatnext"); if(fl)fl.hidden=true; if(toCliff){ const c=document.querySelector(".cliff"); scrollTo({top:c?c.getBoundingClientRect().top+scrollY-8:SHEET.y}); } else scrollTo({top:SHEET.y}); }
 function dockSheet(on){ if(!SHEET.on)return; document.body.classList.toggle("sheet-dock",!!on); if(on){ document.querySelector(".cliff").scrollIntoView({behavior:"auto",block:"start"}); } }
 function goPanel(){ if(NARROW()) openSheet(); else document.querySelector(".game").scrollIntoView({behavior:REDUCED?"auto":"smooth",block:"start"}); }
 function syncSheet(){ if(!SHEET.on)return; panel.scrollTop=0;
@@ -1462,8 +1484,7 @@ function syncSheet(){ if(!SHEET.on)return; panel.scrollTop=0;
   pv.textContent=older?"‹ "+older.name:""; nx.textContent=younger?younger.name+" ›":"";
   pv.onclick=older?()=>openPeriod(older.k):null; nx.onclick=younger?()=>openPeriod(younger.k):null;
 }
-document.getElementById("sb-back").addEventListener("click",()=>{ if(SHEET.pushed){history.back();} else closeSheet(); });
-addEventListener("popstate",()=>{ if(SHEET.on){SHEET.pushed=false;closeSheet();} });
+document.getElementById("sb-back").addEventListener("click",()=>closeSheet(true));
 addEventListener("keydown",e=>{ if(e.key==="Escape"&&SHEET.on)document.getElementById("sb-back").click(); });
 matchMedia("(max-width:760px)").addEventListener("change",m=>{ if(!m.matches)closeSheet(); });
 /* ---------- phone strip dots ---------- */
