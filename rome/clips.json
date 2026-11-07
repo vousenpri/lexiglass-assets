@@ -254,7 +254,7 @@
   {
    "id": "claudius-intro",
    "kind": "read",
-   "text": "After Caligula's murder the bodyguards found his uncle Claudius hiding behind a curtain, shaking. They made him emperor on the spot, mostly because he was the only member of the family left alive. Everyone thought he was an idiot. He wasn't. He conquered Britain, built a harbour, and actually ran the empire properly for thirteen years. Then his fourth wife fed him a plate of mushrooms. Or so they say."
+   "text": "After Caligula's murder the bodyguards found his uncle Claudius hiding behind a curtain, shaking. They made him emperor on the spot, mostly because he was the only grown man of the family left alive. Everyone thought he was an idiot. He wasn't. He conquered Britain, built a harbour, and actually ran the empire properly for thirteen years. Then his fourth wife fed him a plate of mushrooms. Or so they say."
   },
   {
    "id": "claudius-fate",
@@ -300,7 +300,7 @@
   {
    "id": "nero-intro",
    "kind": "read",
-   "text": "The last of the Caesar family, and the one who proves that being related to Augustus is no guarantee of anything. Nero sang on stage (illegal for a gentleman), raced chariots, murdered his mum, and when half of Rome burned down he blamed the Christians. When the army finally turned on him he ran away to a villa and killed himself at 30. He wanted to be remembered as a great singer. He is remembered as Nero."
+   "text": "The last of the Caesar family, and the one who proves that being related to Augustus is no guarantee of anything. Nero sang on stage (unthinkable for a gentleman), raced chariots, murdered his mum, and when half of Rome burned down he blamed the Christians. When the army finally turned on him he ran away to a villa and killed himself at 30. He wanted to be remembered as a great singer. He is remembered as Nero."
   },
   {
    "id": "nero-fate",
@@ -340,7 +340,7 @@
   {
    "id": "agrippina-the-younger-intro",
    "kind": "read",
-   "text": "Never an emperor, but for about a year she might as well have been. Great-granddaughter of Augustus, sister of Caligula, wife (and niece!) of Claudius, mother of Nero. She got her 16-year-old son onto the throne, had her own face stamped on the coins next to his, sat behind a curtain while he met ambassadors, and had the palace password set to 'best of mothers'. Within a year Nero's advisers had shoved her out. Within five, Nero had her killed."
+   "text": "Never an emperor, but for about a year she might as well have been. Great-granddaughter of Augustus, sister of Caligula, wife (and niece!) of Claudius, mother of Nero. She got her 16-year-old son onto the throne, had her own face stamped on the coins next to his, sat behind a curtain while the Senate met, and had the palace password set to 'best of mothers'. Within a year Nero's advisers had shoved her out. Within five, Nero had her killed."
   },
   {
    "id": "agrippina-the-younger-fate",
@@ -1039,7 +1039,7 @@
   {
    "id": "crisis-and-recovery-fate",
    "kind": "read",
-   "text": "Most of them: killed by their own soldiers. Average time in the job, under four years."
+   "text": "Most of them: killed by their own soldiers. Average time in the job: about two years."
   },
   {
    "id": "constantine-name",
@@ -1091,7 +1091,7 @@
   {
    "id": "constantine-fate",
    "kind": "read",
-   "text": "Illness aged about 65. He put off being baptised until he was actually dying. Lots of people did then: baptism wiped the slate, so the later the better. Eusebius says he had hoped to do it in the River Jordan. Either way, he left it to the last minute."
+   "text": "Illness, aged about 65, baptised at the last minute."
   },
   {
    "id": "kw-emperor",
