@@ -1146,6 +1146,12 @@
    "kind": "say",
    "text": "dynasty",
    "respelling": "DY-nuh-stee"
+  },
+  {
+   "id": "augustus-w-palace",
+   "kind": "say",
+   "text": "palace",
+   "respelling": "PAL-iss"
   }
  ]
 }
