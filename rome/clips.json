@@ -209,7 +209,7 @@
    "id": "caligula-w-praetorian-guard",
    "kind": "say",
    "text": "Praetorian Guard",
-   "respelling": "pry-TOR-ee-un GARD"
+   "respelling": "pree-TOR-ee-un GARD"
   },
   {
    "id": "caligula-intro",
@@ -833,7 +833,7 @@
    "id": "faustina-the-younger-w-mater-castrorum",
    "kind": "say",
    "text": "Mater Castrorum",
-   "respelling": "MAH-ter kass-TROR-um"
+   "respelling": "MAH-ter kass-TROH-room"
   },
   {
    "id": "faustina-the-younger-w-gladiator",

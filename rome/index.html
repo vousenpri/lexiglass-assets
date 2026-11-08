@@ -359,8 +359,8 @@ h1 em{font-style:italic;color:var(--purple);font-weight:500}
 </div>
 
 <script>
-/* ---------- narration, same pattern as Deep Time: aud/<id>.mp3. Buttons stay hidden until the clips exist; flip AUD_ON to true then (or add ?aud to the address to preview) ---------- */
-const AUDIO_BASE="aud/"; const AUD_ON=/[?&]aud\b/.test(location.search);
+/* ---------- narration, same pattern as Deep Time: aud/<id>.mp3 (199 clips, ElevenLabs v4, Pri's voice). Add ?noaud to the address to hide the buttons ---------- */
+const AUDIO_BASE="aud/"; const AUD_ON=!/[?&]noaud\b/.test(location.search);
 const slug=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const readBtn=(id,label="Read to me")=>AUD_ON?`<button class="read" type="button" data-aud="${id}" aria-label="${label}">${label}</button>`:"";
 const narr=new Audio(); narr.preload="none"; let narrId=null;
