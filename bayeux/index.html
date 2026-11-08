@@ -10,7 +10,7 @@
 /* Lexiglass system: Cormorant Garamond body, DM Sans labels, paper/cream/ink/rule palette, gold eyebrows, pill buttons. Layout: the cloth pinned at the top as one continuous strip; the reading for the scene under the marker sits beneath it. */
 :root{
   --bg:#F4F2EE;--paper:#FFFFFF;--cream:#FAF6EE;--ink:#16170B;--ink-soft:#5E5A4E;--rule:#C8B89A;
-  --gold:#B8922A;--copper:#B8651E;--accent:#8A2E2A;--accent-soft:#8A2E2A1A;
+  --gold:#7E6214;--copper:#9A4F12;--accent:#8A2E2A;--accent-soft:#8A2E2A1A;
   --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
   --a-oath:#6E7A3A;--a-crown:#8A2E2A;--a-fleet:#2F5D5A;--a-battle:#B07A2A;--linen:#D9CDB4;
 }
@@ -22,6 +22,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:
 .wrap{max-width:1040px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:28px 60px}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--paper);color:var(--ink);border:2px solid var(--accent);border-radius:999px;padding:8px 14px;font-family:var(--sans);font-size:13px;z-index:100}.skip:focus{left:16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.track:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
 .brand{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px}
 h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;line-height:1.05;text-wrap:balance}
 h1{font-size:2.6rem;line-height:1;letter-spacing:-.01em}
@@ -47,13 +50,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .badge{position:absolute;left:12px;top:10px;font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(22,23,11,.72);color:#FFF8EE;padding:5px 10px;border-radius:999px;pointer-events:none;max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .badge b{color:#F3D27A;font-weight:500;margin-right:8px}
 .ctl{position:absolute;right:10px;top:8px;display:flex;gap:6px}
-.ctl button{width:34px;height:34px;border-radius:50%;background:rgba(22,23,11,.6);color:#FFF8EE;border:1px solid rgba(255,248,238,.35);font-size:13px;font-family:var(--sans)}
+.ctl button{width:40px;height:40px;border-radius:50%;background:rgba(22,23,11,.6);color:#FFF8EE;border:1px solid rgba(255,248,238,.35);font-size:13px;font-family:var(--sans)}
 .ctl button.wide{width:auto;padding:0 12px;letter-spacing:.1em;text-transform:uppercase;font-size:10px}
 .ctl button:hover{background:rgba(22,23,11,.85)}.ctl button[aria-pressed="true"]{background:var(--accent);border-color:#F3D27A;color:#FFF8EE}
 .listen{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;padding:6px 14px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);background:transparent;margin-left:auto}.listen:hover{background:var(--accent-soft)}.listen.on{background:var(--accent);color:#fff}
-.ruler{display:flex;height:16px;margin-top:8px;border-radius:4px;overflow:hidden;border:1px solid var(--rule);position:relative;background:var(--paper)}
-.ruler i{display:block;height:100%;background:var(--c);opacity:.6;cursor:pointer;border-right:1px solid var(--bg);min-width:2px}
-.ruler i:hover,.ruler i.on{opacity:1}
+.ruler{display:flex;height:20px;margin-top:8px;border-radius:4px;overflow:hidden;border:1px solid var(--rule);position:relative;background:var(--paper)}
+.ruler button{display:block;height:100%;background:var(--c);opacity:.6;cursor:pointer;border:0;border-right:1px solid var(--bg);border-radius:0;min-width:2px;padding:0}
+.ruler button:hover,.ruler button.on{opacity:1}.ruler button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;opacity:1}
 .ruler em{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);pointer-events:none;transform:translateX(-1px)}
 .ruler-lbl{display:flex;justify-content:space-between;font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
 .ruler-lbl span:nth-child(2){text-transform:none;letter-spacing:.02em}
@@ -98,24 +101,26 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 </head>
 <body>
 <div class="wrap">
+<a class="skip" href="#reading">Skip to the story</a>
 <div class="brand">Lexiglass &nbsp;·&nbsp; 1064 to 1066</div>
 <header>
   <h1>Walk the <em>Bayeux Tapestry</em></h1>
-  <p class="lede">All of it, end to end, the way you would see it in the museum: one long strip, left to right, with the story of whatever is in front of you underneath. Drag the cloth, use the arrows, or press Stroll and let it walk itself. Tap ♪ and each scene is read to you as you reach it; with ♪ on, Stroll becomes a guided walk that waits for the story to finish before moving on.</p>
+  <p class="lede">All of it, end to end, the way you would see it in the museum: one long strip, left to right, with the story of whatever is in front of you underneath. Drag the cloth, use the arrows, or press Stroll and let it walk itself. Tap ♪ and each scene is read to you as you reach it; with ♪ on, Stroll becomes a guided walk that waits for the story to finish before moving on. Everything the narration says is printed underneath, so the text is the transcript. On a keyboard: focus the cloth, then ← → to move, Page Up and Page Down for the next or previous scene, Home and End for the two ends.</p>
 </header>
 
 <div class="cloth" id="cloth">
   <div class="strip">
-    <div class="track" id="track"><div class="rail" id="rail"></div></div>
+    <div class="track" id="track" tabindex="0" role="img" aria-roledescription="scrollable image" aria-label="The Bayeux Tapestry, scene 1, King Edward" aria-describedby="trackhelp"><div class="rail" id="rail"></div></div>
+    <span class="sr" id="trackhelp">Left and right arrow keys move along the cloth. Page Down and Page Up jump a scene. Home and End go to the two ends.</span><span class="sr" id="announce" aria-live="polite"></span>
     <div class="marker" aria-hidden="true"></div>
-    <div class="badge" id="badge"><b>Scene 1</b>King Edward</div>
-    <div class="ctl"><button type="button" id="prev" aria-label="Previous scene">◀</button><button type="button" id="voice" aria-label="Narration" aria-pressed="false" title="Narration">♪</button><button type="button" id="play" class="wide" aria-label="Stroll">Stroll ▶</button><button type="button" id="next" aria-label="Next scene">▶</button></div>
+    <div class="badge" id="badge" aria-hidden="true"><b>Scene 1</b>King Edward</div>
+    <div class="ctl"><button type="button" id="prev" aria-label="Previous scene">◀</button><button type="button" id="voice" aria-label="Read each scene aloud" aria-pressed="false" title="Narration">♪</button><button type="button" id="play" class="wide" aria-label="Stroll: move along the cloth by itself">Stroll ▶</button><button type="button" id="next" aria-label="Next scene">▶</button></div>
   </div>
-  <div class="ruler" id="ruler" aria-label="The whole cloth: tap to jump"></div>
+  <div class="ruler" id="ruler" role="group" aria-label="The whole cloth, one button per scene"></div>
   <div class="ruler-lbl"><span>1064 · Edward sends Harold</span><span>Each block is one of the 58 scenes; the colour is the act. Tap to jump.</span><span>14 Oct 1066 · the English run</span></div>
 </div>
 
-<section class="reading" id="reading" aria-live="polite"></section>
+<section class="reading" id="reading" aria-label="The scene under the marker"></section>
 
 <section class="living" aria-label="The three men" id="cast">
   <div class="eyebrow">The cast</div>
@@ -148,7 +153,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   <div class="eyebrow">Read the stitching</div>
   <h2>Twelve Latin words <em>and you can read the whole thing.</em></h2>
   <div class="latin">
-    <div><b>HIC</b><span>here</span></div><div><b>UBI</b><span>where</span></div><div><b>ET</b><span>and</span></div><div><b>REX</b><span>king</span></div><div><b>DUX</b><span>duke, leader</span></div><div><b>EPISCOPUS</b><span>bishop</span></div><div><b>MILITES</b><span>knights, soldiers</span></div><div><b>NAVIS, NAVES</b><span>ship, ships</span></div><div><b>VENIT</b><span>came</span></div><div><b>MARE</b><span>the sea</span></div><div><b>ANGLORUM</b><span>of the English</span></div><div><b>INTERFECTUS EST</b><span>was killed</span></div>
+    <div><b lang="la">HIC</b><span>here</span></div><div><b>UBI</b><span>where</span></div><div><b>ET</b><span>and</span></div><div><b>REX</b><span>king</span></div><div><b>DUX</b><span>duke, leader</span></div><div><b>EPISCOPUS</b><span>bishop</span></div><div><b>MILITES</b><span>knights, soldiers</span></div><div><b>NAVIS, NAVES</b><span>ship, ships</span></div><div><b>VENIT</b><span>came</span></div><div><b>MARE</b><span>the sea</span></div><div><b>ANGLORUM</b><span>of the English</span></div><div><b>INTERFECTUS EST</b><span>was killed</span></div>
   </div>
 </div>
 
@@ -374,21 +379,24 @@ let scale=1;function layout(){const h=track.clientHeight;scale=h/NATIVE_H;const 
 layout();addEventListener('resize',()=>{const c=center();layout();goTo(c,false);});
 // position helpers, in native strip px
 const center=()=>(track.scrollLeft)/scale;
-function goTo(x,smooth=true){track.scrollTo({left:x*scale,behavior:smooth?'smooth':'auto'});}
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;function goTo(x,smooth=true){track.scrollTo({left:x*scale,behavior:smooth&&!RM?'smooth':'auto'});}
 // ruler
-allScenes.forEach((n,i)=>{const next=allScenes[i+1];const w=((next?STARTS[next]:TOTAL)-STARTS[n])/TOTAL*100;const b=document.createElement('i');b.style.width=w+'%';b.style.setProperty('--c',col(S[sceneOf(n)].act));b.title=`Scene ${n}${n===27?'–28':n===30?'–31':''} · ${S[sceneOf(n)].name}`;b.dataset.n=n;b.onclick=()=>{goTo(STARTS[n]+80);stop();};ruler.appendChild(b);});
+allScenes.forEach((n,i)=>{const next=allScenes[i+1];const w=((next?STARTS[next]:TOTAL)-STARTS[n])/TOTAL*100;const b=document.createElement('button');b.type='button';b.style.width=w+'%';b.style.setProperty('--c',col(S[sceneOf(n)].act));b.title=`Scene ${n}${n===27?'–28':n===30?'–31':''} · ${S[sceneOf(n)].name}`;b.setAttribute('aria-label',b.title);b.dataset.n=n;b.onclick=()=>{goTo(STARTS[n]+80);stop();};ruler.appendChild(b);});
 const needle=document.createElement('em');ruler.appendChild(needle);
 // current scene
 let cur=-1,curNum=1;
 function update(){const x=center();let n=allScenes[0];for(const k of allScenes){if(STARTS[k]<=x+40)n=k;}curNum=n;const i=sceneOf(n);
   needle.style.left=Math.min(100,Math.max(0,x/TOTAL*100))+'%';
-  [...ruler.querySelectorAll('i')].forEach(b=>b.classList.toggle('on',+b.dataset.n===n));
+  [...ruler.querySelectorAll('button')].forEach(b=>{const on=+b.dataset.n===n;b.classList.toggle('on',on);b.setAttribute('aria-current',on?'true':'false');});
+  track.setAttribute('aria-label',`The Bayeux Tapestry, scene ${n}${n===27?' to 28':n===30?' to 31':''}, ${S[i].name}`);
   badge.innerHTML=`<b>Scene ${n}${n===27?'–28':n===30?'–31':''}</b>${S[i].name}`;
-  if(i!==cur){cur=i;render(i);sceneChanged();}
+  if(i!==cur){cur=i;render(i);sceneChanged();document.getElementById('announce').textContent=`Scene ${S[i].scene}: ${S[i].name}`;}
   document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===S.length-1;}
 let raf=null;track.addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=null;update();});});
 // wheel over the cloth scrolls it sideways
 track.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();track.scrollLeft+=e.deltaY;stop();}},{passive:false});
+// keyboard
+track.addEventListener('keydown',e=>{const k=e.key;let h=true;if(k==='ArrowRight')track.scrollLeft+=240;else if(k==='ArrowLeft')track.scrollLeft-=240;else if(k==='PageDown'||k==='ArrowDown')document.getElementById('next').click();else if(k==='PageUp'||k==='ArrowUp')document.getElementById('prev').click();else if(k==='Home')goTo(80);else if(k==='End')goTo(TOTAL-track.clientWidth/scale/2);else if(k===' ')document.getElementById('play').click();else h=false;if(h){e.preventDefault();stop();}});
 // drag
 let down=false,sx=0,sl=0;track.addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sl=track.scrollLeft;track.classList.add('drag');track.setPointerCapture(e.pointerId);stop();});
 track.addEventListener('pointermove',e=>{if(down)track.scrollLeft=sl-(e.clientX-sx);});
@@ -398,7 +406,7 @@ const DUR={"aelfgyva": 52, "ships": 50, "return": 48, "edward": 61, "oath": 59, 
 const aud=new Audio();aud.preload='none';let narr=false,playingIdx=-1,deb=null;
 try{narr=localStorage.getItem('bayeux-narr')==='on';}catch(e){}
 const vbtn=document.getElementById('voice');function updVoice(){vbtn.setAttribute('aria-pressed',String(narr));vbtn.title=narr?'Narration on':'Narration off';}updVoice();
-function updListen(){const b=document.getElementById('listen');if(!b)return;const on=playingIdx===cur&&!aud.paused;b.classList.toggle('on',on);b.textContent=on?'❚❚ Pause':'▶ Listen · '+fmt(DUR[S[cur].id]);}
+function updListen(){const b=document.getElementById('listen');if(!b)return;const on=playingIdx===cur&&!aud.paused;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'❚❚ Pause':'▶ Listen · '+fmt(DUR[S[cur].id]);}
 function playScene(i){if(playingIdx!==i||aud.ended){aud.src='audio/'+S[i].id+'.mp3';playingIdx=i;}aud.play().then(updListen).catch(()=>{});updListen();}
 aud.onpause=updListen;aud.onplay=updListen;
 aud.onended=()=>{playingIdx=-1;updListen();if(playing&&narr){if(cur<S.length-1)goTo(STARTS[anchors[cur+1]]+80);else stop();}};
@@ -415,14 +423,14 @@ document.getElementById('next').onclick=()=>{stop();goTo(STARTS[anchors[Math.min
 // reading
 function render(i){const e=S[i];reading.classList.add('fade');setTimeout(()=>{
   const opts=[...e.q.o].sort(()=>Math.random()-.5);const done=answered[e.id];
-  reading.innerHTML=`<div class="top"><span class="eyebrow">Scene ${e.scene} of 58</span><span class="eyebrow" style="color:${col(e.act)}">${ACT[e.act]}</span><span class="tally">${Object.values(answered).filter(x=>x.ok).length} of ${S.length} outwitted</span><button type="button" class="listen" id="listen">${playingIdx===i&&!aud.paused?'❚❚ Pause':'▶ Listen · '+fmt(DUR[e.id])}</button></div>
+  reading.innerHTML=`<div class="top"><span class="eyebrow">Scene ${e.scene} of 58</span><span class="eyebrow" style="color:${col(e.act)}">${ACT[e.act]}</span><span class="tally">${Object.values(answered).filter(x=>x.ok).length} of ${S.length} outwitted</span><button type="button" class="listen" id="listen" aria-label="Read this scene aloud">${playingIdx===i&&!aud.paused?'❚❚ Pause':'▶ Listen · '+fmt(DUR[e.id])}</button></div>
   <h2>${e.name}</h2>
-  <div class="tit"><span class="lat">${e.lat}</span><span class="eng">${e.eng}</span><span class="ex">Stitched above the scene</span></div>
+  <div class="tit"><span class="lat" lang="la">${e.lat}</span><span class="eng">${e.eng}</span><span class="ex">Stitched above the scene</span></div>
   <div class="facts"><div class="fact"><span>When</span><strong>${e.when}</strong></div><div class="fact"><span>Where</span><strong>${e.where}</strong></div></div>
   <p class="see">${e.see}</p><p>${e.story}</p>
   <div class="sub">Threads worth pulling</div><ul class="anec">${e.anec.map(a=>`<li>${a}</li>`).join('')}</ul>
   <div class="sub">Words worth keeping</div><div class="words">${e.words.map(w=>`<div class="word"><b>${w[0]}</b><span class="sayb">${w[1]}</span><span>${w[2]}</span></div>`).join('')}</div>
-  <div class="nobble" id="nobble"><div class="eyebrow">Outwit the Normans · with knowledge</div><p class="tq">${e.q.q}</p><div class="opts">${opts.map(o=>`<button class="opt" type="button"${done?' disabled':''}>${o}</button>`).join('')}</div><p class="why">${done?(done.ok?'Outwitted. ':'They got you last time. ')+e.q.w:''}</p></div>
+  <div class="nobble" id="nobble"><div class="eyebrow">Outwit the Normans · with knowledge</div><p class="tq">${e.q.q}</p><div class="opts" role="group" aria-label="Answers">${opts.map(o=>`<button class="opt" type="button"${done?' disabled':''}>${o}</button>`).join('')}</div><p class="why" aria-live="polite">${done?(done.ok?'Outwitted. ':'They got you last time. ')+e.q.w:''}</p></div>
   <div class="nav"><button class="btn" type="button" ${i===0?'disabled':''} onclick="document.getElementById('prev').click()">← Walk back</button><button class="btn primary" type="button" ${i===S.length-1?'disabled':''} onclick="document.getElementById('next').click()">Walk on →</button></div>`;
   const box=document.getElementById('nobble');const bs=[...box.querySelectorAll('.opt')];if(done)bs.forEach(b=>{if(b.textContent===e.q.a)b.classList.add('right');});
   bs.forEach(b=>b.onclick=()=>{const ok=b.textContent===e.q.a;bs.forEach(c=>{c.disabled=true;if(c.textContent===e.q.a)c.classList.add('right');});if(!ok)b.classList.add('wrong');answered[e.id]={ok};save();box.querySelector('.why').textContent=(ok?'Outwitted. ':'Not this time. ')+e.q.w;if(ok)confetti();});
