@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Touch Typing Jedi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Lexiglass design system (Deep Time tokens). Layout: compact header with the two modes (mission / write),
+   the machine (paper on platen, blade, hands, key bed) sized to fit one laptop screen, then the rank ladder,
+   the mission report and kept notes. */
+:root{
+  --bg:#F4F2EE;--paper:#FFFFFF;--cream:#FAF6EE;--ink:#16170B;--ink-soft:#5E5A4E;--rule:#C8B89A;
+  --green:#56683E;--green-deep:#3E4C2C;--blue:#4B568E;--gold:#B8922A;--copper:#B8651E;--yellow:#D3C657;
+  --soil-1:#D9CBB4;--soil-3:#BFAA8B;--soil-5:#9C866B;--ext:#8E3B2E;--ext-ink:#FFF8EE;
+  --skin:#E6C4A3;--skin-line:#9C7A5C;--skin-crease:#B48C6A;
+  --f1:#8E3B2E;--f2:#B8651E;--f3:#B8922A;--f4:#56683E;--f5:#56683E;--f6:#4B568E;--f7:#6E4F8E;--f8:#8E3B6B;--f0:#9C866B;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;--sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'Courier Prime','Courier New',Courier,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1C1B17;--paper:#25241F;--cream:#2C2A24;--ink:#F1EDE3;--ink-soft:#B3AC9C;--rule:#5C5443;--green:#8FA36E;--green-deep:#2E3A24;--blue:#8B95C9;--gold:#CBA94B;--copper:#D98A4A;--soil-1:#4A4136;--soil-3:#3C342B;--soil-5:#2E2821;--ext:#C25A48;--ext-ink:#1C1B17;
+  --f1:#C25A48;--f2:#D98A4A;--f3:#CBA94B;--f4:#8FA36E;--f5:#8FA36E;--f6:#8B95C9;--f7:#A98BC9;--f8:#C97BA6;--f0:#8E7A62;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1C1B17;--paper:#25241F;--cream:#2C2A24;--ink:#F1EDE3;--ink-soft:#B3AC9C;--rule:#5C5443;--green:#8FA36E;--green-deep:#2E3A24;--blue:#8B95C9;--gold:#CBA94B;--copper:#D98A4A;--yellow:#D3C657;--soil-1:#4A4136;--soil-3:#3C342B;--soil-5:#2E2821;--ext:#C25A48;--ext-ink:#1C1B17;
+  --f1:#C25A48;--f2:#D98A4A;--f3:#CBA94B;--f4:#8FA36E;--f5:#8FA36E;--f6:#8B95C9;--f7:#A98BC9;--f8:#C97BA6;--f0:#8E7A62;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.4;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 60px}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1{font-family:var(--serif);font-size:clamp(1.8rem,5vw,2.4rem);font-weight:600;line-height:1;margin:4px 0 0;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:italic;font-weight:500}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-end}
+
+button,select{font-family:var(--sans);font-size:14px;font-weight:500;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px;padding:8px 14px;cursor:pointer}
+button.primary{background:var(--green-deep);color:#F1EDE3;border-color:var(--green-deep)}
+button[aria-pressed="true"].mode{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* machine: the paper rises 120px above the platen, so the machine reserves that room above itself */
+.machine{background:var(--green-deep);border-radius:16px 16px 8px 8px;padding:0 14px 12px;box-shadow:0 8px 0 #1f2a1a;margin-top:118px}
+.platen{height:20px;background:linear-gradient(#111,#3a3a3a 40%,#111);border-radius:0 0 8px 8px;margin:0 -14px;position:relative}
+.platen::before,.platen::after{content:"";position:absolute;top:-6px;width:24px;height:32px;background:#222;border-radius:6px}
+.platen::before{left:-9px}.platen::after{right:-9px}
+.paper-wrap{margin:-128px 12px 0;position:relative}
+.paper{background:var(--cream);color:var(--ink);padding:14px 18px 10px;min-height:150px;box-shadow:0 2px 6px rgba(0,0,0,.25);border-radius:2px;overflow:hidden;position:relative}
+.paper.return{animation:cr .32s ease}
+@keyframes cr{0%{transform:translateX(0)}35%{transform:translateX(26px)}100%{transform:translateX(0)}}
+.ltitle{margin:0 0 2px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.ltitle .eyebrow{color:var(--ink-soft)}
+.ltitle .n{font-family:var(--serif);font-size:1.3rem;font-weight:600}
+.intro{margin:0 0 10px;font-size:.98rem;line-height:1.45;color:var(--ink-soft)}
+.intro b,.verdict b{font-weight:600;color:var(--ink);border:1px solid var(--rule);border-radius:50%;display:inline-block;width:1.5em;height:1.5em;text-align:center;line-height:1.45em;margin:0 1px;font-family:var(--mono);font-size:.85em;font-style:normal}
+.lines{display:flex;flex-direction:column;gap:4px;font-family:var(--mono);font-size:clamp(17px,4vw,22px);line-height:1.45;white-space:pre;font-variant-numeric:tabular-nums;overflow-x:auto}
+.line{min-height:1.45em;letter-spacing:.04em}
+.line.done{opacity:.5}
+.ch{display:inline-block;width:.62em;text-align:center;position:relative}
+.target{color:var(--soil-5)}
+.ch.ok{color:var(--ink)}
+.ch.fixed{color:var(--ink)}
+.ch.fixed::before{content:"";position:absolute;left:.1em;right:.1em;bottom:-.05em;height:2px;background:var(--copper)}
+.ch.red{color:var(--ext)}
+.ch.cur::after{content:"";position:absolute;left:.08em;right:.08em;bottom:-.1em;height:3px;background:var(--gold)}
+.ch.cur.slip{animation:slip .25s ease}
+.ch.cur.slip::after{background:var(--ext)}
+@keyframes slip{0%,100%{transform:translateX(0)}30%{transform:translateX(-3px)}60%{transform:translateX(3px)}}
+.fingerline{font-family:var(--sans);font-size:14px;margin:8px 0 0;min-height:1.5em;color:var(--ink-soft);display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.fingerline b{font-weight:600;color:var(--ink);display:inline-block;padding:1px 10px;border-radius:12px;border:1.5px solid var(--fc,var(--rule));margin-left:6px}
+.fingerline b i{display:inline-block;width:.7em;height:.7em;border-radius:50%;background:var(--fc);margin-right:6px;vertical-align:-1px}
+.fingerline button{padding:4px 10px;font-size:12px}
+.ribbon{height:8px;margin:10px -18px -10px;background:linear-gradient(to bottom,#1a1a1a 50%,var(--ext) 50%)}
+
+/* blade meter */
+.bladebar{display:flex;align-items:center;gap:12px;padding:12px 4px 6px;color:#F1EDE3;font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.hilt{width:34px;height:14px;background:linear-gradient(#777,#bbb,#555);border-radius:3px;flex:none}
+.blade{flex:1;height:8px;background:#1f2a1a;border-radius:0 4px 4px 0;overflow:hidden}
+.blade i{display:block;height:100%;width:0;background:var(--gold);box-shadow:0 0 8px var(--gold),0 0 16px var(--yellow);transition:width .3s ease}
+.blade.full i{animation:hum 1.2s ease-in-out infinite alternate}
+@keyframes hum{from{filter:brightness(1)}to{filter:brightness(1.35)}}
+.stats{display:flex;gap:16px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.stats b{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:#F1EDE3}
+
+/* hands: the watercolor illustration, with a lit ring over the finger that owns the next key */
+.hands{display:flex;justify-content:center;padding:0 0 6px}
+.handpic{position:relative;width:min(100%,360px);aspect-ratio:1214/760;max-width:100%}
+.handpic img{display:block;width:100%;height:100%;object-fit:cover;border-radius:6px}
+.ring{position:absolute;width:7.2%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);border:3px solid transparent;transition:border-color .12s,box-shadow .12s;pointer-events:none}
+.ring.up{border-color:#fff;box-shadow:0 0 0 3px var(--c),0 0 18px 4px var(--c)}
+.ring.up::after{content:attr(data-l);position:absolute;left:50%;top:-1.9em;transform:translateX(-50%);font-family:var(--mono);font-weight:700;font-size:clamp(12px,2.6vw,16px);color:#1c1a19;background:#fff;border-radius:10px;padding:0 .5em;white-space:nowrap}
+/* key bed */
+.kb{display:flex;flex-direction:column;gap:5px;user-select:none}
+.row{display:flex;gap:5px;justify-content:center}
+.k{flex:1 0 0;max-width:42px;aspect-ratio:1;border-radius:50%;background:var(--cream);color:var(--ink);border:2px solid var(--soil-5);box-shadow:0 3px 0 var(--soil-5);
+  display:grid;place-items:center;font-family:var(--mono);font-size:clamp(.8rem,2.6vw,1rem);text-transform:uppercase;position:relative;transition:transform .05s}
+.k::before{content:"";position:absolute;inset:3px;border-radius:50%;border:3px solid var(--f);opacity:.85}
+.k.next{background:var(--f);color:#fff;transform:scale(1.08)}
+.k.press{transform:translateY(3px);box-shadow:0 0 0 var(--soil-5)}
+.k.space{aspect-ratio:auto;max-width:240px;height:28px;border-radius:8px;align-self:center;flex:0 0 55%}
+.k.space::before{display:none}
+
+/* rank ladder */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.rank{border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:10px 12px;min-width:0}
+.rank.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.rank .name{font-family:var(--serif);font-size:1.2rem;font-weight:600;line-height:1.1}
+.rank .sub{font-family:var(--sans);font-size:11px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.dots{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--rule);background:transparent;cursor:pointer;padding:0}
+.dot.pass{background:var(--gold);border-color:var(--gold)}
+.dot.cur{border-color:var(--ink);border-width:2px}
+@media (max-width:620px){.ladder{grid-template-columns:repeat(2,1fr)}}
+
+/* report */
+.report{display:none;border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:18px 20px}
+.report.show{display:block}
+.report h2{font-family:var(--serif);font-size:1.6rem;font-weight:600;margin:0 0 4px;line-height:1.1}
+.verdict{color:var(--ink-soft);margin:0 0 14px;max-width:62ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:14px}
+.tile{border-top:2px solid var(--rule);padding-top:6px}
+.tile .eyebrow{color:var(--ink-soft)}
+.tile .v{font-family:var(--serif);font-size:1.9rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.fingers{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;font-family:var(--sans);font-size:12px}
+.fr{display:flex;flex-direction:column;gap:4px}
+.fr .bar{height:6px;background:var(--soil-1);border-radius:3px;overflow:hidden}
+.fr .bar i{display:block;height:100%;background:var(--c)}
+.fr span{color:var(--ink-soft)}
+.note{font-family:var(--sans);font-size:12px;color:var(--ink-soft);margin:8px 0 0;max-width:62ch}
+
+/* kept notes */
+.kept{display:none;flex-direction:column;gap:10px}
+.kept.show{display:flex}
+.kept .card{background:var(--cream);border:1px solid var(--rule);border-radius:2px;padding:12px 16px;font-family:var(--mono);white-space:pre-wrap;font-size:16px;line-height:1.5;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.kept .card .t{min-width:0;flex:1}
+.kept .card .t .red{color:var(--ext)}
+.kept .card small{display:block;font-family:var(--sans);font-size:11px;color:var(--ink-soft);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
+.kept .card button{flex:none;padding:4px 10px;font-size:12px}
+.foot{margin-top:8px;font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){.paper.return,.ch.cur.slip{animation:none}.k,.finger,.blade i{transition:none}.blade.full i{animation:none}}
+</style>
+<style>html{color-scheme:light dark}body{font-size:17px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Lexiglass · Touch Typing</div>
+      <h1>Touch Typing <em>Jedi</em></h1>
+    </div>
+    <div class="actions">
+      <button class="primary" id="today" type="button">Today's mission</button>
+      <button class="mode" id="writebtn" type="button" aria-pressed="false">Write something</button>
+      <select id="lesson" aria-label="Mission"></select>
+      <button id="sound" type="button" aria-pressed="true">Sound on</button>
+    </div>
+  </div>
+
+  <div class="machine">
+    <div class="platen"></div>
+    <div class="paper-wrap">
+      <div class="paper" id="paper">
+        <div class="ltitle"><span class="eyebrow" id="lrank"></span><span class="n" id="ltitle"></span></div>
+        <p class="intro" id="intro"></p>
+        <div class="lines" id="lines"></div>
+        <div class="fingerline" id="fingerline"></div>
+        <div class="ribbon"></div>
+      </div>
+    </div>
+    <div class="bladebar">
+      <div class="hilt"></div><div class="blade" id="blade"><i></i></div>
+      <div class="stats" id="stats"><span>first try <b id="ok">0</b></span><span>slips <b id="bad">0</b></span><span><b id="acc">100%</b></span></div>
+    </div>
+    <div class="hands" aria-hidden="true"><div class="handpic" id="hands"><img src="hands.jpg" alt=""></div></div>
+    <div class="kb" id="kb" aria-hidden="true"></div>
+  </div>
+
+  <div class="report" id="report">
+    <h2 id="rtitle">Mission complete</h2>
+    <p class="verdict" id="rverdict"></p>
+    <div class="grid">
+      <div class="tile"><div class="eyebrow">First-try accuracy</div><div class="v" id="racc"></div></div>
+      <div class="tile"><div class="eyebrow">Slips fixed</div><div class="v" id="rbad"></div></div>
+      <div class="tile" id="speedtile"><div class="eyebrow">Speed</div><div class="v" id="rwpm"></div></div>
+    </div>
+    <div class="eyebrow" style="margin-bottom:8px">First tries on each finger's keys</div>
+    <div class="fingers" id="rfingers"></div>
+    <p class="note">The page sees which keys were pressed, not which fingers pressed them. Watch her hands for a minute now and then; that is the real check.</p>
+    <div class="actions" style="margin-top:16px"><button class="primary" id="next" type="button">Next mission</button><button id="again" type="button">Run it again</button></div>
+  </div>
+
+  <div class="ladder" id="ladder"></div>
+
+  <div class="kept" id="kept"></div>
+
+  <div class="foot"><span>See more in every key.</span><span>Lexiglass</span></div>
+</div>
+
+<script>
+// ---------- missions: f and j first, then one pair at a time; short lines, small wins ----------
+const RANKS=[["Youngling","home row",[0,1,2,3,4,5,6]],["Padawan","top row",[7,8,9,10,11]],["Knight","bottom row",[12,13,14,15]],["Master","shift and sentences",[16,17]]];
+const LESSONS=[
+  ["Find home: f and j",["fff jjj","fjf jfj","ff jj fj"]],
+  ["d and k",["ddd kkk","dkd kdk","fd jk dk"]],
+  ["s and l",["sss lll","sls lsl","sd lk sl"]],
+  ["a and ;",["aaa ;;;","a;a ;a;","as ;l a;"]],
+  ["The whole home row",["asdf ;lkj","fj dk sl a;","asdf ;lkj"]],
+  ["Reach in: g and h",["fgf jhj","gag hah","fgf jhj gh"]],
+  ["Home row words",["sad lad dad","ask all fall","has had gas","flask glass"]],
+  ["Up: e and i",["ded kik","see fee lee","is if kid","ride side hide"]],
+  ["Up: r and u",["frf juj","fur jug rug","read dear fear","sure here hear"]],
+  ["Up: t and y",["ftf jyj","the that this","yes yet yard","sat fat rat hat"]],
+  ["Up: w and o",["sws lol","wow low owl","who how now","work word world"]],
+  ["Up: q and p",["aqa ;p;","quit quiet","pat pet pit pot","quick quip quite"]],
+  ["Down: v and m",["fvf jmj","van vast vest","mom mum more","move give have"]],
+  ["Down: c and comma",["dcd k,k","cat cot cut","ice, rice, mice,","cream cocoa cycle"]],
+  ["Down: x and period",["sxs l.l","fox box six","fix. six. box.","exit next text."]],
+  ["Down: b and n",["fbf jnj","bin ban bun","bean born brain","ants build nests."]],
+  ["Z and shift",["aza zoo zip","Ants. Bees. Crabs.","The fox sat by the box.","Zebras graze at dusk."]],
+  ["Sentences",["The ants carry crumbs home.","A glimmer is a small light.","Rangers protect the park.","The leopard cub sleeps in the shade.","Every finger knows its home key."]],
+];
+const ROWS=["qwertyuiop","asdfghjkl;","zxcvbnm,./"];
+const FINGER={};
+["q","a","z"].forEach(c=>FINGER[c]=1);["w","s","x"].forEach(c=>FINGER[c]=2);["e","d","c"].forEach(c=>FINGER[c]=3);
+["r","f","v","t","g","b"].forEach(c=>FINGER[c]=4);["y","h","n","u","j","m"].forEach(c=>FINGER[c]=5);
+["i","k",","].forEach(c=>FINGER[c]=6);["o","l","."].forEach(c=>FINGER[c]=7);["p",";","/"].forEach(c=>FINGER[c]=8);FINGER[" "]=0;
+const FNAME={1:"left pinky",2:"left ring",3:"left middle",4:"left index",5:"right index",6:"right middle",7:"right ring",8:"right pinky",0:"right thumb"};
+const fingerOf=c=>FINGER[c.toLowerCase()];
+
+// ---------- sound (Web Audio, synthesized) ----------
+let AC=null,soundOn=true;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==="suspended")AC.resume();return AC}
+function noise(d){const c=ac();const b=c.createBuffer(1,c.sampleRate*d,c.sampleRate);const x=b.getChannelData(0);for(let i=0;i<x.length;i++)x[i]=Math.random()*2-1;const s=c.createBufferSource();s.buffer=b;return s}
+function clack(space){if(!soundOn||!ac())return;const c=AC,t=c.currentTime;
+  const n=noise(.08);const f=c.createBiquadFilter();f.type="bandpass";f.frequency.value=space?700:2200+Math.random()*600;f.Q.value=1.2;
+  const g=c.createGain();g.gain.setValueAtTime(space?.5:.8,t);g.gain.exponentialRampToValueAtTime(.001,t+(space?.12:.07));n.connect(f).connect(g).connect(c.destination);n.start(t);
+  const o=c.createOscillator();o.type="square";o.frequency.setValueAtTime(space?180:900,t);o.frequency.exponentialRampToValueAtTime(space?60:200,t+.03);
+  const og=c.createGain();og.gain.setValueAtTime(.25,t);og.gain.exponentialRampToValueAtTime(.001,t+.04);o.connect(og).connect(c.destination);o.start(t);o.stop(t+.05)}
+function thunk(){if(!soundOn||!ac())return;const c=AC,t=c.currentTime;const o=c.createOscillator();o.type="triangle";o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(70,t+.12);
+  const g=c.createGain();g.gain.setValueAtTime(.5,t);g.gain.exponentialRampToValueAtTime(.001,t+.15);o.connect(g).connect(c.destination);o.start(t);o.stop(t+.16)}
+function ding(){if(!soundOn||!ac())return;const c=AC,t=c.currentTime;[[2640,1,1.4],[5280,.3,.7],[7900,.12,.4]].forEach(([fr,v,d])=>{const o=c.createOscillator();o.type="sine";o.frequency.value=fr;
+  const g=c.createGain();g.gain.setValueAtTime(v*.35,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(c.destination);o.start(t);o.stop(t+d)})}
+function carriage(){if(!soundOn||!ac())return;const c=AC,t=c.currentTime+.05;const n=noise(.35);const f=c.createBiquadFilter();f.type="lowpass";f.frequency.setValueAtTime(1800,t);f.frequency.exponentialRampToValueAtTime(300,t+.3);
+  const g=c.createGain();g.gain.setValueAtTime(.35,t);g.gain.exponentialRampToValueAtTime(.001,t+.35);n.connect(f).connect(g).connect(c.destination);n.start(t);
+  for(let i=0;i<8;i++){const o=c.createOscillator();o.type="square";o.frequency.value=1200;const og=c.createGain();og.gain.setValueAtTime(.06,t+i*.035);og.gain.exponentialRampToValueAtTime(.001,t+i*.035+.02);o.connect(og).connect(c.destination);o.start(t+i*.035);o.stop(t+i*.035+.03)}}
+function hum(){if(!soundOn||!ac())return;const c=AC,t=c.currentTime;const o=c.createOscillator();o.type="sawtooth";o.frequency.setValueAtTime(80,t);o.frequency.linearRampToValueAtTime(110,t+.6);
+  const f=c.createBiquadFilter();f.type="lowpass";f.frequency.value=400;const g=c.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.15);g.gain.exponentialRampToValueAtTime(.001,t+1.4);
+  o.connect(f).connect(g).connect(c.destination);o.start(t);o.stop(t+1.5)}
+
+// ---------- state ----------
+let mode="mission",li=0,lineIdx=0,pos=0,ok=0,bad=0,err=[],t0=null,fingerOk={},fingerBad={},cleanLines=0;
+let note=[[]],redRibbon=false,slipHere=false;
+let passed={},kept=[];try{passed=JSON.parse(localStorage.getItem("ttj-passed")||"{}");kept=JSON.parse(localStorage.getItem("ttj-notes")||"[]")}catch(e){}
+const $=id=>document.getElementById(id);
+const sel=$("lesson");
+LESSONS.forEach((l,i)=>{const o=document.createElement("option");o.value=i;o.textContent=(i+1)+". "+l[0];sel.appendChild(o)});
+function lesson(){return LESSONS[li]} function isWrite(){return mode==="write"}
+function rankOf(i){return RANKS.findIndex(r=>r[2].includes(i))}
+function nextUnpassed(){for(let i=0;i<LESSONS.length;i++)if(!passed[i])return i;return LESSONS.length-1}
+function keysOf(i){return [...new Set(LESSONS[i][1].join("").toLowerCase().split(""))].filter(c=>c!==" ")}
+
+function drawLadder(){const L=$("ladder");L.innerHTML="";RANKS.forEach((r,ri)=>{const d=document.createElement("div");d.className="rank"+(!isWrite()&&rankOf(li)===ri?" cur":"");
+  d.innerHTML='<div class="name">'+r[0]+'</div><div class="sub">'+r[1]+'</div>';const dots=document.createElement("div");dots.className="dots";
+  r[2].forEach(i=>{const b=document.createElement("button");b.type="button";b.className="dot"+(passed[i]?" pass":"")+(!isWrite()&&i===li?" cur":"");b.title=(i+1)+". "+LESSONS[i][0]+(passed[i]?" · "+passed[i].acc+"%":"");b.setAttribute("aria-label",b.title);b.addEventListener("click",()=>load(i));dots.appendChild(b)});
+  d.appendChild(dots);L.appendChild(d)})}
+
+function setMode(m){mode=m;$("writebtn").setAttribute("aria-pressed",String(m==="write"));$("stats").style.visibility=m==="write"?"hidden":"visible";$("blade").style.visibility=m==="write"?"hidden":"visible"}
+
+function load(i){
+  setMode("mission");li=i;lineIdx=0;pos=0;ok=0;bad=0;err=lesson()[1].map(l=>[...l].map(()=>false));t0=null;fingerOk={};fingerBad={};cleanLines=0;sel.value=i;
+  $("report").classList.remove("show");$("blade").classList.remove("full");$("blade").firstElementChild.style.width="0";
+  const r=rankOf(i);$("lrank").textContent=(r>=0?RANKS[r][0]+" · ":"")+"Mission "+(i+1);$("ltitle").textContent=lesson()[0];
+  const seen=new Set();for(let k=0;k<i;k++)keysOf(k).forEach(c=>seen.add(c));
+  const fresh=keysOf(i).filter(c=>!seen.has(c));
+  const intro=$("intro");
+  if(i===0)intro.innerHTML="Feel for the two little bumps on <b>f</b> and <b>j</b>. Left index on f, right index on j. Those bumps are home: you can always find them without looking. Right thumb taps space.";
+  else if(i===4)intro.innerHTML="All eight fingers now. Left hand <b>a</b> <b>s</b> <b>d</b> <b>f</b>, right hand <b>j</b> <b>k</b> <b>l</b> <b>;</b>. Looking at the keys is fine while you learn; try one line with eyes on the paper.";
+  else if(i===16)intro.innerHTML="New key: <b>z</b> left pinky. Capital letters: hold Shift with the pinky of the <i>other</i> hand, then tap the letter.";
+  else if(fresh.length)intro.innerHTML="New keys: "+fresh.map(c=>"<b>"+c+"</b> "+FNAME[fingerOf(c)]).join(" · ")+". Fingers come back to home after every reach.";
+  else intro.textContent="Only keys you already know. Try to keep the eyes on the paper.";
+  drawLadder();render()}
+
+function startWrite(){setMode("write");note=[[]];$("report").classList.remove("show");$("lrank").textContent="Your own paper";$("ltitle").textContent="Write something";
+  $("intro").textContent="A note, a list, a story. Enter for a new line. Keep it when it is done.";drawLadder();render()}
+
+function render(){
+  const box=$("lines");box.innerHTML="";const fl=$("fingerline");
+  if(isWrite()){
+    note.slice(-7).forEach((l,i,arr)=>{const d=document.createElement("div");d.className="line";l.forEach(ch=>{const s=document.createElement("span");s.className="ch ok"+(ch.r?" red":"");s.textContent=ch.c;d.appendChild(s)});
+      if(i===arr.length-1){const c=document.createElement("span");c.className="ch cur";c.textContent=" ";d.appendChild(c)}box.appendChild(d)});
+    fl.innerHTML='<span></span><span><button type="button" id="ribbonbtn">'+(redRibbon?"Black ribbon":"Red ribbon")+'</button> <button type="button" id="keepbtn">Keep this note</button></span>';
+    $("ribbonbtn").addEventListener("click",e=>{redRibbon=!redRibbon;e.target.blur();render()});
+    $("keepbtn").addEventListener("click",e=>{keepNote();e.target.blur()});
+    liftFinger(-1)}
+  else{const lines=lesson()[1];const start=Math.max(0,Math.min(lineIdx-1,lines.length-3));
+    lines.slice(start,start+3).forEach((txt,k)=>{const i=start+k;const d=document.createElement("div");d.className="line"+(i<lineIdx?" done":"");
+      [...txt].forEach((c,j)=>{const s=document.createElement("span");s.className="ch";s.textContent=c;const done=i<lineIdx||(i===lineIdx&&j<pos);
+        if(done)s.classList.add(err[i][j]?"fixed":"ok");else{s.classList.add("target");if(i===lineIdx&&j===pos){s.classList.add("cur");if(slipHere)s.classList.add("slip")}}d.appendChild(s)});box.appendChild(d)});
+    if(lineIdx<lines.length){const nxt=lines[lineIdx][pos];const f=fingerOf(nxt);const shift=nxt!==nxt.toLowerCase()&&nxt!==" ";
+      fl.innerHTML='<span>Next <b><i></i>'+(nxt===" "?"space":nxt)+' &nbsp;'+FNAME[f]+'</b>'+(shift?' + Shift with the '+(f<=4?'right':'left')+' pinky':'')+'</span>';
+      fl.style.setProperty("--fc","var(--f"+f+")");liftFinger(f)}
+    $("ok").textContent=ok;$("bad").textContent=bad;$("acc").textContent=(ok+bad?Math.round(100*ok/(ok+bad)):100)+"%";
+    $("blade").firstElementChild.style.width=(100*cleanLines/lines.length)+"%"}
+  drawKb()}
+
+function flashKey(c,cls,ms){const el=document.querySelector('.k[data-k="'+c+'"]');if(!el)return;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),ms)}
+function drawKb(){const kb=$("kb");if(!kb.children.length){
+    ROWS.forEach(r=>{const d=document.createElement("div");d.className="row";[...r].forEach(c=>{const k=document.createElement("div");k.className="k";k.dataset.k=c;k.textContent=c;k.style.setProperty("--f","var(--f"+FINGER[c]+")");d.appendChild(k)});kb.appendChild(d)});
+    const sr=document.createElement("div");sr.className="row";const sp=document.createElement("div");sp.className="k space";sp.dataset.k=" ";sp.textContent="space";sr.appendChild(sp);kb.appendChild(sr)}
+  kb.querySelectorAll(".next").forEach(e=>e.classList.remove("next"));
+  if(!isWrite()&&lineIdx<lesson()[1].length){const n=lesson()[1][lineIdx][pos].toLowerCase();const el=kb.querySelector('.k[data-k="'+n+'"]');if(el)el.classList.add("next")}}
+
+// rings over each fingernail in the illustration (percent of image width/height)
+const NAILS={1:[6.3,30.9,"a"],2:[16.1,16.8,"s"],3:[26.2,9.2,"d"],4:[36.2,16.8,"f"],0:[56,50,"space"],5:[63,15.5,"j"],6:[72.9,9.5,"k"],7:[82.5,15.8,"l"],8:[93.1,30.9,";"]};
+function drawHands(){const H=$("hands");if(H.querySelector(".ring"))return;for(const f in NAILS){const [x,y,l]=NAILS[f];const r=document.createElement("div");r.className="ring";r.dataset.f=f;r.dataset.l=l;r.style.left=x+"%";r.style.top=y+"%";r.style.setProperty("--c","var(--f"+f+")");H.appendChild(r)}}
+function liftFinger(f){drawHands();document.querySelectorAll(".ring").forEach(g=>g.classList.toggle("up",parseInt(g.dataset.f)===f))}
+
+function newline(){ding();setTimeout(carriage,120);const p=$("paper");p.classList.remove("return");void p.offsetWidth;p.classList.add("return")}
+function key(e){
+  if(e.metaKey||e.ctrlKey||e.altKey)return;const c=e.key;
+  if(isWrite()){
+    if(c==="Enter"){e.preventDefault();newline();note.push([]);render();return}
+    if(c==="Backspace"){e.preventDefault();const l=note[note.length-1];if(l.length)l.pop();else if(note.length>1)note.pop();thunk();render();return}
+    if(c.length!==1)return;e.preventDefault();if(note[note.length-1].length>=34){newline();note.push([])}
+    note[note.length-1].push({c,r:redRibbon});clack(c===" ");flashKey(c.toLowerCase(),"press",90);render();return}
+  const lines=lesson()[1];if(lineIdx>=lines.length)return;
+  if(c.length!==1)return;e.preventDefault();if(!t0)t0=Date.now();
+  const want=lines[lineIdx][pos];const f=fingerOf(want);flashKey(c.toLowerCase(),"press",90);
+  if(c===want){if(!err[lineIdx][pos]){ok++;fingerOk[f]=(fingerOk[f]||0)+1}clack(c===" ");slipHere=false;pos++;
+    if(pos>=lines[lineIdx].length){const clean=err[lineIdx].every(x=>!x);if(clean){cleanLines++;hum()}newline();lineIdx++;pos=0;if(lineIdx>=lines.length){render();finish();return}}}
+  else{if(!err[lineIdx][pos]){err[lineIdx][pos]=true;bad++;fingerBad[f]=(fingerBad[f]||0)+1}thunk();slipHere=false;render();void document.body.offsetWidth;slipHere=true}
+  render()}
+
+function finish(){
+  const total=ok+bad;const acc=Math.round(100*ok/total);const mins=(Date.now()-t0)/60000;const wpm=Math.round(total/5/mins);
+  const n=lesson()[1].length;if(cleanLines===n)$("blade").classList.add("full");
+  const pass=acc>=95;if(pass&&(!passed[li]||passed[li].acc<acc)){passed[li]={acc,wpm};try{localStorage.setItem("ttj-passed",JSON.stringify(passed))}catch(e){}}
+  $("rtitle").textContent=pass?"Mission complete":"Mission not yet complete";
+  let worst=null,wb=0;for(const f in fingerBad)if(fingerBad[f]>wb){wb=fingerBad[f];worst=+f}
+  const worstKeys=worst===null?[]:keysOf(li).filter(c=>fingerOf(c)===worst);
+  $("rverdict").innerHTML=pass?(cleanLines===n?"Every line clean on the first try. The blade is full.":"Clean enough to move on. "+(n-cleanLines)+" line"+(n-cleanLines>1?"s":"")+" had a slip you fixed.")
+    :"Not there yet, which is normal while the fingers learn where home is. Looking at the keys is fine for now; glance a little less each day. Next: run it again and watch the "+(worst===null?"home row":FNAME[worst]+" on "+worstKeys.map(c=>"<b>"+c+"</b>").join(" "))+".";
+  $("racc").textContent=acc+"%";$("rbad").textContent=bad;
+  const showSpeed=rankOf(li)>=2;$("speedtile").style.display=showSpeed?"":"none";$("rwpm").textContent=wpm+" wpm";
+  const F=$("rfingers");F.innerHTML="";[1,2,3,4,0,5,6,7,8].forEach(f=>{const o=fingerOk[f]||0,b=fingerBad[f]||0;if(!o&&!b)return;const p=Math.round(100*o/(o+b));
+    const d=document.createElement("div");d.className="fr";d.style.setProperty("--c","var(--f"+f+")");d.innerHTML='<span>'+FNAME[f]+'</span><div class="bar"><i style="width:'+p+'%"></i></div><span>'+p+'% · '+b+' slip'+(b===1?'':'s')+'</span>';F.appendChild(d)});
+  $("next").textContent=pass?"Next mission":"Next mission anyway";
+  drawLadder();const R=$("report");R.classList.add("show");R.scrollIntoView({behavior:"smooth",block:"nearest"})}
+
+// kept notes
+function noteText(){return note.map(l=>l.map(x=>x.c).join("")).join("\n").trim()}
+function keepNote(){const t=noteText();if(!t)return;kept.unshift({lines:note.map(l=>l.map(x=>({c:x.c,r:x.r}))),when:new Date().toLocaleDateString(undefined,{month:"short",day:"numeric"})});kept=kept.slice(0,20);
+  try{localStorage.setItem("ttj-notes",JSON.stringify(kept))}catch(e){}ding();note=[[]];render();drawKept()}
+function drawKept(){const K=$("kept");K.innerHTML="";K.classList.toggle("show",kept.length>0);if(!kept.length)return;
+  const h=document.createElement("div");h.className="eyebrow";h.textContent="Kept notes";K.appendChild(h);
+  kept.forEach((n,i)=>{const d=document.createElement("div");d.className="card";const t=document.createElement("div");t.className="t";
+    n.lines.forEach((l,j)=>{l.forEach(x=>{const s=document.createElement("span");if(x.r)s.className="red";s.textContent=x.c;t.appendChild(s)});if(j<n.lines.length-1)t.appendChild(document.createTextNode("\n"))});
+    const sm=document.createElement("small");sm.textContent=n.when;t.appendChild(sm);d.appendChild(t);
+    const b=document.createElement("button");b.type="button";b.textContent="Copy";b.addEventListener("click",()=>{const txt=n.lines.map(l=>l.map(x=>x.c).join("")).join("\n");
+      navigator.clipboard.writeText(txt).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1200)}).catch(()=>{const r=document.createRange();r.selectNodeContents(t);const s=getSelection();s.removeAllRanges();s.addRange(r)})});
+    d.appendChild(b);K.appendChild(d)})}
+
+document.addEventListener("keydown",key);
+sel.addEventListener("change",()=>{load(parseInt(sel.value));sel.blur()});
+$("today").addEventListener("click",e=>{load(nextUnpassed());e.target.blur()});
+$("writebtn").addEventListener("click",e=>{startWrite();e.target.blur()});
+$("next").addEventListener("click",()=>load(Math.min(li+1,LESSONS.length-1)));
+$("again").addEventListener("click",()=>load(li));
+$("sound").addEventListener("click",e=>{soundOn=!soundOn;e.target.textContent=soundOn?"Sound on":"Sound off";e.target.setAttribute("aria-pressed",String(soundOn));if(soundOn){ac();clack(false)}e.target.blur()});
+$("kb").addEventListener("pointerdown",e=>{const k=e.target.closest(".k");if(!k)return;e.preventDefault();key({key:k.dataset.k,preventDefault(){}})});
+drawKept();load(nextUnpassed());
+</script>
+
+</body>
+</html>
